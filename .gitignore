@@ -1,0 +1,29 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
+
+# Data & model artifacts (parquet/pickle are gitignored per CI)
+.smoke/
+*.pkl
+*.parquet
+
+# OS
+.DS_Store
