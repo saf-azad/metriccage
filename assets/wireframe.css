@@ -1,0 +1,160 @@
+/* ===========================================================================
+   MetricCage × Paper — wireframe build.
+   Layout for the four site pages drawn in the Paper wireframe design system
+   (assets/tokens/). Direction follows wireframe option 1a, "Broadcast scroll —
+   the current narrative, redrawn": one bordered sheet, sections split by ink
+   rules, real type reserved for headings, numbers and labels, prose drawn as
+   bars.
+   =========================================================================== */
+
+@import url("tokens/fonts.css");
+@import url("tokens/colors.css");
+@import url("tokens/typography.css");
+@import url("tokens/geometry.css");
+@import url("tokens/spacing.css");
+@import url("tokens/motion.css");
+@import url("tokens/base.css");
+
+/* ---- Sheet ---------------------------------------------------------------- */
+body{padding:40px 24px;background:var(--paper)}
+.sheet{max-width:1120px;margin:0 auto;border:var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--paper)}
+.band{padding:52px 56px;border-bottom:var(--border)}
+.band:last-child{border-bottom:none}
+.band-tight{padding:32px 56px}
+
+/* ---- Nav ------------------------------------------------------------------- */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 32px;border-bottom:var(--border)}
+.nav-mark{font-weight:var(--weight-bold);font-size:15px;border-bottom:none}
+.nav-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.nav-links a{font-size:12px;font-weight:var(--weight-medium);color:var(--ink-a60);border-bottom:none}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--ink)}
+
+/* ---- Ticker ---------------------------------------------------------------- */
+.ticker{display:flex;flex-wrap:wrap;gap:6px 22px;padding:10px 32px;border-bottom:var(--border);font-size:10.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50)}
+.ticker b{color:var(--ink);font-weight:var(--weight-bold)}
+
+/* ---- Type ------------------------------------------------------------------ */
+.eyebrow{margin:0 0 14px;font-size:11px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50)}
+h1,h2,h3{margin:0;font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);line-height:var(--leading-tight)}
+h1{font-size:46px}
+h2{font-size:26px;line-height:var(--leading-snug)}
+h3{font-size:16px;line-height:var(--leading-snug)}
+.sub{margin:14px 0 0;max-width:52ch;font-size:15px;line-height:var(--leading-body);color:var(--ink-a60)}
+.note{margin:14px 0 0;font-size:11.5px;line-height:1.6;color:var(--ink-a50)}
+.note b,.sub b{color:var(--ink)}
+.num{font-variant-numeric:tabular-nums}
+.struck{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--ink-a50)}
+
+/* ---- Bars (deferred copy) --------------------------------------------------- */
+.p{display:flex;flex-direction:column;gap:8px;margin:16px 0 0}
+.p i{display:block;height:var(--bar-h-title,3px);height:3px;border-radius:99px;background:var(--slate-a60)}
+.p i:nth-child(3n+1){width:100%}
+.p i:nth-child(3n+2){width:96%}
+.p i:nth-child(3n){width:72%}
+.p i.w88{width:88%!important}.p i.w60{width:60%!important}.p i.w45{width:45%!important}.p i.w35{width:35%!important}
+.p.gap{margin-top:24px}
+.lbar{display:block;height:5px;border-radius:99px;background:var(--ink-a50)}
+
+/* ---- Buttons & chips -------------------------------------------------------- */
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pill,.pill-o{display:inline-flex;align-items:center;height:38px;padding:0 20px;border-radius:var(--radius-pill);font-size:12px;font-weight:var(--weight-medium);border-bottom:none;transition:var(--transition-state)}
+.pill{background:var(--action-solid);color:var(--action-solid-text)}
+.pill:hover{background:var(--press-invert-fill);border-bottom:none}
+.pill-o{border:var(--border);color:var(--ink)}
+.pill-o:hover{background:var(--hover-fill);border-bottom:var(--border)}
+.chip{display:inline-flex;align-items:center;height:24px;padding:0 12px;border:var(--border);border-radius:var(--radius-pill);font-size:10.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a60)}
+.tag{display:inline-flex;align-items:center;height:20px;padding:0 9px;border-radius:var(--radius-pill);font-size:10px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase}
+.t-hit{background:var(--action-solid);color:var(--action-solid-text)}
+.t-near{background:var(--fill)}
+.t-miss{border:var(--border)}
+.t-neutral{background:var(--slate-a15);color:var(--ink-a60)}
+
+/* ---- Layout helpers ---------------------------------------------------------- */
+.split{display:grid;grid-template-columns:280px 1fr;gap:44px;align-items:start}
+.split-even{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sticky-side{position:sticky;top:16px}
+
+/* ---- Cards -------------------------------------------------------------------- */
+.card{border:var(--border);border-radius:var(--radius-lg);padding:18px;background:var(--surface-card)}
+.card-link{display:block;border-bottom:none;color:var(--ink)}
+.card-link:hover{background:var(--hover-fill)}
+.callout{border:var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin-top:20px}
+.callout .lead{margin:0;font-size:13px;font-weight:var(--weight-bold);line-height:var(--leading-snug)}
+.statcard{border:var(--border);border-radius:var(--radius-md);padding:16px 14px;display:flex;flex-direction:column;gap:8px}
+.statcard .v{font-size:24px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight)}
+.statcard .l{font-size:10.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50);line-height:1.5}
+.media{background:var(--surface-media);border-bottom:var(--border-media)}
+.bigstat{display:flex;flex-direction:column;gap:8px;border:var(--border);border-radius:var(--radius-lg);padding:22px}
+.bigstat .v{font-size:52px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);line-height:1}
+.bigstat .l{font-size:11.5px;color:var(--ink-a60);line-height:1.6;max-width:34ch}
+
+/* ---- Tables -------------------------------------------------------------------- */
+.wtable{border:var(--border);border-radius:var(--radius-md);overflow:hidden}
+.wtable .row{display:grid;grid-template-columns:1fr auto auto auto;gap:14px;align-items:center;padding:11px 16px;border-bottom:var(--border-soft)}
+.wtable .row:last-child{border-bottom:none}
+.wtable .row.head{background:var(--slate-a15);font-size:10.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50);padding:9px 16px}
+.wtable .m{font-size:12.5px;font-weight:var(--weight-medium)}
+.wtable .v{font-size:14px;font-weight:var(--weight-bold);font-variant-numeric:tabular-nums}
+.wtable .t{font-size:11.5px;color:var(--ink-a50);font-variant-numeric:tabular-nums}
+
+/* ---- Ensemble weight bar --------------------------------------------------------- */
+.weightbar{display:flex;height:24px;border-radius:var(--radius-pill);overflow:hidden;border:var(--border)}
+.weightbar .s1{background:var(--ink)}
+.weightbar .s2{background:var(--slate)}
+.weightbar .s3{background:var(--fill)}
+.weightbar .s4{background:var(--slate-a15)}
+.legend{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.legend .lr{display:flex;align-items:center;gap:12px}
+.legend .sw{width:14px;height:14px;border-radius:4px;flex:none}
+.legend .lr .name{font-size:12.5px;font-weight:var(--weight-medium)}
+.legend .lr .pct{margin-left:auto;font-size:13px;font-weight:var(--weight-bold);font-variant-numeric:tabular-nums}
+
+/* ---- Ledger ------------------------------------------------------------------------ */
+.ledger{display:flex;flex-direction:column;gap:10px}
+.lrow{display:grid;grid-template-columns:86px 1fr 170px;gap:16px;align-items:baseline;border:var(--border);border-radius:var(--radius-md);padding:13px 16px}
+.lrow .sev{font-size:9.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50)}
+.lrow .sev.rev{color:var(--ink);font-weight:var(--weight-bold)}
+.lrow .claim{font-size:12.5px;line-height:1.65}
+.lrow .claim .arrow{color:var(--ink-a50);padding:0 5px}
+.lrow .claim b{font-weight:var(--weight-bold)}
+.lrow .mech{font-size:10.5px;color:var(--ink-a50);text-align:right;line-height:1.5}
+
+/* ---- Charts -------------------------------------------------------------------------- */
+.chart-card{border:var(--border);border-radius:var(--radius-lg);padding:16px 18px 14px}
+.chart-card .ct{font-size:12.5px;font-weight:var(--weight-bold);margin:0 0 4px}
+.chart-card .cs{font-size:11px;color:var(--ink-a50);margin:0 0 12px;line-height:1.5}
+.chart-card svg{width:100%;height:auto}
+.chart-card .src{margin:10px 0 0;font-size:10px;color:var(--ink-a50);letter-spacing:var(--tracking-wide);text-transform:uppercase}
+
+/* ---- Inverted contact panel ------------------------------------------------------------ */
+.panel{margin:20px;background:var(--surface-panel);border-radius:var(--radius-3xl);padding:36px 34px;display:flex;flex-direction:column;gap:14px}
+.panel h2{color:var(--text-invert)}
+.panel .pl{color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.6;max-width:56ch;margin:0}
+.panel .actions{margin-top:10px}
+.panel .pill{background:var(--white);color:var(--ink)}
+.panel .pill:hover{background:var(--fill)}
+.panel .pill-o{border-color:var(--white);color:var(--text-invert)}
+.panel .pill-o:hover{background:rgba(255,255,255,.12)}
+
+/* ---- Colophon ---------------------------------------------------------------------------- */
+.colophon{display:flex;flex-wrap:wrap;gap:8px 28px;padding:16px 32px;font-size:10.5px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50)}
+
+/* ---- Case studies -------------------------------------------------------------------------- */
+.case-hero-stats{display:flex;flex-wrap:wrap;gap:10px}
+.kv{display:flex;flex-direction:column;gap:5px;border:var(--border);border-radius:var(--radius-md);padding:12px 16px;min-width:120px}
+.kv .v{font-size:18px;font-weight:var(--weight-bold);font-variant-numeric:tabular-nums}
+.kv .l{font-size:10px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-a50)}
+
+/* ---- Small screens (the wireframe is desktop-first; this just keeps it readable) ---- */
+@media (max-width:880px){
+  body{padding:16px 10px}
+  .band,.band-tight{padding-left:24px;padding-right:24px}
+  .split,.split-even,.grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
+  .sticky-side{position:static}
+  h1{font-size:34px}
+  .lrow{grid-template-columns:1fr}
+  .lrow .mech{text-align:left}
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case studies — MetricCage</title>
+<meta name="description" content="MetricCage run against real 2026 UFC cards as they happened — including the misses, and what each one revealed about the model.">
+<link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+<div class="sheet">
+
+<nav class="nav">
+  <a class="nav-mark" href="index.html">MetricCage</a>
+  <div class="nav-links">
+    <a href="discoveries.html">Discoveries</a>
+    <a href="model.html">Model evidence</a>
+    <a href="index.html#results">Results</a>
+    <a href="index.html#corrections">Corrections</a>
+    <a href="case-studies.html" aria-current="page">Case studies</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="band" style="padding-top:64px">
+  <p class="eyebrow">Backtests · 2026 cards</p>
+  <h1>Where it met<br>the sport.</h1>
+  <p class="sub">Every card below was run through the model and scored against what actually happened. <b>The most instructive one is a miss</b>, so it goes first.</p>
+</header>
+
+<!-- ===== MACAU ===== -->
+<section class="band" id="macau">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div>
+      <p class="eyebrow">UFC Fight Night — Macau · 2026 · featured</p>
+      <h2>The most useful thing this model<br>has ever gotten wrong.</h2>
+    </div>
+    <span class="tag t-hit">verified</span>
+  </div>
+
+  <div class="case-hero-stats" style="margin-top:24px">
+    <div class="kv"><span class="v num">13</span><span class="l">bouts on the card</span></div>
+    <div class="kv"><span class="v num">4</span><span class="l">debutants — unscoreable</span></div>
+    <div class="kv"><span class="v num">1</span><span class="l">no-contest</span></div>
+    <div class="kv"><span class="v num">5 / 8</span><span class="l">scored picks correct</span></div>
+    <div class="kv"><span class="v num">5.33</span><span class="l">expected from its own probabilities</span></div>
+  </div>
+
+  <div class="split-even" style="margin-top:26px">
+    <div>
+      <p class="note" style="margin-top:0">This page used to say the model went <span class="struck">9 for 13</span>. It did not: of the thirteen bouts, one was a no-contest and four were UFC debutants the model cannot score at all, so five of those nine picks were market-led. On the eight it actually scored it went five — against an expected 5.33 from its own probabilities (central 80%: 4 to 7).</p>
+      <div class="p"><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
+      <div class="p gap"><i></i><i class="w88"></i><i class="w45"></i></div>
+      <div class="callout">
+        <p class="lead">Lesson. A calibrated model can still be confidently wrong about a population it has never seen — calibration is measured in aggregate; coverage gaps hide inside it.</p>
+      </div>
+    </div>
+    <div class="chart-card">
+      <p class="ct">The anecdote, converted into a measurement</p>
+      <p class="cs">Across the whole 695-fight blind test — not one card — split by how much UFC history the model can see.</p>
+      <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 for experienced matchups against 0.603 for near-debutants">
+        <text x="8" y="34" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">both ≥ 5 UFC bouts</text>
+        <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)" font-family="Space Grotesk">0.718</text>
+        <text x="8" y="74" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">either &lt; 3 UFC bouts</text>
+        <rect x="130" y="64" width="169" height="13" rx="2" fill="var(--slate-a60)"/><text x="270" y="74" font-size="11" font-weight="700" font-family="Space Grotesk">0.603</text>
+        <text x="130" y="104" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">gap 0.114 · 95% CI 0.033 – 0.198</text>
+      </svg>
+      <p class="src">two fixes on the roadmap: Bayesian shrinkage on sparse archetypes · pre-UFC records</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PENDING ===== -->
+<section class="band" id="pending">
+  <p class="eyebrow">The queue</p>
+  <h2>Four cards awaiting write-up.</h2>
+  <p class="sub">Stubs render as stubs — an empty entry is better than a fabricated one.</p>
+  <div class="grid-4" style="margin-top:24px">
+    <div class="card">
+      <span class="chip">write-up pending</span>
+      <h3 style="margin-top:14px">UFC 328</h3>
+      <div class="p"><span class="lbar" style="width:70%"></span><i></i><i class="w60"></i></div>
+    </div>
+    <div class="card">
+      <span class="chip">write-up pending</span>
+      <h3 style="margin-top:14px">UFC 329</h3>
+      <div class="p"><span class="lbar" style="width:64%"></span><i></i><i class="w60"></i></div>
+    </div>
+    <div class="card">
+      <span class="chip">write-up pending</span>
+      <h3 style="margin-top:14px">UFC Fight Night — Baku</h3>
+      <div class="p"><span class="lbar" style="width:76%"></span><i></i><i class="w60"></i></div>
+    </div>
+    <div class="card">
+      <span class="chip">write-up pending</span>
+      <h3 style="margin-top:14px">Kape v Horiguchi</h3>
+      <div class="p"><span class="lbar" style="width:70%"></span><i></i><i class="w60"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section class="band">
+  <div class="split">
+    <div class="sticky-side">
+      <p class="eyebrow">Method</p>
+      <h2>How these were scored.</h2>
+    </div>
+    <div>
+      <div class="p" style="margin-top:4px"><i></i><i class="w88"></i><i class="w60"></i></div>
+      <p class="note">Each card was predicted before it took place, using only data available at that moment — no post-hoc feature updates, no re-running with hindsight. A pick counts as correct when the fighter given the higher win probability wins.</p>
+      <div class="callout">
+        <p class="lead">Card records are raw counts, never percentages. Nine out of thirteen is nine out of thirteen; it is not “69% accuracy”, and treating it as such is exactly the overclaiming this project is built to avoid.</p>
+      </div>
+      <p class="note">The aggregate metrics on <a href="index.html#results">the results scoreboard</a> — computed across 695 fights — are the numbers that carry statistical weight. These cards are here for what they reveal about failure modes.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="band-tight" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;border-top:var(--border)">
+    <a class="pill-o" href="index.html">Back to the overview</a>
+    <a class="pill-o" href="discoveries.html">Discoveries</a>
+  </div>
+  <div class="colophon" style="border-top:var(--border)">
+    <span>MetricCage · 2026</span>
+    <span>Drawn in the Paper wireframe system</span>
+    <span>No trackers, no analytics, no cookies</span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
