@@ -5,48 +5,62 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  # The repo is now a static site (no Python sources), so CI validates the
+  # HTML instead of running the old ruff/mypy/pytest jobs.
+  html:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements-ci.txt
-      - name: Install CI dependencies
-        run: python -m pip install -r requirements-ci.txt
-      - name: Ruff
-        run: ruff check .
+      - name: Validate HTML parses and internal references resolve
+        run: |
+          python3 - <<'EOF'
+          import pathlib, sys
+          from html.parser import HTMLParser
 
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements-ci.txt
-      - name: Install CI dependencies
-        run: python -m pip install -r requirements-ci.txt
-      - name: Mypy
-        run: mypy src
+          root = pathlib.Path(".")
+          pages = sorted(root.glob("*.html"))
+          assert pages, "no HTML pages found"
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements-ci.txt
-      - name: Install CI dependencies
-        run: python -m pip install -r requirements-ci.txt
-      - name: Pytest
-        # Data-dependent tests auto-skip via the `requires_data` marker
-        # (tests/conftest.py) because parquet/pickle artifacts are gitignored.
-        run: pytest tests/ -q
-        env:
-          PYTHONPATH: .
+          class Collector(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.refs, self.ids, self.stack = [], set(), []
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if "id" in a:
+                      self.ids.add(a["id"])
+                  for key in ("href", "src"):
+                      if key in a:
+                          self.refs.append(a[key])
+                  if tag not in ("meta", "link", "br", "img", "hr", "input",
+                                 "circle", "line", "rect", "polyline", "path"):
+                      self.stack.append(tag)
+              def handle_endtag(self, tag):
+                  while self.stack and self.stack[-1] != tag:
+                      self.stack.pop()
+                  if self.stack:
+                      self.stack.pop()
+
+          docs, failures = {}, []
+          for page in pages:
+              c = Collector()
+              c.feed(page.read_text(encoding="utf-8"))
+              docs[page.name] = c
+
+          for name, c in docs.items():
+              for ref in c.refs:
+                  if ref.startswith(("http://", "https://", "mailto:")):
+                      continue
+                  path, _, frag = ref.partition("#")
+                  if path and not (root / path).exists():
+                      failures.append(f"{name}: missing file {path}")
+                      continue
+                  target = docs.get(path) if path else c
+                  if frag and target and frag not in target.ids:
+                      failures.append(f"{name}: missing anchor {ref}")
+
+          for f in failures:
+              print("FAIL:", f)
+          print(f"checked {len(pages)} pages")
+          sys.exit(1 if failures else 0)
+          EOF

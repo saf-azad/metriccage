@@ -1,0 +1,11 @@
+/* Space Grotesk — SIL Open Font License. Self-hosted (variable, 300–700) so the
+   site works offline and straight off the filesystem, matching the original
+   MetricCage no-dependency rule. The Paper kit's real typeface is Space Grotesk,
+   so this is the kit's own face, not a substitution. */
+@font-face{
+  font-family:"Space Grotesk";
+  font-style:normal;
+  font-weight:300 700;
+  font-display:swap;
+  src:url(../fonts/SpaceGrotesk-Variable.woff2) format("woff2");
+}
