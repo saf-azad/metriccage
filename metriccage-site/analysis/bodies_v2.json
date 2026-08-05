@@ -1,0 +1,442 @@
+{
+  "key": "bodies_v2",
+  "snapshot_end": "2026-08-01",
+  "coverage": {
+    "n_decided_fights": 8639,
+    "join_rate_name_found": 0.9976,
+    "per_attribute": {
+      "reach": {
+        "fighter_sides_with_value": 14996,
+        "fighter_sides_pct": 86.79,
+        "fights_with_both_sides": 7498,
+        "fights_pct_of_decided": 86.79
+      },
+      "height": {
+        "fighter_sides_with_value": 17052,
+        "fighter_sides_pct": 98.69,
+        "fights_with_both_sides": 8526,
+        "fights_pct_of_decided": 98.69
+      },
+      "age": {
+        "fighter_sides_with_value": 16762,
+        "fighter_sides_pct": 97.01,
+        "fights_with_both_sides": 8381,
+        "fights_pct_of_decided": 97.01
+      },
+      "stance": {
+        "fighter_sides_with_value": 17093,
+        "fighter_sides_pct": 98.93,
+        "fights_with_both_sides": 8474,
+        "fights_pct_of_decided": 98.09
+      }
+    },
+    "reach_missingness": {
+      "mean_year_missing": 2008.3,
+      "mean_year_present": 2017.7,
+      "pct_missing_pre2010": 54.3,
+      "pct_present_pre2010": 8.4,
+      "note": "attrition is not random: it concentrates in the early corpus"
+    }
+  },
+  "name_collisions": {
+    "n_duplicate_name_rows": 8,
+    "n_duplicate_names": 8,
+    "n_names_with_conflicting_bodies": 8,
+    "examples": [
+      "Anthony Figueroa",
+      "Bruno Silva",
+      "Jean Silva",
+      "Joey Gomez",
+      "Michael McDonald",
+      "Mike Davis",
+      "Tony Johnson",
+      "Victor Valenzuela"
+    ]
+  },
+  "univariate_forest": {
+    "reach": {
+      "label": "Longer reach",
+      "win": 0.5217,
+      "ci_clustered": [
+        0.5083,
+        0.5352
+      ],
+      "ci_naive_iid": [
+        0.5096,
+        0.5338
+      ],
+      "width_clustered": 0.0269,
+      "width_naive": 0.0242,
+      "inflation": 1.11,
+      "n_fighter_sides": 6525,
+      "n_fighters": 1524
+    },
+    "height": {
+      "label": "Taller",
+      "win": 0.524,
+      "ci_clustered": [
+        0.5107,
+        0.5364
+      ],
+      "ci_naive_iid": [
+        0.5124,
+        0.5356
+      ],
+      "width_clustered": 0.0257,
+      "width_naive": 0.0232,
+      "inflation": 1.11,
+      "n_fighter_sides": 7069,
+      "n_fighters": 1852
+    },
+    "southpaw": {
+      "label": "Southpaw vs orthodox",
+      "win": 0.5343,
+      "ci_clustered": [
+        0.512,
+        0.5553
+      ],
+      "ci_naive_iid": [
+        0.5144,
+        0.5542
+      ],
+      "width_clustered": 0.0433,
+      "width_naive": 0.0398,
+      "inflation": 1.09,
+      "n_fighter_sides": 2420,
+      "n_fighters": 424
+    },
+    "younger": {
+      "label": "Younger",
+      "win": 0.5691,
+      "ci_clustered": [
+        0.5561,
+        0.5809
+      ],
+      "ci_naive_iid": [
+        0.5585,
+        0.5797
+      ],
+      "width_clustered": 0.0248,
+      "width_naive": 0.0212,
+      "inflation": 1.17,
+      "n_fighter_sides": 8377,
+      "n_fighters": 2025
+    },
+    "reach5": {
+      "label": "Reach +5in or more",
+      "win": 0.5586,
+      "ci_clustered": [
+        0.5273,
+        0.5895
+      ],
+      "ci_naive_iid": [
+        0.531,
+        0.5862
+      ],
+      "width_clustered": 0.0622,
+      "width_naive": 0.0552,
+      "inflation": 1.13,
+      "n_fighter_sides": 1246,
+      "n_fighters": 539
+    },
+    "age7": {
+      "label": "Younger by 7y or more",
+      "win": 0.6474,
+      "ci_clustered": [
+        0.6218,
+        0.6716
+      ],
+      "ci_naive_iid": [
+        0.6235,
+        0.6713
+      ],
+      "width_clustered": 0.0498,
+      "width_naive": 0.0478,
+      "inflation": 1.04,
+      "n_fighter_sides": 1537,
+      "n_fighters": 782
+    }
+  },
+  "adjusted_forest": [
+    {
+      "key": "youth_diff_z",
+      "label": "Youth (per within-class SD)",
+      "coef": 0.3428,
+      "ci95": [
+        0.3056,
+        0.3812
+      ],
+      "odds_ratio": 1.4089,
+      "or_ci95": [
+        1.3575,
+        1.464
+      ],
+      "win_prob_1sd": 0.5849,
+      "win_prob_ci95": [
+        0.5758,
+        0.5942
+      ],
+      "crosses_zero": false
+    },
+    {
+      "key": "sp_edge",
+      "label": "Southpaw edge",
+      "coef": 0.1447,
+      "ci95": [
+        0.0901,
+        0.2076
+      ],
+      "odds_ratio": 1.1557,
+      "or_ci95": [
+        1.0943,
+        1.2307
+      ],
+      "win_prob_1sd": 0.5361,
+      "win_prob_ci95": [
+        0.5225,
+        0.5517
+      ],
+      "crosses_zero": false
+    },
+    {
+      "key": "reach_diff_z",
+      "label": "Reach (per within-class SD)",
+      "coef": 0.0985,
+      "ci95": [
+        0.0543,
+        0.1439
+      ],
+      "odds_ratio": 1.1035,
+      "or_ci95": [
+        1.0558,
+        1.1547
+      ],
+      "win_prob_1sd": 0.5246,
+      "win_prob_ci95": [
+        0.5136,
+        0.5359
+      ],
+      "crosses_zero": false
+    },
+    {
+      "key": "height_diff_z",
+      "label": "Height (per within-class SD)",
+      "coef": -0.0169,
+      "ci95": [
+        -0.0626,
+        0.0305
+      ],
+      "odds_ratio": 0.9833,
+      "or_ci95": [
+        0.9393,
+        1.0309
+      ],
+      "win_prob_1sd": 0.4958,
+      "win_prob_ci95": [
+        0.4844,
+        0.5076
+      ],
+      "crosses_zero": true
+    }
+  ],
+  "adjusted_model": {
+    "n_fighter_sides": 14822,
+    "n_fights": 7411,
+    "n_fighters": 1999,
+    "n_boot": 400,
+    "within_class_sd": {
+      "reach_diff": {
+        "Bantamweight": 3.367,
+        "Featherweight": 3.057,
+        "Flyweight": 2.956,
+        "Heavyweight": 3.944,
+        "Light Heavyweight": 3.42,
+        "Lightweight": 3.021,
+        "Middleweight": 3.343,
+        "Welterweight": 3.381,
+        "Women's Bantamweight": 2.829,
+        "Women's Featherweight": 3.173,
+        "Women's Flyweight": 3.168,
+        "Women's Strawweight": 3.152
+      },
+      "height_diff": {
+        "Bantamweight": 2.314,
+        "Featherweight": 2.642,
+        "Flyweight": 2.186,
+        "Heavyweight": 3.155,
+        "Light Heavyweight": 2.275,
+        "Lightweight": 2.467,
+        "Middleweight": 2.537,
+        "Welterweight": 2.472,
+        "Women's Bantamweight": 2.346,
+        "Women's Featherweight": 3.231,
+        "Women's Flyweight": 2.206,
+        "Women's Strawweight": 2.5
+      },
+      "youth_diff": {
+        "Bantamweight": 5.316,
+        "Featherweight": 4.706,
+        "Flyweight": 4.957,
+        "Heavyweight": 5.911,
+        "Light Heavyweight": 5.694,
+        "Lightweight": 4.981,
+        "Middleweight": 5.102,
+        "Welterweight": 5.181,
+        "Women's Bantamweight": 5.905,
+        "Women's Featherweight": 4.726,
+        "Women's Flyweight": 5.189,
+        "Women's Strawweight": 5.519
+      }
+    },
+    "design": "one row per fighter-side (both orientations), no intercept, differentials standardised within weight class"
+  },
+  "reach_by_weightclass": {
+    "Bantamweight": {
+      "win": 0.4953,
+      "ci95": [
+        0.4479,
+        0.5387
+      ],
+      "n_fighter_sides": 636,
+      "n_fighters": 209,
+      "mean_abs_reach_gap": 3.02
+    },
+    "Featherweight": {
+      "win": 0.5137,
+      "ci95": [
+        0.4736,
+        0.5529
+      ],
+      "n_fighter_sides": 693,
+      "n_fighters": 223,
+      "mean_abs_reach_gap": 2.74
+    },
+    "Flyweight": {
+      "win": 0.4815,
+      "ci95": [
+        0.4201,
+        0.541
+      ],
+      "n_fighter_sides": 351,
+      "n_fighters": 110,
+      "mean_abs_reach_gap": 2.66
+    },
+    "Heavyweight": {
+      "win": 0.596,
+      "ci95": [
+        0.5425,
+        0.6447
+      ],
+      "n_fighter_sides": 500,
+      "n_fighters": 124,
+      "mean_abs_reach_gap": 3.54
+    },
+    "Light Heavyweight": {
+      "win": 0.5548,
+      "ci95": [
+        0.501,
+        0.6011
+      ],
+      "n_fighter_sides": 566,
+      "n_fighters": 152,
+      "mean_abs_reach_gap": 3.04
+    },
+    "Lightweight": {
+      "win": 0.5184,
+      "ci95": [
+        0.4846,
+        0.546
+      ],
+      "n_fighter_sides": 1059,
+      "n_fighters": 298,
+      "mean_abs_reach_gap": 2.78
+    },
+    "Middleweight": {
+      "win": 0.5311,
+      "ci95": [
+        0.4941,
+        0.5694
+      ],
+      "n_fighter_sides": 868,
+      "n_fighters": 241,
+      "mean_abs_reach_gap": 2.94
+    },
+    "Welterweight": {
+      "win": 0.5279,
+      "ci95": [
+        0.4918,
+        0.56
+      ],
+      "n_fighter_sides": 1040,
+      "n_fighters": 279,
+      "mean_abs_reach_gap": 3.03
+    },
+    "Women's Bantamweight": {
+      "win": 0.5824,
+      "ci95": [
+        0.5159,
+        0.6444
+      ],
+      "n_fighter_sides": 182,
+      "n_fighters": 56,
+      "mean_abs_reach_gap": 2.6
+    },
+    "Women's Flyweight": {
+      "win": 0.4915,
+      "ci95": [
+        0.4261,
+        0.5652
+      ],
+      "n_fighter_sides": 234,
+      "n_fighters": 73,
+      "mean_abs_reach_gap": 2.86
+    },
+    "Women's Strawweight": {
+      "win": 0.4219,
+      "ci95": [
+        0.355,
+        0.4852
+      ],
+      "n_fighter_sides": 301,
+      "n_fighters": 88,
+      "mean_abs_reach_gap": 2.87
+    }
+  },
+  "control_min_count_bug": {
+    "rows_total": 17548,
+    "rows_missing_correct": 360,
+    "rows_zero_under_buggy_sum": 360,
+    "mean_ctrl_correct": 133.09,
+    "mean_ctrl_buggy": 130.36,
+    "bias_sec": 2.73
+  },
+  "reach_control_within_fight": {
+    "slope_ctrl_share_per_sd_reach": -0.0175,
+    "ci95": [
+      -0.0255,
+      -0.0093
+    ],
+    "n_fighter_sides": 14846,
+    "n_fights": 7423,
+    "n_fighters": 2007,
+    "significant": true,
+    "design": "control-share differential on within-class-standardised reach differential, no intercept (antisymmetric), fighter-clustered bootstrap"
+  },
+  "reach_control_pooled_career": {
+    "all": -0.0557,
+    "n_fighters": 2014,
+    "min3_fights": {
+      "r": -0.0759,
+      "n_fighters": 1753
+    },
+    "min5_fights": {
+      "r": -0.082,
+      "n_fighters": 1217
+    },
+    "min10_fights": {
+      "r": -0.0904,
+      "n_fighters": 616
+    }
+  },
+  "n_boot": 1200
+}

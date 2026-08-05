@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discoveries — MetricCage</title>
+<meta name="description" content="Statistical discoveries computed from 8,794 real UFC fights: how fight sequences restructured, what pre-finish rounds look like, which physical advantages actually matter, and the nulls kept honest.">
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/audit.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="index.html" data-site-name>MetricCage</a>
+    <div class="nav-links">
+      <a href="discoveries.html" aria-current="page">Discoveries</a>
+      <a href="#sequence">Sequences</a>
+      <a href="#bodies" class="nav-hide-sm">Bodies</a>
+      <a href="#warnings" class="nav-hide-sm">Warnings</a>
+      <a href="model.html">Model evidence</a>
+      <a href="#denominator">Denominator</a>
+      <a href="index.html#corrections">Corrections</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div data-a-ticker></div>
+
+<header class="hero" style="padding-bottom:clamp(2rem,4vw,3rem)">
+  <div class="wrap">
+    <p class="hero-chip fx">Computed from real fight records</p>
+    <p class="hero-name fx">8,794 fights · 41,392 rounds · 1994–2026</p>
+    <h1 class="fx" style="font-size:clamp(2.6rem,1.4rem+6vw,6.5rem)">Fights are<br><span class="hl">sequences.</span></h1>
+    <p class="hero-sub fx">
+      Every number below is <strong>computed, not quoted</strong> — from the public
+      round-by-round record of every UFC fight since 1993. In August 2026 all of them were
+      recomputed against <strong>elapsed fight time</strong>, because both the denominator and
+      the total volume roughly tripled across this window, and four published findings did not
+      survive it. The corrections are the first thing on this page, not a footnote at the bottom.
+    </p>
+    <p class="fx" style="margin-top:1.2rem" data-a-record></p>
+    <p class="fx lede" style="font-size:.95rem;color:var(--fg-55);max-width:44rem" data-grammar></p>
+  </div>
+</header>
+
+
+<!-- ===== 00 THE DENOMINATOR ===== -->
+<section class="section" id="denominator">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 00 · the correction that reframes the rest</p>
+      <h2>A share of a tripling total<br>is not a trend.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Between 1994 and 2026 the mean fight got longer and the strike output per minute nearly
+        tripled. Every era comparison on this page used to be a share or a per-fight count, and in
+        a sport where the denominator moves that far, a share can fall while the thing it measures
+        is rising. <strong>Flip the switch below and watch the clinch come back to life.</strong>
+      </p>
+    </div>
+
+    <div data-a-position></div>
+
+    <div class="split" style="margin-top:2.5rem">
+      <div class="sticky-side">
+        <h3 class="chart-title">Why this one control changes four findings</h3>
+        <p style="margin-top:.75rem">
+          The published claim was that the ground &ldquo;emptied out&rdquo; and the clinch was
+          dying. Both were read off shares. Per minute of cage time the ground did decline &mdash;
+          by 38%, not 79% &mdash; and the clinch is <em>busier</em> than it was in 1997. What
+          actually happened is that distance striking grew more than sevenfold and out-voted
+          everything else, which is a larger and more defensible claim than the one it replaces,
+          from the same three numbers.
+        </p>
+        <div class="callout" style="margin-top:1.25rem">
+          <p><strong>Falsify it:</strong> compute combined significant strikes landed per fight-minute
+          by era. If it were flat, shares and rates would agree and this whole section would be
+          unnecessary. It goes 2.76 &rarr; 8.04.</p>
+        </div>
+      </div>
+      <div>
+        <div data-a-hump></div>
+        <div data-a-control></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 00b COVERAGE ===== -->
+<section class="section" id="coverage">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 00b · the chart almost nobody publishes</p>
+      <h2>How thin is the evidence,<br>year by year?</h2>
+      <p class="lede" style="margin-top:1rem">
+        This is the honest answer to every caveat on this site at once, and it pre-empts the
+        obvious objection to the 1990s bars by making the thinness the point rather than the
+        small print.
+      </p>
+    </div>
+    <div data-a-coverage></div>
+  </div>
+</section>
+
+<!-- ===== 00c THE DOG THAT DIDN'T BARK ===== -->
+<section class="section" id="legkicks">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 00c · a null worth more than most findings</p>
+      <h2>The calf-kick era<br>does not exist in the data.</h2>
+    </div>
+    <div data-a-legkicks></div>
+  </div>
+</section>
+
+<!-- ===== 01 SEQUENCE ===== -->
+<section class="section" id="sequence">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 01 · fight sequences</p>
+      <h2 data-d-seq-headline></h2>
+    </div>
+    <div class="split">
+      <div class="sticky-side">
+        <div data-d-seq-body></div>
+        <div class="callout"><p data-d-seq-falsify></p></div>
+      </div>
+      <div>
+        <div class="chart-card">
+          <h3 class="chart-title">Where strikes land, 1994–2026</h3>
+          <p class="chart-sub">Share of all landed significant strikes by position, per year.</p>
+          <div class="legend" data-seq-legend></div>
+          <div class="chart" data-chart-position></div>
+          <p class="chart-src" data-d-seq-src></p>
+        </div>
+        <div class="statrow" data-seq-stats></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 MOMENTUM ===== -->
+<section class="section" id="momentum">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 02 · inside one fight</p>
+      <h2 data-d-mom-headline></h2>
+    </div>
+    <div class="split">
+      <div class="sticky-side">
+        <div data-d-mom-body></div>
+        <div class="callout"><p data-d-mom-falsify></p></div>
+      </div>
+      <div class="chart-card">
+        <h3 class="chart-title" data-mom-title>Makhachev vs. Oliveira — the real rounds</h3>
+        <p class="chart-sub">Official round statistics. Bars extend toward the fighter who owned the stat.</p>
+        <div class="chart" data-chart-momentum></div>
+        <p class="chart-src" data-d-mom-src></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 QUIZ ===== -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 03 · prove it yourself</p>
+      <h2 data-d-quiz-headline></h2>
+    </div>
+    <div class="split">
+      <div class="sticky-side">
+        <div data-d-quiz-body></div>
+        <div class="callout"><p data-d-quiz-falsify></p></div>
+      </div>
+      <div class="chart-card quiz-card">
+        <div class="quiz-top">
+          <h3 class="chart-title">Guess the era</h3>
+          <span class="quiz-score" data-quiz-score>0 / 0</span>
+        </div>
+        <p class="chart-sub">The real average shape of a three-round fight in one era: combined strikes landed in rounds 1, 2, 3. Which era is it?</p>
+        <div class="chart" data-quiz-chart></div>
+        <div class="quiz-actions" data-quiz-actions></div>
+        <p class="quiz-reveal" data-quiz-reveal></p>
+        <p class="chart-src" data-d-quiz-src></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 ERAS ===== -->
+<section class="section" id="eras">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 04 · evolution of the sport</p>
+      <h2 data-d-eras-headline></h2>
+    </div>
+    <div class="chart-card" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <h3 class="chart-title">How fights end, 1994–2026</h3>
+      <p class="chart-sub">Share of fights by outcome, three-year rolling average. Dashed verticals are rule changes.</p>
+      <div class="legend" data-eras-legend></div>
+      <div class="chart" data-chart-methods></div>
+      <p class="chart-src" data-d-eras-src></p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="chart-card">
+          <h3 class="chart-title">…while pace tripled</h3>
+          <p class="chart-sub">Significant strikes landed per fighter per round, by era.</p>
+          <div class="chart" data-chart-pace></div>
+        </div>
+      </div>
+      <div>
+        <div data-d-eras-body></div>
+        <div class="callout"><p data-d-eras-falsify></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 RED LIST ===== -->
+<section class="section" id="redlist">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 05 · behaviour conservation</p>
+      <h2 data-d-red-headline></h2>
+    </div>
+    <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <div><div data-d-red-body></div></div>
+      <div><div class="callout"><p data-d-red-falsify></p></div></div>
+    </div>
+    <div class="grid-3" data-redlist></div>
+    <p class="chart-src" data-d-red-src style="margin-top:1rem"></p>
+  </div>
+</section>
+
+<!-- ===== 06 BODIES ===== -->
+<section class="section" id="bodies">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 06 · what advantages are worth</p>
+      <h2 data-d-bodies-headline></h2>
+    </div>
+    <div class="split">
+      <div class="sticky-side">
+        <div data-d-bodies-body></div>
+        <div class="callout"><p data-d-bodies-falsify></p></div>
+      </div>
+      <div>
+        <div class="chart-card">
+          <h3 class="chart-title">Win rate by advantage</h3>
+          <p class="chart-sub">Point estimate with 95% confidence interval. The dashed line is a coin flip.</p>
+          <div class="chart" data-chart-forest></div>
+        </div>
+        <div class="chart-card" style="margin-top:1rem">
+          <h3 class="chart-title">The age cliff</h3>
+          <p class="chart-sub">Win rate by fighter age band — every fighter-fight counted once.</p>
+          <div class="chart" data-chart-agecliff></div>
+          <p class="chart-src" data-d-bodies-src></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 06b CORRECTED INFERENCE ===== -->
+<section class="section" id="inference">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 06b · the forest plot, rebuilt</p>
+      <h2>A forest plot should mean<br>adjusted and comparable.</h2>
+      <p class="lede" style="margin-top:1rem">
+        The version above it plotted four unadjusted marginal win rates in a form that signals
+        controlled effect estimates. Reach, height and weight class are near-collinear, so three of
+        those rows were substantially the same fact drawn three times, and &ldquo;seven years beats
+        five inches&rdquo; was a statement about the bin edges chosen rather than about fighting.
+      </p>
+    </div>
+    <div data-a-forest></div>
+    <div class="grid-2a" style="margin-top:1rem">
+      <div data-a-clustering></div>
+      <div data-a-reachclass></div>
+    </div>
+    <div data-a-reachctrl></div>
+  </div>
+</section>
+
+<!-- ===== 07 WARNINGS ===== -->
+<section class="section" id="warnings">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 07 · the pre-finish fingerprint</p>
+      <h2 data-d-warn-headline></h2>
+    </div>
+    <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <div>
+        <div data-d-warn-body></div>
+        <div class="callout"><p data-d-warn-falsify></p></div>
+      </div>
+      <div>
+        <div class="bigstat">
+          <span class="bigstat-num" data-kd-doom>—</span>
+          <span class="bigstat-label">of fighters who suffer a single knockdown go on to lose the fight <span data-kd-n></span></span>
+        </div>
+        <div class="chart-card" style="margin-top:1rem">
+          <h3 class="chart-title">When fights end</h3>
+          <p class="chart-sub">Finishes by minute of the fight, rounds marked. KO in red, submission in blue.</p>
+          <div class="legend" data-clock-legend></div>
+          <div class="chart" data-chart-clock></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="chart-card">
+        <h3 class="chart-title">The round before a knockout</h3>
+        <p class="chart-sub">Eventual loser's penultimate round vs the same round in fights that went the distance. 1.0× = indistinguishable from a decision.</p>
+        <div class="chart" data-chart-autopsy-ko></div>
+      </div>
+      <div class="chart-card">
+        <h3 class="chart-title">The round before a submission</h3>
+        <p class="chart-sub">Same comparison. Knockouts warn through damage; submissions warn through territory.</p>
+        <div class="chart" data-chart-autopsy-sub></div>
+      </div>
+    </div>
+    <p class="chart-src" data-d-warn-src style="margin-top:1rem"></p>
+  </div>
+</section>
+
+<!-- ===== 08 RINGS ===== -->
+<section class="section" id="rings">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Discovery 08 · careers have climate</p>
+      <h2 data-d-rings-headline></h2>
+    </div>
+    <div class="split">
+      <div class="chart-card">
+        <h3 class="chart-title" data-d-rings-fighter></h3>
+        <p class="chart-sub">One ring per year, read outward from debut. Thickness = fights that year; red = finish rate; notches = the scars.</p>
+        <div class="chart rings-chart" data-chart-rings></div>
+        <div data-d-rings-caveat></div>
+      </div>
+      <div>
+        <div data-d-rings-body></div>
+        <div class="callout"><p data-d-rings-falsify></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHODS ===== -->
+<section class="section" id="methods">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Data &amp; methods</p>
+      <h2>How these numbers were made.</h2>
+      <p class="lede" style="margin-top:1rem" data-methods-source></p>
+    </div>
+    <div class="split">
+      <div>
+        <ul class="methods-list" data-methods-bullets></ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem">Nulls we kept</h3>
+        <p style="color:var(--fg-70);font-size:.95rem;margin-bottom:1.25rem">
+          Findings that didn't survive contact with the data, reported instead of deleted —
+          a results page that only shows hits is advertising.
+        </p>
+        <div data-nulls></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEXT ===== -->
+<section class="section" id="next">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The queue</p>
+      <h2>Same engine, next discoveries.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Each one ships with the test that would kill it — a finding you can't falsify is a slogan.
+      </p>
+    </div>
+    <div class="grid-2" data-next></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="eyebrow">Keep reading</p>
+        <h2>The model behind this.</h2>
+        <p style="margin-top:1rem">
+          <a class="btn btn-primary" href="index.html#results">The honest scoreboard</a>
+          <a class="btn btn-ghost" href="case-studies.html" style="margin-left:.5rem">Case studies</a>
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="contact-list" data-contact></ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>MetricCage · <span data-year></span></span>
+      <span>All figures computed from public fight records · snapshot 2 Aug 2026</span>
+      <span>No trackers, no analytics, no cookies.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/real-stats.js"></script>
+<script src="data/site-data.js"></script>
+<script src="data/corrections.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/audit.js"></script>
+<script>
+(function () {
+  var m = SITE.meta;
+  var links = [
+    ["GitHub", m.github],
+    ["Email", "mailto:" + m.email],
+    ["CV (PDF)", m.cv],
+    ["LinkedIn", m.linkedin]
+  ].filter(function (l) { return l[1]; });
+  var ul = document.querySelector("[data-contact]");
+  if (ul) ul.innerHTML = links.map(function (l) {
+    return '<li><a href="' + l[1] + '"><span class="k">' + l[0] + '</span><span>→</span></a></li>';
+  }).join("");
+})();
+</script>
+</body>
+</html>

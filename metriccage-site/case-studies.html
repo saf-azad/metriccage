@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case studies — MetricCage</title>
+<meta name="description" content="MetricCage run against real 2026 UFC cards as they happened — including the misses, and what each one revealed about the model.">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="index.html" data-site-name>MetricCage</a>
+    <div class="nav-links">
+      <a href="discoveries.html">Discoveries</a>
+      <a href="index.html#pipeline" class="nav-hide-sm">Pipeline</a>
+      <a href="index.html#ensemble">Ensemble</a>
+      <a href="index.html#results">Results</a>
+      <a href="case-studies.html" aria-current="page">Case studies</a>
+      <a href="index.html#limits" class="nav-hide-sm">Limits</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:clamp(2rem,4vw,3rem)">
+  <div class="wrap">
+    <p class="hero-chip fx">Backtests · 2026 cards</p>
+    <p class="hero-name fx">Case studies</p>
+    <h1 class="fx" style="font-size:clamp(2.6rem,1.4rem+5.5vw,5.5rem)">Where it met<br><span class="hl">the sport.</span></h1>
+    <p class="hero-sub fx" style="margin-bottom:0">
+      Every card below was run through the model and scored against what actually
+      happened. <strong>The most instructive one is a miss</strong>, so it goes first.
+    </p>
+  </div>
+</header>
+
+<main class="wrap" data-cases></main>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="sticky-side">
+      <p class="eyebrow">Method</p>
+      <h2>How these were scored.</h2>
+    </div>
+    <div>
+      <p>
+        Each card was predicted before it took place, using only data available at that
+        moment — no post-hoc feature updates, no re-running with the benefit of hindsight.
+        A pick counts as correct when the fighter given the higher win probability wins.
+      </p>
+      <p>
+        Card-level records are reported as raw counts rather than percentages, because a
+        thirteen-fight card is far too small a sample to express as a rate without
+        implying a precision that is not there. Nine out of thirteen is nine out of
+        thirteen; it is not "69% accuracy," and treating it as such is exactly the kind
+        of overclaiming this project is built to avoid.
+      </p>
+      <p>
+        The aggregate metrics on the <a href="index.html#results">results page</a> —
+        computed across 695 fights — are the numbers that carry statistical weight.
+        These cards are here for what they reveal about failure modes, not as evidence
+        of performance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="eyebrow">Keep reading</p>
+        <h2>The full write-up.</h2>
+        <p style="margin-top:1rem">
+          <a class="btn btn-ghost" href="index.html">Back to the overview</a>
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="contact-list" data-contact></ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>MetricCage · <span data-year></span></span>
+      <span>No trackers, no analytics, no cookies.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/real-stats.js"></script>
+<script src="data/site-data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var m = SITE.meta;
+  var links = [
+    ["GitHub", m.github],
+    ["Email", "mailto:" + m.email],
+    ["CV (PDF)", m.cv],
+    ["LinkedIn", m.linkedin]
+  ].filter(function (l) { return l[1]; });
+  var ul = document.querySelector("[data-contact]");
+  if (ul) ul.innerHTML = links.map(function (l) {
+    return '<li><a href="' + l[1] + '"><span class="k">' + l[0] + '</span><span>→</span></a></li>';
+  }).join("");
+})();
+</script>
+</body>
+</html>

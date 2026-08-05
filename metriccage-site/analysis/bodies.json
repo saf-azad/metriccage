@@ -1,0 +1,354 @@
+{
+  "key": "bodies",
+  "join_rate": 0.998,
+  "reach": {
+    "overall": {
+      "win": 0.522,
+      "ci": [
+        0.51,
+        0.534
+      ],
+      "n": 6525
+    },
+    "by_bin": {
+      "1-2in": {
+        "win": 0.501,
+        "ci": [
+          0.484,
+          0.518
+        ],
+        "n": 3326
+      },
+      "3-4in": {
+        "win": 0.534,
+        "ci": [
+          0.512,
+          0.556
+        ],
+        "n": 1953
+      },
+      "5+in": {
+        "win": 0.559,
+        "ci": [
+          0.531,
+          0.586
+        ],
+        "n": 1246
+      }
+    }
+  },
+  "height": {
+    "overall": {
+      "win": 0.524,
+      "ci": [
+        0.512,
+        0.536
+      ],
+      "n": 7069
+    },
+    "by_bin": {
+      "1-2in": {
+        "win": 0.515,
+        "ci": [
+          0.5,
+          0.53
+        ],
+        "n": 4437
+      },
+      "3-4in": {
+        "win": 0.542,
+        "ci": [
+          0.52,
+          0.564
+        ],
+        "n": 1964
+      },
+      "5+in": {
+        "win": 0.531,
+        "ci": [
+          0.494,
+          0.569
+        ],
+        "n": 668
+      }
+    }
+  },
+  "stance": {
+    "southpaw_vs_orthodox": {
+      "win": 0.534,
+      "ci": [
+        0.514,
+        0.554
+      ],
+      "n": 2420
+    },
+    "switch": {
+      "switch_win": 0.525,
+      "switch_ci": [
+        0.494,
+        0.556
+      ],
+      "switch_n": 981,
+      "non_switch_win": 0.498,
+      "non_switch_ci": [
+        0.491,
+        0.506
+      ],
+      "non_switch_n": 15967
+    }
+  },
+  "age": {
+    "younger_overall": {
+      "win": 0.569,
+      "ci": [
+        0.558,
+        0.58
+      ],
+      "n": 8377
+    },
+    "by_gap": {
+      "1-3y": {
+        "win": 0.535,
+        "ci": [
+          0.515,
+          0.555
+        ],
+        "n": 2406
+      },
+      "4-6y": {
+        "win": 0.562,
+        "ci": [
+          0.538,
+          0.586
+        ],
+        "n": 1608
+      },
+      "7+y": {
+        "win": 0.647,
+        "ci": [
+          0.623,
+          0.671
+        ],
+        "n": 1537
+      }
+    },
+    "mean_winner_age": 30.049,
+    "mean_loser_age": 30.927,
+    "by_band": {
+      "20-24": {
+        "win": 0.588,
+        "ci": [
+          0.555,
+          0.621
+        ],
+        "n": 867
+      },
+      "25-29": {
+        "win": 0.549,
+        "ci": [
+          0.535,
+          0.563
+        ],
+        "n": 4921
+      },
+      "30-34": {
+        "win": 0.496,
+        "ci": [
+          0.482,
+          0.509
+        ],
+        "n": 5579
+      },
+      "35-39": {
+        "win": 0.414,
+        "ci": [
+          0.393,
+          0.436
+        ],
+        "n": 1974
+      },
+      "40+": {
+        "win": 0.358,
+        "ci": [
+          0.302,
+          0.414
+        ],
+        "n": 282
+      }
+    }
+  },
+  "age_by_year": {
+    "1994": 29.651,
+    "1995": 31.752,
+    "1996": 30.36,
+    "1997": 29.217,
+    "1998": 27.062,
+    "1999": 28.372,
+    "2000": 28.734,
+    "2001": 27.938,
+    "2002": 28.42,
+    "2003": 28.752,
+    "2004": 28.623,
+    "2005": 29.007,
+    "2006": 28.414,
+    "2007": 28.562,
+    "2008": 29.046,
+    "2009": 29.091,
+    "2010": 29.71,
+    "2011": 29.893,
+    "2012": 29.645,
+    "2013": 30.02,
+    "2014": 29.559,
+    "2015": 30.048,
+    "2016": 30.467,
+    "2017": 30.598,
+    "2018": 30.633,
+    "2019": 30.433,
+    "2020": 31.018,
+    "2021": 31.182,
+    "2022": 31.396,
+    "2023": 31.344,
+    "2024": 31.78,
+    "2025": 31.983,
+    "2026": 31.877
+  },
+  "hug": {
+    "reach_ctrl_corr": -0.055,
+    "ctrl_by_reach_bin": {
+      "<70": {
+        "mean_ctrl_per_15min_sec": 161.025,
+        "n_fighters": 577
+      },
+      "70-73": {
+        "mean_ctrl_per_15min_sec": 148.4,
+        "n_fighters": 749
+      },
+      "74-77": {
+        "mean_ctrl_per_15min_sec": 144.449,
+        "n_fighters": 522
+      },
+      "78+": {
+        "mean_ctrl_per_15min_sec": 140.825,
+        "n_fighters": 165
+      }
+    },
+    "ctrl_sub_vs_dec": {
+      "sub_win_ctrl_sec": 143.993,
+      "dec_win_ctrl_sec": 265.722,
+      "n_sub": 1699,
+      "n_dec": 4030
+    }
+  },
+  "by_weightclass": {
+    "Flyweight": {
+      "finish": 0.462,
+      "southpaw_share": 0.215,
+      "n": 418
+    },
+    "Bantamweight": {
+      "finish": 0.467,
+      "southpaw_share": 0.152,
+      "n": 771
+    },
+    "Featherweight": {
+      "finish": 0.467,
+      "southpaw_share": 0.159,
+      "n": 858
+    },
+    "Lightweight": {
+      "finish": 0.525,
+      "southpaw_share": 0.265,
+      "n": 1440
+    },
+    "Welterweight": {
+      "finish": 0.527,
+      "southpaw_share": 0.204,
+      "n": 1388
+    },
+    "Middleweight": {
+      "finish": 0.602,
+      "southpaw_share": 0.262,
+      "n": 1142
+    },
+    "Light Heavyweight": {
+      "finish": 0.638,
+      "southpaw_share": 0.168,
+      "n": 746
+    },
+    "Heavyweight": {
+      "finish": 0.681,
+      "southpaw_share": 0.122,
+      "n": 764
+    },
+    "Women's Strawweight": {
+      "finish": 0.341,
+      "southpaw_share": 0.098,
+      "n": 369
+    },
+    "Women's Flyweight": {
+      "finish": 0.366,
+      "southpaw_share": 0.178,
+      "n": 273
+    },
+    "Women's Bantamweight": {
+      "finish": 0.394,
+      "southpaw_share": 0.102,
+      "n": 246
+    },
+    "Women's Featherweight": {
+      "finish": 0.433,
+      "southpaw_share": 0.183,
+      "n": 30
+    }
+  },
+  "headlines": [
+    {
+      "stat": "reach_advantage_win_rate",
+      "value": "52.2%",
+      "n": 6525,
+      "note": "longer-reach fighter wins, when reaches differ"
+    },
+    {
+      "stat": "height_advantage_win_rate",
+      "value": "52.4%",
+      "n": 7069,
+      "note": "taller fighter wins, when heights differ"
+    },
+    {
+      "stat": "southpaw_vs_orthodox_win_rate",
+      "value": "53.4%",
+      "n": 2420,
+      "note": "southpaw win rate when facing orthodox"
+    },
+    {
+      "stat": "younger_fighter_win_rate",
+      "value": "56.9%",
+      "n": 8377,
+      "note": "younger fighter wins, when ages differ"
+    },
+    {
+      "stat": "mean_winner_age_vs_loser_age",
+      "value": "30.05 vs 30.93",
+      "n": 8541,
+      "note": "mean age of winners vs losers"
+    },
+    {
+      "stat": "reach_vs_control_time_corr",
+      "value": "-0.055",
+      "n": 2013,
+      "note": "correlation of career mean reach vs mean control sec/15min"
+    },
+    {
+      "stat": "winner_ctrl_sec_sub_vs_dec",
+      "value": "144.0s vs 265.7s",
+      "n": 5729,
+      "note": "winner's control time per fight: submission wins vs decision wins"
+    },
+    {
+      "stat": "era_age_shift",
+      "value": "29.651 (1994) -> 31.877 (2026)",
+      "n": 16972,
+      "note": "mean fighter age by first/last available event year"
+    }
+  ]
+}

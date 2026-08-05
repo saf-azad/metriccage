@@ -1,0 +1,441 @@
+{
+  "key": "eras",
+  "n_fights_total": 8794,
+  "n_fights_method_classified": 8678,
+  "dropped_methods": 116,
+  "by_year": {
+    "1994": {
+      "n": 31,
+      "finish": 1.0,
+      "ko": 0.355,
+      "sub": 0.645,
+      "dec": 0.0
+    },
+    "1995": {
+      "n": 38,
+      "finish": 0.921,
+      "ko": 0.395,
+      "sub": 0.526,
+      "dec": 0.079
+    },
+    "1996": {
+      "n": 43,
+      "finish": 0.884,
+      "ko": 0.628,
+      "sub": 0.256,
+      "dec": 0.116
+    },
+    "1997": {
+      "n": 40,
+      "finish": 0.8,
+      "ko": 0.325,
+      "sub": 0.475,
+      "dec": 0.2
+    },
+    "1998": {
+      "n": 25,
+      "finish": 0.68,
+      "ko": 0.36,
+      "sub": 0.32,
+      "dec": 0.32
+    },
+    "1999": {
+      "n": 44,
+      "finish": 0.75,
+      "ko": 0.591,
+      "sub": 0.159,
+      "dec": 0.25
+    },
+    "2000": {
+      "n": 42,
+      "finish": 0.595,
+      "ko": 0.333,
+      "sub": 0.262,
+      "dec": 0.405
+    },
+    "2001": {
+      "n": 38,
+      "finish": 0.684,
+      "ko": 0.447,
+      "sub": 0.237,
+      "dec": 0.316
+    },
+    "2002": {
+      "n": 52,
+      "finish": 0.712,
+      "ko": 0.558,
+      "sub": 0.154,
+      "dec": 0.288
+    },
+    "2003": {
+      "n": 40,
+      "finish": 0.65,
+      "ko": 0.45,
+      "sub": 0.2,
+      "dec": 0.35
+    },
+    "2004": {
+      "n": 39,
+      "finish": 0.744,
+      "ko": 0.462,
+      "sub": 0.282,
+      "dec": 0.256
+    },
+    "2005": {
+      "n": 79,
+      "finish": 0.759,
+      "ko": 0.494,
+      "sub": 0.266,
+      "dec": 0.241
+    },
+    "2006": {
+      "n": 158,
+      "finish": 0.671,
+      "ko": 0.373,
+      "sub": 0.297,
+      "dec": 0.329
+    },
+    "2007": {
+      "n": 169,
+      "finish": 0.633,
+      "ko": 0.314,
+      "sub": 0.32,
+      "dec": 0.367
+    },
+    "2008": {
+      "n": 201,
+      "finish": 0.682,
+      "ko": 0.428,
+      "sub": 0.254,
+      "dec": 0.318
+    },
+    "2009": {
+      "n": 213,
+      "finish": 0.568,
+      "ko": 0.352,
+      "sub": 0.216,
+      "dec": 0.432
+    },
+    "2010": {
+      "n": 252,
+      "finish": 0.508,
+      "ko": 0.274,
+      "sub": 0.234,
+      "dec": 0.492
+    },
+    "2011": {
+      "n": 297,
+      "finish": 0.505,
+      "ko": 0.32,
+      "sub": 0.185,
+      "dec": 0.495
+    },
+    "2012": {
+      "n": 333,
+      "finish": 0.526,
+      "ko": 0.315,
+      "sub": 0.21,
+      "dec": 0.474
+    },
+    "2013": {
+      "n": 376,
+      "finish": 0.524,
+      "ko": 0.346,
+      "sub": 0.178,
+      "dec": 0.476
+    },
+    "2014": {
+      "n": 494,
+      "finish": 0.5,
+      "ko": 0.308,
+      "sub": 0.192,
+      "dec": 0.5
+    },
+    "2015": {
+      "n": 464,
+      "finish": 0.524,
+      "ko": 0.334,
+      "sub": 0.19,
+      "dec": 0.476
+    },
+    "2016": {
+      "n": 490,
+      "finish": 0.494,
+      "ko": 0.312,
+      "sub": 0.182,
+      "dec": 0.506
+    },
+    "2017": {
+      "n": 450,
+      "finish": 0.502,
+      "ko": 0.324,
+      "sub": 0.178,
+      "dec": 0.498
+    },
+    "2018": {
+      "n": 470,
+      "finish": 0.513,
+      "ko": 0.321,
+      "sub": 0.191,
+      "dec": 0.487
+    },
+    "2019": {
+      "n": 510,
+      "finish": 0.457,
+      "ko": 0.3,
+      "sub": 0.157,
+      "dec": 0.543
+    },
+    "2020": {
+      "n": 447,
+      "finish": 0.494,
+      "ko": 0.311,
+      "sub": 0.183,
+      "dec": 0.506
+    },
+    "2021": {
+      "n": 500,
+      "finish": 0.488,
+      "ko": 0.342,
+      "sub": 0.146,
+      "dec": 0.512
+    },
+    "2022": {
+      "n": 508,
+      "finish": 0.53,
+      "ko": 0.337,
+      "sub": 0.193,
+      "dec": 0.47
+    },
+    "2023": {
+      "n": 509,
+      "finish": 0.513,
+      "ko": 0.312,
+      "sub": 0.2,
+      "dec": 0.487
+    },
+    "2024": {
+      "n": 511,
+      "finish": 0.45,
+      "ko": 0.288,
+      "sub": 0.162,
+      "dec": 0.55
+    },
+    "2025": {
+      "n": 516,
+      "finish": 0.504,
+      "ko": 0.328,
+      "sub": 0.176,
+      "dec": 0.496
+    },
+    "2026": {
+      "n": 299,
+      "finish": 0.525,
+      "ko": 0.348,
+      "sub": 0.177,
+      "dec": 0.475
+    }
+  },
+  "by_era": {
+    "1994-1999": {
+      "n": 221,
+      "finish": 0.842,
+      "finish_ci": [
+        0.793,
+        0.89
+      ],
+      "ko": 0.457,
+      "sub": 0.385,
+      "dec": 0.158,
+      "mean_duration_min": 7.969,
+      "n_3round_fights": 17,
+      "finish_round_dist": {
+        "1": 0.93,
+        "2": 0.048,
+        "3": 0.016,
+        "4": 0.005,
+        "5": 0.0
+      },
+      "n_finished": 186,
+      "pace_per_min": 2.833,
+      "n_std_format_fights_for_pace": 20,
+      "mean_sig_landed_per_round_per_fighter": 6.011,
+      "round_volatility": 3.134,
+      "n_fights_for_volatility": 16
+    },
+    "2000-2004": {
+      "n": 211,
+      "finish": 0.678,
+      "finish_ci": [
+        0.615,
+        0.741
+      ],
+      "ko": 0.455,
+      "sub": 0.223,
+      "dec": 0.322,
+      "mean_duration_min": 8.155,
+      "n_3round_fights": 165,
+      "finish_round_dist": {
+        "1": 0.552,
+        "2": 0.294,
+        "3": 0.133,
+        "4": 0.014,
+        "5": 0.007
+      },
+      "n_finished": 143,
+      "pace_per_min": 3.813,
+      "n_std_format_fights_for_pace": 201,
+      "mean_sig_landed_per_round_per_fighter": 8.077,
+      "round_volatility": 4.148,
+      "n_fights_for_volatility": 166
+    },
+    "2005-2009": {
+      "n": 820,
+      "finish": 0.648,
+      "finish_ci": [
+        0.615,
+        0.68
+      ],
+      "ko": 0.38,
+      "sub": 0.267,
+      "dec": 0.352,
+      "mean_duration_min": 8.775,
+      "n_3round_fights": 772,
+      "finish_round_dist": {
+        "1": 0.561,
+        "2": 0.32,
+        "3": 0.109,
+        "4": 0.008,
+        "5": 0.002
+      },
+      "n_finished": 531,
+      "pace_per_min": 5.094,
+      "n_std_format_fights_for_pace": 820,
+      "mean_sig_landed_per_round_per_fighter": 10.91,
+      "round_volatility": 5.032,
+      "n_fights_for_volatility": 704
+    },
+    "2010-2014": {
+      "n": 1752,
+      "finish": 0.512,
+      "finish_ci": [
+        0.489,
+        0.535
+      ],
+      "ko": 0.314,
+      "sub": 0.197,
+      "dec": 0.488,
+      "mean_duration_min": 10.296,
+      "n_3round_fights": 1610,
+      "finish_round_dist": {
+        "1": 0.542,
+        "2": 0.299,
+        "3": 0.14,
+        "4": 0.012,
+        "5": 0.007
+      },
+      "n_finished": 897,
+      "pace_per_min": 6.115,
+      "n_std_format_fights_for_pace": 1744,
+      "mean_sig_landed_per_round_per_fighter": 13.764,
+      "round_volatility": 5.967,
+      "n_fights_for_volatility": 1986
+    },
+    "2015-2019": {
+      "n": 2384,
+      "finish": 0.497,
+      "finish_ci": [
+        0.477,
+        0.517
+      ],
+      "ko": 0.318,
+      "sub": 0.179,
+      "dec": 0.503,
+      "mean_duration_min": 10.768,
+      "n_3round_fights": 2146,
+      "finish_round_dist": {
+        "1": 0.487,
+        "2": 0.311,
+        "3": 0.181,
+        "4": 0.011,
+        "5": 0.01
+      },
+      "n_finished": 1185,
+      "pace_per_min": 7.111,
+      "n_std_format_fights_for_pace": 2370,
+      "mean_sig_landed_per_round_per_fighter": 16.137,
+      "round_volatility": 6.55,
+      "n_fights_for_volatility": 2860
+    },
+    "2020-2026": {
+      "n": 3290,
+      "finish": 0.499,
+      "finish_ci": [
+        0.482,
+        0.516
+      ],
+      "ko": 0.322,
+      "sub": 0.177,
+      "dec": 0.501,
+      "mean_duration_min": 10.495,
+      "n_3round_fights": 2939,
+      "finish_round_dist": {
+        "1": 0.493,
+        "2": 0.328,
+        "3": 0.158,
+        "4": 0.012,
+        "5": 0.009
+      },
+      "n_finished": 1642,
+      "pace_per_min": 8.03,
+      "n_std_format_fights_for_pace": 3269,
+      "mean_sig_landed_per_round_per_fighter": 18.232,
+      "round_volatility": 7.486,
+      "n_fights_for_volatility": 3862
+    }
+  },
+  "headlines": [
+    {
+      "stat": "finish_rate_decline_1994_to_2020s",
+      "value": "0.842 -> 0.499",
+      "n": 3511,
+      "note": "Finish rate (KO+SUB share) dropped from early era to modern era."
+    },
+    {
+      "stat": "mean_3round_fight_duration_min",
+      "value": "7.969 -> 10.495",
+      "n": 2956,
+      "note": "Mean fight duration (minutes) for 3-round standard-format fights, earliest vs latest era."
+    },
+    {
+      "stat": "pace_sig_strikes_landed_per_min",
+      "value": "2.833 -> 8.03",
+      "n": 3289,
+      "note": "Combined (both fighters) significant strikes landed per fight-minute, standard-format fights only."
+    },
+    {
+      "stat": "round_volatility_ambient_heat",
+      "value": "3.134 -> 7.486",
+      "n": 3878,
+      "note": "Mean per-fight std-dev of a fighter's per-round sig strikes landed (fights >=3 rounds)."
+    },
+    {
+      "stat": "ko_share",
+      "value": "0.457 -> 0.322",
+      "n": 3511,
+      "note": "KO/TKO share of all classified-method fights, earliest vs latest era."
+    },
+    {
+      "stat": "sub_share",
+      "value": "0.385 -> 0.177",
+      "n": 3511,
+      "note": "Submission share of all classified-method fights, earliest vs latest era."
+    },
+    {
+      "stat": "dropped_unclassified_methods",
+      "value": "116",
+      "n": 116,
+      "note": "Rows dropped from method-based analyses (DQ, Overturned, Could Not Continue, Other, NC, D)."
+    }
+  ]
+}

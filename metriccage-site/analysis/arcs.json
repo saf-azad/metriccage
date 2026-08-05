@@ -1,0 +1,258 @@
+{
+  "key": "arcs",
+  "round_arcs_by_era": {
+    "1994-1999": {
+      "r1": 8.667,
+      "r2": 7.0,
+      "r3": 6.833,
+      "n_fights": 3,
+      "r1_norm": 1.0,
+      "r2_norm": 0.808,
+      "r3_norm": 0.788,
+      "note": "low sample size (n=3 fights), interpret with caution"
+    },
+    "2000-2004": {
+      "r1": 8.14,
+      "r2": 7.74,
+      "r3": 8.76,
+      "n_fights": 50,
+      "r1_norm": 1.0,
+      "r2_norm": 0.951,
+      "r3_norm": 1.076
+    },
+    "2005-2009": {
+      "r1": 12.28,
+      "r2": 12.108,
+      "r3": 12.135,
+      "n_fights": 277,
+      "r1_norm": 1.0,
+      "r2_norm": 0.986,
+      "r3_norm": 0.988
+    },
+    "2010-2014": {
+      "r1": 14.356,
+      "r2": 14.742,
+      "r3": 15.253,
+      "n_fights": 801,
+      "r1_norm": 1.0,
+      "r2_norm": 1.027,
+      "r3_norm": 1.063
+    },
+    "2015-2019": {
+      "r1": 15.672,
+      "r2": 17.08,
+      "r3": 17.858,
+      "n_fights": 1120,
+      "r1_norm": 1.0,
+      "r2_norm": 1.09,
+      "r3_norm": 1.139
+    },
+    "2020-2026": {
+      "r1": 17.724,
+      "r2": 20.135,
+      "r3": 20.864,
+      "n_fights": 1482,
+      "r1_norm": 1.0,
+      "r2_norm": 1.136,
+      "r3_norm": 1.177
+    }
+  },
+  "five_round_arc": {
+    "r1": 15.24,
+    "r2": 18.138,
+    "r3": 18.255,
+    "r4": 18.743,
+    "r5": 19.272,
+    "n": 304
+  },
+  "gas_tank_ratio_by_era": {
+    "1994-1999": 0.788,
+    "2000-2004": 1.076,
+    "2005-2009": 0.988,
+    "2010-2014": 1.062,
+    "2015-2019": 1.139,
+    "2020-2026": 1.177
+  },
+  "round5_vs_round3": {
+    "r5": 19.272,
+    "r3": 18.255,
+    "n": 304,
+    "direction": "surge"
+  },
+  "volatility_by_class": {
+    "Flyweight": {
+      "vol": 6.397,
+      "kd_per_fight": 0.224,
+      "n": 532
+    },
+    "Bantamweight": {
+      "vol": 6.785,
+      "kd_per_fight": 0.235,
+      "n": 994
+    },
+    "Featherweight": {
+      "vol": 6.952,
+      "kd_per_fight": 0.231,
+      "n": 1088
+    },
+    "Lightweight": {
+      "vol": 6.508,
+      "kd_per_fight": 0.206,
+      "n": 1622
+    },
+    "Welterweight": {
+      "vol": 6.58,
+      "kd_per_fight": 0.242,
+      "n": 1594
+    },
+    "Middleweight": {
+      "vol": 6.337,
+      "kd_per_fight": 0.237,
+      "n": 1146
+    },
+    "Light Heavyweight": {
+      "vol": 6.336,
+      "kd_per_fight": 0.263,
+      "n": 708
+    },
+    "Heavyweight": {
+      "vol": 6.36,
+      "kd_per_fight": 0.238,
+      "n": 618
+    },
+    "Women's Strawweight": {
+      "vol": 7.123,
+      "kd_per_fight": 0.086,
+      "n": 538
+    },
+    "Women's Flyweight": {
+      "vol": 6.844,
+      "kd_per_fight": 0.08,
+      "n": 392
+    },
+    "Women's Bantamweight": {
+      "vol": 7.434,
+      "kd_per_fight": 0.088,
+      "n": 352
+    },
+    "Women's Featherweight": {
+      "vol": 6.272,
+      "kd_per_fight": 0.15,
+      "n": 38
+    }
+  },
+  "makhachev_oliveira": {
+    "event": "UFC 280: Oliveira vs. Makhachev",
+    "bout": "Charles Oliveira vs. Islam Makhachev",
+    "method": "Submission",
+    "round": 2,
+    "time": "3:16",
+    "rounds": [
+      {
+        "round": 1,
+        "makhachev": {
+          "sig": 12,
+          "td": 2,
+          "subatt": 0,
+          "ctrl_sec": 228
+        },
+        "oliveira": {
+          "sig": 6,
+          "td": 0,
+          "subatt": 0,
+          "ctrl_sec": 38
+        }
+      },
+      {
+        "round": 2,
+        "makhachev": {
+          "sig": 18,
+          "td": 0,
+          "subatt": 1,
+          "ctrl_sec": 77
+        },
+        "oliveira": {
+          "sig": 13,
+          "td": 0,
+          "subatt": 0,
+          "ctrl_sec": 4
+        }
+      }
+    ]
+  },
+  "quiz_shapes": {
+    "1994-1999": {
+      "shape": [
+        1.0,
+        0.808,
+        0.788
+      ],
+      "finish_rate": 0.849,
+      "n": 3,
+      "n_total_fights_for_finish_rate": 219,
+      "note": "low sample size (n=3 fights), interpret with caution"
+    },
+    "2005-2009": {
+      "shape": [
+        1.0,
+        0.986,
+        0.988
+      ],
+      "finish_rate": 0.65,
+      "n": 277,
+      "n_total_fights_for_finish_rate": 820
+    },
+    "2010-2014": {
+      "shape": [
+        0.941,
+        0.966,
+        1.0
+      ],
+      "finish_rate": 0.516,
+      "n": 801,
+      "n_total_fights_for_finish_rate": 1748
+    },
+    "2020-2026": {
+      "shape": [
+        0.85,
+        0.965,
+        1.0
+      ],
+      "finish_rate": 0.504,
+      "n": 1482,
+      "n_total_fights_for_finish_rate": 3273
+    }
+  },
+  "headlines": [
+    {
+      "stat": "gas_tank_trend",
+      "value": "round3/round1 ratio improved from 1.076 (2000-2004) to 1.177 (2020-2026)",
+      "n": 1482,
+      "note": "higher ratio = better endurance / less fade"
+    },
+    {
+      "stat": "round5_vs_round3",
+      "value": "round 5 avg sig strikes landed 19.272 vs round 3 18.255 (surge)",
+      "n": 304,
+      "note": "5-round decision fights only, all eras pooled"
+    },
+    {
+      "stat": "heavyweight_vs_flyweight_volatility",
+      "value": "Heavyweight per-round sig-strike std dev 6.36 (n=618) vs Flyweight 6.397 (n=532)",
+      "n": 1150,
+      "note": "std dev of a fighters per-round sig strikes landed within a fight; higher = more volatile pace"
+    },
+    {
+      "stat": "heavyweight_vs_flyweight_kd_per_fight",
+      "value": "Heavyweight KD/fight 0.238 vs Flyweight 0.224",
+      "n": 1150,
+      "note": null
+    },
+    {
+      "stat": "makhachev_oliveira",
+      "value": "UFC 280 Oct 2022: Makhachev def. Oliveira via submission, see makhachev_oliveira field",
+      "n": 1,
+      "note": null
+    }
+  ]
+}

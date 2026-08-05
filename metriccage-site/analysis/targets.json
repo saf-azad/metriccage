@@ -1,0 +1,753 @@
+{
+  "key": "targets",
+  "by_year_target": {
+    "1994": {
+      "head": 0.726,
+      "body": 0.124,
+      "leg": 0.151,
+      "n_rows": 62
+    },
+    "1995": {
+      "head": 0.657,
+      "body": 0.151,
+      "leg": 0.192,
+      "n_rows": 86
+    },
+    "1996": {
+      "head": 0.691,
+      "body": 0.23,
+      "leg": 0.079,
+      "n_rows": 92
+    },
+    "1997": {
+      "head": 0.801,
+      "body": 0.097,
+      "leg": 0.102,
+      "n_rows": 100
+    },
+    "1998": {
+      "head": 0.566,
+      "body": 0.227,
+      "leg": 0.206,
+      "n_rows": 68
+    },
+    "1999": {
+      "head": 0.667,
+      "body": 0.177,
+      "leg": 0.156,
+      "n_rows": 158
+    },
+    "2000": {
+      "head": 0.648,
+      "body": 0.238,
+      "leg": 0.114,
+      "n_rows": 182
+    },
+    "2001": {
+      "head": 0.619,
+      "body": 0.165,
+      "leg": 0.216,
+      "n_rows": 184
+    },
+    "2002": {
+      "head": 0.656,
+      "body": 0.159,
+      "leg": 0.185,
+      "n_rows": 232
+    },
+    "2003": {
+      "head": 0.614,
+      "body": 0.198,
+      "leg": 0.188,
+      "n_rows": 176
+    },
+    "2004": {
+      "head": 0.656,
+      "body": 0.214,
+      "leg": 0.13,
+      "n_rows": 146
+    },
+    "2005": {
+      "head": 0.683,
+      "body": 0.178,
+      "leg": 0.138,
+      "n_rows": 308
+    },
+    "2006": {
+      "head": 0.657,
+      "body": 0.184,
+      "leg": 0.159,
+      "n_rows": 640
+    },
+    "2007": {
+      "head": 0.662,
+      "body": 0.18,
+      "leg": 0.158,
+      "n_rows": 724
+    },
+    "2008": {
+      "head": 0.635,
+      "body": 0.192,
+      "leg": 0.173,
+      "n_rows": 834
+    },
+    "2009": {
+      "head": 0.611,
+      "body": 0.201,
+      "leg": 0.188,
+      "n_rows": 960
+    },
+    "2010": {
+      "head": 0.649,
+      "body": 0.187,
+      "leg": 0.164,
+      "n_rows": 1220
+    },
+    "2011": {
+      "head": 0.616,
+      "body": 0.216,
+      "leg": 0.168,
+      "n_rows": 1396
+    },
+    "2012": {
+      "head": 0.625,
+      "body": 0.207,
+      "leg": 0.168,
+      "n_rows": 1576
+    },
+    "2013": {
+      "head": 0.631,
+      "body": 0.208,
+      "leg": 0.162,
+      "n_rows": 1800
+    },
+    "2014": {
+      "head": 0.629,
+      "body": 0.204,
+      "leg": 0.167,
+      "n_rows": 2402
+    },
+    "2015": {
+      "head": 0.64,
+      "body": 0.203,
+      "leg": 0.157,
+      "n_rows": 2256
+    },
+    "2016": {
+      "head": 0.645,
+      "body": 0.197,
+      "leg": 0.158,
+      "n_rows": 2418
+    },
+    "2017": {
+      "head": 0.645,
+      "body": 0.194,
+      "leg": 0.161,
+      "n_rows": 2220
+    },
+    "2018": {
+      "head": 0.639,
+      "body": 0.202,
+      "leg": 0.159,
+      "n_rows": 2300
+    },
+    "2019": {
+      "head": 0.625,
+      "body": 0.206,
+      "leg": 0.169,
+      "n_rows": 2546
+    },
+    "2020": {
+      "head": 0.619,
+      "body": 0.213,
+      "leg": 0.168,
+      "n_rows": 2228
+    },
+    "2021": {
+      "head": 0.627,
+      "body": 0.216,
+      "leg": 0.156,
+      "n_rows": 2540
+    },
+    "2022": {
+      "head": 0.626,
+      "body": 0.218,
+      "leg": 0.156,
+      "n_rows": 2476
+    },
+    "2023": {
+      "head": 0.603,
+      "body": 0.222,
+      "leg": 0.175,
+      "n_rows": 2496
+    },
+    "2024": {
+      "head": 0.624,
+      "body": 0.215,
+      "leg": 0.161,
+      "n_rows": 2652
+    },
+    "2025": {
+      "head": 0.635,
+      "body": 0.202,
+      "leg": 0.163,
+      "n_rows": 2486
+    },
+    "2026": {
+      "head": 0.64,
+      "body": 0.211,
+      "leg": 0.148,
+      "n_rows": 1428
+    }
+  },
+  "by_era_target": {
+    "1994-1999": {
+      "head": 0.676,
+      "body": 0.177,
+      "leg": 0.147,
+      "n_rows": 566
+    },
+    "2000-2004": {
+      "head": 0.639,
+      "body": 0.19,
+      "leg": 0.172,
+      "n_rows": 920
+    },
+    "2005-2009": {
+      "head": 0.641,
+      "body": 0.19,
+      "leg": 0.169,
+      "n_rows": 3466
+    },
+    "2010-2014": {
+      "head": 0.629,
+      "body": 0.205,
+      "leg": 0.166,
+      "n_rows": 8394
+    },
+    "2015-2019": {
+      "head": 0.638,
+      "body": 0.2,
+      "leg": 0.161,
+      "n_rows": 11740
+    },
+    "2020-2026": {
+      "head": 0.624,
+      "body": 0.214,
+      "leg": 0.162,
+      "n_rows": 16306
+    }
+  },
+  "by_year_position": {
+    "1994": {
+      "distance": 0.185,
+      "clinch": 0.205,
+      "ground": 0.61,
+      "n_rows": 62
+    },
+    "1995": {
+      "distance": 0.32,
+      "clinch": 0.169,
+      "ground": 0.512,
+      "n_rows": 86
+    },
+    "1996": {
+      "distance": 0.194,
+      "clinch": 0.324,
+      "ground": 0.481,
+      "n_rows": 92
+    },
+    "1997": {
+      "distance": 0.268,
+      "clinch": 0.214,
+      "ground": 0.518,
+      "n_rows": 100
+    },
+    "1998": {
+      "distance": 0.42,
+      "clinch": 0.27,
+      "ground": 0.31,
+      "n_rows": 68
+    },
+    "1999": {
+      "distance": 0.358,
+      "clinch": 0.237,
+      "ground": 0.405,
+      "n_rows": 158
+    },
+    "2000": {
+      "distance": 0.258,
+      "clinch": 0.304,
+      "ground": 0.438,
+      "n_rows": 182
+    },
+    "2001": {
+      "distance": 0.391,
+      "clinch": 0.277,
+      "ground": 0.332,
+      "n_rows": 184
+    },
+    "2002": {
+      "distance": 0.407,
+      "clinch": 0.221,
+      "ground": 0.372,
+      "n_rows": 232
+    },
+    "2003": {
+      "distance": 0.358,
+      "clinch": 0.32,
+      "ground": 0.322,
+      "n_rows": 176
+    },
+    "2004": {
+      "distance": 0.369,
+      "clinch": 0.271,
+      "ground": 0.36,
+      "n_rows": 146
+    },
+    "2005": {
+      "distance": 0.449,
+      "clinch": 0.217,
+      "ground": 0.334,
+      "n_rows": 308
+    },
+    "2006": {
+      "distance": 0.524,
+      "clinch": 0.233,
+      "ground": 0.243,
+      "n_rows": 640
+    },
+    "2007": {
+      "distance": 0.492,
+      "clinch": 0.224,
+      "ground": 0.283,
+      "n_rows": 724
+    },
+    "2008": {
+      "distance": 0.533,
+      "clinch": 0.217,
+      "ground": 0.249,
+      "n_rows": 834
+    },
+    "2009": {
+      "distance": 0.573,
+      "clinch": 0.211,
+      "ground": 0.215,
+      "n_rows": 960
+    },
+    "2010": {
+      "distance": 0.624,
+      "clinch": 0.17,
+      "ground": 0.206,
+      "n_rows": 1220
+    },
+    "2011": {
+      "distance": 0.656,
+      "clinch": 0.182,
+      "ground": 0.162,
+      "n_rows": 1396
+    },
+    "2012": {
+      "distance": 0.713,
+      "clinch": 0.15,
+      "ground": 0.137,
+      "n_rows": 1576
+    },
+    "2013": {
+      "distance": 0.678,
+      "clinch": 0.178,
+      "ground": 0.144,
+      "n_rows": 1800
+    },
+    "2014": {
+      "distance": 0.679,
+      "clinch": 0.174,
+      "ground": 0.147,
+      "n_rows": 2402
+    },
+    "2015": {
+      "distance": 0.69,
+      "clinch": 0.167,
+      "ground": 0.143,
+      "n_rows": 2256
+    },
+    "2016": {
+      "distance": 0.715,
+      "clinch": 0.142,
+      "ground": 0.142,
+      "n_rows": 2418
+    },
+    "2017": {
+      "distance": 0.734,
+      "clinch": 0.133,
+      "ground": 0.133,
+      "n_rows": 2220
+    },
+    "2018": {
+      "distance": 0.739,
+      "clinch": 0.126,
+      "ground": 0.135,
+      "n_rows": 2300
+    },
+    "2019": {
+      "distance": 0.767,
+      "clinch": 0.123,
+      "ground": 0.11,
+      "n_rows": 2546
+    },
+    "2020": {
+      "distance": 0.789,
+      "clinch": 0.106,
+      "ground": 0.105,
+      "n_rows": 2228
+    },
+    "2021": {
+      "distance": 0.814,
+      "clinch": 0.094,
+      "ground": 0.092,
+      "n_rows": 2540
+    },
+    "2022": {
+      "distance": 0.802,
+      "clinch": 0.099,
+      "ground": 0.099,
+      "n_rows": 2476
+    },
+    "2023": {
+      "distance": 0.794,
+      "clinch": 0.111,
+      "ground": 0.095,
+      "n_rows": 2496
+    },
+    "2024": {
+      "distance": 0.822,
+      "clinch": 0.086,
+      "ground": 0.092,
+      "n_rows": 2652
+    },
+    "2025": {
+      "distance": 0.818,
+      "clinch": 0.091,
+      "ground": 0.091,
+      "n_rows": 2486
+    },
+    "2026": {
+      "distance": 0.821,
+      "clinch": 0.098,
+      "ground": 0.081,
+      "n_rows": 1428
+    }
+  },
+  "by_era_position": {
+    "1994-1999": {
+      "distance": 0.312,
+      "clinch": 0.245,
+      "ground": 0.443,
+      "n_rows": 566
+    },
+    "2000-2004": {
+      "distance": 0.364,
+      "clinch": 0.274,
+      "ground": 0.361,
+      "n_rows": 920
+    },
+    "2005-2009": {
+      "distance": 0.528,
+      "clinch": 0.22,
+      "ground": 0.252,
+      "n_rows": 3466
+    },
+    "2010-2014": {
+      "distance": 0.675,
+      "clinch": 0.171,
+      "ground": 0.154,
+      "n_rows": 8394
+    },
+    "2015-2019": {
+      "distance": 0.732,
+      "clinch": 0.137,
+      "ground": 0.131,
+      "n_rows": 11740
+    },
+    "2020-2026": {
+      "distance": 0.808,
+      "clinch": 0.098,
+      "ground": 0.094,
+      "n_rows": 16306
+    }
+  },
+  "td_by_era": {
+    "1994-1999": {
+      "att_per_fight": 1.223,
+      "accuracy": 0.508,
+      "n_fighter_fights": 404
+    },
+    "2000-2004": {
+      "att_per_fight": 2.69,
+      "accuracy": 0.405,
+      "n_fighter_fights": 432
+    },
+    "2005-2009": {
+      "att_per_fight": 2.679,
+      "accuracy": 0.44,
+      "n_fighter_fights": 1650
+    },
+    "2010-2014": {
+      "att_per_fight": 3.094,
+      "accuracy": 0.373,
+      "n_fighter_fights": 3566
+    },
+    "2015-2019": {
+      "att_per_fight": 2.783,
+      "accuracy": 0.363,
+      "n_fighter_fights": 4826
+    },
+    "2020-2026": {
+      "att_per_fight": 2.88,
+      "accuracy": 0.364,
+      "n_fighter_fights": 6666
+    }
+  },
+  "subatt_per_fight_by_era": {
+    "1994-1999": {
+      "subatt_per_fight": 0.975,
+      "n_fights": 202
+    },
+    "2000-2004": {
+      "subatt_per_fight": 1.157,
+      "n_fights": 216
+    },
+    "2005-2009": {
+      "subatt_per_fight": 1.32,
+      "n_fights": 825
+    },
+    "2010-2014": {
+      "subatt_per_fight": 0.901,
+      "n_fights": 1783
+    },
+    "2015-2019": {
+      "subatt_per_fight": 0.61,
+      "n_fights": 2413
+    },
+    "2020-2026": {
+      "subatt_per_fight": 0.585,
+      "n_fights": 3333
+    }
+  },
+  "ctrl_by_year": {
+    "1994": {
+      "mean_sec": null,
+      "coverage": 0.0
+    },
+    "1995": {
+      "mean_sec": null,
+      "coverage": 0.0
+    },
+    "1996": {
+      "mean_sec": null,
+      "coverage": 0.0
+    },
+    "1997": {
+      "mean_sec": null,
+      "coverage": 0.0
+    },
+    "1998": {
+      "mean_sec": null,
+      "coverage": 0.0
+    },
+    "1999": {
+      "mean_sec": null,
+      "coverage": 0.582
+    },
+    "2000": {
+      "mean_sec": 181.744,
+      "coverage": 1.0
+    },
+    "2001": {
+      "mean_sec": 202.05,
+      "coverage": 1.0
+    },
+    "2002": {
+      "mean_sec": 185.047,
+      "coverage": 1.0
+    },
+    "2003": {
+      "mean_sec": 173.854,
+      "coverage": 1.0
+    },
+    "2004": {
+      "mean_sec": 151.782,
+      "coverage": 1.0
+    },
+    "2005": {
+      "mean_sec": 143.738,
+      "coverage": 1.0
+    },
+    "2006": {
+      "mean_sec": 138.816,
+      "coverage": 1.0
+    },
+    "2007": {
+      "mean_sec": 160.465,
+      "coverage": 1.0
+    },
+    "2008": {
+      "mean_sec": 143.065,
+      "coverage": 1.0
+    },
+    "2009": {
+      "mean_sec": 154.067,
+      "coverage": 1.0
+    },
+    "2010": {
+      "mean_sec": 164.334,
+      "coverage": 1.0
+    },
+    "2011": {
+      "mean_sec": 145.31,
+      "coverage": 1.0
+    },
+    "2012": {
+      "mean_sec": 127.18,
+      "coverage": 1.0
+    },
+    "2013": {
+      "mean_sec": 140.755,
+      "coverage": 1.0
+    },
+    "2014": {
+      "mean_sec": 142.68,
+      "coverage": 1.0
+    },
+    "2015": {
+      "mean_sec": 139.304,
+      "coverage": 1.0
+    },
+    "2016": {
+      "mean_sec": 130.249,
+      "coverage": 1.0
+    },
+    "2017": {
+      "mean_sec": 117.276,
+      "coverage": 1.0
+    },
+    "2018": {
+      "mean_sec": 122.487,
+      "coverage": 1.0
+    },
+    "2019": {
+      "mean_sec": 119.434,
+      "coverage": 1.0
+    },
+    "2020": {
+      "mean_sec": 122.242,
+      "coverage": 1.0
+    },
+    "2021": {
+      "mean_sec": 131.011,
+      "coverage": 1.0
+    },
+    "2022": {
+      "mean_sec": 125.927,
+      "coverage": 1.0
+    },
+    "2023": {
+      "mean_sec": 126.302,
+      "coverage": 1.0
+    },
+    "2024": {
+      "mean_sec": 134.077,
+      "coverage": 1.0
+    },
+    "2025": {
+      "mean_sec": 121.223,
+      "coverage": 1.0
+    },
+    "2026": {
+      "mean_sec": 118.042,
+      "coverage": 1.0
+    }
+  },
+  "seq_proxies_by_era": {
+    "1994-1999": {
+      "ground_share": 0.443,
+      "subatt_per_td": 0.785,
+      "sub_share_of_finishes": 0.457,
+      "n_finishes": 186
+    },
+    "2000-2004": {
+      "ground_share": 0.361,
+      "subatt_per_td": 0.531,
+      "sub_share_of_finishes": 0.329,
+      "n_finishes": 143
+    },
+    "2005-2009": {
+      "ground_share": 0.252,
+      "subatt_per_td": 0.56,
+      "sub_share_of_finishes": 0.412,
+      "n_finishes": 531
+    },
+    "2010-2014": {
+      "ground_share": 0.154,
+      "subatt_per_td": 0.391,
+      "sub_share_of_finishes": 0.386,
+      "n_finishes": 897
+    },
+    "2015-2019": {
+      "ground_share": 0.131,
+      "subatt_per_td": 0.302,
+      "sub_share_of_finishes": 0.36,
+      "n_finishes": 1185
+    },
+    "2020-2026": {
+      "ground_share": 0.094,
+      "subatt_per_td": 0.279,
+      "sub_share_of_finishes": 0.354,
+      "n_finishes": 1642
+    }
+  },
+  "headlines": [
+    {
+      "stat": "leg_strike_share_2014_vs_2021",
+      "value": "0.167 -> 0.156",
+      "n": 4942,
+      "note": "Share of landed sig strikes to the leg, 2014 vs 2021"
+    },
+    {
+      "stat": "td_att_per_fighter_fight_1994-1999_vs_2020-2026",
+      "value": "1.223 -> 2.88",
+      "n": 7070,
+      "note": "Mean TD attempts per fighter per fight by era"
+    },
+    {
+      "stat": "td_accuracy_1994-1999_vs_2020-2026",
+      "value": "0.508 -> 0.364",
+      "n": 7070,
+      "note": "TD landed/attempted by era"
+    },
+    {
+      "stat": "subatt_per_fight_1994-1999_vs_2020-2026",
+      "value": "0.975 -> 0.585",
+      "n": 3535,
+      "note": "Mean submission attempts per fight (both corners summed) by era"
+    },
+    {
+      "stat": "ctrl_time_coverage_usable_years",
+      "value": "2000-2026",
+      "n": 27,
+      "note": "Years where CTRL field coverage >80% of fighter-round rows; only these are trustworthy for control-time trend"
+    },
+    {
+      "stat": "ground_share_of_landed_strikes_1994-1999_vs_2020-2026",
+      "value": "0.443 -> 0.094",
+      "n": null,
+      "note": "Share of landed sig strikes occurring on the ground, by era"
+    },
+    {
+      "stat": "sub_share_of_finishes_1994-1999_vs_2020-2026",
+      "value": "0.457 -> 0.354",
+      "n": 1828,
+      "note": "Share of finishes (SUB or KO) ending by submission, by era"
+    }
+  ]
+}
