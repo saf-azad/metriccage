@@ -1,0 +1,244 @@
+{
+  "key": "premortem",
+  "finish_clock": {
+    "ko_by_minute": {
+      "1": 276,
+      "2": 316,
+      "3": 290,
+      "4": 247,
+      "5": 331,
+      "6": 129,
+      "7": 166,
+      "8": 166,
+      "9": 142,
+      "10": 243,
+      "11": 77,
+      "12": 87,
+      "13": 88,
+      "14": 72,
+      "15": 86,
+      "16": 6,
+      "17": 4,
+      "18": 4,
+      "19": 8,
+      "20": 11,
+      "21": 3,
+      "22": 5,
+      "23": 9,
+      "24": 4,
+      "25": 5
+    },
+    "sub_by_minute": {
+      "1": 61,
+      "2": 153,
+      "3": 201,
+      "4": 186,
+      "5": 187,
+      "6": 29,
+      "7": 131,
+      "8": 125,
+      "9": 117,
+      "10": 131,
+      "11": 18,
+      "12": 56,
+      "13": 62,
+      "14": 57,
+      "15": 72,
+      "16": 1,
+      "17": 4,
+      "18": 4,
+      "19": 7,
+      "20": 1,
+      "23": 2,
+      "24": 4,
+      "25": 3
+    },
+    "first60_share": 0.137,
+    "last60_share": 0.245,
+    "peak_ko_minute": 5,
+    "peak_sub_minute": 3,
+    "r1m1_share": 0.077,
+    "n_ko": 2775,
+    "n_sub": 1612
+  },
+  "r1_finish_share_by_era": {
+    "1994-2004": {
+      "r1_share": 0.766,
+      "later_share": 0.234,
+      "r1_n": 252,
+      "n": 329
+    },
+    "2005-2014": {
+      "r1_share": 0.549,
+      "later_share": 0.451,
+      "r1_n": 784,
+      "n": 1428
+    },
+    "2015-2026": {
+      "r1_share": 0.49,
+      "later_share": 0.51,
+      "r1_n": 1386,
+      "n": 2827
+    }
+  },
+  "autopsy": {
+    "ko": {
+      "loser_penult": {
+        "kd_suffered": 0.094,
+        "sig_landed": 15.072,
+        "sig_absorbed": 20.959,
+        "head_absorbed": 13.383,
+        "td_landed_against": 0.509,
+        "ctrl_conceded": 68.586,
+        "subatt_against": 0.142
+      },
+      "winner_penult": {
+        "kd_suffered": 0.049,
+        "sig_landed": 20.959,
+        "sig_absorbed": 15.072,
+        "head_absorbed": 8.727,
+        "td_landed_against": 0.427,
+        "ctrl_conceded": 47.651,
+        "subatt_against": 0.149
+      },
+      "dec_baseline": {
+        "kd_suffered": 0.043,
+        "sig_landed": 16.35,
+        "sig_absorbed": 16.35,
+        "head_absorbed": 9.518,
+        "td_landed_against": 0.477,
+        "ctrl_conceded": 58.743,
+        "subatt_against": 0.118
+      },
+      "top_warnings": [
+        {
+          "sign": "kd_suffered",
+          "ratio": 2.186
+        },
+        {
+          "sign": "head_absorbed",
+          "ratio": 1.406
+        },
+        {
+          "sign": "sig_absorbed",
+          "ratio": 1.282
+        }
+      ],
+      "n": 1328
+    },
+    "sub": {
+      "loser_penult": {
+        "kd_suffered": 0.047,
+        "sig_landed": 13.049,
+        "sig_absorbed": 15.922,
+        "head_absorbed": 10.243,
+        "td_landed_against": 0.823,
+        "ctrl_conceded": 106.807,
+        "subatt_against": 0.336
+      },
+      "winner_penult": {
+        "kd_suffered": 0.05,
+        "sig_landed": 15.922,
+        "sig_absorbed": 13.049,
+        "head_absorbed": 7.826,
+        "td_landed_against": 0.44,
+        "ctrl_conceded": 57.164,
+        "subatt_against": 0.14
+      },
+      "dec_baseline": {
+        "kd_suffered": 0.044,
+        "sig_landed": 16.328,
+        "sig_absorbed": 16.328,
+        "head_absorbed": 9.492,
+        "td_landed_against": 0.478,
+        "ctrl_conceded": 58.821,
+        "subatt_against": 0.118
+      },
+      "top_warnings": [
+        {
+          "sign": "subatt_against",
+          "ratio": 2.847
+        },
+        {
+          "sign": "ctrl_conceded",
+          "ratio": 1.816
+        },
+        {
+          "sign": "td_landed_against",
+          "ratio": 1.722
+        }
+      ],
+      "n": 834
+    }
+  },
+  "kd_doom": {
+    "any_kd_loss_rate": 0.856,
+    "ci": [
+      0.843,
+      0.867
+    ],
+    "n": 3184,
+    "r1_kd_loss_rate": 0.845,
+    "ci_r1": [
+      0.829,
+      0.861
+    ],
+    "n_r1": 1946
+  },
+  "comeback": {
+    "overall": 0.297,
+    "n": 4767,
+    "by_era": {
+      "1994-2004": {
+        "rate": 0.277,
+        "n": 94
+      },
+      "2005-2014": {
+        "rate": 0.265,
+        "n": 1339
+      },
+      "2015-2026": {
+        "rate": 0.31,
+        "n": 3334
+      }
+    }
+  },
+  "headlines": [
+    {
+      "stat": "peak_ko_minute",
+      "value": "Minute 5 of the fight sees the most KOs",
+      "n": 331,
+      "note": ""
+    },
+    {
+      "stat": "r1m1_share",
+      "value": "7.7% of all standard-format finishes happen in round 1 minute 1",
+      "n": 337,
+      "note": ""
+    },
+    {
+      "stat": "ko_top_warning_sign",
+      "value": "KO losers show 2.186x the decision-baseline rate of kd_suffered in the round before they lose",
+      "n": 1328,
+      "note": ""
+    },
+    {
+      "stat": "sub_top_warning_sign",
+      "value": "SUB losers show 2.847x the decision-baseline rate of subatt_against in the round before they lose",
+      "n": 834,
+      "note": ""
+    },
+    {
+      "stat": "kd_doom_any",
+      "value": "85.6% of fighters who suffer any knockdown go on to lose the fight",
+      "n": 3184,
+      "note": "95% CI (0.843, 0.867)"
+    },
+    {
+      "stat": "comeback_rate",
+      "value": "29.7% of eventual winners were out-struck in round 1",
+      "n": 4767,
+      "note": ""
+    }
+  ]
+}

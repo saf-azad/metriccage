@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MetricCage — a calibrated UFC fight prediction system</title>
+<meta name="description" content="A four-model ensemble that predicts UFC fights as calibrated probabilities rather than picks — 102 engineered features, walk-forward validation, and an honest account of where it still falls short.">
+<meta name="author" content="Safwat Al Azad">
+
+<meta property="og:title" content="MetricCage — a calibrated UFC fight prediction system">
+<meta property="og:description" content="Probabilities you can trust, not just picks. Built, validated and openly stress-tested.">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/audit.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="index.html" data-site-name>MetricCage</a>
+    <div class="nav-links">
+      <a href="discoveries.html">Discoveries</a>
+      <a href="#problem" class="nav-hide-sm">Problem</a>
+      <a href="#pipeline" class="nav-hide-sm">Pipeline</a>
+      <a href="#ensemble">Ensemble</a>
+      <a href="#results">Results</a>
+      <a href="model.html">Model evidence</a>
+      <a href="#corrections">Corrections</a>
+      <a href="#drivers" class="nav-hide-sm">Drivers</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div data-a-ticker></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-chip fx">Fight analytics · calibrated ML</p>
+    <p class="hero-name fx" data-author>Safwat Al Azad</p>
+    <h1 class="fx">Metric<span class="hl">Cage</span></h1>
+    <p class="hero-sub fx">
+      A calibrated UFC fight prediction system — <strong>probabilities you can trust, not just picks.</strong>
+    </p>
+    <div class="hero-actions fx">
+      <a class="btn btn-primary" href="discoveries.html">Read the discoveries</a>
+      <a class="btn btn-ghost" href="#results">See the scoreboard</a>
+      <a class="btn btn-ghost" href="#" data-github>View the code</a>
+    </div>
+    <p class="fx" style="margin-top:1.4rem" data-a-record></p>
+    <div class="stats fx" data-hero-stats></div>
+  </div>
+</header>
+
+<!-- ================= PROBLEM ================= -->
+<section class="section" id="problem">
+  <div class="wrap split">
+    <div class="sticky-side">
+      <p class="eyebrow">The premise</p>
+      <h2>Accuracy is the wrong target.</h2>
+    </div>
+    <div>
+      <p class="lede">
+        A model that says 70% and is right 70% of the time is doing its job. A model
+        that says 90% and is wrong half the time it is confident is worse than useless —
+        it is confidently misleading.
+      </p>
+      <p>
+        Most fight-prediction projects optimise for the headline: what percentage of
+        winners did it call? That number is easy to inflate and almost impossible to act
+        on. Picking the betting favourite in every UFC bout already lands somewhere near
+        60%, so an accuracy score in that range tells you nothing about whether a model
+        has learned anything at all.
+      </p>
+      <p>
+        Calibration asks a harder and more useful question: when this system says 65%,
+        does the fighter actually win about 65 times in a hundred? That property is what
+        makes a probability composable — you can size a position on it, compare it against
+        a market line, or stack it with other information. A pick cannot do any of that.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>So MetricCage optimises log-loss and Brier score, not accuracy</strong> — and
+          reports accuracy only as context, sitting next to the baseline it has to beat.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIPELINE ================= -->
+<section class="section" id="pipeline">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pipeline</p>
+      <h2>From four scrapers to a leak-free feature matrix.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Every design decision here exists to stop the model from seeing the future.
+      </p>
+    </div>
+    <div class="steps" data-pipeline></div>
+    <div class="callout">
+      <p>
+        <strong>Why the temporal split matters more than it sounds.</strong>
+        A random train/test split on fight data leaks in two directions at once: a
+        fighter's later bouts inform their earlier feature values, and the test set
+        contains fights whose participants the model has already watched mature. Both
+        inflate scores and neither survives contact with a real upcoming card. Splitting
+        strictly by date — and testing the assumption with dedicated leakage tests —
+        is the only way the numbers further down mean anything.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENSEMBLE ================= -->
+<section class="section" id="ensemble">
+  <div class="wrap split">
+    <div class="sticky-side">
+      <p class="eyebrow">The ensemble</p>
+      <h2>Four models, one probability.</h2>
+      <p style="margin-top:1rem;color:var(--fg-70);font-size:.98rem">
+        Each stream is in the blend for a reason it alone can serve. The weights below
+        were not hand-set — they are the solution to a constrained least-squares problem
+        that minimises log-loss on the held-out validation year.
+      </p>
+    </div>
+    <div>
+      <div class="weight-bar" data-weight-bar></div>
+      <div data-ensemble></div>
+
+      <div class="callout">
+        <p><strong>Blending.</strong> <span data-blend></span></p>
+      </div>
+      <div class="callout">
+        <p><strong>Calibration.</strong> <span data-calibration></span></p>
+      </div>
+      <div class="callout">
+        <p><strong>Method of victory.</strong> <span data-method-head></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Results</p>
+      <h2>The honest scoreboard.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Measured on 695 fights the model had never seen, from years it was never trained on —
+        and every number now carries the interval it was always entitled to. That matters in both
+        directions: the AUC target sits <em>outside</em> the interval, so the miss is real rather
+        than noise, while the Brier target sits <em>inside</em> it, so &ldquo;near&rdquo; is the
+        honest word and there is now a reason for it.
+      </p>
+    </div>
+
+    <div class="table-scroll" data-a-headline></div>
+
+    <p class="stat-note" data-results-caption></p>
+
+    <div class="callout" style="margin-block:2.5rem">
+      <p>
+        <strong>The gap is discrimination, not calibration — and that is now an identity, not a claim.</strong>
+        Decomposing the Brier score gives <span class="mono">0.2286 = reliability 0.0033 &minus; resolution 0.0240 + uncertainty 0.2496</span>.
+        Reliability near zero is the calibration half. Resolution of 0.024 against a ceiling of 0.250 is the
+        discrimination half. The model&rsquo;s probabilities are honest; it simply cannot spread them far apart,
+        which is why the roadmap targets features rather than recalibration.
+        One correction to the older version of this paragraph: the site used to quote
+        <span class="struck">ECE 0.011</span>, a figure measured on the superseded three-stream model.
+        Re-measured on the bundle actually shipping, it is <span class="rev">0.049</span> &mdash; still inside the
+        target, no longer &ldquo;near-perfect&rdquo;.
+      </p>
+    </div>
+
+    <div data-a-murphy></div>
+    <div style="max-width:34rem;margin-top:2rem" data-a-reliability></div>
+
+    <p style="margin-top:1.75rem">
+      <a class="btn btn-primary" href="model.html">All twelve model charts &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= CORRECTIONS LEDGER ================= -->
+<section class="section" id="corrections">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The ledger</p>
+      <h2>Everything this project got wrong,<br>and the mechanism that fixed it.</h2>
+      <p class="lede" style="margin-top:1rem">
+        In August 2026 every published figure was recomputed from the raw records. Four findings
+        reversed, one contradicted a guarantee printed in the methods section, and the model's
+        headline calibration number turned out to belong to a model this site no longer ships.
+        None of it has been deleted. A portfolio whose pitch is calibrated honesty does not get
+        to quietly edit its own conclusions, and the ledger turned out to be more persuasive than
+        the conclusions were.
+      </p>
+    </div>
+    <div data-a-ledger></div>
+    <p class="stat-note" style="margin-top:1.5rem">
+      Struck text is what the site published. Amber is what the data says. Every row names the
+      mechanism &mdash; the specific analytical move that changed the answer &mdash; and the file
+      you can check it in.
+    </p>
+  </div>
+</section>
+
+<!-- ================= DISCOVERIES TEASER ================= -->
+<section class="section" id="discoveries">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Beyond prediction</p>
+      <h2>What the data actually says.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Prediction is the engine. The findings are the payload — what falls out when you read
+        fights as <strong>sequences</strong> and eras as <strong>populations</strong>.
+      </p>
+    </div>
+    <div class="grid-3">
+      <a class="card" href="discoveries.html#sequence">
+        <span class="card-tag">Computed · n = 41,392 rounds</span>
+        <h3>The ground emptied out.</h3>
+        <p>In the 1990s, 44% of landed strikes happened on the ground. Today: 9%. Wrestling didn't disappear — it changed jobs, and the data shows exactly how.</p>
+        <span class="card-more">See the sequence data →</span>
+      </a>
+      <a class="card" href="discoveries.html#warnings">
+        <span class="card-tag">Computed · n = 3,184 knockdowns</span>
+        <h3>The round before the end has a fingerprint.</h3>
+        <p>Suffer one knockdown and the loss rate is 85.6%. Knockouts announce themselves through damage; submissions through territory — measured, per round.</p>
+        <span class="card-more">See the warning signs →</span>
+      </a>
+      <a class="card" href="discoveries.html#bodies">
+        <span class="card-tag">Computed · n = 8,377 fights</span>
+        <h3>Age beats reach.</h3>
+        <p>A seven-year age gap is worth more than five inches of reach. The forest plot settles a decades-old commentary argument — with confidence intervals.</p>
+        <span class="card-more">See what advantages are worth →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DRIVERS ================= -->
+<section class="section" id="drivers">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What drives a prediction</p>
+      <h2>Style matchup outranks raw output.</h2>
+    </div>
+
+    <div class="split">
+      <div>
+        <p class="lede" style="margin-bottom:1.5rem" data-feature-insight></p>
+        <p>
+          This was not the expected result. Striking volume, Elo and age differential
+          are the features every fight model reaches for first, and all three sit below
+          a pair of unsupervised cluster memberships derived from a Gaussian mixture over
+          fighting-style statistics.
+        </p>
+        <p>
+          The interpretation is the interesting part: the model is telling us that
+          <em>who a fighter is stylistically</em> — pressure striker, distance
+          counter-puncher, wrestler, submission hunter — predicts outcomes better than
+          how much of anything they do. That matches how the sport is actually discussed
+          and rarely how it is actually modelled.
+        </p>
+        <p>
+          It also explains the sparse-fighter weakness documented further down. If the
+          strongest feature is a cluster assignment, then a fighter with too few bouts to
+          cluster confidently is a fighter the model is quietly guessing about.
+        </p>
+      </div>
+      <div>
+        <div class="chart-card">
+          <h3 class="chart-title">Feature importance</h3>
+          <p class="chart-sub">Top ten features by gain, XGBoost stream. Style-derived features in red.</p>
+          <div class="fbars" data-features></div>
+          <div data-features-caveat></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:clamp(3rem,6vw,5rem)">
+      <div class="sticky-side">
+        <p class="eyebrow">One fight, decomposed</p>
+        <h2 data-shap-title>Case study</h2>
+        <p style="margin-top:1rem;color:var(--fg-70);font-size:.98rem">
+          Aggregate importance tells you what the model cares about in general. SHAP
+          tells you what moved a single number — which is what anyone actually wants to
+          know when they disagree with a prediction.
+        </p>
+      </div>
+      <div class="chart-card">
+        <div class="shap-prob" data-shap-prob></div>
+        <div data-shap></div>
+        <div data-shap-caveat></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDIES TEASER ================= -->
+<section class="section" id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Stress-tested on real cards</p>
+      <h2>Where it met the sport.</h2>
+      <p class="lede" style="margin-top:1rem">
+        A backtest on historical data is a laboratory result. Running the model against
+        2026 cards as they happened is the part that finds the things the laboratory
+        could not.
+      </p>
+    </div>
+    <div class="grid-2" data-case-teasers></div>
+    <p style="margin-top:2rem">
+      <a class="btn btn-ghost" href="case-studies.html">All card breakdowns →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= LIMITS ================= -->
+<section class="section" id="limits">
+  <div class="wrap split">
+    <div class="sticky-side">
+      <p class="eyebrow">Where it breaks</p>
+      <h2>Three things this model cannot currently do.</h2>
+      <p style="margin-top:1rem;color:var(--fg-70);font-size:.98rem">
+        Listed because a limitation you have named is a limitation you can work on,
+        and one you have hidden is a limitation that will surface in front of someone
+        else.
+      </p>
+    </div>
+    <div data-limitations></div>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section class="section" id="roadmap">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Roadmap</p>
+      <h2>Closing the discrimination gap.</h2>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Planned work</th>
+            <th>Estimated gain</th>
+            <th>Why it should help</th>
+            <th>Stage</th>
+          </tr>
+        </thead>
+        <tbody data-roadmap></tbody>
+      </table>
+    </div>
+    <p class="stat-note" data-roadmap-note></p>
+  </div>
+</section>
+
+<!-- ================= LIVE TOOL ================= -->
+<section class="section" id="live">
+  <div class="wrap">
+    <div class="tool">
+      <div>
+        <p class="eyebrow">Try it live</p>
+        <h3>The dashboard is the model, not a screenshot of it.</h3>
+        <p style="color:var(--fg-70);font-size:.98rem">
+          Pick any two fighters and the tool runs the full ensemble: a calibrated win
+          probability, a method-of-victory breakdown, the statistical differentials
+          behind it, and the SHAP drivers for that specific matchup.
+        </p>
+        <p style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="#" data-dashboard>Open the dashboard →</a>
+        </p>
+      </div>
+      <ul data-dashboard-features></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RIGOR ================= -->
+<section class="section" id="rigor">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Engineering</p>
+      <h2>Built as a system, not a notebook.</h2>
+    </div>
+    <div class="grid-2" data-rigor></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 data-author>Safwat Al Azad</h2>
+        <p style="margin-top:1rem;color:var(--fg-70);font-size:.98rem" data-blurb></p>
+        <p style="color:var(--fg-70);font-size:.98rem">
+          MetricCage is where I work out what production machine learning actually
+          demands — leakage discipline, calibration, honest reporting — on a problem
+          messy enough to punish shortcuts.
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="contact-list" data-contact></ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>MetricCage · <span data-year></span></span>
+      <span>Fraunces · Source Serif 4 · IBM Plex Mono</span>
+      <span>No trackers, no analytics, no cookies.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/real-stats.js"></script>
+<script src="data/site-data.js"></script>
+<script src="data/corrections.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/audit.js"></script>
+<script>
+/* page-specific fill-ins that read straight from SITE */
+(function () {
+  var e = SITE.ensemble, m = SITE.meta;
+  var set = function (sel, txt) { var el = document.querySelector(sel); if (el) el.textContent = txt; };
+  set("[data-blend]", e.blend);
+  set("[data-calibration]", e.calibration);
+  set("[data-method-head]", e.methodHead);
+  set("[data-blurb]", m.blurb);
+  set("[data-feature-insight]", SITE.featureImportance.insight);
+
+  var jump = document.querySelector("[data-dashboard-jump]");
+  if (jump) jump.setAttribute("href", "#live");
+
+  var links = [
+    ["GitHub", m.github],
+    ["Email", "mailto:" + m.email],
+    ["CV (PDF)", m.cv],
+    ["LinkedIn", m.linkedin]
+  ].filter(function (l) { return l[1]; });
+
+  var ul = document.querySelector("[data-contact]");
+  if (ul) ul.innerHTML = links.map(function (l) {
+    return '<li><a href="' + l[1] + '"><span class="k">' + l[0] + '</span><span>→</span></a></li>';
+  }).join("");
+})();
+</script>
+</body>
+</html>

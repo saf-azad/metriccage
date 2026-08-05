@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model evidence — MetricCage</title>
+<meta name="description" content="The full evidence for a calibrated UFC prediction model: Murphy decomposition, forecast distribution, baseline ladder, leave-one-out ablation, permutation importance, and the blind spot measured rather than described.">
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/audit.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="index.html" data-site-name>MetricCage</a>
+    <div class="nav-links">
+      <a href="discoveries.html">Discoveries</a>
+      <a href="model.html" aria-current="page">Model evidence</a>
+      <a href="#identity">Identity</a>
+      <a href="#worth" class="nav-hide-sm">What it beats</a>
+      <a href="#blindspot" class="nav-hide-sm">Blind spot</a>
+      <a href="index.html#corrections">Corrections</a>
+      <a href="case-studies.html">Case studies</a>
+    </div>
+  </div>
+</nav>
+
+<div data-a-ticker></div>
+
+<header class="hero" style="padding-bottom:clamp(2rem,4vw,3rem)">
+  <div class="wrap">
+    <p class="hero-chip fx">695 blind-test fights · 4-stream ensemble</p>
+    <h1 class="fx" style="font-size:clamp(2.4rem,1.4rem+5vw,5.5rem)">Show the<br><span class="hl">working.</span></h1>
+    <p class="hero-sub fx">
+      This site used to assert that the model had <strong>excellent calibration and mediocre
+      discrimination</strong>, and then show neither the forecast distribution nor a baseline.
+      Every chart below exists because that sentence deserved evidence. Two of them ended up
+      contradicting things published elsewhere on this site.
+    </p>
+    <p class="fx" style="margin-top:1.2rem" data-a-record></p>
+  </div>
+</header>
+
+<!-- ===== IDENTITY ===== -->
+<section class="section" id="identity">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01 · the central claim, as arithmetic</p>
+      <h2>Calibration and discrimination are two terms of one equation.</h2>
+      <p class="lede" style="margin-top:1rem">
+        Murphy&rsquo;s decomposition splits the Brier score into exactly the two quantities this
+        project argues about, plus the part nobody can beat. Stating them separately turns an
+        assertion into an identity.
+      </p>
+    </div>
+    <div data-a-murphy></div>
+    <div data-a-sharpness style="margin-top:2rem"></div>
+    <div style="max-width:34rem;margin-top:2rem" data-a-reliability></div>
+  </div>
+</section>
+
+<!-- ===== WHAT IT BEATS ===== -->
+<section class="section" id="worth">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">02 · value added</p>
+      <h2>A four-model ensemble is worth exactly what it beats.</h2>
+      <p class="lede" style="margin-top:1rem">
+        The first question any reviewer asks about an ensemble is whether it outperforms its own
+        best component. The second is what each component is actually contributing. The site used
+        to answer neither, and showed the fitted <em>weights</em> as if they were a result.
+      </p>
+    </div>
+    <div data-a-ladder></div>
+    <div data-a-ablation></div>
+  </div>
+</section>
+
+<!-- ===== DRIVERS ===== -->
+<section class="section" id="drivers">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">03 · what actually drives it</p>
+      <h2>Two ways to rank a feature. They disagree completely.</h2>
+      <p class="lede" style="margin-top:1rem">
+        XGBoost&rsquo;s built-in gain is biased toward continuous and high-cardinality splits and
+        is unstable across refits. It was also being read off one stream carrying a third of the
+        ensemble weight, to support a claim about the whole system.
+      </p>
+    </div>
+    <div data-a-importance></div>
+    <div data-a-shap></div>
+  </div>
+</section>
+
+<!-- ===== BLIND SPOT ===== -->
+<section class="section" id="blindspot">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">04 · the limitation, measured</p>
+      <h2>A fighter&rsquo;s record begins the day they enter the UFC.</h2>
+      <p class="lede" style="margin-top:1rem">
+        This is the project&rsquo;s top stated structural limitation, and it used to be supported
+        by one anecdote about a card in Macau. An anecdote is not a limitation; it is a story about
+        one. Here is the same claim as a measurement, and here is what the anecdote is actually
+        worth once you ask the right question of it.
+      </p>
+    </div>
+    <div data-a-experience></div>
+    <div data-a-card></div>
+  </div>
+</section>
+
+<!-- ===== STABILITY ===== -->
+<section class="section" id="stability">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">05 · stability</p>
+      <h2>In-sample years, marked as in-sample.</h2>
+    </div>
+    <div data-a-brier></div>
+    <div class="callout" style="margin-top:2rem">
+      <p>
+        <strong>Reproduction.</strong> Every figure on this page comes from re-scoring the shipped
+        four-stream bundle on the frozen temporal split &mdash; train 2005&ndash;2022, validate 2023,
+        test 2024-01-01 to 2025-05-04, giving 5,563 / 504 / 695 fights. The re-score reproduces the
+        bundle&rsquo;s own recorded test metrics to within 1&times;10<sup>&minus;16</sup>, so nothing here is an
+        approximation of the deployed model &mdash; it <em>is</em> the deployed model. Scripts:
+        <span class="mono">analysis/model_eval.py</span>, <span class="mono">analysis/model_eval2.py</span>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT'S STILL MISSING ===== -->
+<section class="section" id="missing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">06 · named, not hidden</p>
+      <h2>What this page still cannot show you.</h2>
+    </div>
+    <div class="grid-2a">
+      <div class="audit-note">
+        <b>The closing line.</b> The pipeline diagram lists BestFightOdds as a source and the odds
+        scraper is a documented stub, so no market corpus exists over the test window. Model
+        log-loss against the closing line on the same 695 fights is the single most informative
+        chart this page could carry, and it is the one it does not have. Losing to the market would
+        still be a strong result if the margin were shown.
+      </div>
+      <div class="audit-note">
+        <b>Method of victory.</b> The two-stage head reports AUC around 0.56 in prose and appears in
+        no chart. A three-class reliability plot or a confusion matrix would be more convincing than
+        the confession, because it would show the thing was measured.
+      </div>
+      <div class="audit-note">
+        <b>Pre-UFC records.</b> Named as the top structural limitation and now quantified
+        (&minus;0.114 AUC on near-debutant matchups), but not yet fixed. Tapology and Sherdog are
+        already in the collection step; even a crude count of prior professional fights would turn
+        the blind spot into a confidence modifier.
+      </div>
+      <div class="audit-note">
+        <b>A better calibrator.</b> Isotonic on 504 validation fights emits 24 distinct values.
+        Beta calibration, or isotonic refit on a larger validation window, would keep the calibration
+        and return the resolution the step function is currently throwing away. Untested here, so
+        unclaimed here.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="stat-note">
+      MetricCage &mdash; <span data-author>Safwat Al Azad</span>.
+      <a href="index.html#corrections">The corrections ledger</a> lists every claim this audit changed.
+    </p>
+  </div>
+</footer>
+
+<script src="data/real-stats.js"></script>
+<script src="data/site-data.js"></script>
+<script src="data/corrections.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/audit.js"></script>
+</body>
+</html>
