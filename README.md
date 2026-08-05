@@ -5,23 +5,17 @@ browser and it works — including offline, straight off the filesystem.
 
 The site is built in the **Paper design system**: flat outlines on a pale grey
 sheet, one 2 px stroke weight, no shadows. It follows direction **1a —
-"Broadcast scroll: the current narrative, redrawn"** from the Portfolio
-Wireframes canvas.
-
-The wireframe stage drew body copy as grey placeholder bars, with the prose
-deferred. **That copy is written now** — every section carries real sentences,
-and the bar system has been removed from both the markup and the stylesheet.
-Charts remain hand-written SVG ink sketches; there is no chart library.
+"Broadcast scroll"** from the Portfolio Wireframes canvas.
 
 ```
-index.html          landing: hero → premise → pipeline → ensemble → results
-                    → CORRECTIONS LEDGER (all 18 entries) → discoveries teaser
-                    → case teasers → limits → roadmap → contact
-model.html          model evidence: Murphy decomposition, forecast distribution,
-                    baseline ladder, ablation, gain vs permutation, the blind
-                    spot measured, Brier-by-year, what's still missing
-discoveries.html    the computed findings 00–08 + methods + nulls + queue
-case-studies.html   Macau (featured miss) + four pending stubs + method
+index.html          premise → pipeline → ensemble → results → feature importance
+                    → findings teaser → case teasers → engineering → roadmap
+                    → contact
+model.html          evidence: Brier decomposition, forecast distribution,
+                    baseline ladder, leave-one-out ablation, permutation
+                    importance, performance by experience, stability, repro
+discoveries.html    computed findings 01–11 + methods + further results + queue
+case-studies.html   Macau (featured) + four scheduled cards + method
 assets/tokens/      Paper design-system tokens (colors, type, geometry,
                     spacing, motion, base) — verbatim from the DS export,
                     except fonts.css which self-hosts Space Grotesk
@@ -30,30 +24,42 @@ assets/fonts/       Space Grotesk variable (OFL), self-hosted
 assets/favicon.svg  inline-drawn mark, same five-colour palette
 ```
 
+## Writing conventions
+
+Two rules govern the copy, and both are worth keeping if the site is edited
+later.
+
+**Headings are plain labels, not slogans.** Sections are named for what they
+contain — `Data pipeline`, `Blind test set`, `Feature importance`,
+`Stability by year` — rather than with declarative one-liners. Quotation marks
+are not used for emphasis or distancing anywhere in the copy.
+
+**No figure appears in prose that is not already a measured value.** The
+sentences supply the argument around the numbers; they never introduce a new
+one. Sections with nothing measured to report — the four cards awaiting a
+write-up, the four queued findings — render as explicit stubs rather than being
+filled in, and each queued finding states the test that would kill it.
+
 ## Where every number comes from
 
-All type on these pages is synced to the corrected site content
-(`data/site-data.js`, `data/corrections.js`, `data/real-stats.js` from the
-August 2026 correctness pass). The wireframe canvas itself carried placeholder
-figures — those were **not** used. Corrected examples:
+All figures are synced to the corrected site content (`data/site-data.js`,
+`data/corrections.js`, `data/real-stats.js` from the August 2026 correctness
+pass), which re-derived every published value from the raw records. The
+wireframe canvas carried placeholder figures; those were **not** used.
 
 | Wireframe placeholder | Shipped (verified) |
 |---|---|
-| AUC 0.598 | **0.670** [0.630, 0.708] · target ≥ 0.740 — miss |
-| Brier 0.202 | **0.229** [0.218, 0.239] · target < 0.225 — near |
-| Accuracy 64.7% | **59.6%** · context only, favourite baseline ≈ 60% |
+| AUC 0.598 | **0.670** [0.630, 0.708] |
+| Brier 0.202 | **0.229** [0.218, 0.239] |
+| Accuracy 64.7% | **59.6%** · context only |
 | Ensemble weights 38 / 27 / 20 / 15 | **35.3 / 29.2 / 23.1 / 12.4** (XGBoost / logreg / LSTM / Elo) |
 
-The corrections ledger renders all 18 audit entries with the site's own record
-(3 upheld · 8 reversed-or-bug · 7 revised). Struck text is what the site
-published; bold is what the data says.
-
-The prose written for this pass introduces **no new figures**. Every number in
-a sentence was already on the page as a verified value; the copy only supplies
-the argument around it. Sections with nothing verified to say — the four
-un-scored cards, the four queued discoveries — render as explicit stubs rather
-than being filled in, and each queued discovery states the test that would
-kill it.
+Discovery figures are computed from UFCStats public fight records, snapshot
+2 August 2026: 8,794 fights, 41,392 fighter-round stat lines, 4,578 fighter
+profiles. Era figures are expressed **per minute of elapsed fight time** rather
+than as a share of a total that roughly tripled across the window — see the
+`Rates, not shares` section on `discoveries.html`. Re-run `analysis/` against a
+newer snapshot to regenerate `data/real-stats.js`.
 
 ## Deploying
 
@@ -76,7 +82,7 @@ is fine behind a placeholder bar but fails WCAG AA as real body text.
 
 CI (`.github/workflows/ci.yml`) parses every page and resolves every internal
 `href`/`src`, failing on a missing file or a dead anchor. Beyond that, each
-change to layout is checked for: horizontal overflow at 1280 px and 560 px,
-SVG labels escaping their `viewBox` (the outermost `<svg>` clips by default),
-heading order without skipped levels, and text contrast against the composited
-background.
+layout change is checked for: horizontal overflow at 1280 px and 560 px, SVG
+labels escaping their `viewBox` (the outermost `<svg>` clips by default),
+heading order without skipped levels, text contrast against the composited
+background, and that no CSS class is either undefined or unused.

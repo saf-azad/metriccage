@@ -69,13 +69,7 @@ h3{font-size:16px;line-height:var(--leading-snug)}
 .note-wide{max-width:76ch}
 .note b,.sub b,.prose b{color:var(--ink);font-weight:var(--weight-bold)}
 .num{font-variant-numeric:tabular-nums}
-.struck{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--text-quiet)}
 
-/* Line break that only applies once there is room for it. A heading that sets
-   its own breaks must not also be measure-capped, or the two fight and the
-   result is a ragged extra line. */
-.lb{display:none}
-h1:has(.lb),h2:has(.lb){max-width:none}
 
 /* ---- Prose ------------------------------------------------------------------
    The written layer. Replaces the wireframe's grey placeholder bars. */
@@ -100,7 +94,6 @@ h1:has(.lb),h2:has(.lb){max-width:none}
 .tag{display:inline-flex;align-items:center;height:20px;padding:0 9px;border-radius:var(--radius-pill);font-size:10px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase}
 .t-hit{background:var(--action-solid);color:var(--action-solid-text)}
 .t-near{background:var(--fill);color:var(--ink)}
-.t-miss{border:var(--border);color:var(--ink)}
 .t-neutral{background:var(--slate-a15);color:var(--text-quiet)}
 
 /* ---- Layout helpers ---------------------------------------------------------- */
@@ -173,15 +166,6 @@ h1:has(.lb),h2:has(.lb){max-width:none}
 .legend .lr .name{font-size:12.5px;font-weight:var(--weight-medium)}
 .legend .lr .pct{margin-left:auto;font-size:13px;font-weight:var(--weight-bold);font-variant-numeric:tabular-nums}
 
-/* ---- Ledger ------------------------------------------------------------------------ */
-.ledger{display:flex;flex-direction:column;gap:10px;margin-top:24px}
-.lrow{display:grid;grid-template-columns:86px 1fr 170px;gap:16px;align-items:baseline;border:var(--border);border-radius:var(--radius-md);padding:13px 16px}
-.lrow .sev{font-size:9.5px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-quiet)}
-.lrow .sev.rev{color:var(--ink);font-weight:var(--weight-bold)}
-.lrow .claim{font-size:12.5px;line-height:1.65}
-.lrow .claim .arrow{color:var(--text-quiet);padding:0 5px}
-.lrow .claim b{font-weight:var(--weight-bold)}
-.lrow .mech{font-size:10.5px;color:var(--text-quiet);text-align:right;line-height:1.5}
 
 /* ---- Charts -------------------------------------------------------------------------- */
 .chart-card{border:var(--border);border-radius:var(--radius-lg);padding:16px 18px 14px}
@@ -223,14 +207,10 @@ h1:has(.lb),h2:has(.lb){max-width:none}
 
 /* ---- Responsive ---------------------------------------------------------------------------------
    Desktop-first, matching the wireframe. Three steps down rather than one cliff. */
-@media (min-width:881px){
-  .lb{display:block}
-}
 @media (max-width:1080px){
   .band{padding:44px 40px}
   .band-tight{padding:28px 40px}
   .split{grid-template-columns:250px 1fr;gap:32px}
-  .lrow{grid-template-columns:78px 1fr 140px;gap:12px}
 }
 @media (max-width:880px){
   body{padding:16px 10px}
@@ -244,8 +224,6 @@ h1:has(.lb),h2:has(.lb){max-width:none}
   .sticky-side{position:static}
   h1{font-size:34px;max-width:none}
   h2{font-size:22px;max-width:none}
-  .lrow{grid-template-columns:1fr;gap:8px}
-  .lrow .mech{text-align:left}
   .panel{margin:12px;padding:28px 24px;border-radius:var(--radius-2xl)}
 }
 @media (max-width:560px){
