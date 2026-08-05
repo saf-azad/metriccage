@@ -1,0 +1,52 @@
+/* Paper — colour. Five values do the whole system: paper, ink, slate, fill, white.
+   Every value below is lifted verbatim from the source wireframe exports. */
+:root{
+  /* Base */
+  --paper:#ECF0F3;              /* the screen itself — every frame is filled with this */
+  --ink:#000000;                /* all strokes, all solid keys, all type */
+  --white:#FFFFFF;              /* only ever used as a lift inside an ink panel */
+  --slate:#9CABC2;              /* the one accent: placeholder media + placeholder prose */
+  --fill:#D0D8E2;              /* opaque placeholder fill (keys, media, chips) */
+  --fill-soft:#DCE0E9;
+  --fill-mid:#CCD1D9;
+  --steel:#92A0A9;              /* darkest end of the ring gradient */
+
+  /* Ink alphas — the kit never uses grey hex values, only black at opacity */
+  --ink-a15:rgba(0,0,0,.15);
+  --ink-a50:rgba(0,0,0,.5);     /* the standard "text" grey — a 5px or 3px bar */
+  --ink-a60:rgba(0,0,0,.6);
+
+  /* Slate alphas — the placeholder ladder. 0.15 empty, 0.35 media, 0.6 prose */
+  --slate-a15:rgba(156,171,194,.15);
+  --slate-a35:rgba(156,171,194,.35);
+  --slate-a60:rgba(156,171,194,.6);
+
+  /* Semantic aliases */
+  --surface-screen:var(--paper);
+  --surface-sheet:var(--paper);
+  --surface-card:transparent;    /* cards are outline-only; the screen shows through */
+  --surface-panel:var(--ink);     /* the inverted container */
+  --surface-panel-card:var(--paper);
+  --surface-media:var(--slate-a35);
+  --surface-media-solid:var(--fill);
+  --surface-tile:var(--slate-a15);
+  --surface-key:var(--fill);
+
+  --text-body:var(--ink);
+  --text-muted:var(--ink-a50);
+  --text-invert:var(--white);
+  --text-bar:var(--ink-a50);      /* the grey bar that stands in for a line of copy */
+  --text-bar-prose:var(--slate-a60); /* the blue bar that stands in for a paragraph */
+
+  --line:var(--ink);              /* every border in the kit */
+  --line-media:var(--slate);
+  --line-soft:var(--slate-a35);
+
+  --action-solid:var(--ink);      /* filled pill button */
+  --action-solid-text:var(--white);
+  --action-outline:transparent;   /* outline pill button */
+  --action-outline-text:var(--ink);
+  --action-disabled:var(--fill);
+
+  --focus-ring:var(--ink);
+}

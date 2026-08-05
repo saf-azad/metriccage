@@ -1,0 +1,44 @@
+/* Paper — type. Two layers:
+   1. Real type. Space Grotesk only, small, tight, used for keys, numerals and labels.
+   2. Bar type. Prose is drawn as flat bars — a 5px bar is a heading, a 3px bar is a line
+      of body copy. Widths carry the meaning (135 title / 105 subtitle / 285 full line). */
+:root{
+  --font-sans:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --font-core:var(--font-sans);
+  --font-mono:"Space Grotesk",ui-monospace,monospace;
+
+  --weight-light:300;
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-bold:700;
+
+  /* Real type scale — the source only ever renders type this small */
+  --text-xs:11px;      /* number-grid cells */
+  --text-sm:13px;      /* keyboard letters */
+  --text-md:15px;      /* keypad digits, "Go", "123" */
+  --text-lg:18px;      /* card labels in a live build */
+  --text-xl:22px;      /* screen title in a live build */
+
+  --leading-tight:1.05;
+  --leading-snug:1.25;
+  --leading-body:1.5;
+  --tracking-tight:-0.01em;
+  --tracking-normal:0;
+  --tracking-wide:0.04em;
+
+  /* Bar type — the wireframe stand-in for text */
+  --bar-h-title:5px;
+  --bar-h-body:3px;
+  --bar-w-title:135px;
+  --bar-w-subtitle:105px;
+  --bar-w-value:165px;
+  --bar-w-line:285px;
+  --bar-w-line-short:240px;
+  --bar-w-line-shorter:210px;
+  --bar-gap-title:10px;   /* 5px bar, 10px gap → 15px pitch */
+  --bar-gap-body:8px;     /* 3px bar, 8px gap  → 11px pitch */
+
+  --text-title:var(--text-xl);
+  --text-label:var(--text-sm);
+  --text-key:var(--text-md);
+}

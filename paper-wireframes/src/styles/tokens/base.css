@@ -1,0 +1,10 @@
+/* Paper — minimal element defaults. Kept deliberately thin; components carry their own
+   styling via the tokens above. */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--text-body);font-family:var(--font-sans);font-weight:var(--weight-regular);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none;border-bottom:var(--stroke-hair) solid var(--ink-a50);transition:var(--transition-state)}
+a:hover{border-bottom-color:var(--ink)}
+a:active{color:var(--ink-a60)}
+svg{display:block}
+button{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:var(--stroke) solid var(--focus-ring);outline-offset:2px}
