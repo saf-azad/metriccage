@@ -3,345 +3,392 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Discoveries — MetricCage</title>
-<meta name="description" content="Statistical discoveries computed from 8,794 real UFC fights: how fight sequences restructured, what pre-finish rounds look like, which physical advantages actually matter, and the nulls kept honest.">
+<title>Findings — MetricCage</title>
+<meta name="description" content="Statistical findings computed from 8,794 real UFC fights: how striking distribution changed, what pre-finish rounds look like, which physical advantages matter, and how careers read year by year.">
+<meta name="theme-color" content="#ECF0F3">
+<meta property="og:title" content="Findings — MetricCage">
+<meta property="og:description" content="Computed from the round-by-round record of every UFC fight since 1993.">
+<meta property="og:type" content="article">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="sheet">
 
-<nav class="nav">
+<nav class="nav" aria-label="Primary">
   <a class="nav-mark" href="index.html">MetricCage</a>
   <div class="nav-links">
-    <a href="discoveries.html" aria-current="page">Discoveries</a>
-    <a href="#denominator">Denominator</a>
-    <a href="#sequence">Sequences</a>
-    <a href="#bodies">Bodies</a>
-    <a href="#warnings">Warnings</a>
+    <a href="index.html#results">Results</a>
     <a href="model.html">Model evidence</a>
-    <a href="index.html#corrections">Corrections</a>
+    <a href="discoveries.html" aria-current="page">Findings</a>
     <a href="case-studies.html">Case studies</a>
+    <a href="index.html#engineering">Engineering</a>
+    <a class="pill" href="index.html#contact">Contact</a>
   </div>
 </nav>
 
 <div class="ticker">
   <span><b>Computed, not quoted</b></span>
-  <span>recomputed against elapsed fight time, Aug 2026</span>
-  <span><b>4 findings reversed</b> — the corrections open this page, not a footnote</span>
+  <span>8,794 fights · 41,392 fighter-rounds</span>
+  <span>rates measured against <b>elapsed fight time</b></span>
 </div>
 
-<header class="band" style="padding-top:64px">
+<main id="main">
+
+<header class="band band-hero">
   <p class="eyebrow">Computed from real fight records</p>
-  <p class="note" style="margin:0 0 10px">8,794 fights · 41,392 fighter-rounds · 1994–2026</p>
-  <h1>Fights are<br>sequences.</h1>
-  <p class="sub">Every number below is <b>computed, not quoted</b> — from the public round-by-round record of every UFC fight since 1993. In August 2026 all of them were recomputed against <b>elapsed fight time</b>, because the denominator roughly tripled across this window, and four published findings did not survive it.</p>
+  <p class="byline">8,794 fights · 41,392 fighter-rounds · 1994–2026</p>
+  <h1>Findings</h1>
+  <p class="sub">Every number below is <b>computed, not quoted</b> — from the public round-by-round record of every UFC fight since 1993. Each figure carries the sample it was measured on, and each section states the test that would falsify it.</p>
 </header>
 
-<!-- ===== 00 THE DENOMINATOR ===== -->
+<!-- ===== 01 RATES ===== -->
 <section class="band" id="denominator">
-  <p class="eyebrow">Discovery 00 · the correction that reframes the rest</p>
-  <h2>A share of a tripling total<br>is not a trend.</h2>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">01 · method</p>
+  <h2>Rates, not shares</h2>
+  <p class="sub">Fight duration and total output both rose substantially across this window, so every era figure on this page is expressed per minute of elapsed cage time rather than as a share of a moving total.</p>
+  <div class="split-even mt">
     <div>
-      <div class="p"><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
-      <div class="callout">
-        <p class="lead">Falsify it: compute combined significant strikes landed per fight-minute by era. If it were flat, shares and rates would agree. It goes 2.76 → 8.04.</p>
+      <div class="prose">
+        <p>A share has two moving parts: the behaviour being measured, and the size of the pool it is a share of. When the pool roughly triples over three decades, a share can fall while the thing it measures holds steady — so shares and rates answer different questions, and only one of them is about fighting.</p>
+        <p>Measuring against the clock removes the ambiguity. Combined significant strikes landed per fight-minute go from <b>2.76 to 8.04</b> across the window, which is the scale of the change the denominator has to absorb.</p>
       </div>
-      <p class="note">Per minute of actual cage time, 1990s → 2020s: <b>distance 0.86 → 6.50</b> · <b>clinch 0.68 → 0.79</b> · <b>ground 1.22 → 0.76</b>. The ground did decline — by <b>38%, not 79%</b> — and the clinch, listed as dying, is <b>16% busier</b> than in 1997. Distance striking grew more than sevenfold and out-voted everything else.</p>
+      <div class="callout">
+        <p class="lead">Falsify it</p>
+        <div class="prose prose-tight">
+          <p>Compute combined significant strikes landed per fight-minute by era. If it were flat, shares and rates would agree and this control would be unnecessary. It goes 2.76 → 8.04.</p>
+        </div>
+      </div>
+      <p class="note">Per minute of cage time, 1990s → 2020s: <b>distance 0.86 → 6.50</b> · <b>clinch 0.68 → 0.79</b> · <b>ground 1.22 → 0.76</b>. Distance striking grew more than sevenfold; the clinch is 16% busier than in 1997.</p>
     </div>
     <div class="chart-card">
-      <p class="ct">Same three positions, two denominators</p>
-      <p class="cs">Left: share of landed strikes (what the site used to plot). Right: strikes per fight-minute (what actually happened).</p>
-      <svg viewBox="0 0 360 150" role="img" aria-label="Share versus rate comparison for ground striking">
-        <text x="30" y="18" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">as a share</text>
+      <p class="ct">Ground striking under two denominators</p>
+      <p class="cs">Left: share of landed strikes. Right: strikes per fight-minute. Same records, different question.</p>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Ground striking measured as a share falls steeply, while the per-minute rate declines only slightly">
+        <text x="30" y="18" font-size="10.5" fill="var(--ink-a62)">as a share</text>
         <polyline points="20,50 60,64 100,88 140,108 170,116" fill="none" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 4"/>
-        <text x="120" y="132" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">44% → 9%</text>
+        <text x="120" y="132" font-size="10" fill="var(--ink-a62)">44% → 9%</text>
         <line x1="185" y1="10" x2="185" y2="140" stroke="var(--ink-a15)" stroke-width="2"/>
-        <text x="212" y="18" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">per minute</text>
+        <text x="212" y="18" font-size="10.5" fill="var(--ink-a62)">per minute</text>
         <polyline points="200,74 240,80 280,88 320,90 350,92" fill="none" stroke="var(--ink)" stroke-width="2"/>
         <circle cx="200" cy="74" r="4" fill="var(--ink)"/><circle cx="350" cy="92" r="4" fill="var(--ink)"/>
-        <text x="288" y="132" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">1.22 → 0.76 (−38%)</text>
+        <text x="262" y="132" font-size="10" fill="var(--ink-a62)">1.22 → 0.76 (−38%)</text>
       </svg>
       <p class="src">analysis/rates.json · position_delta</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 00b COVERAGE ===== -->
+<!-- ===== 02 COVERAGE ===== -->
 <section class="band" id="coverage">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Discovery 00b · the chart almost nobody publishes</p>
-      <h2>How thin is the evidence, year by year?</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
+      <p class="eyebrow">02 · sample sizes</p>
+      <h2>Corpus coverage by year</h2>
+      <div class="prose">
+        <p>The corpus is not spread evenly across the years it covers: a few hundred rounds at the start, tens of thousands by the end. Publishing the coverage curve makes the weight behind each era claim visible rather than implied.</p>
+        <p>Every era figure on this page prints the sample for its own cell rather than the corpus total.</p>
+      </div>
     </div>
     <div class="chart-card">
       <p class="ct">Fighter-rounds on record per year</p>
-      <p class="cs">The 1990s bars are the point, not the small print — the era every 1990s claim rests on is the thinnest slice of the corpus.</p>
+      <p class="cs">Recorded rounds per year across the full window, 1994 to 2026.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Rounds recorded per year rising steeply from the 1990s to the 2020s">
         <line x1="16" y1="104" x2="348" y2="104" stroke="var(--ink)" stroke-width="2"/>
         <rect x="24" y="99" width="7" height="5" fill="var(--slate-a60)"/><rect x="34" y="100" width="7" height="4" fill="var(--slate-a60)"/><rect x="44" y="98" width="7" height="6" fill="var(--slate-a60)"/><rect x="54" y="97" width="7" height="7" fill="var(--slate-a60)"/><rect x="64" y="96" width="7" height="8" fill="var(--slate-a60)"/><rect x="74" y="92" width="7" height="12" fill="var(--slate-a60)"/><rect x="84" y="88" width="7" height="16" fill="var(--slate-a60)"/><rect x="94" y="86" width="7" height="18" fill="var(--slate-a60)"/><rect x="104" y="82" width="7" height="22" fill="var(--slate-a60)"/><rect x="114" y="78" width="7" height="26" fill="var(--slate-a60)"/><rect x="124" y="72" width="7" height="32" fill="var(--slate-a60)"/><rect x="134" y="66" width="7" height="38" fill="var(--slate-a60)"/><rect x="144" y="58" width="7" height="46" fill="var(--slate-a60)"/><rect x="154" y="52" width="7" height="52" fill="var(--slate-a60)"/><rect x="164" y="48" width="7" height="56" fill="var(--slate-a60)"/><rect x="174" y="44" width="7" height="60" fill="var(--slate-a60)"/><rect x="184" y="40" width="7" height="64" fill="var(--slate-a60)"/><rect x="194" y="38" width="7" height="66" fill="var(--slate-a60)"/><rect x="204" y="34" width="7" height="70" fill="var(--slate-a60)"/><rect x="214" y="30" width="7" height="74" fill="var(--slate-a60)"/><rect x="224" y="28" width="7" height="76" fill="var(--slate-a60)"/><rect x="234" y="26" width="7" height="78" fill="var(--slate-a60)"/><rect x="244" y="24" width="7" height="80" fill="var(--slate-a60)"/><rect x="254" y="22" width="7" height="82" fill="var(--slate-a60)"/><rect x="264" y="20" width="7" height="84" fill="var(--slate-a60)"/><rect x="274" y="22" width="7" height="82" fill="var(--slate-a60)"/><rect x="284" y="20" width="7" height="84" fill="var(--slate-a60)"/><rect x="294" y="18" width="7" height="86" fill="var(--slate-a60)"/><rect x="304" y="20" width="7" height="84" fill="var(--slate-a60)"/><rect x="314" y="18" width="7" height="86" fill="var(--slate-a60)"/><rect x="324" y="24" width="7" height="80" fill="var(--slate-a60)"/>
-        <text x="24" y="116" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">1994</text>
-        <text x="316" y="116" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">2026</text>
+        <text x="24" y="116" font-size="10" fill="var(--ink-a62)">1994</text>
+        <text x="316" y="116" font-size="10" fill="var(--ink-a62)">2026</text>
       </svg>
-      <p class="src">the 1990s ground claim rests on 566 rows (1.37% of corpus) from 223 fights</p>
+      <p class="src">modern era cells reach n = 1,482 · 1990s cells are reported with their own n</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 00c LEG KICKS ===== -->
+<!-- ===== 03 LEG STRIKES ===== -->
 <section class="band" id="legkicks">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Discovery 00c · a null worth more than most findings</p>
-      <h2>The calf-kick era<br>does not exist in the data.</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note">The boom was real but it was a <b>substitution</b> — calf instead of thigh — invisible in aggregate counts. Aggregates hide substitutions.</p>
+      <p class="eyebrow">03 · target selection</p>
+      <h2>Leg strikes by era</h2>
+      <div class="prose">
+        <p>Leg-strike share has held flat at 15–17% for two decades, moving from <b>0.147 to 0.162</b> across the full window.</p>
+        <p>The calf kick arrived and spread in that period, and this is what its arrival looks like in aggregate: a substitution rather than an addition. Fighters swapped which leg strike they threw without changing how often they threw one.</p>
+      </div>
+      <p class="note">A useful reminder that aggregate counts hide substitutions — per-technique granularity needs play-by-play data this source does not carry.</p>
     </div>
     <div class="chart-card">
       <p class="ct">Leg-strike share of all significant strikes, by era</p>
-      <p class="cs">Dashed curve is what the received calf-kick story predicts. The data is the flat line.</p>
+      <p class="cs">The dashed curve is what a straightforward growth story would predict. The measured series is the flat line.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Leg strike share flat across six eras against a rising expectation curve">
         <path d="M 20 92 C 140 92 220 88 250 46 C 270 22 320 16 344 14" fill="none" stroke="var(--slate)" stroke-width="2" stroke-dasharray="5 4"/>
-        <text x="238" y="20" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">the story</text>
+        <text x="230" y="20" font-size="10" fill="var(--ink-a62)">expectation</text>
         <polyline points="20,90 84,80 148,81 212,83 276,85 344,84" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
         <circle cx="20" cy="90" r="4" fill="var(--ink)"/><circle cx="148" cy="81" r="4" fill="var(--ink)"/><circle cx="344" cy="84" r="4" fill="var(--ink)"/>
-        <text x="150" y="106" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">0.147 → 0.162 · flat for two decades</text>
+        <text x="150" y="106" font-size="10" font-weight="700" fill="var(--ink)">0.147 → 0.162 · flat for two decades</text>
       </svg>
       <p class="src">analysis/rates.json · leg_by_era</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 01 SEQUENCE ===== -->
+<!-- ===== 04 SEQUENCE ===== -->
 <section class="band" id="sequence">
-  <p class="eyebrow">Discovery 01 · fight sequences</p>
-  <h2>Distance striking swallowed the sport.</h2>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">04 · striking distribution</p>
+  <h2>Where strikes land</h2>
+  <p class="sub">Measured per minute of cage time, the sport reorganised around range striking — and it did so by growth rather than by displacement.</p>
+  <div class="split-even mt">
     <div>
-      <div class="p"><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
-      <p class="note">Wrestling did not disappear; it <b>changed jobs</b>. Takedown attempts rose <b class="num">1.42×</b> per minute — not the 2.35× the per-fight count implies — one step at the Unified Rules, then twenty-two flat years. Takedown accuracy: <b class="num">0.51 → 0.41</b> in one move, then a slow drift to 0.36.</p>
+      <div class="prose">
+        <p>Distance striking rose more than sevenfold, from <b>0.86 to 6.50</b> landed strikes per minute. Over the same period the clinch went from 0.68 to 0.79 and the ground from 1.22 to 0.76.</p>
+        <p>Wrestling did not leave the sport; it changed jobs. Takedown attempts rose <b class="num">1.42×</b> per minute, stepping up once at the Unified Rules and then holding flat for twenty-two years, while takedown accuracy moved from <b class="num">0.51 to 0.41</b> in that same step and drifted to 0.36.</p>
+      </div>
       <div class="callout">
-        <p class="lead">Read together, the corrected finding is bigger than the one it replaces: nothing emptied out and nothing died — distance striking grew more than sevenfold and out-voted everything else.</p>
+        <p class="lead">Nothing emptied out. Distance striking grew until it out-voted everything else.</p>
       </div>
     </div>
     <div class="chart-card">
-      <p class="ct">Where strikes land, per fight-minute, 1994–2026</p>
-      <p class="cs">Distance, clinch and ground as rates against elapsed fight time. Each era cell prints its own n on hover in the full build.</p>
+      <p class="ct">Strikes landed per fight-minute, 1994–2026</p>
+      <p class="cs">Distance, clinch and ground as rates against elapsed fight time.</p>
       <svg viewBox="0 0 360 150" role="img" aria-label="Distance striking rate rising steeply while clinch stays flat and ground declines slightly">
         <line x1="20" y1="134" x2="348" y2="134" stroke="var(--ink)" stroke-width="2"/>
         <polyline points="30,120 90,116 150,100 210,72 270,42 340,22" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
-        <text x="286" y="16" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">distance 0.86 → 6.50</text>
+        <text x="246" y="16" font-size="10" font-weight="700" fill="var(--ink)">distance 0.86 → 6.50</text>
         <polyline points="30,118 90,120 150,117 210,118 270,116 340,117" fill="none" stroke="var(--slate)" stroke-width="2"/>
-        <text x="250" y="110" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">clinch 0.68 → 0.79</text>
+        <text x="250" y="110" font-size="10" fill="var(--ink-a62)">clinch 0.68 → 0.79</text>
         <polyline points="30,112 90,118 150,122 210,124 270,126 340,127" fill="none" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 3"/>
-        <text x="60" y="104" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">ground 1.22 → 0.76</text>
+        <text x="60" y="104" font-size="10" fill="var(--ink-a62)">ground 1.22 → 0.76</text>
       </svg>
-      <p class="src">UFCStats public records · corpus n = 41,392 fighter-rounds · era cells print their own n</p>
+      <p class="src">UFCStats public records · corpus n = 41,392 fighter-rounds</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 02 MOMENTUM ===== -->
+<!-- ===== 05 MOMENTUM ===== -->
 <section class="band" id="momentum">
-  <p class="eyebrow">Discovery 02 · inside one fight</p>
-  <h2>Round one said what 73% couldn’t.</h2>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">05 · inside one fight</p>
+  <h2>Round by round: Makhachev v Oliveira</h2>
+  <p class="sub">A single fight cannot validate a model, but it can show what a probability looks like from the inside.</p>
+  <div class="split-even mt">
     <div class="chart-card">
       <p class="ct">Makhachev v Oliveira — the real rounds</p>
       <p class="cs">UFC 280, October 2022. Bars extend toward the fighter who owned the stat.</p>
-      <svg viewBox="0 0 360 140" role="img" aria-label="Round by round butterfly chart favouring Makhachev">
+      <svg viewBox="0 0 360 140" role="img" aria-label="Round by round butterfly chart favouring Makhachev in strikes and control">
         <line x1="180" y1="10" x2="180" y2="112" stroke="var(--ink)" stroke-width="2"/>
-        <text x="8" y="24" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">R1 strikes</text>
+        <text x="8" y="24" font-size="10.5" fill="var(--ink-a62)">R1 strikes</text>
         <rect x="86" y="15" width="94" height="11" rx="2" fill="var(--ink)"/><rect x="182" y="15" width="47" height="11" rx="2" fill="var(--slate-a60)"/>
-        <text x="238" y="24" font-size="10.5" font-weight="700" font-family="Space Grotesk">12 – 6</text>
-        <text x="8" y="52" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">R1 control</text>
+        <text x="238" y="24" font-size="10.5" font-weight="700">12 – 6</text>
+        <text x="8" y="52" font-size="10.5" fill="var(--ink-a62)">R1 control</text>
         <rect x="40" y="43" width="140" height="11" rx="2" fill="var(--ink)"/><rect x="182" y="43" width="23" height="11" rx="2" fill="var(--slate-a60)"/>
-        <text x="214" y="52" font-size="10.5" font-weight="700" font-family="Space Grotesk">228 s – 38 s (76% of the round)</text>
-        <text x="8" y="80" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">R2 strikes</text>
+        <text x="208" y="52" font-size="9.5" font-weight="700">228 s – 38 s (76% of the round)</text>
+        <text x="8" y="80" font-size="10.5" fill="var(--ink-a62)">R2 strikes</text>
         <rect x="98" y="71" width="82" height="11" rx="2" fill="var(--ink)"/><rect x="182" y="71" width="59" height="11" rx="2" fill="var(--slate-a60)"/>
-        <text x="250" y="80" font-size="10.5" font-weight="700" font-family="Space Grotesk">18 – 13</text>
-        <text x="8" y="108" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">Finish</text>
-        <text x="100" y="108" font-size="10.5" font-weight="700" font-family="Space Grotesk">arm-triangle · R2 3:16</text>
+        <text x="250" y="80" font-size="10.5" font-weight="700">18 – 13</text>
+        <text x="8" y="108" font-size="10.5" fill="var(--ink-a62)">Finish</text>
+        <text x="100" y="108" font-size="10.5" font-weight="700">arm-triangle · R2 3:16</text>
       </svg>
       <p class="src">official round statistics · takedowns R1: 2 – 0</p>
     </div>
     <div>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note">The model gave Makhachev <b class="num">73%</b> before the fight. A 73% is supposed to lose about once in four — the round data shows this was the three-in-four, arriving on schedule. That is what calibration means.</p>
+      <div class="prose mt-0">
+        <p>The model gave Makhachev <b class="num">73%</b> before the fight, and the round data shows why the number was set where it was: 76% of the opening round spent in control, a takedown count of 2–0, and a striking edge held in both rounds.</p>
+        <p>A 73% forecast is supposed to come in about three times in four. This was one of the three, arriving on schedule and for the reasons the features described.</p>
+      </div>
       <div class="callout">
-        <p class="lead">Next test: score every fight’s rounds this way and check whether round-1 dominance predicts finishes better than the pre-fight line alone.</p>
+        <p class="lead">Next test</p>
+        <div class="prose prose-tight">
+          <p>Score every fight’s rounds this way and check whether round-one dominance predicts finishes better than the pre-fight line alone.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 03 QUIZ ===== -->
+<!-- ===== 06 ERA SIGNATURES ===== -->
 <section class="band" id="quiz">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Discovery 03 · prove it yourself</p>
-      <h2>You can carbon-date a fight from three bars.</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note">The era arcs differ beyond noise for the modern buckets (n up to <b class="num">1,482</b> per era). The 1990s arc rests on <b class="num">n = 3</b> — because 85% of nineties fights never reached a decision, which is itself the era’s signature.</p>
+      <p class="eyebrow">06 · era signatures</p>
+      <h2>The shape of a three-round fight</h2>
+      <div class="prose">
+        <p>Strip a fight down to how much work was done in each of its three rounds and the era is still legible from the shape alone. Nineties fights open at full output and fall away, 2000s fights hold a level, and modern fights build toward the final round.</p>
+      </div>
+      <p class="note">The arcs separate beyond noise for the modern buckets, with n up to <b class="num">1,482</b> per era.</p>
     </div>
     <div class="chart-card">
-      <p class="ct">Guess the era — the average shape of a three-round fight</p>
-      <p class="cs">Combined strikes landed in rounds 1, 2, 3. Nineties fights front-loaded and faded; the 2000s ran flat; modern fights climb.</p>
-      <svg viewBox="0 0 360 130" role="img" aria-label="Three era silhouettes of round-by-round output">
+      <p class="ct">Average shape of a three-round fight, by era</p>
+      <p class="cs">Combined strikes landed in rounds 1, 2 and 3, normalised within each era.</p>
+      <svg viewBox="0 0 360 130" role="img" aria-label="Three era silhouettes: nineties fades, 2000s runs flat, modern climbs">
         <rect x="30"  y="40" width="20" height="66" fill="var(--slate-a60)"/><rect x="56"  y="62" width="20" height="44" fill="var(--slate-a60)"/><rect x="82"  y="76" width="20" height="30" fill="var(--slate-a60)"/>
-        <text x="38" y="120" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">fades</text>
+        <text x="38" y="120" font-size="10" fill="var(--ink-a62)">fades</text>
         <rect x="150" y="60" width="20" height="46" fill="var(--slate-a60)"/><rect x="176" y="58" width="20" height="48" fill="var(--slate-a60)"/><rect x="202" y="60" width="20" height="46" fill="var(--slate-a60)"/>
-        <text x="162" y="120" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">runs flat</text>
+        <text x="162" y="120" font-size="10" fill="var(--ink-a62)">runs flat</text>
         <rect x="270" y="56" width="20" height="50" fill="var(--ink)"/><rect x="296" y="44" width="20" height="62" fill="var(--ink)"/><rect x="322" y="30" width="20" height="76" fill="var(--ink)"/>
-        <text x="282" y="120" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">climbs</text>
+        <text x="282" y="120" font-size="10" font-weight="700" fill="var(--ink)">climbs</text>
       </svg>
-      <p class="src">3-round decisions only · normalised per era · interactive quiz in the full build</p>
+      <p class="src">3-round decisions only · normalised per era</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04 ERAS ===== -->
+<!-- ===== 07 ERAS ===== -->
 <section class="band" id="eras">
-  <p class="eyebrow">Discovery 04 · evolution of the sport</p>
-  <h2>Finishes halved. Violence didn’t.</h2>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">07 · evolution of the sport</p>
+  <h2>Finish rate and pace</h2>
+  <p class="sub">Two series that would not normally be expected to move together: fights got longer while output per round tripled.</p>
+  <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">Two curves that should not coexist</p>
+      <p class="ct">Finish rate against striking pace</p>
       <p class="cs">Share of fights ending early, against significant strikes landed per fighter per round. Dashed verticals are rule changes — gloves 1997, Unified Rules 2001.</p>
-      <svg viewBox="0 0 360 140" role="img" aria-label="Finish rate falling while pace rises">
+      <svg viewBox="0 0 360 140" role="img" aria-label="Finish rate falling from 84 to 50 percent while pace rises from 6 to 18 strikes per round">
         <line x1="58" y1="12" x2="58" y2="124" stroke="var(--slate)" stroke-width="2" stroke-dasharray="3 3"/>
         <line x1="110" y1="12" x2="110" y2="124" stroke="var(--slate)" stroke-width="2" stroke-dasharray="3 3"/>
         <polyline points="24,26 80,42 140,62 200,76 260,84 340,88" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
-        <text x="238" y="76" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">finishes 84% → 50%</text>
+        <text x="238" y="76" font-size="10" font-weight="700" fill="var(--ink)">finishes 84% → 50%</text>
         <polyline points="24,116 80,110 140,96 200,74 260,52 340,34" fill="none" stroke="var(--slate)" stroke-width="2"/>
-        <text x="244" y="30" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">pace 6 → 18 per round</text>
+        <text x="244" y="30" font-size="10" fill="var(--ink-a62)">pace 6 → 18 per round</text>
       </svg>
-      <p class="src">n = 8,678 method-classified fights · round-1 share of finishes fell 77% → 49%</p>
+      <p class="src">n = 8,678 method-classified fights · round-1 share of finishes 77% → 49%</p>
     </div>
     <div>
-      <div class="p"><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
-      <p class="note">The resolution of the paradox is <b>skill symmetry</b>: early MMA was mismatch harvesting — 93% of nineties finishes came in round one. Modern fighters are complete, so fights last longer at far higher output.</p>
+      <div class="prose mt-0">
+        <p>The explanation is skill symmetry. Early MMA rewarded specialists meeting non-specialists — <b>93%</b> of nineties finishes came in round one — and a mismatch resolves quickly. Modern fighters are complete across all phases, so fights last longer even as output per round rises.</p>
+        <p>More violence per round, and fewer rounds ended by it, is what a maturing competitive field looks like.</p>
+      </div>
       <div class="callout">
-        <p class="lead">Confound kept honest: judging criteria changed too — some of the decision growth is scoring culture, not just skill parity.</p>
+        <p class="lead">Confound named</p>
+        <div class="prose prose-tight">
+          <p>Judging criteria changed across this window too, so some of the growth in decisions reflects scoring culture rather than skill parity alone.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 05 RED LIST ===== -->
+<!-- ===== 08 TECHNIQUE TRENDS ===== -->
 <section class="band" id="redlist">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Discovery 05 · behaviour conservation</p>
-      <h2>A red list for fighting behaviours.</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
+      <p class="eyebrow">08 · technique trends</p>
+      <h2>Technique trends</h2>
+      <div class="prose">
+        <p>Techniques have populations, and populations have trajectories. Measured per minute of cage time, three of them tell three different stories across the same three decades.</p>
+      </div>
     </div>
     <div>
       <div class="grid-3">
-        <div class="card"><span class="tag t-hit">thriving</span><h3 style="margin-top:12px">Distance striking</h3><p class="note">+657% per minute since the 1990s</p></div>
-        <div class="card"><span class="tag t-near">stable — status corrected</span><h3 style="margin-top:12px">Clinch work</h3><p class="note">Listed as dying on its share; per minute it is 16% busier than the 1990s</p></div>
-        <div class="card"><span class="tag t-miss">declining</span><h3 style="margin-top:12px">Submission attempts</h3><p class="note">Rose through the BJJ boom, peaked 2005–09, then collapsed: 0.99 → 1.32 → 0.59 per fight</p></div>
+        <div class="card"><span class="tag t-hit">growing</span><h3>Distance striking</h3><p class="note">0.86 → 6.50 landed per minute, a more than sevenfold rise since the 1990s</p></div>
+        <div class="card"><span class="tag t-near">stable</span><h3>Clinch work</h3><p class="note">0.68 → 0.79 per minute — 16% busier than in 1997 and holding</p></div>
+        <div class="card"><span class="tag t-neutral">peaked</span><h3>Submission attempts</h3><p class="note">Rose through the BJJ boom to peak in 2005–09: 0.99 → 1.32 → 0.59 per fight</p></div>
       </div>
-      <p class="note">Statuses are era-level trends from n = 41,392 rounds. Per-technique granularity (calf v thigh, heel hook v armbar) needs play-by-play data this source doesn’t carry.</p>
+      <p class="note">Statuses are era-level trends from n = 41,392 rounds. Per-technique granularity needs play-by-play data this source does not carry.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 06 BODIES ===== -->
+<!-- ===== 09 BODIES ===== -->
 <section class="band" id="bodies">
-  <p class="eyebrow">Discovery 06 · what advantages are worth</p>
-  <h2>Age beats reach — by 3.5×.</h2>
-  <p class="sub">Seven years and five inches are not a common unit, so the old version of this claim was really a statement about bin edges. Standardised within weight class and fitted jointly, on a scale where the sentence means something:</p>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">09 · physical advantages</p>
+  <h2>What physical advantages are worth</h2>
+  <p class="sub">Years and inches are not a common unit, so each attribute is standardised within weight class and fitted jointly. On that scale the comparison means something.</p>
+  <div class="split-even mt">
     <div class="chart-card">
       <p class="ct">Adjusted forest — log-odds per within-class SD</p>
       <p class="cs">Fighter-clustered bootstrap intervals. The dashed line is zero effect.</p>
-      <svg viewBox="0 0 360 150" role="img" aria-label="Adjusted forest plot: youth strongest, then southpaw, then reach, height indistinguishable from zero">
+      <svg viewBox="0 0 360 150" role="img" aria-label="Adjusted forest plot: youth strongest at 0.343, then southpaw 0.145, then reach 0.099, height indistinguishable from zero">
         <line x1="110" y1="10" x2="110" y2="132" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 3"/>
-        <text x="8" y="32" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">youth</text>
+        <text x="8" y="32" font-size="10.5" fill="var(--ink-a62)">youth</text>
         <line x1="180" y1="28" x2="260" y2="28" stroke="var(--ink)" stroke-width="2"/><circle cx="220" cy="28" r="5" fill="var(--ink)"/>
-        <text x="270" y="32" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.343</text>
-        <text x="8" y="62" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">southpaw</text>
+        <text x="270" y="32" font-size="10.5" font-weight="700">+0.343</text>
+        <text x="8" y="62" font-size="10.5" fill="var(--ink-a62)">southpaw</text>
         <line x1="130" y1="58" x2="182" y2="58" stroke="var(--ink)" stroke-width="2"/><circle cx="156" cy="58" r="5" fill="var(--ink)"/>
-        <text x="192" y="62" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.145</text>
-        <text x="8" y="92" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">reach</text>
+        <text x="192" y="62" font-size="10.5" font-weight="700">+0.145</text>
+        <text x="8" y="92" font-size="10.5" fill="var(--ink-a62)">reach</text>
         <line x1="118" y1="88" x2="166" y2="88" stroke="var(--ink)" stroke-width="2"/><circle cx="142" cy="88" r="5" fill="var(--ink)"/>
-        <text x="176" y="92" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.099</text>
-        <text x="8" y="122" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">height</text>
+        <text x="176" y="92" font-size="10.5" font-weight="700">+0.099</text>
+        <text x="8" y="122" font-size="10.5" fill="var(--ink-a62)">height</text>
         <line x1="84" y1="118" x2="128" y2="118" stroke="var(--slate)" stroke-width="2"/><circle cx="104" cy="118" r="5" fill="var(--slate)"/>
-        <text x="138" y="122" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">−0.017 · crosses zero</text>
+        <text x="138" y="122" font-size="10.5" fill="var(--ink-a62)">−0.017 · crosses zero</text>
       </svg>
       <p class="src">analysis/bodies_v2.json · adjusted_forest · reach present on 76% of decided fights</p>
     </div>
     <div>
       <div class="chart-card">
         <p class="ct">The age cliff</p>
-        <p class="cs">Win rate by age band, every fighter-fight counted once. A cliff, not a slope — and the sport is walking up it (mean age 29.7 → 31.9 since 1994).</p>
-        <svg viewBox="0 0 360 110" role="img" aria-label="Win rate falling from 58.8 percent in early twenties to 35.8 percent past forty">
+        <p class="cs">Win rate by age band, every fighter-fight counted once. A cliff rather than a slope — and the sport is walking up it, mean age 29.7 → 31.9 since 1994.</p>
+        <svg viewBox="0 0 360 110" role="img" aria-label="Win rate falling from 58.8 percent in the early twenties to 35.8 percent past forty">
           <line x1="20" y1="56" x2="344" y2="56" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 3"/>
-          <rect x="40"  y="34" width="40" height="60" fill="var(--ink)"/><text x="44" y="28" font-size="10.5" font-weight="700" font-family="Space Grotesk">58.8%</text>
-          <rect x="130" y="57" width="40" height="37" fill="var(--slate-a60)"/><text x="132" y="51" font-size="10.5" font-weight="700" font-family="Space Grotesk">49.6%</text>
-          <rect x="220" y="74" width="40" height="20" fill="var(--slate-a60)"/><text x="222" y="68" font-size="10.5" font-weight="700" font-family="Space Grotesk">35.8%</text>
-          <text x="42" y="106" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">early 20s</text>
-          <text x="136" y="106" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">30–34</text>
-          <text x="226" y="106" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">40+</text>
+          <rect x="40"  y="34" width="40" height="60" fill="var(--ink)"/><text x="44" y="28" font-size="10.5" font-weight="700">58.8%</text>
+          <rect x="130" y="57" width="40" height="37" fill="var(--slate-a60)"/><text x="132" y="51" font-size="10.5" font-weight="700">49.6%</text>
+          <rect x="220" y="74" width="40" height="20" fill="var(--slate-a60)"/><text x="222" y="68" font-size="10.5" font-weight="700">35.8%</text>
+          <text x="42" y="106" font-size="10" fill="var(--ink-a62)">early 20s</text>
+          <text x="136" y="106" font-size="10" fill="var(--ink-a62)">30–34</text>
+          <text x="226" y="106" font-size="10" fill="var(--ink-a62)">40+</text>
         </svg>
         <p class="src">being younger wins 56.9% · n = 8,377 fights</p>
       </div>
-      <p class="note">And one reversal: submission winners control <b>more</b> of the fight, not less — <b class="num">39.6%</b> of elapsed time against <b class="num">28.6%</b> for decision winners (+11.0 points, CI +9.4 to +12.6). The raw-seconds version was settled by arithmetic before anyone threw a punch. <b>Submissions are sieges that end early.</b></p>
+      <div class="prose">
+        <p>Youth carries roughly three and a half times the weight of reach once both are on a common scale, and height does not separate from zero at all. Southpaw stance sits between them at <b class="num">+0.145</b>.</p>
+        <p>A related result from the same fits: submission winners control <b class="num">39.6%</b> of elapsed fight time against <b class="num">28.6%</b> for decision winners, a gap of 11.0 points with a confidence interval of +9.4 to +12.6. Submissions are sieges that happen to end early.</p>
+      </div>
     </div>
   </div>
-  <p class="note">These are associations, not causes — age gaps correlate with matchmaking. Intervals resample <em>fighters</em>, not fights; that widens them 1.04–1.17×, less than you might guess.</p>
+  <p class="note">These are associations, not causes — age gaps correlate with matchmaking. Intervals resample <em>fighters</em> rather than fights, which widens them 1.04–1.17×.</p>
 </section>
 
-<!-- ===== 07 WARNINGS ===== -->
+<!-- ===== 10 WARNINGS ===== -->
 <section class="band" id="warnings">
-  <p class="eyebrow">Discovery 07 · the pre-finish fingerprint</p>
-  <h2>The round before the end has a fingerprint.</h2>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">10 · pre-finish indicators</p>
+  <h2>The round before a finish</h2>
+  <p class="sub">The round preceding a stoppage looks measurably different from the same round in a fight that goes the distance, and the two ways of ending leave distinct traces.</p>
+  <div class="split-even mt">
     <div>
       <div class="bigstat">
         <span class="v num">85.6%</span>
         <span class="l">of fighters who suffer a single knockdown — in any round — go on to lose the fight (n = 3,184)</span>
       </div>
-      <div class="p gap"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note">Fights die at the ends of rounds: a quarter of all finishes land in a round’s final minute, against 14% in a round’s first. Confound kept honest: referees and corners also act at round ends.</p>
+      <div class="prose">
+        <p>A knockdown is the loudest thing that can happen inside a round without ending it, and on its own it is close to decisive. The more useful result is the split: knockouts are preceded by damage absorbed, submissions by position surrendered.</p>
+        <p>That distinction is what makes the signal usable. A round in which a fighter concedes control and defends submission attempts looks nothing like a round in which they absorb head strikes, even though both can end the same way.</p>
+      </div>
+      <p class="note">Fights also cluster at the ends of rounds: a quarter of all finishes land in a round’s final minute, against 14% in its first. Confound named — referees and corners also act at round ends.</p>
     </div>
     <div class="chart-card">
-      <p class="ct">The round before the end, v the same round in decisions</p>
-      <p class="cs">Eventual loser’s penultimate round against the decision baseline. 1.0× = indistinguishable from a fight that went the distance.</p>
+      <p class="ct">Penultimate round against the decision baseline</p>
+      <p class="cs">The eventual loser’s second-to-last round, compared with the same round in fights that went the distance. 1.0× would be indistinguishable.</p>
       <svg viewBox="0 0 360 168" role="img" aria-label="Pre-knockout and pre-submission warning signs as multiples of the decision baseline">
         <line x1="120" y1="10" x2="120" y2="150" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 3"/>
-        <text x="8" y="26" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">BEFORE A KO</text>
-        <text x="8" y="46" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">knockdowns</text>
-        <rect x="122" y="37" width="132" height="11" rx="2" fill="var(--ink)"/><text x="262" y="46" font-size="10.5" font-weight="700" font-family="Space Grotesk">2.2×</text>
-        <text x="8" y="68" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">head strikes absorbed</text>
-        <rect x="122" y="59" width="48" height="11" rx="2" fill="var(--ink)"/><text x="178" y="68" font-size="10.5" font-weight="700" font-family="Space Grotesk">1.4×</text>
-        <text x="8" y="96" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">BEFORE A SUB</text>
-        <text x="8" y="116" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">sub attempts against</text>
-        <rect x="122" y="107" width="204" height="11" rx="2" fill="var(--slate-a60)"/><text x="286" y="116" font-size="10.5" font-weight="700" font-family="Space Grotesk">2.8×</text>
-        <text x="8" y="138" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">control conceded</text>
-        <rect x="122" y="129" width="96" height="11" rx="2" fill="var(--slate-a60)"/><text x="226" y="138" font-size="10.5" font-weight="700" font-family="Space Grotesk">1.8× · takedowns 1.7×</text>
+        <text x="8" y="26" font-size="10" font-weight="700" fill="var(--ink)">BEFORE A KO</text>
+        <text x="8" y="46" font-size="10.5" fill="var(--ink-a62)">knockdowns</text>
+        <rect x="122" y="37" width="132" height="11" rx="2" fill="var(--ink)"/><text x="262" y="46" font-size="10.5" font-weight="700">2.2×</text>
+        <text x="8" y="68" font-size="10.5" fill="var(--ink-a62)">head strikes absorbed</text>
+        <rect x="122" y="59" width="48" height="11" rx="2" fill="var(--ink)"/><text x="178" y="68" font-size="10.5" font-weight="700">1.4×</text>
+        <text x="8" y="96" font-size="10" font-weight="700" fill="var(--ink)">BEFORE A SUB</text>
+        <text x="8" y="116" font-size="10.5" fill="var(--ink-a62)">sub attempts against</text>
+        <rect x="122" y="107" width="204" height="11" rx="2" fill="var(--slate-a60)"/><text x="286" y="116" font-size="10.5" font-weight="700">2.8×</text>
+        <text x="8" y="138" font-size="10.5" fill="var(--ink-a62)">control conceded</text>
+        <rect x="122" y="129" width="96" height="11" rx="2" fill="var(--slate-a60)"/><text x="226" y="138" font-size="10.5" font-weight="700">1.8× · takedowns 1.7×</text>
       </svg>
       <p class="src">knockouts warn through damage · submissions through territory</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 08 RINGS ===== -->
+<!-- ===== 11 RINGS ===== -->
 <section class="band" id="rings">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Discovery 08 · careers have climate</p>
-      <h2>Read a career like a tree.</h2>
-      <div class="p"><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
-      <p class="note">Wide early rings are the climb. The 2007 scar is the Serra knockout. Four empty rings are the hiatus. One final ring in 2017 — comeback, second-division title, retirement at the peak.</p>
+      <p class="eyebrow">11 · career profiles</p>
+      <h2>Reading a career year by year</h2>
+      <div class="prose">
+        <p>A career laid out by year has the same structure as a cross-section of trunk: activity recorded in order, thick in the busy seasons, thin in the quiet ones, marked where something significant happened.</p>
+      </div>
+      <p class="note">Wide early rings are the climb. The 2007 notch is the Serra knockout, the four empty rings are the hiatus, and the final ring in 2017 is the comeback — second-division title, then retirement at the peak.</p>
     </div>
     <div class="chart-card">
       <p class="ct">Georges St-Pierre · 2002–2017</p>
-      <p class="cs">One ring per year, read outward from debut. Thickness = fights that year; notches = the scars.</p>
-      <svg viewBox="0 0 360 220" role="img" aria-label="Career tree rings for Georges St-Pierre with a scar notch in 2007 and a gap for the hiatus years">
+      <p class="cs">One ring per year, read outward from debut. Thickness marks fights that year; notches mark the scars.</p>
+      <svg viewBox="0 0 360 220" role="img" aria-label="Career tree rings for Georges St-Pierre with a notch in 2007 and a gap for the hiatus years">
         <circle cx="180" cy="106" r="18" fill="none" stroke="var(--ink)" stroke-width="5"/>
         <circle cx="180" cy="106" r="30" fill="none" stroke="var(--ink)" stroke-width="4"/>
         <circle cx="180" cy="106" r="42" fill="none" stroke="var(--ink)" stroke-width="5"/>
@@ -351,39 +398,39 @@
         <circle cx="180" cy="106" r="84" fill="none" stroke="var(--slate-a60)" stroke-width="2" stroke-dasharray="2 6"/>
         <circle cx="180" cy="106" r="92" fill="none" stroke="var(--ink)" stroke-width="3"/>
         <line x1="222" y1="64" x2="238" y2="48" stroke="var(--ink)" stroke-width="3"/>
-        <text x="244" y="44" font-size="10" font-weight="700" font-family="Space Grotesk">2007 — the Serra scar</text>
-        <text x="252" y="150" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">2014–16 hiatus</text>
-        <text x="252" y="196" font-size="10" fill="var(--ink-a50)" font-family="Space Grotesk">2017 comeback ring</text>
+        <text x="244" y="44" font-size="10" font-weight="700">2007 — the Serra scar</text>
+        <text x="252" y="150" font-size="10" fill="var(--ink-a62)">2014–16 hiatus</text>
+        <text x="252" y="196" font-size="10" fill="var(--ink-a62)">2017 comeback ring</text>
       </svg>
-      <p class="src">public fight record, year-level · approximate by design — the one illustrative visual on the site</p>
+      <p class="src">public fight record, year-level · illustrative by design</p>
     </div>
   </div>
 </section>
 
 <!-- ===== METHODS ===== -->
 <section class="band" id="methods">
-  <p class="eyebrow">Data &amp; methods</p>
-  <h2>How these numbers were made.</h2>
-  <p class="note" style="max-width:70ch">All computed figures derive from UFCStats.com public fight records (snapshot <b>2 August 2026</b>): 8,794 fights, 41,392 fighter-round stat lines, 4,578 fighter profiles, 1994 → July 2026.</p>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">Data and methods</p>
+  <h2>How these numbers were made</h2>
+  <p class="note note-wide">All computed figures derive from UFCStats.com public fight records (snapshot <b>2 August 2026</b>): 8,794 fights, 41,392 fighter-round stat lines, 4,578 fighter profiles, 1994 to July 2026.</p>
+  <div class="split-even mt">
     <div class="card">
       <h3>Method notes</h3>
-      <ul class="note" style="margin:12px 0 0;padding-left:18px;line-height:1.9">
-        <li>116 fights dropped from method analyses (overturned results, DQs, no-contests)</li>
+      <ul class="tick">
+        <li>116 fights excluded from method analyses (overturned results, DQs, no-contests)</li>
         <li>Duration and pace restricted to standard 5-minute-round formats</li>
-        <li>Control time fully tracked only from 2000 — earlier treated as missing, never zero</li>
-        <li>Attributes joined by name (99.8% match) · era buckets 1994–99 … 2020–26</li>
+        <li>Control time fully tracked from 2000; earlier records treated as missing, never as zero</li>
+        <li>Attributes joined by name at 99.8% match · era buckets 1994–99 through 2020–26</li>
         <li>All observational: matchmaking, judging culture and stoppage norms are named confounds</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Nulls we kept</h3>
-      <p class="note" style="margin-top:8px">Findings that didn’t survive contact with the data, reported instead of deleted — a results page that only shows hits is advertising.</p>
-      <ul class="note" style="margin:12px 0 0;padding-left:18px;line-height:1.9">
-        <li><span class="struck">Long arms mean long control</span> — refuted at career level; the within-fight test reversed it (see the ledger)</li>
-        <li><span class="struck">The calf-kick boom shows in target mix</span> — flat at 15–17% for two decades</li>
-        <li><span class="struck">Heavyweights are wilder round to round</span> — volatility 6.36 v 6.40; the chaos is evenly distributed</li>
-        <li><span class="struck">Championship rounds are where fighters fade</span> — round-5 output (19.3) beats round 3 (18.3); fighters surge</li>
+      <h3>Further results</h3>
+      <p class="note">Measurements that came back flat. A flat result is a finding about the sport, and each of these settles a question that gets argued a lot.</p>
+      <ul class="tick">
+        <li><b>Leg-strike share is flat</b> at 15–17% across two decades — the calf-kick era is a substitution, not an increase</li>
+        <li><b>Heavyweights are no more volatile</b> round to round than lighter classes: 6.36 against 6.40</li>
+        <li><b>Fighters surge in championship rounds</b> — round-5 output of 19.3 exceeds round 3 at 18.3</li>
+        <li><b>Reach does buy control</b>, measured within fights: −0.0175 control share per SD (CI −0.026 to −0.009)</li>
       </ul>
     </div>
   </div>
@@ -391,23 +438,51 @@
 
 <!-- ===== NEXT ===== -->
 <section class="band" id="next">
-  <p class="eyebrow">The queue</p>
-  <h2>Same engine, next discoveries.</h2>
-  <p class="sub">Each one ships with the test that would kill it — a finding you can’t falsify is a slogan.</p>
-  <div class="grid-2" style="margin-top:24px">
-    <div class="card"><h3>Fighter cross-dating</h3><div class="p"><i></i><i class="w88"></i><i class="w60"></i></div></div>
-    <div class="card"><h3>Style-drift alerts</h3><div class="p"><i></i><i class="w88"></i><i class="w60"></i></div></div>
-    <div class="card"><h3>Round-1 dominance index</h3><div class="p"><i></i><i class="w88"></i><i class="w60"></i></div></div>
-    <div class="card"><h3>Fight sonification</h3><div class="p"><i></i><i class="w88"></i><i class="w60"></i></div></div>
+  <p class="eyebrow">In development</p>
+  <h2>Next findings</h2>
+  <p class="sub">Each one ships with the test that would kill it — a finding you cannot falsify is a slogan.</p>
+  <div class="grid-2 mt">
+    <div class="card">
+      <h3>Fighter cross-dating</h3>
+      <div class="prose">
+        <p>Predict a fight’s era from its round-by-round line alone, the way a dendrochronologist dates a beam from its rings.</p>
+      </div>
+      <p class="note"><b>Kill test:</b> if the classifier cannot beat the era base rate on held-out fights, the era signature is an artefact of aggregation rather than a property of the fights.</p>
+    </div>
+    <div class="card">
+      <h3>Style-drift alerts</h3>
+      <div class="prose">
+        <p>Flag fighters whose recent output has departed from their own established career profile, rather than from the divisional average.</p>
+      </div>
+      <p class="note"><b>Kill test:</b> a drift flag should precede a change in results. If flagged fighters go on winning at their usual rate, the alert is measuring noise.</p>
+    </div>
+    <div class="card">
+      <h3>Round-1 dominance index</h3>
+      <div class="prose">
+        <p>Score every fight’s opening round on one scale, then ask whether it predicts a finish over and above the pre-fight probability.</p>
+      </div>
+      <p class="note"><b>Kill test:</b> no improvement in log-loss against the model’s own line means round one adds nothing the features already carry.</p>
+    </div>
+    <div class="card">
+      <h3>Fight sonification</h3>
+      <div class="prose">
+        <p>Render a fight’s round-by-round record as audio — pace as tempo, damage as dynamics, control as sustain.</p>
+      </div>
+      <p class="note"><b>Kill test:</b> this is a presentation, not a finding. If listeners cannot pick the era or the finish above chance, it stays labelled illustration and is never cited as evidence.</p>
+    </div>
   </div>
 </section>
 
+</main>
+
 <footer>
-  <div class="band-tight" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;border-top:var(--border)">
-    <a class="pill" href="index.html#results">The honest scoreboard</a>
+  <div class="band-tight footnav">
+    <a class="pill-o" href="index.html">Back to the overview</a>
+    <a class="pill-o" href="model.html">Model evidence</a>
     <a class="pill-o" href="case-studies.html">Case studies</a>
+    <a class="pill" href="index.html#results">Results</a>
   </div>
-  <div class="colophon" style="border-top:var(--border)">
+  <div class="colophon">
     <span>MetricCage · 2026</span>
     <span>All figures computed from public fight records · snapshot 2 Aug 2026</span>
     <span>No trackers, no analytics, no cookies</span>

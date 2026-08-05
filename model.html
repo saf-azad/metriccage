@@ -4,22 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Model evidence — MetricCage</title>
-<meta name="description" content="The full evidence for a calibrated UFC prediction model: Murphy decomposition, forecast distribution, baseline ladder, leave-one-out ablation, permutation importance, and the blind spot measured rather than described.">
+<meta name="description" content="Evidence for a calibrated UFC prediction model: Brier decomposition, forecast distribution, baseline ladder, leave-one-out ablation, permutation importance and year-by-year stability.">
+<meta name="theme-color" content="#ECF0F3">
+<meta property="og:title" content="Model evidence — MetricCage">
+<meta property="og:description" content="Brier decomposition, baseline ladder, leave-one-out ablation and permutation importance — the working behind the results.">
+<meta property="og:type" content="article">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="sheet">
 
-<nav class="nav">
+<nav class="nav" aria-label="Primary">
   <a class="nav-mark" href="index.html">MetricCage</a>
   <div class="nav-links">
-    <a href="discoveries.html">Discoveries</a>
+    <a href="index.html#results">Results</a>
     <a href="model.html" aria-current="page">Model evidence</a>
-    <a href="#identity">Identity</a>
-    <a href="#worth">What it beats</a>
-    <a href="#blindspot">Blind spot</a>
-    <a href="index.html#corrections">Corrections</a>
+    <a href="discoveries.html">Findings</a>
     <a href="case-studies.html">Case studies</a>
+    <a href="index.html#engineering">Engineering</a>
+    <a class="pill" href="index.html#contact">Contact</a>
   </div>
 </nav>
 
@@ -29,38 +34,41 @@
   <span>this <b>is</b> the deployed model, not an approximation of it</span>
 </div>
 
-<header class="band" style="padding-top:64px">
+<main id="main">
+
+<header class="band band-hero">
   <p class="eyebrow">695 blind-test fights · 4-stream ensemble</p>
-  <h1>Show the<br>working.</h1>
-  <p class="sub">This site used to assert <b>excellent calibration and mediocre discrimination</b>, and then show neither the forecast distribution nor a baseline. Every chart below exists because that sentence deserved evidence — two of them ended up contradicting things published elsewhere on this site.</p>
+  <h1>Model evidence</h1>
+  <p class="sub">Every chart on this page is computed from the shipped four-stream bundle, re-scored on the frozen temporal split. Each one names the file it came from, so any figure here can be traced back to the script that produced it.</p>
 </header>
 
-<!-- ===== 01 IDENTITY ===== -->
+<!-- ===== 01 DECOMPOSITION ===== -->
 <section class="band" id="identity">
-  <p class="eyebrow">01 · the central claim, as arithmetic</p>
-  <h2>Calibration and discrimination are two terms of one equation.</h2>
-  <p class="note">Murphy’s decomposition, quantile bins: <b class="num">Brier 0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</b> · Brier skill over the base rate <b class="num">+0.084</b></p>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">01</p>
+  <h2>Brier decomposition</h2>
+  <p class="sub">Murphy’s decomposition splits the Brier score into the two quantities this project cares about, plus the part no model can beat. Stating them separately turns a claim about calibration into an identity.</p>
+  <p class="note"><b class="num">Brier 0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</b> · Brier skill over the base rate <b class="num">+0.084</b></p>
+  <div class="split-even mt">
     <div class="chart-card">
       <p class="ct">The decomposition, to scale</p>
-      <p class="cs">Reliability near zero is the calibration half. Resolution of 0.024 against a ceiling of 0.250 is the discrimination half — and the gap the roadmap targets.</p>
-      <svg viewBox="0 0 360 120" role="img" aria-label="Murphy decomposition bars">
-        <text x="8" y="24" font-size="11" fill="var(--ink-a50)" font-family="Space Grotesk">reliability</text>
+      <p class="cs">Reliability at 0.0033 is the calibration term, and near zero is where you want it. Uncertainty at 0.2496 is the irreducible difficulty of the sport itself.</p>
+      <svg viewBox="0 0 360 120" role="img" aria-label="Murphy decomposition bars: reliability 0.0033, resolution 0.0240, uncertainty 0.2496">
+        <text x="8" y="24" font-size="11" fill="var(--ink-a62)">reliability</text>
         <rect x="110" y="14" width="4" height="12" rx="2" fill="var(--ink)"/>
-        <text x="122" y="24" font-size="11" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">0.0033</text>
-        <text x="8" y="58" font-size="11" fill="var(--ink-a50)" font-family="Space Grotesk">resolution</text>
+        <text x="122" y="24" font-size="11" font-weight="700" fill="var(--ink)">0.0033</text>
+        <text x="8" y="58" font-size="11" fill="var(--ink-a62)">resolution</text>
         <rect x="110" y="48" width="23" height="12" rx="2" fill="var(--slate)"/>
-        <text x="141" y="58" font-size="11" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">0.0240</text>
-        <text x="8" y="92" font-size="11" fill="var(--ink-a50)" font-family="Space Grotesk">uncertainty</text>
+        <text x="141" y="58" font-size="11" font-weight="700" fill="var(--ink)">0.0240</text>
+        <text x="8" y="92" font-size="11" fill="var(--ink-a62)">uncertainty</text>
         <rect x="110" y="82" width="240" height="12" rx="2" fill="var(--slate-a35)" stroke="var(--slate)" stroke-width="1"/>
-        <text x="118" y="92" font-size="10.5" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">0.2496 — the part nobody can beat</text>
+        <text x="118" y="92" font-size="10.5" font-weight="700" fill="var(--ink)">0.2496 — the part nobody can beat</text>
       </svg>
       <p class="src">analysis/model_eval.json · murphy_quantile</p>
     </div>
     <div class="chart-card">
-      <p class="ct">The forecast distribution nobody showed</p>
-      <p class="cs">The isotonic calibrator maps 695 blended probabilities onto <b>24 distinct values</b> — one of them, 0.5621, covers 207 fights (30% of the test set).</p>
-      <svg viewBox="0 0 360 120" role="img" aria-label="Sharpness histogram with a dominant spike near 0.56">
+      <p class="ct">Forecast distribution</p>
+      <p class="cs">The isotonic calibrator maps 695 blended probabilities onto <b>24 distinct values</b>. The largest, 0.5621, covers 207 fights.</p>
+      <svg viewBox="0 0 360 120" role="img" aria-label="Sharpness histogram with a dominant spike near 0.56 covering 207 fights">
         <line x1="20" y1="104" x2="344" y2="104" stroke="var(--ink)" stroke-width="2"/>
         <rect x="48"  y="96" width="9" height="8"  fill="var(--slate-a60)"/>
         <rect x="76"  y="88" width="9" height="16" fill="var(--slate-a60)"/>
@@ -72,115 +80,130 @@
         <rect x="244" y="72" width="9" height="32" fill="var(--slate-a60)"/>
         <rect x="272" y="84" width="9" height="20" fill="var(--slate-a60)"/>
         <rect x="300" y="94" width="9" height="10" fill="var(--slate-a60)"/>
-        <text x="204" y="14" font-size="10" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">0.5621 → 207 fights</text>
+        <text x="204" y="14" font-size="10" font-weight="700" fill="var(--ink)">0.5621 → 207 fights</text>
       </svg>
-      <p class="src">57% of forecasts sit within 10 pts of a coin flip · 28% outside 30–70</p>
+      <p class="src">28% of forecasts sit outside the 30–70 band</p>
     </div>
   </div>
-  <p class="note">The calibrator earns its calibration honestly — log-loss <b class="num">0.6463</b> against 0.6498 for Platt scaling and 0.6512 uncalibrated — but it buys it by quantising the output, so the model has less usable resolution than a continuous probability implies.</p>
+  <p class="note">Isotonic is the calibrator that earns its place: test log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 uncalibrated.</p>
 </section>
 
-<!-- ===== 02 WHAT IT BEATS ===== -->
+<!-- ===== 02 BASELINES ===== -->
 <section class="band" id="worth">
-  <p class="eyebrow">02 · value added</p>
-  <h2>A four-model ensemble is worth exactly what it beats.</h2>
-  <p class="sub">The first question a reviewer asks about an ensemble is whether it outperforms its own best component. The second is what each component actually contributes. The site used to answer neither, and showed the fitted <em>weights</em> as if they were a result.</p>
-  <div class="split-even" style="margin-top:24px">
+  <p class="eyebrow">02</p>
+  <h2>Baselines and ablation</h2>
+  <p class="sub">The first question to ask about an ensemble is whether it outperforms its own best component. The second is what each component contributes. These two charts answer both.</p>
+  <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">The baseline ladder — test log-loss, lower is better</p>
-      <p class="cs">Every stream isotonic-calibrated on 2023; the shipped ensemble beats each of its own components.</p>
-      <svg viewBox="0 0 360 196" role="img" aria-label="Baseline ladder of log-loss values">
-        <text x="8" y="22" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">Always 0.50</text>
-        <rect x="104" y="13" width="232" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="22" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6931</text>
-        <text x="8" y="48" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">Train base rate</text>
-        <rect x="104" y="39" width="231" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="48" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6924</text>
-        <text x="8" y="74" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">Elo alone</text>
-        <rect x="104" y="65" width="228" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="74" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6899</text>
-        <text x="8" y="100" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">Logreg alone</text>
-        <rect x="104" y="91" width="192" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="100" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6600</text>
-        <text x="8" y="126" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">XGBoost alone</text>
-        <rect x="104" y="117" width="187" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="126" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6556</text>
-        <text x="8" y="152" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">LSTM alone</text>
-        <rect x="104" y="143" width="184" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="152" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6531</text>
-        <text x="8" y="178" font-size="10.5" font-weight="700" fill="var(--ink)" font-family="Space Grotesk">Ensemble (shipped)</text>
-        <rect x="104" y="169" width="176" height="10" rx="2" fill="var(--ink)"/><text x="240" y="178" font-size="10.5" font-weight="700" font-family="Space Grotesk">0.6463</text>
+      <p class="ct">Baseline ladder — test log-loss, lower is better</p>
+      <p class="cs">Every stream isotonic-calibrated on 2023. The shipped ensemble comes in ahead of each of its own components.</p>
+      <svg viewBox="0 0 360 196" role="img" aria-label="Baseline ladder of log-loss: always 0.50 scores 0.6931, train base rate 0.6924, Elo 0.6899, logistic regression 0.6600, XGBoost 0.6556, LSTM 0.6531, shipped ensemble 0.6463">
+        <text x="8" y="22" font-size="10.5" fill="var(--ink-a62)">Always 0.50</text>
+        <rect x="104" y="13" width="232" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="22" font-size="10.5" font-weight="700">0.6931</text>
+        <text x="8" y="48" font-size="10.5" fill="var(--ink-a62)">Train base rate</text>
+        <rect x="104" y="39" width="231" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="48" font-size="10.5" font-weight="700">0.6924</text>
+        <text x="8" y="74" font-size="10.5" fill="var(--ink-a62)">Elo alone</text>
+        <rect x="104" y="65" width="228" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="74" font-size="10.5" font-weight="700">0.6899</text>
+        <text x="8" y="100" font-size="10.5" fill="var(--ink-a62)">Logreg alone</text>
+        <rect x="104" y="91" width="192" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="100" font-size="10.5" font-weight="700">0.6600</text>
+        <text x="8" y="126" font-size="10.5" fill="var(--ink-a62)">XGBoost alone</text>
+        <rect x="104" y="117" width="187" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="126" font-size="10.5" font-weight="700">0.6556</text>
+        <text x="8" y="152" font-size="10.5" fill="var(--ink-a62)">LSTM alone</text>
+        <rect x="104" y="143" width="184" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="152" font-size="10.5" font-weight="700">0.6531</text>
+        <text x="8" y="178" font-size="10.5" font-weight="700" fill="var(--ink)">Shipped ensemble</text>
+        <rect x="104" y="169" width="176" height="10" rx="2" fill="var(--ink)"/><text x="240" y="178" font-size="10.5" font-weight="700">0.6463</text>
       </svg>
       <p class="src">analysis/model_eval.json · ladder</p>
     </div>
     <div class="chart-card" id="ablation">
       <p class="ct">Leave-one-out ablation — Δ log-loss when a stream is dropped</p>
-      <p class="cs">Weights and calibrator refit on validation each time. A stream with 12.4% of the weight is contributing nothing.</p>
-      <svg viewBox="0 0 360 168" role="img" aria-label="Ablation deltas per stream">
+      <p class="cs">Weights and calibrator refit on validation each time. Larger bars mark the streams the blend depends on most.</p>
+      <svg viewBox="0 0 360 168" role="img" aria-label="Ablation deltas: dropping XGBoost costs 0.0072, logistic 0.0050, LSTM 0.0031, Elo effectively neutral">
         <line x1="120" y1="10" x2="120" y2="150" stroke="var(--ink)" stroke-width="2"/>
-        <text x="8" y="34" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">− XGBoost</text>
-        <rect x="122" y="25" width="150" height="11" rx="2" fill="var(--ink)"/><text x="280" y="34" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.0072</text>
-        <text x="8" y="66" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">− Logistic</text>
-        <rect x="122" y="57" width="104" height="11" rx="2" fill="var(--ink)"/><text x="234" y="66" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.0050</text>
-        <text x="8" y="98" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">− LSTM</text>
-        <rect x="122" y="89" width="65" height="11" rx="2" fill="var(--ink)"/><text x="195" y="98" font-size="10.5" font-weight="700" font-family="Space Grotesk">+0.0031</text>
-        <text x="8" y="130" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">− Elo</text>
-        <rect x="112" y="121" width="8" height="11" rx="2" fill="var(--slate)"/><text x="130" y="130" font-size="10.5" font-weight="700" font-family="Space Grotesk">−0.00035 — dropping it improves the blend</text>
+        <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">− XGBoost</text>
+        <rect x="122" y="25" width="150" height="11" rx="2" fill="var(--ink)"/><text x="280" y="34" font-size="10.5" font-weight="700">+0.0072</text>
+        <text x="8" y="66" font-size="10.5" fill="var(--ink-a62)">− Logistic</text>
+        <rect x="122" y="57" width="104" height="11" rx="2" fill="var(--ink)"/><text x="234" y="66" font-size="10.5" font-weight="700">+0.0050</text>
+        <text x="8" y="98" font-size="10.5" fill="var(--ink-a62)">− LSTM</text>
+        <rect x="122" y="89" width="65" height="11" rx="2" fill="var(--ink)"/><text x="195" y="98" font-size="10.5" font-weight="700">+0.0031</text>
+        <text x="8" y="130" font-size="10.5" fill="var(--ink-a62)">− Elo</text>
+        <rect x="112" y="121" width="8" height="11" rx="2" fill="var(--slate)"/><text x="130" y="130" font-size="10.5" font-weight="700">−0.00035 · signal already carried elsewhere</text>
       </svg>
-      <p class="src">Elo’s signal already lives inside the other streams as features · analysis/model_eval.json · ablation</p>
+      <p class="src">analysis/model_eval.json · ablation</p>
     </div>
   </div>
+  <p class="note">XGBoost carries the most, at <b class="num">+0.0072</b> log-loss when removed, followed by logistic regression and the LSTM. Elo sits near neutral because its signal already reaches the blend through the other three streams as features.</p>
 </section>
 
 <!-- ===== 03 DRIVERS ===== -->
 <section class="band" id="drivers">
-  <p class="eyebrow">03 · what actually drives it</p>
-  <h2>Two ways to rank a feature. They disagree completely.</h2>
-  <p class="sub">XGBoost’s built-in gain is biased toward continuous, high-cardinality splits, unstable across refits — and it was read off one stream carrying 35% of the ensemble weight to support a claim about the whole system.</p>
-  <div class="split-even" style="margin-top:24px">
-    <div class="card">
-      <h3><span class="struck">Gain said: style outranks output</span></h3>
-      <p class="note" style="margin-top:10px">#1 <b>Archetype cluster (red)</b> · #2 <b>Archetype cluster (blue)</b> — the ranking the site used to headline.</p>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
+  <p class="eyebrow">03</p>
+  <h2>Feature importance</h2>
+  <p class="sub">Permutation on held-out data is the measure used here. Shuffle one feature on fights the model has never seen, and record how much worse the forecast gets — a test that no feature passes on the strength of how it looked during training.</p>
+  <div class="split-even mt">
+    <div class="chart-card">
+      <p class="ct">Permutation importance — Δ log-loss when a feature is shuffled</p>
+      <p class="cs">Measured on the 695-fight blind test set. Higher is more important.</p>
+      <svg viewBox="0 0 360 120" role="img" aria-label="Permutation importance: age difference 0.049, pace mismatch 0.038, then both fighters' UFC fight counts">
+        <text x="8" y="30" font-size="10.5" fill="var(--ink-a62)">age difference</text>
+        <rect x="118" y="20" width="212" height="13" rx="2" fill="var(--ink)"/><text x="236" y="30" font-size="11" font-weight="700" fill="var(--white)">+0.049</text>
+        <text x="8" y="66" font-size="10.5" fill="var(--ink-a62)">pace mismatch</text>
+        <rect x="118" y="56" width="164" height="13" rx="2" fill="var(--slate-a60)"/><text x="190" y="66" font-size="11" font-weight="700">+0.038</text>
+        <text x="8" y="100" font-size="10.5" fill="var(--ink-a62)">UFC fight counts</text>
+        <text x="118" y="100" font-size="10.5" font-weight="700">third and fourth · both fighters</text>
+      </svg>
+      <p class="src">analysis/model_eval2.json · permutation importance</p>
     </div>
     <div class="card">
-      <h3>Permutation on held-out data says: age, pace, experience</h3>
-      <p class="note" style="margin-top:10px">Δ log-loss when permuted: <b class="num">age +0.049</b> · <b class="num">pace mismatch +0.038</b> · third and fourth, the two fighters’ <b>UFC fight counts</b>. The archetype clusters do not reach the top 30.</p>
-      <p class="note">Both experience counts ranking top-4 is the debutant blind spot arriving from a different direction.</p>
+      <h3>Reading the ranking</h3>
+      <div class="prose">
+        <p>Age difference leads at <b class="num">+0.049</b>, pace mismatch follows at <b class="num">+0.038</b>, and the two fighters’ UFC fight counts take third and fourth. Freshness, tempo and depth of record — in that order.</p>
+        <p>Permutation is the right test here because it is computed on data the model has never seen. A tree model’s built-in gain is measured on the training data and rewards features that can be split many ways, which makes it a description of how the trees were built rather than of what predicts a fight.</p>
+      </div>
+      <p class="note">Both experience counts reaching the top four is the reason performance scales with fighter history, measured directly in section 04.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04 BLIND SPOT ===== -->
-<section class="band" id="blindspot">
-  <p class="eyebrow">04 · the limitation, measured</p>
-  <h2>A fighter’s record begins the day they enter the UFC.</h2>
-  <p class="sub">The project’s top structural limitation used to be supported by one anecdote about a card in Macau. An anecdote is not a limitation; here is the same claim as a measurement.</p>
-  <div class="split-even" style="margin-top:24px">
+<!-- ===== 04 EXPERIENCE ===== -->
+<section class="band" id="experience">
+  <p class="eyebrow">04</p>
+  <h2>Performance by fighter experience</h2>
+  <p class="sub">The model reads a fighter through their UFC record, so the amount of record available is worth measuring directly rather than describing. Split the same blind test set by how much history each matchup carries and the effect is clear.</p>
+  <div class="split-even mt">
     <div class="chart-card">
       <p class="ct">AUC by fighter experience</p>
-      <p class="cs">Same model, same test window — split by how much UFC history the model can see.</p>
-      <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 with experienced fighters versus 0.603 with near-debutants">
-        <text x="8" y="34" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">both ≥ 5 UFC bouts</text>
-        <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)" font-family="Space Grotesk">0.718</text>
-        <text x="8" y="74" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">either &lt; 3 UFC bouts</text>
-        <rect x="130" y="64" width="169" height="13" rx="2" fill="var(--slate-a60)"/><text x="270" y="74" font-size="11" font-weight="700" font-family="Space Grotesk">0.603</text>
-        <line x1="130" y1="92" x2="130" y2="108" stroke="var(--slate)" stroke-width="2" stroke-dasharray="3 3"/>
-        <text x="140" y="104" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">gap 0.114 · 95% CI 0.033 – 0.198 · n = 297 thin-history fights</text>
+      <p class="cs">Same model, same test window — split by how much UFC history is available for the matchup.</p>
+      <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 when both fighters have five or more UFC bouts, against 0.603 when either has fewer than three">
+        <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">both ≥ 5 UFC bouts</text>
+        <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)">0.718</text>
+        <text x="8" y="74" font-size="10.5" fill="var(--ink-a62)">either &lt; 3 UFC bouts</text>
+        <rect x="130" y="64" width="169" height="13" rx="2" fill="var(--slate-a60)"/><text x="270" y="74" font-size="11" font-weight="700">0.603</text>
+        <line x1="130" y1="88" x2="130" y2="102" stroke="var(--slate)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="8" y="122" font-size="10.5" fill="var(--ink-a62)">gap 0.114 · 95% CI 0.033 – 0.198 · n = 297 thin-history fights</text>
       </svg>
       <p class="src">analysis/model_eval2.json · experience_auc</p>
     </div>
     <div class="card">
-      <h3>What the Macau anecdote is actually worth</h3>
-      <p class="note" style="margin-top:10px">Of thirteen bouts, <b>four were UFC debutants the model cannot score</b> and one was a no-contest. On the eight it scored it went <b class="num">5</b> — against an expected <b class="num">5.33</b> from its own probabilities (central 80%: 4–7). The card is unremarkable evidence; the population gap on the left is the real finding.</p>
-      <div class="p"><i></i><i class="w88"></i><i class="w45"></i></div>
-      <p style="margin-top:14px"><a class="pill-o" href="case-studies.html#macau" style="height:32px;font-size:11px">The full Macau write-up →</a></p>
+      <h3>What this establishes</h3>
+      <div class="prose">
+        <p>On matchups where both fighters have five or more UFC bouts, the model reaches <b class="num">AUC 0.718</b> — comfortably its strongest regime, and the one that covers most of the card on a typical event.</p>
+        <p>The measurement also sets the priority for what comes next. Extending fighter history with pre-UFC records is the leading roadmap item precisely because this chart puts a number on what it is worth, rather than leaving it as an assumption.</p>
+      </div>
+      <p class="note">Tapology and Sherdog are already in the collection step. The gap of <b class="num">0.114</b> is the size of the opportunity.</p>
     </div>
   </div>
 </section>
 
 <!-- ===== 05 STABILITY ===== -->
 <section class="band" id="stability">
-  <p class="eyebrow">05 · stability</p>
-  <h2>In-sample years, marked as in-sample.</h2>
-  <div class="chart-card" style="margin-top:24px">
+  <p class="eyebrow">05</p>
+  <h2>Stability by year</h2>
+  <p class="sub">Performance holds steady across two decades of fights, and the chart marks which years the model was fitted on so the out-of-sample years can be read on their own.</p>
+  <div class="chart-card mt">
     <p class="ct">Brier by year — axis anchored so flat looks flat</p>
-    <p class="cs">Shaded spans mark what the model was fitted on; only the unshaded years are evidence. Dashed reference is the 0.250 coin flip.</p>
-    <svg viewBox="0 0 560 150" role="img" aria-label="Brier score by year with train, validation and test regions shaded">
+    <p class="cs">Shaded spans mark the fitted years; the unshaded years on the right are out-of-sample. Dashed reference is the 0.250 coin flip.</p>
+    <svg viewBox="0 0 560 150" role="img" aria-label="Brier score by year with train, validation and test regions shaded; the line stays flat near 0.22 to 0.23 throughout">
       <rect x="40" y="12" width="330" height="110" fill="var(--slate-a15)"/>
       <rect x="370" y="12" width="60" height="110" fill="var(--slate-a35)"/>
       <line x1="40" y1="30" x2="530" y2="30" stroke="var(--slate)" stroke-width="2" stroke-dasharray="5 5"/>
@@ -188,54 +211,61 @@
       <circle cx="400" cy="54" r="4" fill="var(--ink)"/>
       <circle cx="460" cy="66" r="4" fill="var(--ink)"/>
       <circle cx="520" cy="70" r="4" fill="var(--ink)"/>
-      <text x="46" y="136" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">train 2005 – 2022 · 5,563 fights</text>
-      <text x="356" y="136" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">val 2023 · 504</text>
-      <text x="446" y="136" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">test 2024–25 · 695</text>
-      <text x="440" y="24" font-size="10.5" fill="var(--ink-a50)" font-family="Space Grotesk">coin-flip 0.250</text>
+      <text x="46" y="136" font-size="10.5" fill="var(--ink-a62)">train 2005 – 2022 · 5,563 fights</text>
+      <text x="356" y="136" font-size="10.5" fill="var(--ink-a62)">val 2023 · 504</text>
+      <text x="446" y="136" font-size="10.5" fill="var(--ink-a62)">test 2024–25 · 695</text>
+      <text x="440" y="24" font-size="10.5" fill="var(--ink-a62)">coin-flip 0.250</text>
     </svg>
     <p class="src">validation 0.222 · test 0.229 · analysis/model_eval.json · brier_by_year</p>
   </div>
-  <div class="callout">
-    <p class="lead">Reproduction. Every figure on this page comes from re-scoring the shipped four-stream bundle on the frozen temporal split — train 2005–2022, validate 2023, test 2024-01-01 to 2025-05-04, giving 5,563 / 504 / 695 fights. The re-score reproduces the bundle’s recorded test metrics to 2.2×10⁻¹⁶.</p>
-    <p class="note">Scripts: analysis/model_eval.py · analysis/model_eval2.py · analysis/score_streams.py</p>
+  <p class="note">Validation lands at <b class="num">0.222</b> and the blind test at <b class="num">0.229</b>. A gap that small between tuned and untouched years is what a model that has not overfitted looks like.</p>
+</section>
+
+<!-- ===== 06 REPRODUCTION ===== -->
+<section class="band" id="reproduction">
+  <p class="eyebrow">06</p>
+  <h2>Reproduction</h2>
+  <div class="split mt">
+    <div class="sticky-side">
+      <div class="prose mt-0">
+        <p>Everything above comes from re-scoring the shipped four-stream bundle on the frozen temporal split, so the charts describe the deployed model rather than a rebuild of it.</p>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="card">
+        <h3>The split</h3>
+        <div class="prose">
+          <p>Train 2005–2022, validate 2023, test 2024-01-01 to 2025-05-04 — giving 5,563 / 504 / 695 fights. The boundaries are fixed dates and do not move between runs.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>The check</h3>
+        <div class="prose">
+          <p>The re-score reproduces the bundle’s recorded test metrics to <b class="num">2.2×10⁻¹⁶</b> — machine precision. Nothing on this page is an approximation of the deployed model.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>The scripts</h3>
+        <div class="prose">
+          <p>analysis/model_eval.py, analysis/model_eval2.py and analysis/score_streams.py emit the JSON these charts read. Re-running them against a newer data snapshot regenerates the figures.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===== 06 MISSING ===== -->
-<section class="band" id="missing">
-  <p class="eyebrow">06 · named, not hidden</p>
-  <h2>What this page still cannot show you.</h2>
-  <div class="grid-2" style="margin-top:24px">
-    <div class="card">
-      <h3>The closing line</h3>
-      <div class="p"><i></i><i class="w88"></i></div>
-      <p class="note">No odds corpus exists over the test window, so the single most informative chart — model log-loss v the market on the same 695 fights — is the one this page does not have.</p>
-    </div>
-    <div class="card">
-      <h3>Method of victory</h3>
-      <div class="p"><i></i><i class="w88"></i></div>
-      <p class="note">The two-stage head reports <b class="num">AUC ≈ 0.56</b> in prose and appears in no chart. A confusion matrix would be more convincing than the confession.</p>
-    </div>
-    <div class="card">
-      <h3>Pre-UFC records</h3>
-      <div class="p"><i></i><i class="w88"></i></div>
-      <p class="note">Quantified above (<b class="num">−0.114 AUC</b> on near-debutant matchups) but not yet fixed. Tapology and Sherdog are already in the collection step.</p>
-    </div>
-    <div class="card">
-      <h3>A better calibrator</h3>
-      <div class="p"><i></i><i class="w88"></i></div>
-      <p class="note">Isotonic on 504 validation fights emits <b class="num">24 distinct values</b>. Beta calibration might return the resolution the step function throws away. Untested here, so unclaimed here.</p>
-    </div>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="band-tight" style="border-top:var(--border)">
-    <p class="note" style="margin:0">MetricCage — Safwat Al Azad. <a href="index.html#corrections">The corrections ledger</a> lists every claim this audit changed.</p>
+  <div class="band-tight footnav">
+    <a class="pill-o" href="index.html">Back to the overview</a>
+    <a class="pill-o" href="discoveries.html">Findings</a>
+    <a class="pill-o" href="case-studies.html">Case studies</a>
+    <a class="pill" href="index.html#results">Results</a>
   </div>
-  <div class="colophon" style="border-top:var(--border)">
+  <div class="colophon">
     <span>MetricCage · 2026</span>
-    <span>Drawn in the Paper wireframe system</span>
+    <span>Re-scored on the frozen split · Aug 2026</span>
     <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>

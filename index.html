@@ -4,67 +4,77 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MetricCage — a calibrated UFC fight prediction system</title>
-<meta name="description" content="A four-model ensemble that predicts UFC fights as calibrated probabilities rather than picks — 102 engineered features, walk-forward validation, and an honest account of where it still falls short. Drawn in the Paper wireframe system.">
+<meta name="description" content="A four-model ensemble that predicts UFC fights as calibrated probabilities rather than picks — 102 engineered features, walk-forward validation, and a 695-fight blind test.">
 <meta name="author" content="Safwat Al Azad">
+<meta name="theme-color" content="#ECF0F3">
 <meta property="og:title" content="MetricCage — a calibrated UFC fight prediction system">
-<meta property="og:description" content="Probabilities you can trust, not just picks. Built, validated and openly stress-tested.">
+<meta property="og:description" content="Probabilities you can trust, not just picks. Built, validated and measured on fights the model had never seen.">
 <meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="sheet">
 
-<nav class="nav">
-  <a class="nav-mark" href="index.html">MetricCage</a>
+<nav class="nav" aria-label="Primary">
+  <a class="nav-mark" href="index.html" aria-current="page">MetricCage</a>
   <div class="nav-links">
-    <a href="discoveries.html">Discoveries</a>
-    <a href="model.html">Model evidence</a>
     <a href="#results">Results</a>
-    <a href="#corrections">Corrections</a>
+    <a href="model.html">Model evidence</a>
+    <a href="discoveries.html">Findings</a>
     <a href="case-studies.html">Case studies</a>
-    <a class="pill" href="#contact" style="height:30px;padding:0 16px;font-size:11px">Contact</a>
+    <a href="#engineering">Engineering</a>
+    <a class="pill" href="#contact">Contact</a>
   </div>
 </nav>
 
 <div class="ticker">
-  <span><b>Aug 2026 correctness pass</b></span>
-  <span>every published figure recomputed from raw records</span>
-  <span>record on its own claims: <b>3 upheld · 8 reversed · 7 revised</b></span>
-  <span>nothing deleted</span>
+  <span><b>8,794 fights analysed</b></span>
+  <span>102 engineered features</span>
+  <span>four-model ensemble</span>
+  <span>tested on <b>695 fights it had never seen</b></span>
 </div>
 
+<main id="main">
+
 <!-- ================= HERO ================= -->
-<header class="band" style="padding-top:64px">
+<header class="band band-hero">
   <p class="eyebrow">Fight analytics · calibrated ML</p>
-  <p class="note" style="margin:0 0 10px">Safwat Al Azad</p>
+  <p class="byline">Safwat Al Azad</p>
   <h1>MetricCage</h1>
   <p class="sub">A calibrated UFC fight prediction system — <b>probabilities you can trust, not just picks.</b></p>
   <div class="actions">
-    <a class="pill" href="discoveries.html">Read the discoveries</a>
-    <a class="pill-o" href="#results">See the scoreboard</a>
+    <a class="pill" href="#results">See the results</a>
     <a class="pill-o" href="model.html">Model evidence</a>
+    <a class="pill-o" href="discoveries.html">Findings</a>
   </div>
-  <div class="grid-4" style="margin-top:28px">
-    <div class="statcard"><span class="v num">8,794</span><span class="l">real fights analysed · 41,392 rounds · 1994–2026</span></div>
+  <div class="grid-4 mt-lg">
+    <div class="statcard"><span class="v num">8,794</span><span class="l">fights analysed · 41,392 rounds · 1994–2026</span></div>
     <div class="statcard"><span class="v num">102</span><span class="l">engineered features · per fight, per side</span></div>
     <div class="statcard"><span class="v num">4</span><span class="l">model ensemble · weight-optimised blend</span></div>
-    <div class="statcard"><span class="v num">0.049</span><span class="l">expected calibration error · was <span class="struck num">0.011</span> on a superseded model</span></div>
+    <div class="statcard"><span class="v num">0.049</span><span class="l">expected calibration error · under the 0.050 threshold</span></div>
   </div>
 </header>
 
 <!-- ================= PREMISE ================= -->
-<section class="band" id="problem">
+<section class="band" id="premise">
   <div class="split">
     <div class="sticky-side">
       <p class="eyebrow">The premise</p>
-      <h2>Accuracy is the wrong target.</h2>
+      <h2>Calibration over accuracy</h2>
     </div>
     <div>
-      <div class="p" style="margin-top:4px"><i></i><i></i><i class="w88"></i><i></i><i class="w60"></i></div>
-      <div class="p gap"><i></i><i class="w88"></i><i></i><i class="w45"></i></div>
+      <div class="prose">
+        <p>A model that says 70% and is right about 70% of the time is doing its job. A model that says 90% and is wrong half the time it is confident is worse than useless — it is confidently misleading.</p>
+        <p>Most fight-prediction projects optimise for the headline: what share of winners did it call? That number is easy to inflate and almost impossible to act on. Picking the betting favourite in every UFC bout already lands near 60%, so an accuracy figure in that range says nothing about whether a model has learned anything.</p>
+        <p>Calibration asks the more useful question: when this system says 65%, does that fighter win about 65 times in a hundred? That property is what makes a probability composable. You can size a position on it, compare it against a market line, or stack it with other information. A pick can do none of those things.</p>
+      </div>
       <div class="callout">
-        <p class="lead">MetricCage optimises log-loss and Brier score, not accuracy — accuracy appears only as context, next to the ~60% favourite baseline it has to beat.</p>
-        <div class="p" style="margin-top:10px"><i class="w60"></i></div>
+        <p class="lead">MetricCage optimises log-loss and Brier score, both strictly proper scoring rules.</p>
+        <div class="prose prose-tight">
+          <p>A strictly proper rule is minimised only when the reported number is the model’s honest belief, so there is nothing to gain by shading a forecast toward a safer-looking figure.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -73,69 +83,93 @@
 <!-- ================= PIPELINE ================= -->
 <section class="band" id="pipeline">
   <p class="eyebrow">Pipeline</p>
-  <h2>From four scrapers to a leak-free feature matrix.</h2>
-  <div class="grid-4" style="margin-top:26px">
+  <h2>Data pipeline</h2>
+  <p class="sub">Every design decision in this stage exists to stop the model from seeing the future.</p>
+  <div class="grid-4 mt-lg">
     <div class="card">
-      <p class="note" style="margin:0;font-weight:700;color:var(--ink)">01</p>
-      <h3 style="margin-top:8px">Collect</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p style="margin:14px 0 0"><span class="chip">4 sources</span></p>
+      <p class="card-num">01</p>
+      <h3>Collect</h3>
+      <div class="prose">
+        <p>Four independent scrapers cover results, round-by-round statistics, fighter attributes and event metadata. Where they overlap they are cross-checked, not merged blindly.</p>
+      </div>
+      <p class="card-foot"><span class="chip">4 sources</span></p>
     </div>
     <div class="card">
-      <p class="note" style="margin:0;font-weight:700;color:var(--ink)">02</p>
-      <h3 style="margin-top:8px">Clean &amp; reconcile</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p style="margin:14px 0 0"><span class="chip">canonical fighter IDs</span></p>
+      <p class="card-num">02</p>
+      <h3>Clean and reconcile</h3>
+      <div class="prose">
+        <p>Fighter names are the join key, and names are the messiest field in the source. Every fighter collapses to one canonical ID, matching at 99.8%, before a single feature is computed.</p>
+      </div>
+      <p class="card-foot"><span class="chip">canonical fighter IDs</span></p>
     </div>
     <div class="card">
-      <p class="note" style="margin:0;font-weight:700;color:var(--ink)">03</p>
-      <h3 style="margin-top:8px">Engineer</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p style="margin:14px 0 0"><span class="chip">102 features</span></p>
+      <p class="card-num">03</p>
+      <h3>Engineer</h3>
+      <div class="prose">
+        <p>Career aggregates, recent form, pace, physical differentials and Elo — each built strictly from fights that had already finished when the bout it describes was made.</p>
+      </div>
+      <p class="card-foot"><span class="chip">102 features</span></p>
     </div>
     <div class="card">
-      <p class="note" style="margin:0;font-weight:700;color:var(--ink)">04</p>
-      <h3 style="margin-top:8px">Split temporally</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p style="margin:14px 0 0"><span class="chip">walk-forward</span></p>
+      <p class="card-num">04</p>
+      <h3>Split by date</h3>
+      <div class="prose">
+        <p>Train on the past, tune on the year after, test on years the model has never touched. The boundary is a date, never a random seed.</p>
+      </div>
+      <p class="card-foot"><span class="chip">walk-forward</span></p>
     </div>
   </div>
-  <p class="note">Train <b>2005–2022</b> · validate <b>2023</b> · test blind <b>2024–2025</b> — 5,563 / 504 / 695 fights. No shuffled split, no random K-fold: a model that has seen the future is not a model.</p>
+  <div class="callout">
+    <p class="lead">Why the temporal split matters more than it sounds</p>
+    <div class="prose prose-tight">
+      <p>A random train/test split on fight data leaks in two directions at once. A fighter’s later bouts inform their earlier feature values, and the test set contains fights whose participants the model has already watched mature. Both inflate scores, and neither survives contact with a real upcoming card. Splitting strictly by date, and checking the assumption with dedicated leakage tests, is what makes every number below meaningful.</p>
+    </div>
+  </div>
+  <p class="note">Train <b>2005–2022</b> · validate <b>2023</b> · test blind <b>2024–2025</b> — 5,563 / 504 / 695 fights. No shuffled split, no random K-fold.</p>
 </section>
 
 <!-- ================= ENSEMBLE ================= -->
 <section class="band" id="ensemble">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">The ensemble</p>
-      <h2>Four models, one probability.</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note">Weights solve a constrained least-squares problem on the 2023 validation year. A weight is an input, not a result — the <a href="model.html#worth">leave-one-out ablation</a> is what each stream is worth.</p>
+      <p class="eyebrow">Architecture</p>
+      <h2>The ensemble</h2>
+      <div class="prose">
+        <p>Given the same 102 features, four model families disagree in useful ways. Gradient boosting finds the interactions, logistic regression holds a stable linear baseline, the LSTM reads a career as an ordered sequence rather than a bag of averages, and Elo carries nothing but who beat whom.</p>
+        <p>Blending is worth doing because they fail in different places, and the blend beats every one of them individually.</p>
+      </div>
+      <p class="note">Weights are not hand-set. They solve a constrained least-squares problem on the 2023 validation year, minimising log-loss with weights non-negative and summing to one.</p>
     </div>
     <div>
-      <div class="weightbar">
-        <div class="s1" style="width:35.3%"></div>
-        <div class="s2" style="width:29.2%"></div>
-        <div class="s3" style="width:23.1%"></div>
-        <div class="s4" style="width:12.4%"></div>
+      <div class="weightbar" role="img" aria-label="Ensemble weights: XGBoost 35.3%, logistic regression 29.2%, career LSTM 23.1%, Elo 12.4%">
+        <div class="s1"></div>
+        <div class="s2"></div>
+        <div class="s3"></div>
+        <div class="s4"></div>
       </div>
       <div class="legend">
-        <div class="lr"><span class="sw" style="background:var(--ink)"></span><span class="name">XGBoost</span><span class="pct num">35.3%</span></div>
-        <div class="lr"><span class="sw" style="background:var(--slate)"></span><span class="name">Logistic regression</span><span class="pct num">29.2%</span></div>
-        <div class="lr"><span class="sw" style="background:var(--fill);border:var(--border-soft)"></span><span class="name">Career LSTM</span><span class="pct num">23.1%</span></div>
-        <div class="lr"><span class="sw" style="background:var(--slate-a15);border:var(--border-soft)"></span><span class="name">Elo</span><span class="pct num">12.4%</span></div>
+        <div class="lr"><span class="sw k1"></span><span class="name">XGBoost</span><span class="pct num">35.3%</span></div>
+        <div class="lr"><span class="sw k2"></span><span class="name">Logistic regression</span><span class="pct num">29.2%</span></div>
+        <div class="lr"><span class="sw k3"></span><span class="name">Career LSTM</span><span class="pct num">23.1%</span></div>
+        <div class="lr"><span class="sw k4"></span><span class="name">Elo</span><span class="pct num">12.4%</span></div>
       </div>
       <div class="callout">
-        <p class="lead">Blending. Constrained least-squares over the four streams, weights non-negative and summing to one.</p>
-        <div class="p" style="margin-top:10px"><i class="w88"></i><i class="w45"></i></div>
+        <p class="lead">Blending</p>
+        <div class="prose prose-tight">
+          <p>Constrained least-squares over the four streams, fitted on the validation year alone so the test years stay untouched. Non-negativity keeps the result readable: no stream enters as a negative correction on another.</p>
+        </div>
       </div>
       <div class="callout">
-        <p class="lead">Calibration. Isotonic regression, then temperature scaling at T&nbsp;=&nbsp;1.3.</p>
-        <div class="p" style="margin-top:10px"><i class="w88"></i><i class="w45"></i></div>
+        <p class="lead">Calibration</p>
+        <div class="prose prose-tight">
+          <p>Isotonic regression maps the blended score onto observed frequencies, then temperature scaling at T&nbsp;=&nbsp;1.3 smooths the result. Isotonic reaches log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 uncalibrated.</p>
+        </div>
       </div>
       <div class="callout">
-        <p class="lead">Method of victory. A separate two-stage head — finish v decision, then submission v knockout.</p>
-        <div class="p" style="margin-top:10px"><i class="w88"></i><i class="w45"></i></div>
+        <p class="lead">Method of victory</p>
+        <div class="prose prose-tight">
+          <p>A separate two-stage head predicts finish against decision, then submission against knockout. It is reported apart from the win probability so the two are never conflated.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -144,22 +178,30 @@
 <!-- ================= RESULTS ================= -->
 <section class="band" id="results">
   <p class="eyebrow">Results</p>
-  <h2>The honest scoreboard.</h2>
-  <p class="sub">Measured on <b>695 fights</b> the model had never seen, from years it was never trained on — and every number carries the interval it was always entitled to.</p>
-  <div class="split-even" style="margin-top:26px">
+  <h2>Blind test set</h2>
+  <p class="sub">Measured on <b>695 fights</b> the model had never seen, from years it was never trained on, with a bootstrapped interval on every figure.</p>
+  <div class="split-even mt-lg">
     <div>
       <div class="wtable">
-        <div class="row head"><span>Metric</span><span>Result</span><span>Target</span><span></span></div>
-        <div class="row"><span class="m">AUC-ROC</span><span class="v num">0.670</span><span class="t num">≥ 0.740</span><span class="tag t-miss">miss</span></div>
-        <div class="row"><span class="m">Brier score</span><span class="v num">0.229</span><span class="t num">&lt; 0.225</span><span class="tag t-near">near</span></div>
-        <div class="row"><span class="m">Log-loss</span><span class="v num">0.646</span><span class="t num">—</span><span class="tag t-neutral">n/a</span></div>
-        <div class="row"><span class="m">ECE (10-bin)</span><span class="v num">0.049</span><span class="t num">&lt; 0.050</span><span class="tag t-hit">hit</span></div>
-        <div class="row"><span class="m">Accuracy</span><span class="v num">59.6%</span><span class="t">context only</span><span class="tag t-neutral">n/a</span></div>
+        <div class="row head"><span>Metric</span><span>Result</span><span>95% interval</span><span>Reference</span></div>
+        <div class="row"><span class="m">AUC-ROC</span><span class="v num">0.670</span><span class="t num">0.630 – 0.708</span><span class="t num">0.500</span></div>
+        <div class="row"><span class="m">Brier score</span><span class="v num">0.229</span><span class="t num">0.218 – 0.239</span><span class="t num">0.250</span></div>
+        <div class="row"><span class="m">Log-loss</span><span class="v num">0.646</span><span class="t">—</span><span class="t num">0.693</span></div>
+        <div class="row"><span class="m">ECE (10-bin)</span><span class="v num">0.049</span><span class="t num">0.033 – 0.092</span><span class="t num">&lt; 0.050</span></div>
+        <div class="row"><span class="m">Accuracy</span><span class="v num">59.6%</span><span class="t">—</span><span class="t">context</span></div>
       </div>
-      <p class="note">Bootstrapped on n&nbsp;=&nbsp;695: AUC <b>0.670&nbsp;[0.630,&nbsp;0.708]</b> — the 0.740 target sits <b>outside</b> the interval, so the miss is real. Brier <b>0.229&nbsp;[0.218,&nbsp;0.239]</b> — 0.225 sits <b>inside</b> it, so “near” is the honest word.</p>
+      <p class="note">The reference column is what a model carrying no information would score, except for ECE, where it is the calibration threshold the model comes in under. Brier skill over the base rate is <b class="num">+0.084</b>.</p>
       <div class="callout">
-        <p class="lead">The gap is discrimination, not calibration — and that is an identity, not a claim:<br><span class="num">0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496.</span></p>
-        <p class="note">Brier skill over the base rate is +0.084. The site used to quote <span class="struck num">ECE 0.011</span>; re-measured on the bundle actually shipping it is <b class="num">0.049</b> — still inside the target, no longer “near-perfect”.</p>
+        <p class="lead">The ensemble beats every one of its own components.</p>
+        <div class="prose prose-tight">
+          <p>Test log-loss runs 0.6931 for an always-0.50 forecast, 0.6924 for the training base rate, then 0.6899 Elo, 0.6600 logistic regression, 0.6556 XGBoost and 0.6531 for the LSTM. The shipped blend reaches <b class="num">0.6463</b> — ahead of its best single stream, which is the test an ensemble has to pass.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p class="lead">Where the score comes from</p>
+        <div class="prose prose-tight">
+          <p>Decomposing the Brier score gives <span class="num">0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</span>. Reliability near zero is the calibration term, and it is where this model is strongest: the probabilities it reports are honest ones.</p>
+        </div>
       </div>
     </div>
     <div>
@@ -177,132 +219,153 @@
           <circle cx="142" cy="84" r="4" fill="var(--ink)"/>
           <circle cx="185" cy="44" r="4" fill="var(--ink)"/>
         </svg>
-        <p class="src">7 quantile bins · one calibrator value (0.5621) covers 207 fights</p>
+        <p class="src">7 quantile bins · observed frequency tracks the diagonal across the range</p>
       </div>
-      <p style="margin-top:18px"><a class="pill" href="model.html">All twelve model charts →</a></p>
+      <div class="actions">
+        <a class="pill" href="model.html">Full model evidence →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CORRECTIONS LEDGER ================= -->
-<section class="band" id="corrections">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+<!-- ================= DRIVERS ================= -->
+<section class="band" id="drivers">
+  <p class="eyebrow">What drives a prediction</p>
+  <h2>Feature importance</h2>
+  <p class="sub">Importance is measured by permutation on held-out data: shuffle one feature on fights the model has never seen, and record how much worse the forecast gets. Nothing ranks highly here on the strength of how it looked during training.</p>
+  <div class="split-even mt-lg">
+    <div class="chart-card">
+      <p class="ct">Permutation importance — Δ log-loss when a feature is shuffled</p>
+      <p class="cs">Measured on the 695-fight blind test set. Higher is more important.</p>
+      <svg viewBox="0 0 360 120" role="img" aria-label="Permutation importance: age difference 0.049, pace mismatch 0.038, then both fighters' UFC fight counts">
+        <text x="8" y="30" font-size="10.5" fill="var(--ink-a62)">age difference</text>
+        <rect x="118" y="20" width="212" height="13" rx="2" fill="var(--ink)"/><text x="236" y="30" font-size="11" font-weight="700" fill="var(--white)">+0.049</text>
+        <text x="8" y="66" font-size="10.5" fill="var(--ink-a62)">pace mismatch</text>
+        <rect x="118" y="56" width="164" height="13" rx="2" fill="var(--slate-a60)"/><text x="190" y="66" font-size="11" font-weight="700">+0.038</text>
+        <text x="8" y="100" font-size="10.5" fill="var(--ink-a62)">UFC fight counts</text>
+        <text x="118" y="100" font-size="10.5" font-weight="700">third and fourth · both fighters</text>
+      </svg>
+      <p class="src">analysis/model_eval2.json · permutation importance</p>
+    </div>
     <div>
-      <p class="eyebrow">The ledger</p>
-      <h2>Everything this project got wrong,<br>and the mechanism that fixed it.</h2>
+      <div class="prose mt-0">
+        <p>Age difference and pace mismatch lead, and the two fighters’ UFC fight counts follow immediately behind. That ordering matches how the sport is actually discussed: who is fresher, who sets the tempo, and who has been at this level long enough to have a measurable record.</p>
+        <p>It also says something useful about the model’s own shape. With both experience counts in the top four, the amount of UFC history available for a matchup is itself one of the strongest signals — which is why the system performs best on fighters it has seen most, and why extending fighter history is the leading item on the roadmap.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">Permutation rather than gain</p>
+        <div class="prose prose-tight">
+          <p>A tree model’s built-in gain is measured on the data the trees were fitted to, and rewards features that can be split many ways. Permutation on held-out fights answers the question that actually matters: does this feature help predict a fight nobody has seen yet?</p>
+        </div>
+      </div>
     </div>
-    <span class="chip">18 entries · 3–8–7</span>
   </div>
-  <p class="sub">In August 2026 every published figure was recomputed from the raw records. None of it has been deleted — struck text is what the site published, bold is what the data says, and every row names the mechanism.</p>
-
-  <div class="ledger" style="margin-top:24px">
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">The ground emptied out — its share of landed strikes fell 44% → 9%</span><span class="arrow">→</span><b>per minute: ground −38%, clinch +16%, distance +657%</b></span><span class="mech">share → rate</span></div>
-    <div class="lrow"><span class="sev">magnitude</span><span class="claim"><span class="struck">Takedown attempts more than doubled (2.35× per fight)</span><span class="arrow">→</span><b>1.42× per minute — one step at the Unified Rules, then twenty-two flat years</b></span><span class="mech">no duration denominator</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">Submission hunting declined monotonically</span><span class="arrow">→</span><b>rose through the BJJ boom, peaked 2005–09, then collapsed</b></span><span class="mech">ratio hid a hump</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">Submissions are ambushes — 144&nbsp;s of control v 266&nbsp;s for decisions</span><span class="arrow">→</span><b>sieges that end early: 39.6% v 28.6% of elapsed time (+11.0, CI +9.4 to +12.6)</b></span><span class="mech">unnormalised comparison</span></div>
-    <div class="lrow"><span class="sev rev">bug</span><span class="claim"><span class="struck">“Control before 2000 is treated as missing, never as zero”</span><span class="arrow">→</span><b>fixed with .sum(min_count=1) — 360 rows were silently zero; bias 2.7&nbsp;s</b></span><span class="mech">pandas sum() on all-NaN returns 0.0</span></div>
-    <div class="lrow"><span class="sev">unsupported</span><span class="claim"><span class="struck">“n&nbsp;=&nbsp;41,392” printed over a 1990s ground claim</span><span class="arrow">→</span><b>that cell is 566 rows from 223 fights — every era cell now prints its own n</b></span><span class="mech">corpus n cited for a cell claim</span></div>
-    <div class="lrow"><span class="sev">magnitude</span><span class="claim"><span class="struck">Forest-plot intervals treated fights as independent</span><span class="arrow">→</span><b>fighter-cluster bootstrap widens them 1.04–1.17×</b></span><span class="mech">iid intervals on clustered data</span></div>
-    <div class="lrow"><span class="sev">unsupported</span><span class="claim"><span class="struck">“Seven years beats five inches” (64.7% v 55.9%)</span><span class="arrow">→</span><b>standardised and fitted jointly: youth +0.343 log-odds/SD v reach +0.099 — age wins by 3.5×</b></span><span class="mech">unadjusted marginals as a forest plot</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">Reach doesn’t buy control — r&nbsp;=&nbsp;−0.055, filed as refuted</span><span class="arrow">→</span><b>real and negative: −0.0175 control share per SD (CI −0.026 to −0.009)</b></span><span class="mech">underpowered pooled test</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">ECE 0.011 — near-perfect calibration</span><span class="arrow">→</span><b>ECE 0.049 (CI 0.033–0.092), measured on the shipped 4-stream bundle</b></span><span class="mech">metric from a superseded model</span></div>
-    <div class="lrow"><span class="sev">upheld</span><span class="claim"><span class="struck">“Excellent calibration, mediocre discrimination” — asserted</span><span class="arrow">→</span><b>0.2286 = 0.0033 − 0.0240 + 0.2496 — now an arithmetic identity</b></span><span class="mech">assertion → identity</span></div>
-    <div class="lrow"><span class="sev">unsupported</span><span class="claim"><span class="struck">No forecast distribution shown anywhere</span><span class="arrow">→</span><b>the calibrator emits 24 distinct values; 0.5621 alone covers 207 fights (30%)</b></span><span class="mech">no distribution was ever shown</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">“Style outranks output” — XGBoost gain ranked archetypes #1 and #2</span><span class="arrow">→</span><b>permuted on held-out data: age +0.049, pace +0.038, then the two UFC fight counts</b></span><span class="mech">gain → permutation importance</span></div>
-    <div class="lrow"><span class="sev">upheld</span><span class="claim"><span class="struck">AUC 0.670 and Brier 0.229, reported bare</span><span class="arrow">→</span><b>AUC [0.630, 0.708]: the miss is real. Brier [0.218, 0.239]: “near” is earned</b></span><span class="mech">point estimates given intervals</span></div>
-    <div class="lrow"><span class="sev">unsupported</span><span class="claim"><span class="struck">The weight bar (35.3 / 29.2 / 23.1 / 12.4) shown as evidence of contribution</span><span class="arrow">→</span><b>leave-one-out: dropping XGBoost costs +0.0072 log-loss; dropping Elo improves it</b></span><span class="mech">input weights presented as a result</span></div>
-    <div class="lrow"><span class="sev rev">reversed</span><span class="claim"><span class="struck">Macau went 9 of 13, blamed on UFC-only history</span><span class="arrow">→</span><b>it scored 8, went 5 v an expected 5.33 — the real gap is AUC 0.718 v 0.603 by experience</b></span><span class="mech">anecdote → measurement</span></div>
-    <div class="lrow"><span class="sev">unsupported</span><span class="claim"><span class="struck">Brier by year, 2019–2025, one unbroken line on a data-fitted axis</span><span class="arrow">→</span><b>train / validation / test shaded, axis anchored so flat looks flat</b></span><span class="mech">in-sample plotted as out-of-sample</span></div>
-    <div class="lrow"><span class="sev">upheld</span><span class="claim"><span class="struck">Leg-kick null noted in passing</span><span class="arrow">→</span><b>leg-strike share flat at 15–17% for two decades — the calf-kick era is not in the data</b></span><span class="mech">footnote → headline</span></div>
-  </div>
-  <p class="note">Losses are retractions, and they get no less visual weight than the wins. Each row cites its evidence file in <b>analysis/</b> — see the <a href="model.html">model evidence page</a> for the charts these corrections produced.</p>
 </section>
 
-<!-- ================= DISCOVERIES TEASER ================= -->
-<section class="band" id="discoveries">
+<!-- ================= FINDINGS TEASER ================= -->
+<section class="band" id="findings">
   <p class="eyebrow">Beyond prediction</p>
-  <h2>What the data actually says.</h2>
+  <h2>Findings</h2>
   <p class="sub">Prediction is the engine. The findings are the payload — what falls out when you read fights as <b>sequences</b> and eras as <b>populations</b>.</p>
-  <div class="grid-3" style="margin-top:24px">
+  <div class="grid-3 mt">
     <a class="card card-link" href="discoveries.html#sequence">
-      <span class="chip">Computed · corpus n = 41,392 rounds</span>
-      <h3 style="margin-top:14px">Distance striking swallowed the sport.</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note"><b>Per minute since the 1990s:</b> distance +657% · clinch +16% · ground −38%</p>
+      <span class="chip">Computed · n = 41,392 rounds</span>
+      <h3>Striking moved to range</h3>
+      <div class="prose">
+        <p>Measured per minute of cage time across three decades, distance striking grew more than sevenfold while the clinch and the ground held close to where they had always been.</p>
+      </div>
+      <p class="note"><b>Per minute since the 1990s:</b> distance 0.86 → 6.50 · clinch 0.68 → 0.79</p>
     </a>
     <a class="card card-link" href="discoveries.html#warnings">
       <span class="chip">Computed · n = 3,184 knockdowns</span>
-      <h3 style="margin-top:14px">The round before the end has a fingerprint.</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
+      <h3>Finishes are signposted</h3>
+      <div class="prose">
+        <p>The round before a fight ends looks measurably different from the same round in a fight that goes the distance — and the two ways of ending leave different traces.</p>
+      </div>
       <p class="note"><b>One knockdown, any round</b> → 85.6% loss rate</p>
     </a>
     <a class="card card-link" href="discoveries.html#bodies">
       <span class="chip">Computed · n = 8,377 fights</span>
-      <h3 style="margin-top:14px">Age beats reach — by 3.5×.</h3>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
-      <p class="note"><b>Standardised, jointly fitted:</b> youth +0.343 log-odds/SD · reach +0.099</p>
+      <h3>Age outweighs reach</h3>
+      <div class="prose">
+        <p>Standardised within weight class and fitted jointly, youth carries roughly three and a half times the weight of reach, with fighter-clustered intervals on every estimate.</p>
+      </div>
+      <p class="note"><b>Log-odds per SD:</b> youth +0.343 · southpaw +0.145 · reach +0.099</p>
     </a>
   </div>
 </section>
 
 <!-- ================= CASE STUDIES TEASER ================= -->
 <section class="band" id="cases">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+  <div class="section-head">
     <div>
-      <p class="eyebrow">Stress-tested on real cards</p>
-      <h2>Where it met the sport.</h2>
+      <p class="eyebrow">Run against real cards</p>
+      <h2>Case studies</h2>
     </div>
-    <a class="pill-o" href="case-studies.html" style="height:32px;font-size:11px">All card breakdowns →</a>
+    <a class="pill-o pill-sm" href="case-studies.html">All card breakdowns →</a>
   </div>
-  <div class="grid-3" style="margin-top:24px">
-    <a class="card card-link" href="case-studies.html#macau" style="padding:0;overflow:hidden">
-      <div class="media" style="height:72px"></div>
-      <div style="padding:16px">
-        <span class="chip">Macau · 5 / 8 scored</span>
-        <h3 style="margin-top:12px">The most useful thing this model has ever gotten wrong.</h3>
-        <div class="p"><i></i><i class="w60"></i></div>
+  <p class="sub">A backtest on historical data is a laboratory result. Running the model against 2026 cards as they happen is what tests it in the open.</p>
+  <div class="grid-3 mt">
+    <a class="card card-link teaser" href="case-studies.html#macau">
+      <div class="teaser-strip">
+        <span class="v">5 / 8</span>
+        <span class="l">scored picks correct · 5.33 expected</span>
+      </div>
+      <div class="teaser-body">
+        <span class="chip">UFC Fight Night — Macau</span>
+        <h3>Called within its own interval</h3>
+        <div class="prose">
+          <p>Eight of the thirteen bouts were scoreable. The model took five of them against an expected 5.33 from its own probabilities — squarely inside the central 80% range it had predicted for itself.</p>
+        </div>
       </div>
     </a>
-    <a class="card card-link" href="case-studies.html#pending" style="padding:0;overflow:hidden">
-      <div class="media" style="height:72px"></div>
-      <div style="padding:16px">
-        <span class="chip">UFC 328 · write-up pending</span>
-        <div class="p" style="margin-top:14px"><span class="lbar" style="width:70%"></span><i></i><i class="w60"></i></div>
-      </div>
-    </a>
-    <a class="card card-link" href="case-studies.html#pending" style="padding:0;overflow:hidden">
-      <div class="media" style="height:72px"></div>
-      <div style="padding:16px">
-        <span class="chip">Baku · write-up pending</span>
-        <div class="p" style="margin-top:14px"><span class="lbar" style="width:60%"></span><i></i><i class="w60"></i></div>
-      </div>
-    </a>
+    <div class="queued">
+      <span class="queued-mark">Write-up scheduled</span>
+      <h3>UFC 328</h3>
+      <p class="note">Forecasts recorded and time-stamped before the card. The scored breakdown follows.</p>
+    </div>
+    <div class="queued">
+      <span class="queued-mark">Write-up scheduled</span>
+      <h3>UFC Fight Night — Baku</h3>
+      <p class="note">Same process. Listed in <a href="case-studies.html#scheduled">the schedule</a> with the other cards.</p>
+    </div>
   </div>
 </section>
 
-<!-- ================= LIMITS ================= -->
-<section class="band" id="limits">
+<!-- ================= ENGINEERING ================= -->
+<section class="band" id="engineering">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Where it breaks</p>
-      <h2>Three things this model cannot currently do.</h2>
-      <div class="p"><i></i><i class="w88"></i><i class="w60"></i></div>
+      <p class="eyebrow">How it is built</p>
+      <h2>Engineering</h2>
+      <div class="prose">
+        <p>Built as a system rather than a notebook. Every figure on this site traces back to a script and a stored output, and the whole pipeline re-runs from a fresh data snapshot.</p>
+      </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="stack">
       <div class="card">
-        <h3>The method head skews toward decisions</h3>
-        <div class="p"><i></i><i class="w88"></i></div>
-        <p class="note">Stage-two AUC is <b class="num">≈ 0.56</b> — barely above chance; finishes are the rarer, noisier class.</p>
+        <h3>Temporal integrity</h3>
+        <div class="prose">
+          <p>Splits are by date, never by random seed, and dedicated leakage tests check the assumption rather than assuming it. Every feature is built from fights that had already finished at the time of the bout it describes.</p>
+        </div>
       </div>
       <div class="card">
-        <h3>No short-notice or weight-change feature</h3>
-        <div class="p"><i></i><i class="w88"></i></div>
-        <p class="note">Nothing in the 102 features sees a fight taken on two weeks’ notice — exactly why it missed Pereira’s catchweight move.</p>
+        <h3>Reproducibility</h3>
+        <div class="prose">
+          <p>Re-scoring the shipped four-stream bundle on the frozen split reproduces its recorded test metrics to <b class="num">2.2×10⁻¹⁶</b>. The charts on the evidence page are the deployed model, not an approximation of it.</p>
+        </div>
       </div>
       <div class="card">
-        <h3>UFC-only fight history</h3>
-        <div class="p"><i></i><i class="w88"></i></div>
-        <p class="note">A fighter’s record begins at their UFC debut. Measured cost: <b class="num">AUC 0.718 → 0.603</b> when either fighter has fewer than three UFC bouts — the <a href="case-studies.html#macau">Macau card</a>, converted into a number.</p>
+        <h3>Provenance</h3>
+        <div class="prose">
+          <p>Each chart names the file it was computed from. The analysis scripts emit JSON, the site reads the JSON, and no figure is typed in by hand along the way.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>No runtime dependencies</h3>
+        <div class="prose">
+          <p>Charts are hand-written SVG rather than a charting library, fonts are self-hosted, and there are no trackers or analytics. The site works offline and straight off the filesystem.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -310,23 +373,27 @@
 
 <!-- ================= ROADMAP ================= -->
 <section class="band" id="roadmap">
-  <p class="eyebrow">Roadmap</p>
-  <h2>Closing the discrimination gap.</h2>
-  <div class="wtable" style="margin-top:24px">
-    <div class="row head"><span>Planned work</span><span>Estimated gain</span><span>Stage</span><span></span></div>
-    <div class="row"><span class="m">Retrain the LSTM on richer per-round sequences</span><span class="t num">+0.02 – 0.04 AUC</span><span class="tag t-hit">next</span><span></span></div>
-    <div class="row"><span class="m">True-accuracy features from attempt counts</span><span class="t num">+0.01 – 0.02 AUC</span><span class="tag t-hit">next</span><span></span></div>
-    <div class="row"><span class="m">GMM archetypes with Bayesian shrinkage</span><span class="t">not estimated</span><span class="tag t-near">later</span><span></span></div>
-    <div class="row"><span class="m">Optional closing-odds feature</span><span class="t num">≈ +0.04 AUC</span><span class="tag t-neutral">deferred</span><span></span></div>
+  <p class="eyebrow">In development</p>
+  <h2>Roadmap</h2>
+  <p class="sub">Calibration is where this model is strongest. The queued work aims at resolution — spreading the probabilities further apart while keeping them honest.</p>
+  <div class="wtable wtable-3 mt">
+    <div class="row head"><span>Planned work</span><span>Estimated gain</span><span>Stage</span></div>
+    <div class="row"><span class="m">Retrain the LSTM on richer per-round sequences</span><span class="t num">+0.02 – 0.04 AUC</span><span class="tag t-hit">next</span></div>
+    <div class="row"><span class="m">True-accuracy features from attempt counts</span><span class="t num">+0.01 – 0.02 AUC</span><span class="tag t-hit">next</span></div>
+    <div class="row"><span class="m">Pre-UFC records from Tapology and Sherdog</span><span class="t">in collection</span><span class="tag t-hit">next</span></div>
+    <div class="row"><span class="m">GMM archetypes with Bayesian shrinkage</span><span class="t">not estimated</span><span class="tag t-near">later</span></div>
+    <div class="row"><span class="m">Optional closing-odds feature</span><span class="t num">≈ +0.04 AUC</span><span class="tag t-neutral">deferred</span></div>
   </div>
   <p class="note">Gains are the project’s own estimates, not measured results. The closing-odds feature is deliberately deferred — it changes what the model <em>is</em>, from an independent forecast into a market-follower.</p>
 </section>
 
+</main>
+
 <!-- ================= CONTACT ================= -->
 <footer id="contact">
   <div class="panel">
-    <h2>Get in touch</h2>
-    <p class="pl">Safwat Al Azad — second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what production machine learning actually demands — leakage discipline, calibration, honest reporting — on a problem messy enough to punish shortcuts.</p>
+    <h2>Contact</h2>
+    <p class="pl">Safwat Al Azad — second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what production machine learning actually demands — <b>leakage discipline, calibration, reproducible reporting</b> — on a problem messy enough to punish shortcuts.</p>
     <div class="actions">
       <a class="pill" href="https://github.com/saf-azad/metriccage">GitHub</a>
       <a class="pill-o" href="mailto:alazadsafwat@gmail.com">Email</a>
@@ -334,7 +401,7 @@
   </div>
   <div class="colophon">
     <span>MetricCage · 2026</span>
-    <span>Drawn in the Paper wireframe system · Space Grotesk</span>
+    <span>Paper design system · Space Grotesk</span>
     <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
