@@ -13,7 +13,8 @@ index.html          premise → pipeline → ensemble → results → feature im
                     → contact
 model.html          evidence: Brier decomposition, forecast distribution,
                     baseline ladder, leave-one-out ablation, permutation
-                    importance, performance by experience, stability, repro
+                    importance, performance by experience, stability,
+                    reproduction — each headed by the plain question it answers
 discoveries.html    computed findings 01–11 + methods + further results + queue
 case-studies.html   Macau (featured) + four scheduled cards + method
 assets/tokens/      Paper design-system tokens (colors, type, geometry,
@@ -26,19 +27,31 @@ assets/favicon.svg  inline-drawn mark, same five-colour palette
 
 ## Writing conventions
 
-Two rules govern the copy, and both are worth keeping if the site is edited
-later.
+Three rules govern the copy, and all three are worth keeping if the site is
+edited later.
 
 **Headings are plain labels, not slogans.** Sections are named for what they
-contain — `Data pipeline`, `Blind test set`, `Feature importance`,
-`Stability by year` — rather than with declarative one-liners. Quotation marks
-are not used for emphasis or distancing anywhere in the copy.
+contain — `Data pipeline`, `Blind test set`, `What drives a prediction`,
+`How it holds up year to year` — rather than with declarative one-liners.
+Quotation marks are not used for emphasis or distancing anywhere in the copy.
 
 **No figure appears in prose that is not already a measured value.** The
 sentences supply the argument around the numbers; they never introduce a new
 one. Sections with nothing measured to report — the four cards awaiting a
 write-up, the four queued findings — render as explicit stubs rather than being
 filled in, and each queued finding states the test that would kill it.
+
+**Every technical term is glossed on first use, in the same breath.** The site
+has two audiences and refuses to pick one. Terms of art still appear —
+calibration, log-loss, permutation importance, isotonic regression — because a
+reader who knows them should see them; but each arrives beside the plain
+question it answers, so a reader who does not know them never has to look
+anything up. Where a name is pure jargon with no plain equivalent, the heading
+carries the plain phrasing and the eyebrow carries the technical label
+(`Feature importance` over `What drives a prediction`). The reliability
+diagram is titled with its own question — *when it says 65%, does that fighter
+win 65 times in a hundred?* — which is the shortest honest definition of
+calibration on the site.
 
 ## Where every number comes from
 
@@ -58,8 +71,8 @@ Discovery figures are computed from UFCStats public fight records, snapshot
 2 August 2026: 8,794 fights, 41,392 fighter-round stat lines, 4,578 fighter
 profiles. Era figures are expressed **per minute of elapsed fight time** rather
 than as a share of a total that roughly tripled across the window — see the
-`Rates, not shares` section on `discoveries.html`. Re-run `analysis/` against a
-newer snapshot to regenerate `data/real-stats.js`.
+`Why these are rates, not percentages` section on `discoveries.html`. Re-run
+`analysis/` against a newer snapshot to regenerate `data/real-stats.js`.
 
 ## Deploying
 

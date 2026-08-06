@@ -31,7 +31,7 @@
 <div class="ticker">
   <span><b>Forecast before the card</b></span>
   <span>predictions recorded and time-stamped in advance</span>
-  <span>card records reported as <b>raw counts</b></span>
+  <span>results reported as <b>plain counts, not percentages</b></span>
 </div>
 
 <main id="main">
@@ -39,7 +39,7 @@
 <header class="band band-hero">
   <p class="eyebrow">Backtests · 2026 cards</p>
   <h1>Case studies</h1>
-  <p class="sub">A backtest on historical data is a laboratory result. Each card below was forecast before it took place and scored against what actually happened.</p>
+  <p class="sub">Testing a model on old fights is a laboratory result. Each card below was forecast <b>before</b> it happened, then scored against what actually did — which is the version nobody can tidy up afterwards.</p>
 </header>
 
 <!-- ===== MACAU ===== -->
@@ -56,27 +56,27 @@
     <div class="kv"><span class="v num">13</span><span class="l">bouts on the card</span></div>
     <div class="kv"><span class="v num">8</span><span class="l">scoreable by the model</span></div>
     <div class="kv"><span class="v num">5</span><span class="l">scored picks correct</span></div>
-    <div class="kv"><span class="v num">5.33</span><span class="l">expected from its own probabilities</span></div>
-    <div class="kv"><span class="v num">4 – 7</span><span class="l">central 80% range predicted</span></div>
+    <div class="kv"><span class="v num">5.33</span><span class="l">how many its own odds said it should get</span></div>
+    <div class="kv"><span class="v num">4 – 7</span><span class="l">the central 80% range it predicted for itself</span></div>
   </div>
 
   <div class="split-even mt-lg">
     <div>
       <div class="prose mt-0">
-        <p>Of the thirteen bouts on the card, eight were scoreable. Four were UFC debutants, whom the model does not attempt to rate because they carry no record in the feature matrix, and one ended as a no-contest.</p>
-        <p>On the eight it scored, the model took <b>five</b> — against an expected <b>5.33</b> from its own probabilities. That result sits in the middle of the central 80% range it had predicted for itself, which is exactly what a calibrated forecast is supposed to do: the number it gave in advance described the outcome it went on to produce.</p>
-        <p>The card is also a clean demonstration of the model declining to guess. Rating the four debutants would have been easy and would have padded the count; leaving them unscored keeps the record honest and keeps the expected-versus-actual comparison meaningful.</p>
+        <p>Thirteen bouts were on the card and eight of them could be scored. Four involved UFC debutants, whom the model will not rate because it has no record of them to read, and one ended as a no-contest.</p>
+        <p>Of the eight it did score, the model called <b>five</b>. Its own probabilities had said to expect <b>5.33</b>. That lands in the middle of the central 80% range it had predicted for itself, which is exactly the point: the odds it published in advance described the result it went on to produce.</p>
+        <p>The card also shows the model declining to guess. Rating those four debutants would have been easy and would have padded the count. Leaving them alone keeps the record honest — and keeps the comparison between expected and actual worth making at all.</p>
       </div>
       <div class="callout">
-        <p class="lead">Calibration is a claim about the long run, and it holds up card by card too.</p>
+        <p class="lead">Honest odds are a claim about the long run — but they show up card by card too.</p>
         <div class="prose prose-tight">
-          <p>Five against 5.33 expected is not a lucky result or an unlucky one. It is the forecast landing where the forecast said it would.</p>
+          <p>Five against 5.33 expected is neither a lucky night nor an unlucky one. It is a forecast landing where the forecast said it would.</p>
         </div>
       </div>
     </div>
     <div class="chart-card">
-      <p class="ct">Where the model is strongest</p>
-      <p class="cs">Across the whole 695-fight blind test — not one card — split by how much UFC history the matchup carries.</p>
+      <p class="ct">Why debutants get left out</p>
+      <p class="cs">Measured across the whole 695-fight blind test rather than one card, split by how much UFC history the matchup carries. Higher is better; 0.500 would mean guessing.</p>
       <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 for matchups where both fighters have five or more UFC bouts, against 0.603 for near-debutants">
         <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">both ≥ 5 UFC bouts</text>
         <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)">0.718</text>
@@ -93,7 +93,7 @@
 <section class="band" id="scheduled">
   <p class="eyebrow">The schedule</p>
   <h2>Cards awaiting write-up</h2>
-  <p class="sub">Forecasts for each were recorded and time-stamped before the card took place. What follows is the scored breakdown, written up in order.</p>
+  <p class="sub">The forecasts for each of these were recorded and time-stamped before the card took place. The scored breakdowns follow, written up in order.</p>
   <div class="grid-4 mt">
     <div class="queued">
       <span class="queued-mark">Write-up scheduled</span>
@@ -127,17 +127,17 @@
     </div>
     <div>
       <div class="prose">
-        <p>A card is only evidence if the forecast existed before the fights did. Each set of predictions is generated and stored ahead of the event, using the feature matrix as it stood at that moment — no post-hoc feature updates, no re-running with hindsight, and no dropping a bout after the fact.</p>
-        <p>Bouts the model cannot rate are marked unscoreable rather than filled in. A UFC debutant carries no history in the feature matrix, so any number attached to them would be the betting market’s opinion rather than the model’s.</p>
+        <p>A card is only evidence if the forecast existed before the fights did. Every set of predictions is produced and stored ahead of the event, using the data exactly as it stood at that moment. Nothing is updated afterwards, nothing is re-run with the benefit of hindsight, and no bout is quietly dropped once the result is in.</p>
+        <p>Fights the model cannot rate are marked unscoreable rather than filled in with something plausible. A UFC debutant has no history for the model to read, so any number put beside their name would really be the betting market’s opinion wearing the model’s clothes.</p>
       </div>
-      <p class="note">A pick counts as correct when the fighter given the higher win probability wins. No-contests and overturned results are excluded from the denominator rather than counted either way.</p>
+      <p class="note">A pick counts as correct when the fighter given the higher win probability wins. No-contests and overturned results are removed from the count altogether rather than being scored one way or the other.</p>
       <div class="callout">
-        <p class="lead">Card records are raw counts, never percentages.</p>
+        <p class="lead">Card records are reported as plain counts, never percentages.</p>
         <div class="prose prose-tight">
-          <p>Five out of eight is five out of eight. A card of this size cannot support a percentage to two significant figures, and the interval around one would be wide enough to contain almost any reading you cared to take from it.</p>
+          <p>Five out of eight is five out of eight. Turning it into a percentage would borrow an air of precision it has not earned: eight fights cannot support a figure carried to two decimal places, and the honest margin around one would be wide enough to cover almost any conclusion you cared to draw from it.</p>
         </div>
       </div>
-      <p class="note">The aggregate metrics on <a href="index.html#results">the results page</a> — computed across 695 fights — are the numbers that carry statistical weight. These cards show the model working in the open, on events as they happen.</p>
+      <p class="note">The figures on <a href="index.html#results">the results page</a>, computed across 695 fights, are the ones carrying real statistical weight. These cards are here to show the model working in the open, on events as they happen.</p>
     </div>
   </div>
 </section>
