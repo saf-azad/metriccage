@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Model evidence — MetricCage</title>
-<meta name="description" content="Evidence for a calibrated UFC prediction model: Brier decomposition, forecast distribution, baseline ladder, leave-one-out ablation, permutation importance and year-by-year stability.">
+<meta name="description" content="The working behind the results: where the score comes from, how the blend compares with each model inside it, what each feature is worth, and whether performance holds up year to year.">
 <meta name="theme-color" content="#ECF0F3">
 <meta property="og:title" content="Model evidence — MetricCage">
-<meta property="og:description" content="Brier decomposition, baseline ladder, leave-one-out ablation and permutation importance — the working behind the results.">
+<meta property="og:description" content="The working behind the results — every claim on the front page, opened up and checked.">
 <meta property="og:type" content="article">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
@@ -29,29 +29,38 @@
 </nav>
 
 <div class="ticker">
-  <span><b>Re-scored on the frozen split</b></span>
-  <span>reproduces recorded test metrics to <b>2.2×10⁻¹⁶</b></span>
-  <span>this <b>is</b> the deployed model, not an approximation of it</span>
+  <span><b>Re-scored on the same fixed split</b></span>
+  <span>reproduces its recorded results to <b>2.2×10⁻¹⁶</b></span>
+  <span>this <b>is</b> the model that runs, not an approximation of it</span>
 </div>
 
 <main id="main">
 
 <header class="band band-hero">
-  <p class="eyebrow">695 blind-test fights · 4-stream ensemble</p>
+  <p class="eyebrow">695 blind-test fights · four blended models</p>
   <h1>Model evidence</h1>
-  <p class="sub">Every chart on this page is computed from the shipped four-stream bundle, re-scored on the frozen temporal split. Each one names the file it came from, so any figure here can be traced back to the script that produced it.</p>
+  <p class="sub">This is the working behind the front page. Every chart here comes from the shipped model itself, re-scored on the same fixed split, and each one names the file it was computed from — so any figure can be followed back to the script that produced it.</p>
+  <p class="note">The material below gets technical. Each section opens with the question it is answering in plain terms, then the number that answers it.</p>
 </header>
 
 <!-- ===== 01 DECOMPOSITION ===== -->
 <section class="band" id="identity">
   <p class="eyebrow">01</p>
-  <h2>Brier decomposition</h2>
-  <p class="sub">Murphy’s decomposition splits the Brier score into the two quantities this project cares about, plus the part no model can beat. Stating them separately turns a claim about calibration into an identity.</p>
-  <p class="note"><b class="num">Brier 0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</b> · Brier skill over the base rate <b class="num">+0.084</b></p>
+  <h2>Where the score comes from</h2>
+  <p class="sub">A single score tells you how well a forecast did, but not why. Murphy’s decomposition breaks it into three parts — two the model can influence, and one it never will.</p>
+  <div class="callout">
+    <p class="lead">The three parts, in plain terms</p>
+    <ul class="tick">
+      <li><b>Reliability</b> — are the stated odds honest? This is the dishonesty term, so <b>lower is better</b> and zero is perfect.</li>
+      <li><b>Resolution</b> — does the model commit, or hedge everything near 50/50? Here <b>higher is better</b>, which is why it is subtracted.</li>
+      <li><b>Uncertainty</b> — how hard the sport is to call in the first place. No model touches this one. It is the same number whoever is forecasting.</li>
+    </ul>
+  </div>
+  <p class="note"><b class="num">Brier 0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</b> · that is an improvement of <b class="num">+0.084</b> on simply quoting the historical average every time</p>
   <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">The decomposition, to scale</p>
-      <p class="cs">Reliability at 0.0033 is the calibration term, and near zero is where you want it. Uncertainty at 0.2496 is the irreducible difficulty of the sport itself.</p>
+      <p class="ct">The three parts, drawn to scale</p>
+      <p class="cs">Reliability sits at 0.0033 — all but invisible on this scale, which is exactly where it belongs. Uncertainty at 0.2496 dwarfs everything else, because most of what makes a fight hard to predict is simply that fights are hard to predict.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Murphy decomposition bars: reliability 0.0033, resolution 0.0240, uncertainty 0.2496">
         <text x="8" y="24" font-size="11" fill="var(--ink-a62)">reliability</text>
         <rect x="110" y="14" width="4" height="12" rx="2" fill="var(--ink)"/>
@@ -66,8 +75,8 @@
       <p class="src">analysis/model_eval.json · murphy_quantile</p>
     </div>
     <div class="chart-card">
-      <p class="ct">Forecast distribution</p>
-      <p class="cs">The isotonic calibrator maps 695 blended probabilities onto <b>24 distinct values</b>. The largest, 0.5621, covers 207 fights.</p>
+      <p class="ct">How often it commits</p>
+      <p class="cs">Across all 695 fights the model reports only <b>24 different probabilities</b>. The most common of them, 0.5621, covers 207 fights — a lot of a UFC card really is close to a coin toss, and the model says so rather than manufacturing confidence it does not have.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Sharpness histogram with a dominant spike near 0.56 covering 207 fights">
         <line x1="20" y1="104" x2="344" y2="104" stroke="var(--ink)" stroke-width="2"/>
         <rect x="48"  y="96" width="9" height="8"  fill="var(--slate-a60)"/>
@@ -85,18 +94,18 @@
       <p class="src">28% of forecasts sit outside the 30–70 band</p>
     </div>
   </div>
-  <p class="note">Isotonic is the calibrator that earns its place: test log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 uncalibrated.</p>
+  <p class="note">Three methods were tried for the final honesty adjustment, and isotonic regression earned the job on the numbers: test log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 with no adjustment at all.</p>
 </section>
 
 <!-- ===== 02 BASELINES ===== -->
 <section class="band" id="worth">
   <p class="eyebrow">02</p>
-  <h2>Baselines and ablation</h2>
-  <p class="sub">The first question to ask about an ensemble is whether it outperforms its own best component. The second is what each component contributes. These two charts answer both.</p>
+  <h2>How the blend compares with its parts</h2>
+  <p class="sub">Two questions decide whether blending four models was worth the trouble. Does the blend beat the best model inside it? And how much does each of the four contribute? The charts below answer them in that order.</p>
   <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">Baseline ladder — test log-loss, lower is better</p>
-      <p class="cs">Every stream isotonic-calibrated on 2023. The shipped ensemble comes in ahead of each of its own components.</p>
+      <p class="ct">Every model ranked — lower is better</p>
+      <p class="cs">Each of the four ran through the same honesty adjustment on 2023, then was scored on the same untouched test years. The shipped blend finishes ahead of all of them.</p>
       <svg viewBox="0 0 360 196" role="img" aria-label="Baseline ladder of log-loss: always 0.50 scores 0.6931, train base rate 0.6924, Elo 0.6899, logistic regression 0.6600, XGBoost 0.6556, LSTM 0.6531, shipped ensemble 0.6463">
         <text x="8" y="22" font-size="10.5" fill="var(--ink-a62)">Always 0.50</text>
         <rect x="104" y="13" width="232" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="22" font-size="10.5" font-weight="700">0.6931</text>
@@ -116,8 +125,8 @@
       <p class="src">analysis/model_eval.json · ladder</p>
     </div>
     <div class="chart-card" id="ablation">
-      <p class="ct">Leave-one-out ablation — Δ log-loss when a stream is dropped</p>
-      <p class="cs">Weights and calibrator refit on validation each time. Larger bars mark the streams the blend depends on most.</p>
+      <p class="ct">Take one model away — how much worse does it get?</p>
+      <p class="cs">Each model is removed in turn and the blend rebuilt from what is left. Longer bars mark the models the blend leans on most.</p>
       <svg viewBox="0 0 360 168" role="img" aria-label="Ablation deltas: dropping XGBoost costs 0.0072, logistic 0.0050, LSTM 0.0031, Elo effectively neutral">
         <line x1="120" y1="10" x2="120" y2="150" stroke="var(--ink)" stroke-width="2"/>
         <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">− XGBoost</text>
@@ -132,17 +141,17 @@
       <p class="src">analysis/model_eval.json · ablation</p>
     </div>
   </div>
-  <p class="note">XGBoost carries the most, at <b class="num">+0.0072</b> log-loss when removed, followed by logistic regression and the LSTM. Elo sits near neutral because its signal already reaches the blend through the other three streams as features.</p>
+  <p class="note">XGBoost carries the most weight: losing it costs <b class="num">+0.0072</b> in log-loss. Logistic regression and the LSTM follow. Elo comes out roughly neutral, and not because it knows nothing — its ratings are already fed to the other three as a feature, so most of what it has to say has arrived before it votes.</p>
 </section>
 
 <!-- ===== 03 DRIVERS ===== -->
 <section class="band" id="drivers">
   <p class="eyebrow">03</p>
-  <h2>Feature importance</h2>
-  <p class="sub">Permutation on held-out data is the measure used here. Shuffle one feature on fights the model has never seen, and record how much worse the forecast gets — a test that no feature passes on the strength of how it looked during training.</p>
+  <h2>What drives a prediction</h2>
+  <p class="sub">The test is deliberately blunt. Take one feature, scramble its values across fights the model has never seen, and measure how much worse the forecasts get. Whatever hurts most to lose was doing the most work — and nothing passes this test on the strength of how promising it merely looked during training.</p>
   <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">Permutation importance — Δ log-loss when a feature is shuffled</p>
+      <p class="ct">How much worse the forecasts get when a feature is scrambled</p>
       <p class="cs">Measured on the 695-fight blind test set. Higher is more important.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Permutation importance: age difference 0.049, pace mismatch 0.038, then both fighters' UFC fight counts">
         <text x="8" y="30" font-size="10.5" fill="var(--ink-a62)">age difference</text>
@@ -157,10 +166,10 @@
     <div class="card">
       <h3>Reading the ranking</h3>
       <div class="prose">
-        <p>Age difference leads at <b class="num">+0.049</b>, pace mismatch follows at <b class="num">+0.038</b>, and the two fighters’ UFC fight counts take third and fourth. Freshness, tempo and depth of record — in that order.</p>
-        <p>Permutation is the right test here because it is computed on data the model has never seen. A tree model’s built-in gain is measured on the training data and rewards features that can be split many ways, which makes it a description of how the trees were built rather than of what predicts a fight.</p>
+        <p>Age difference leads at <b class="num">+0.049</b>, pace mismatch follows at <b class="num">+0.038</b>, and the two fighters’ UFC fight counts take third and fourth. Freshness, tempo, and depth of record — in that order.</p>
+        <p>Scrambling is the right test because it is done on fights the model has never seen. Tree-based models will report which features they leaned on, but that report comes from the data they were built on and flatters anything that can be sliced a lot of ways. It describes how the model was assembled, not what wins fights.</p>
       </div>
-      <p class="note">Both experience counts reaching the top four is the reason performance scales with fighter history, measured directly in section 04.</p>
+      <p class="note">Both experience counts landing in the top four is precisely why performance rises with fighter history — measured directly in section 04.</p>
     </div>
   </div>
 </section>
@@ -168,12 +177,12 @@
 <!-- ===== 04 EXPERIENCE ===== -->
 <section class="band" id="experience">
   <p class="eyebrow">04</p>
-  <h2>Performance by fighter experience</h2>
-  <p class="sub">The model reads a fighter through their UFC record, so the amount of record available is worth measuring directly rather than describing. Split the same blind test set by how much history each matchup carries and the effect is clear.</p>
+  <h2>Where the model is strong, and where it is not</h2>
+  <p class="sub">The model knows a fighter only through their UFC record, which raises an obvious question: what happens when there is barely any record to read? Rather than assume, the same 695 fights are split by how much history each matchup carries.</p>
   <div class="split-even mt">
     <div class="chart-card">
-      <p class="ct">AUC by fighter experience</p>
-      <p class="cs">Same model, same test window — split by how much UFC history is available for the matchup.</p>
+      <p class="ct">Performance against available history</p>
+      <p class="cs">Same model, same test years — split by how much UFC history the matchup carries. Higher is better; 0.500 would mean guessing.</p>
       <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 when both fighters have five or more UFC bouts, against 0.603 when either has fewer than three">
         <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">both ≥ 5 UFC bouts</text>
         <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)">0.718</text>
@@ -187,10 +196,10 @@
     <div class="card">
       <h3>What this establishes</h3>
       <div class="prose">
-        <p>On matchups where both fighters have five or more UFC bouts, the model reaches <b class="num">AUC 0.718</b> — comfortably its strongest regime, and the one that covers most of the card on a typical event.</p>
-        <p>The measurement also sets the priority for what comes next. Extending fighter history with pre-UFC records is the leading roadmap item precisely because this chart puts a number on what it is worth, rather than leaving it as an assumption.</p>
+        <p>When both fighters have five or more UFC bouts behind them, the model reaches <b class="num">0.718</b> — comfortably its best work, and the situation that covers most of a typical card. Where one fighter is close to a debutant, it drops to 0.603 and the model is honest about being on thinner ground.</p>
+        <p>The measurement also sets the next priority. Going after fighters’ pre-UFC records tops the roadmap precisely because this chart puts a number on what those records would be worth, instead of leaving it as a hunch.</p>
       </div>
-      <p class="note">Tapology and Sherdog are already in the collection step. The gap of <b class="num">0.114</b> is the size of the opportunity.</p>
+      <p class="note">Tapology and Sherdog are already being collected. That gap of <b class="num">0.114</b> is the size of the prize.</p>
     </div>
   </div>
 </section>
@@ -198,11 +207,11 @@
 <!-- ===== 05 STABILITY ===== -->
 <section class="band" id="stability">
   <p class="eyebrow">05</p>
-  <h2>Stability by year</h2>
-  <p class="sub">Performance holds steady across two decades of fights, and the chart marks which years the model was fitted on so the out-of-sample years can be read on their own.</p>
+  <h2>How it holds up year to year</h2>
+  <p class="sub">A model can look excellent overall and still be carried by one lucky season. Scoring each year separately shows whether performance is steady, and shading the years the model learned from lets the untouched ones be read on their own.</p>
   <div class="chart-card mt">
-    <p class="ct">Brier by year — axis anchored so flat looks flat</p>
-    <p class="cs">Shaded spans mark the fitted years; the unshaded years on the right are out-of-sample. Dashed reference is the 0.250 coin flip.</p>
+    <p class="ct">Score by year — the axis is anchored, so flat really is flat</p>
+    <p class="cs">Shaded spans are the years the model was built on; the unshaded years on the right it had never seen. The dashed line at 0.250 is what a coin flip scores.</p>
     <svg viewBox="0 0 560 150" role="img" aria-label="Brier score by year with train, validation and test regions shaded; the line stays flat near 0.22 to 0.23 throughout">
       <rect x="40" y="12" width="330" height="110" fill="var(--slate-a15)"/>
       <rect x="370" y="12" width="60" height="110" fill="var(--slate-a35)"/>
@@ -218,36 +227,36 @@
     </svg>
     <p class="src">validation 0.222 · test 0.229 · analysis/model_eval.json · brier_by_year</p>
   </div>
-  <p class="note">Validation lands at <b class="num">0.222</b> and the blind test at <b class="num">0.229</b>. A gap that small between tuned and untouched years is what a model that has not overfitted looks like.</p>
+  <p class="note">The tuning year comes in at <b class="num">0.222</b> and the untouched test years at <b class="num">0.229</b>. A gap that small is the sign of a model that learned the sport rather than memorising the fights it was shown — the failure known as overfitting, and the one most easily hidden by a flattering headline number.</p>
 </section>
 
 <!-- ===== 06 REPRODUCTION ===== -->
 <section class="band" id="reproduction">
   <p class="eyebrow">06</p>
-  <h2>Reproduction</h2>
+  <h2>How to check all of it</h2>
   <div class="split mt">
     <div class="sticky-side">
       <div class="prose mt-0">
-        <p>Everything above comes from re-scoring the shipped four-stream bundle on the frozen temporal split, so the charts describe the deployed model rather than a rebuild of it.</p>
+        <p>Everything above comes from re-scoring the shipped four-model bundle on the same fixed split. The charts describe the model that actually runs, not a rebuilt approximation of it.</p>
       </div>
     </div>
     <div class="stack">
       <div class="card">
         <h3>The split</h3>
         <div class="prose">
-          <p>Train 2005–2022, validate 2023, test 2024-01-01 to 2025-05-04 — giving 5,563 / 504 / 695 fights. The boundaries are fixed dates and do not move between runs.</p>
+          <p>Learn from 2005–2022, tune on 2023, test on 1 January 2024 to 4 May 2025 — 5,563 fights, then 504, then 695. The boundaries are fixed dates and do not move between runs.</p>
         </div>
       </div>
       <div class="card">
         <h3>The check</h3>
         <div class="prose">
-          <p>The re-score reproduces the bundle’s recorded test metrics to <b class="num">2.2×10⁻¹⁶</b> — machine precision. Nothing on this page is an approximation of the deployed model.</p>
+          <p>Re-scoring reproduces the bundle’s recorded results to <b class="num">2.2×10⁻¹⁶</b> — machine precision, or as close to identical as a computer gets. Nothing on this page is an approximation.</p>
         </div>
       </div>
       <div class="card">
         <h3>The scripts</h3>
         <div class="prose">
-          <p>analysis/model_eval.py, analysis/model_eval2.py and analysis/score_streams.py emit the JSON these charts read. Re-running them against a newer data snapshot regenerates the figures.</p>
+          <p>Three scripts — model_eval.py, model_eval2.py and score_streams.py — write out the numbers these charts read. Point them at a newer snapshot of the data and the figures regenerate themselves.</p>
         </div>
       </div>
     </div>

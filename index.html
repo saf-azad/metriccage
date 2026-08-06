@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MetricCage — a calibrated UFC fight prediction system</title>
-<meta name="description" content="A four-model ensemble that predicts UFC fights as calibrated probabilities rather than picks — 102 engineered features, walk-forward validation, and a 695-fight blind test.">
+<meta name="description" content="Four models blended into one honest set of odds for UFC fights. When it says 70%, that fighter wins about seven times in ten — measured on 695 fights it had never seen.">
 <meta name="author" content="Safwat Al Azad">
 <meta name="theme-color" content="#ECF0F3">
 <meta property="og:title" content="MetricCage — a calibrated UFC fight prediction system">
-<meta property="og:description" content="Probabilities you can trust, not just picks. Built, validated and measured on fights the model had never seen.">
+<meta property="og:description" content="Honest odds, not just a name. Built, validated and measured on fights the model had never seen.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
@@ -31,8 +31,8 @@
 
 <div class="ticker">
   <span><b>8,794 fights analysed</b></span>
-  <span>102 engineered features</span>
-  <span>four-model ensemble</span>
+  <span>102 features built per fight</span>
+  <span>four models blended into one</span>
   <span>tested on <b>695 fights it had never seen</b></span>
 </div>
 
@@ -40,10 +40,10 @@
 
 <!-- ================= HERO ================= -->
 <header class="band band-hero">
-  <p class="eyebrow">Fight analytics · calibrated ML</p>
+  <p class="eyebrow">Fight analytics · calibrated machine learning</p>
   <p class="byline">Safwat Al Azad</p>
   <h1>MetricCage</h1>
-  <p class="sub">A calibrated UFC fight prediction system — <b>probabilities you can trust, not just picks.</b></p>
+  <p class="sub">A UFC fight prediction system that gives you <b>honest odds, not just a name.</b> When it says a fighter has a 70% chance, that fighter goes on to win about seven times out of ten.</p>
   <div class="actions">
     <a class="pill" href="#results">See the results</a>
     <a class="pill-o" href="model.html">Model evidence</a>
@@ -52,8 +52,8 @@
   <div class="grid-4 mt-lg">
     <div class="statcard"><span class="v num">8,794</span><span class="l">fights analysed · 41,392 rounds · 1994–2026</span></div>
     <div class="statcard"><span class="v num">102</span><span class="l">engineered features · per fight, per side</span></div>
-    <div class="statcard"><span class="v num">4</span><span class="l">model ensemble · weight-optimised blend</span></div>
-    <div class="statcard"><span class="v num">0.049</span><span class="l">expected calibration error · under the 0.050 threshold</span></div>
+    <div class="statcard"><span class="v num">4</span><span class="l">models blended into one answer · weights solved, not guessed</span></div>
+    <div class="statcard"><span class="v num">0.049</span><span class="l">calibration error · how far the stated odds drift from reality, under the 0.050 mark</span></div>
   </div>
 </header>
 
@@ -66,14 +66,15 @@
     </div>
     <div>
       <div class="prose">
-        <p>A model that says 70% and is right about 70% of the time is doing its job. A model that says 90% and is wrong half the time it is confident is worse than useless — it is confidently misleading.</p>
-        <p>Most fight-prediction projects optimise for the headline: what share of winners did it call? That number is easy to inflate and almost impossible to act on. Picking the betting favourite in every UFC bout already lands near 60%, so an accuracy figure in that range says nothing about whether a model has learned anything.</p>
-        <p>Calibration asks the more useful question: when this system says 65%, does that fighter win about 65 times in a hundred? That property is what makes a probability composable. You can size a position on it, compare it against a market line, or stack it with other information. A pick can do none of those things.</p>
+        <p>Two words do most of the work on this site. <b>Accuracy</b> is how often a model names the winner. <b>Calibration</b> is whether the confidence attached to that name means anything at all.</p>
+        <p>A model that says 70% and is right about 70% of the time is doing its job. A model that says 90% and is wrong half the time it is that confident is worse than useless — it is confidently misleading.</p>
+        <p>Most fight-prediction projects chase the headline instead: what share of winners did it call? That number is easy to inflate and almost impossible to use. Backing the betting favourite in every UFC bout already lands near 60%, so an accuracy figure in that range tells you nothing about whether a model has learned anything.</p>
+        <p>Calibration asks the more useful question. When this system says 65%, does that fighter win about 65 times in a hundred? Get that right and the number becomes something you can act on: you can size a bet with it, hold it up against a bookmaker’s line, or fold it in with whatever else you know about the fight. A bare pick does none of that.</p>
       </div>
       <div class="callout">
-        <p class="lead">MetricCage optimises log-loss and Brier score, both strictly proper scoring rules.</p>
+        <p class="lead">The model is trained to be honest rather than to look confident.</p>
         <div class="prose prose-tight">
-          <p>A strictly proper rule is minimised only when the reported number is the model’s honest belief, so there is nothing to gain by shading a forecast toward a safer-looking figure.</p>
+          <p>It is scored on log-loss and Brier score. Both belong to a family of measures with a useful property: the only way to score well is to report what you actually believe. Shading a forecast toward a safer-looking figure always costs you, so the model has no incentive to hedge — or to bluff.</p>
         </div>
       </div>
     </div>
@@ -84,13 +85,13 @@
 <section class="band" id="pipeline">
   <p class="eyebrow">Pipeline</p>
   <h2>Data pipeline</h2>
-  <p class="sub">Every design decision in this stage exists to stop the model from seeing the future.</p>
+  <p class="sub">Every decision in this stage exists to stop the model from seeing the future. It is the least glamorous part of the project and the part everything else rests on.</p>
   <div class="grid-4 mt-lg">
     <div class="card">
       <p class="card-num">01</p>
       <h3>Collect</h3>
       <div class="prose">
-        <p>Four independent scrapers cover results, round-by-round statistics, fighter attributes and event metadata. Where they overlap they are cross-checked, not merged blindly.</p>
+        <p>Four separate collectors pull down results, round-by-round statistics, fighter details and event information. Where two of them cover the same ground, the records are checked against each other rather than merged and hoped for.</p>
       </div>
       <p class="card-foot"><span class="chip">4 sources</span></p>
     </div>
@@ -98,15 +99,15 @@
       <p class="card-num">02</p>
       <h3>Clean and reconcile</h3>
       <div class="prose">
-        <p>Fighter names are the join key, and names are the messiest field in the source. Every fighter collapses to one canonical ID, matching at 99.8%, before a single feature is computed.</p>
+        <p>Names are what tie the four sources together, and names are the messiest thing in the data — spellings drift, nicknames come and go, fighters share surnames. Every fighter is resolved to a single identity, matching at 99.8%, before one feature is calculated.</p>
       </div>
-      <p class="card-foot"><span class="chip">canonical fighter IDs</span></p>
+      <p class="card-foot"><span class="chip">one ID per fighter</span></p>
     </div>
     <div class="card">
       <p class="card-num">03</p>
       <h3>Engineer</h3>
       <div class="prose">
-        <p>Career aggregates, recent form, pace, physical differentials and Elo — each built strictly from fights that had already finished when the bout it describes was made.</p>
+        <p>Career totals, recent form, pace, physical gaps and Elo rating — each one built strictly from fights that had already finished by the time the bout it describes was booked.</p>
       </div>
       <p class="card-foot"><span class="chip">102 features</span></p>
     </div>
@@ -114,18 +115,18 @@
       <p class="card-num">04</p>
       <h3>Split by date</h3>
       <div class="prose">
-        <p>Train on the past, tune on the year after, test on years the model has never touched. The boundary is a date, never a random seed.</p>
+        <p>Learn from the past, tune on the year after that, then test on years the model has never touched. The dividing line is always a date, never a shuffle.</p>
       </div>
       <p class="card-foot"><span class="chip">walk-forward</span></p>
     </div>
   </div>
   <div class="callout">
-    <p class="lead">Why the temporal split matters more than it sounds</p>
+    <p class="lead">Why splitting by date matters more than it sounds</p>
     <div class="prose prose-tight">
-      <p>A random train/test split on fight data leaks in two directions at once. A fighter’s later bouts inform their earlier feature values, and the test set contains fights whose participants the model has already watched mature. Both inflate scores, and neither survives contact with a real upcoming card. Splitting strictly by date, and checking the assumption with dedicated leakage tests, is what makes every number below meaningful.</p>
+      <p>Shuffling the fights at random and holding some back for testing sounds fair enough. It isn’t. Do it and the leak runs in two directions at once: a fighter’s later bouts quietly shape the numbers describing their earlier ones, and the held-back fights feature people the model has already watched grow into their prime. Both make the scores look better than they are, and neither survives contact with a card that has not happened yet. Splitting strictly by date — and running dedicated tests to check the split held — is what makes every number below worth reading.</p>
     </div>
   </div>
-  <p class="note">Train <b>2005–2022</b> · validate <b>2023</b> · test blind <b>2024–2025</b> — 5,563 / 504 / 695 fights. No shuffled split, no random K-fold.</p>
+  <p class="note">Learn <b>2005–2022</b> · tune <b>2023</b> · test blind <b>2024–2025</b> — 5,563 / 504 / 695 fights. Nothing shuffled, and no fights held back at random.</p>
 </section>
 
 <!-- ================= ENSEMBLE ================= -->
@@ -133,12 +134,12 @@
   <div class="split">
     <div class="sticky-side">
       <p class="eyebrow">Architecture</p>
-      <h2>The ensemble</h2>
+      <h2>Four models, one answer</h2>
       <div class="prose">
-        <p>Given the same 102 features, four model families disagree in useful ways. Gradient boosting finds the interactions, logistic regression holds a stable linear baseline, the LSTM reads a career as an ordered sequence rather than a bag of averages, and Elo carries nothing but who beat whom.</p>
-        <p>Blending is worth doing because they fail in different places, and the blend beats every one of them individually.</p>
+        <p>Hand the same 102 features to four different kinds of model and they disagree, usefully. Gradient boosting hunts for combinations — what happens when a fighter is both younger <em>and</em> busier. Logistic regression holds a plain, stable baseline that is hard to fool. The LSTM reads a career in order, so a record on the way up looks different from the same record on the way down. Elo knows nothing at all except who has beaten whom.</p>
+        <p>The reason to blend them is that they get things wrong in different places. Where one is lost, another is usually not — and the blend ends up ahead of all four on its own.</p>
       </div>
-      <p class="note">Weights are not hand-set. They solve a constrained least-squares problem on the 2023 validation year, minimising log-loss with weights non-negative and summing to one.</p>
+      <p class="note">The weights are not set by hand. They are solved for on the 2023 validation year alone, chosen to make the blended forecast as honest as possible, kept non-negative, and made to sum to one.</p>
     </div>
     <div>
       <div class="weightbar" role="img" aria-label="Ensemble weights: XGBoost 35.3%, logistic regression 29.2%, career LSTM 23.1%, Elo 12.4%">
@@ -154,21 +155,21 @@
         <div class="lr"><span class="sw k4"></span><span class="name">Elo</span><span class="pct num">12.4%</span></div>
       </div>
       <div class="callout">
-        <p class="lead">Blending</p>
+        <p class="lead">How the weights are found</p>
         <div class="prose prose-tight">
-          <p>Constrained least-squares over the four streams, fitted on the validation year alone so the test years stay untouched. Non-negativity keeps the result readable: no stream enters as a negative correction on another.</p>
+          <p>A constrained least-squares fit over the four models, run on the validation year only so the test years stay untouched. Holding every weight at zero or above keeps the result readable: no model enters the blend as a negative correction on another.</p>
         </div>
       </div>
       <div class="callout">
-        <p class="lead">Calibration</p>
+        <p class="lead">The final honesty adjustment</p>
         <div class="prose prose-tight">
-          <p>Isotonic regression maps the blended score onto observed frequencies, then temperature scaling at T&nbsp;=&nbsp;1.3 smooths the result. Isotonic reaches log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 uncalibrated.</p>
+          <p>A blended score is not yet a probability. Isotonic regression pulls it onto the frequencies actually observed, so what gets reported is the rate at which scores of that size have really won, and temperature scaling at T&nbsp;=&nbsp;1.3 smooths the edges. Isotonic won the job on the numbers: log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 with no adjustment at all.</p>
         </div>
       </div>
       <div class="callout">
-        <p class="lead">Method of victory</p>
+        <p class="lead">How the fight ends</p>
         <div class="prose prose-tight">
-          <p>A separate two-stage head predicts finish against decision, then submission against knockout. It is reported apart from the win probability so the two are never conflated.</p>
+          <p>A separate model answers a separate question in two steps: finish or decision, and then submission or knockout. It is reported apart from the win probability, because knowing who wins and knowing how are not the same claim and should never be read as one.</p>
         </div>
       </div>
     </div>
@@ -179,7 +180,7 @@
 <section class="band" id="results">
   <p class="eyebrow">Results</p>
   <h2>Blind test set</h2>
-  <p class="sub">Measured on <b>695 fights</b> the model had never seen, from years it was never trained on, with a bootstrapped interval on every figure.</p>
+  <p class="sub">Measured on <b>695 fights</b> the model had never seen, from years it was never trained on. Every figure carries an interval, so you can see how much of it is signal and how much could be luck.</p>
   <div class="split-even mt-lg">
     <div>
       <div class="wtable">
@@ -190,24 +191,37 @@
         <div class="row"><span class="m">ECE (10-bin)</span><span class="v num">0.049</span><span class="t num">0.033 – 0.092</span><span class="t num">&lt; 0.050</span></div>
         <div class="row"><span class="m">Accuracy</span><span class="v num">59.6%</span><span class="t">—</span><span class="t">context</span></div>
       </div>
-      <p class="note">The reference column is what a model carrying no information would score, except for ECE, where it is the calibration threshold the model comes in under. Brier skill over the base rate is <b class="num">+0.084</b>.</p>
+      <p class="note">The reference column is what a model that knew nothing would score — except for ECE, where it is the pass mark the model comes in under. Against the simple strategy of always quoting the historical average, the Brier score improves by <b class="num">+0.084</b>.</p>
       <div class="callout">
-        <p class="lead">The ensemble beats every one of its own components.</p>
+        <p class="lead">Reading the table</p>
         <div class="prose prose-tight">
-          <p>Test log-loss runs 0.6931 for an always-0.50 forecast, 0.6924 for the training base rate, then 0.6899 Elo, 0.6600 logistic regression, 0.6556 XGBoost and 0.6531 for the LSTM. The shipped blend reaches <b class="num">0.6463</b> — ahead of its best single stream, which is the test an ensemble has to pass.</p>
+          <p>The names are technical; the questions behind them are not.</p>
+        </div>
+        <ul class="tick">
+          <li><b>AUC-ROC</b> — can it tell winners from losers at all? A coin gets 0.500.</li>
+          <li><b>Brier score</b> — how far the stated odds sat from what happened, on average. Lower is better; 0.250 is what saying “50/50” to everything earns you.</li>
+          <li><b>Log-loss</b> — the same idea, but it punishes confident mistakes hardest. This is the number the model is trained to bring down.</li>
+          <li><b>ECE</b> — the honesty check. Group the forecasts into ten bands and ask whether the 70% band really won about 70% of the time.</li>
+          <li><b>Accuracy</b> — how often the fighter it favoured actually won. Reported for context only, for the reasons set out above.</li>
+        </ul>
+      </div>
+      <div class="callout">
+        <p class="lead">The blend beats every model inside it.</p>
+        <div class="prose prose-tight">
+          <p>Ranked by log-loss on the test years, lower being better: 0.6931 for always saying 50/50, 0.6924 for quoting the historical average, then 0.6899 for Elo, 0.6600 for logistic regression, 0.6556 for XGBoost and 0.6531 for the LSTM. The shipped blend lands at <b class="num">0.6463</b> — ahead of its own best member, which is the one test a blend genuinely has to pass. A blend that cannot beat its best part is just an expensive way of running that part.</p>
         </div>
       </div>
       <div class="callout">
         <p class="lead">Where the score comes from</p>
         <div class="prose prose-tight">
-          <p>Decomposing the Brier score gives <span class="num">0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</span>. Reliability near zero is the calibration term, and it is where this model is strongest: the probabilities it reports are honest ones.</p>
+          <p>The Brier score can be split into three parts: <span class="num">0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</span>. Reliability measures dishonesty, so near zero is where you want it — and that is where this model is strongest. Uncertainty is the part nobody can touch: it is the sport being genuinely hard to call.</p>
         </div>
       </div>
     </div>
     <div>
       <div class="chart-card">
-        <p class="ct">Reliability — when it says 65%, does it win 65?</p>
-        <p class="cs">Equal-frequency bins with Wilson intervals, 695 blind-test fights. Dashed line is perfect calibration.</p>
+        <p class="ct">When it says 65%, does that fighter win 65 times in a hundred?</p>
+        <p class="cs">Forecasts grouped into equal-sized bands across the 695 blind-test fights. The dashed line is a perfect record; the closer the points sit to it, the more the stated odds can be trusted.</p>
         <svg viewBox="0 0 240 168" role="img" aria-label="Reliability diagram: observed win frequency tracks predicted probability closely along the diagonal">
           <line x1="30" y1="150" x2="230" y2="10" stroke="var(--slate)" stroke-width="2" stroke-dasharray="4 4"/>
           <line x1="64" y1="129" x2="64" y2="146" stroke="var(--slate)" stroke-width="2"/>
@@ -230,12 +244,12 @@
 
 <!-- ================= DRIVERS ================= -->
 <section class="band" id="drivers">
-  <p class="eyebrow">What drives a prediction</p>
-  <h2>Feature importance</h2>
-  <p class="sub">Importance is measured by permutation on held-out data: shuffle one feature on fights the model has never seen, and record how much worse the forecast gets. Nothing ranks highly here on the strength of how it looked during training.</p>
+  <p class="eyebrow">Feature importance</p>
+  <h2>What drives a prediction</h2>
+  <p class="sub">There is a simple way to find out what a piece of information is worth: take it away. Scramble one feature — age difference, say — across fights the model has never seen, then measure how much worse the forecasts get. Nothing earns a high rank here on the strength of how useful it merely looked during training.</p>
   <div class="split-even mt-lg">
     <div class="chart-card">
-      <p class="ct">Permutation importance — Δ log-loss when a feature is shuffled</p>
+      <p class="ct">How much worse the forecasts get when a feature is scrambled</p>
       <p class="cs">Measured on the 695-fight blind test set. Higher is more important.</p>
       <svg viewBox="0 0 360 120" role="img" aria-label="Permutation importance: age difference 0.049, pace mismatch 0.038, then both fighters' UFC fight counts">
         <text x="8" y="30" font-size="10.5" fill="var(--ink-a62)">age difference</text>
@@ -249,13 +263,13 @@
     </div>
     <div>
       <div class="prose mt-0">
-        <p>Age difference and pace mismatch lead, and the two fighters’ UFC fight counts follow immediately behind. That ordering matches how the sport is actually discussed: who is fresher, who sets the tempo, and who has been at this level long enough to have a measurable record.</p>
-        <p>It also says something useful about the model’s own shape. With both experience counts in the top four, the amount of UFC history available for a matchup is itself one of the strongest signals — which is why the system performs best on fighters it has seen most, and why extending fighter history is the leading item on the roadmap.</p>
+        <p>Age difference and pace mismatch lead, with the two fighters’ UFC fight counts close behind. That ordering is not far off how the sport gets talked about in a pub: who is fresher, who sets the tempo, and who has been at this level long enough to have a record worth reading.</p>
+        <p>The ranking also gives away something about the model itself. With both experience counts in the top four, the sheer amount of UFC history behind a matchup turns out to be one of the strongest signals available — which explains why the system does its best work on fighters it has watched the most, and why digging up more fighter history sits at the top of the roadmap.</p>
       </div>
       <div class="callout">
-        <p class="lead">Permutation rather than gain</p>
+        <p class="lead">Why scramble a feature instead of asking the model?</p>
         <div class="prose prose-tight">
-          <p>A tree model’s built-in gain is measured on the data the trees were fitted to, and rewards features that can be split many ways. Permutation on held-out fights answers the question that actually matters: does this feature help predict a fight nobody has seen yet?</p>
+          <p>Tree-based models will happily report which features they leaned on, but that report is taken from the very data they were built on, and it flatters anything that can be sliced a lot of different ways. Scrambling a feature on fights nobody has seen yet answers the question that actually matters: does this help predict the next fight, or did it only ever help explain the last one?</p>
         </div>
       </div>
     </div>
@@ -266,13 +280,13 @@
 <section class="band" id="findings">
   <p class="eyebrow">Beyond prediction</p>
   <h2>Findings</h2>
-  <p class="sub">Prediction is the engine. The findings are the payload — what falls out when you read fights as <b>sequences</b> and eras as <b>populations</b>.</p>
+  <p class="sub">Predicting fights is the engine. The findings are what it was built to carry — what turns up once you have thirty years of fights in one place and can ask the sport a question it has never been asked directly.</p>
   <div class="grid-3 mt">
     <a class="card card-link" href="discoveries.html#sequence">
       <span class="chip">Computed · n = 41,392 rounds</span>
       <h3>Striking moved to range</h3>
       <div class="prose">
-        <p>Measured per minute of cage time across three decades, distance striking grew more than sevenfold while the clinch and the ground held close to where they had always been.</p>
+        <p>Measured per minute of cage time across three decades, striking from range grew more than sevenfold. Clinch and ground work stayed close to where they had always been.</p>
       </div>
       <p class="note"><b>Per minute since the 1990s:</b> distance 0.86 → 6.50 · clinch 0.68 → 0.79</p>
     </a>
@@ -288,7 +302,7 @@
       <span class="chip">Computed · n = 8,377 fights</span>
       <h3>Age outweighs reach</h3>
       <div class="prose">
-        <p>Standardised within weight class and fitted jointly, youth carries roughly three and a half times the weight of reach, with fighter-clustered intervals on every estimate.</p>
+        <p>Put age, reach, height and stance on the same scale and fit them together, and youth turns out to be worth roughly three and a half times as much as reach.</p>
       </div>
       <p class="note"><b>Log-odds per SD:</b> youth +0.343 · southpaw +0.145 · reach +0.099</p>
     </a>
@@ -304,7 +318,7 @@
     </div>
     <a class="pill-o pill-sm" href="case-studies.html">All card breakdowns →</a>
   </div>
-  <p class="sub">A backtest on historical data is a laboratory result. Running the model against 2026 cards as they happen is what tests it in the open.</p>
+  <p class="sub">Testing a model on old fights is a laboratory result. Running it against 2026 cards before they happen is the version that cannot be quietly tidied up afterwards.</p>
   <div class="grid-3 mt">
     <a class="card card-link teaser" href="case-studies.html#macau">
       <div class="teaser-strip">
@@ -313,9 +327,9 @@
       </div>
       <div class="teaser-body">
         <span class="chip">UFC Fight Night — Macau</span>
-        <h3>Called within its own interval</h3>
+        <h3>Five picks, 5.33 expected</h3>
         <div class="prose">
-          <p>Eight of the thirteen bouts were scoreable. The model took five of them against an expected 5.33 from its own probabilities — squarely inside the central 80% range it had predicted for itself.</p>
+          <p>Eight of the thirteen bouts could be scored. The model called five of them, against the 5.33 its own probabilities had led you to expect — squarely inside the central 80% range it had predicted for itself.</p>
         </div>
       </div>
     </a>
@@ -339,32 +353,32 @@
       <p class="eyebrow">How it is built</p>
       <h2>Engineering</h2>
       <div class="prose">
-        <p>Built as a system rather than a notebook. Every figure on this site traces back to a script and a stored output, and the whole pipeline re-runs from a fresh data snapshot.</p>
+        <p>This was built as a system, not a notebook. Every figure on the site traces back to a script and a saved output, and the whole pipeline runs again from scratch on a fresh snapshot of the data.</p>
       </div>
     </div>
     <div class="stack">
       <div class="card">
-        <h3>Temporal integrity</h3>
+        <h3>No peeking at the future</h3>
         <div class="prose">
-          <p>Splits are by date, never by random seed, and dedicated leakage tests check the assumption rather than assuming it. Every feature is built from fights that had already finished at the time of the bout it describes.</p>
+          <p>Fights are split by date, never at random, and dedicated tests check that the split actually held rather than trusting that it did. Every feature is built only from fights that had already finished when the bout it describes was made.</p>
         </div>
       </div>
       <div class="card">
-        <h3>Reproducibility</h3>
+        <h3>The same numbers, every time</h3>
         <div class="prose">
-          <p>Re-scoring the shipped four-stream bundle on the frozen split reproduces its recorded test metrics to <b class="num">2.2×10⁻¹⁶</b>. The charts on the evidence page are the deployed model, not an approximation of it.</p>
+          <p>Re-scoring the shipped four-model bundle on the frozen split reproduces its recorded test results to <b class="num">2.2×10⁻¹⁶</b> — machine precision. What you see on the evidence page is the model itself, not a close relative of it.</p>
         </div>
       </div>
       <div class="card">
-        <h3>Provenance</h3>
+        <h3>Every figure has a source</h3>
         <div class="prose">
-          <p>Each chart names the file it was computed from. The analysis scripts emit JSON, the site reads the JSON, and no figure is typed in by hand along the way.</p>
+          <p>Each chart names the file it was computed from. The analysis scripts write out the numbers, the site reads them, and nothing is typed in by hand anywhere along the way.</p>
         </div>
       </div>
       <div class="card">
-        <h3>No runtime dependencies</h3>
+        <h3>Nothing loads from anywhere else</h3>
         <div class="prose">
-          <p>Charts are hand-written SVG rather than a charting library, fonts are self-hosted, and there are no trackers or analytics. The site works offline and straight off the filesystem.</p>
+          <p>The charts are hand-written rather than pulled from a charting library, the fonts are served from here, and there are no trackers or analytics of any kind. The site works offline, straight off a hard drive.</p>
         </div>
       </div>
     </div>
@@ -375,7 +389,7 @@
 <section class="band" id="roadmap">
   <p class="eyebrow">In development</p>
   <h2>Roadmap</h2>
-  <p class="sub">Calibration is where this model is strongest. The queued work aims at resolution — spreading the probabilities further apart while keeping them honest.</p>
+  <p class="sub">Honesty is where this model is already strong. The work queued up next aims at the other half of the problem: pushing its forecasts further from 50/50, and committing harder, without giving up any of that honesty.</p>
   <div class="wtable wtable-3 mt">
     <div class="row head"><span>Planned work</span><span>Estimated gain</span><span>Stage</span></div>
     <div class="row"><span class="m">Retrain the LSTM on richer per-round sequences</span><span class="t num">+0.02 – 0.04 AUC</span><span class="tag t-hit">next</span></div>
@@ -384,7 +398,7 @@
     <div class="row"><span class="m">GMM archetypes with Bayesian shrinkage</span><span class="t">not estimated</span><span class="tag t-near">later</span></div>
     <div class="row"><span class="m">Optional closing-odds feature</span><span class="t num">≈ +0.04 AUC</span><span class="tag t-neutral">deferred</span></div>
   </div>
-  <p class="note">Gains are the project’s own estimates, not measured results. The closing-odds feature is deliberately deferred — it changes what the model <em>is</em>, from an independent forecast into a market-follower.</p>
+  <p class="note">The gains listed are the project’s own estimates, not measured results. Feeding in the closing betting odds is held back on purpose: it would lift the score, but it would also change what the model <em>is</em> — from something that forms its own view into something that follows the market’s.</p>
 </section>
 
 </main>
@@ -393,7 +407,7 @@
 <footer id="contact">
   <div class="panel">
     <h2>Contact</h2>
-    <p class="pl">Safwat Al Azad — second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what production machine learning actually demands — <b>leakage discipline, calibration, reproducible reporting</b> — on a problem messy enough to punish shortcuts.</p>
+    <p class="pl">Safwat Al Azad — second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what machine learning demands once it leaves the classroom — <b>keeping the future out of the training data, making the odds honest, and being able to show where every number came from</b> — on a problem messy enough to punish every shortcut.</p>
     <div class="actions">
       <a class="pill" href="https://github.com/saf-azad/metriccage">GitHub</a>
       <a class="pill-o" href="mailto:alazadsafwat@gmail.com">Email</a>
