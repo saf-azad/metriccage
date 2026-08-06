@@ -240,6 +240,43 @@ h3{font-size:16px;line-height:var(--leading-snug)}
   .bigstat .v{font-size:40px}
 }
 
+/* ---- Interactive charts (D3, self-hosted) --------------------------------------------------------
+   The chart layer keeps the Paper language: ink on paper, slate for the
+   secondary series, no gradients, no shadows. Tooltips are the one inverted
+   surface, matching the contact panel. */
+.d3tip{position:absolute;pointer-events:none;z-index:20;max-width:280px;padding:9px 12px;background:var(--ink);color:var(--white);border-radius:var(--radius-md);font-size:11px;line-height:1.55;font-variant-numeric:tabular-nums;transition:opacity .12s ease}
+.d3tip b{color:var(--white);font-weight:var(--weight-bold)}
+.d3tip .tq{color:rgba(255,255,255,.62)}
+.chart-card svg{touch-action:manipulation}
+
+/* ---- Season call tables ---------------------------------------------------------------------------
+   Five-column layout for the card-by-card record, plus hit/miss marks. */
+.wtable-fights .row{grid-template-columns:1.6fr 1fr 52px 1fr 1.35fr}
+.wtable-fights .row:not(.head):hover{background:var(--hover-fill)}
+.wtable-fights .res{color:var(--text-prose)}
+.mark{display:inline-block;width:18px;text-align:center;font-weight:var(--weight-bold)}
+.mark-hit{color:var(--ink)}
+.mark-miss{color:var(--slate)}
+.wtable-next .row{grid-template-columns:1.5fr .9fr 1.1fr 1.4fr 1.3fr}
+.wtable-next .row:not(.head):hover{background:var(--hover-fill)}
+.wtable-next .nopick{font-style:italic}
+
+/* ---- Feature appendix ----------------------------------------------------------------------------- */
+.featblock{margin-top:26px}
+.featblock:first-child{margin-top:0}
+.wtable-feat .row{grid-template-columns:minmax(220px,1fr) 2fr}
+.code{font-family:var(--font-mono,ui-monospace,SFMono-Regular,Menlo,monospace);font-size:11.5px;letter-spacing:0}
+
+@media (max-width:880px){
+  .wtable-fights .row,.wtable-next .row{grid-template-columns:1fr 1fr;gap:4px 12px}
+  .wtable-fights .row.head,.wtable-next .row.head{display:none}
+  .wtable-fights .row .m,.wtable-next .row .m{grid-column:1/-1}
+  .wtable-next .nopick{grid-column:1/-1!important}
+}
+@media (max-width:560px){
+  .wtable-feat .row{grid-template-columns:1fr}
+}
+
 /* ---- Motion preference -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
