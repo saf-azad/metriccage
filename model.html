@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Model evidence — MetricCage</title>
-<meta name="description" content="Evidence for a calibrated UFC prediction model: Brier decomposition, forecast distribution, baseline ladder, leave-one-out ablation, permutation importance and year-by-year stability.">
+<title>Inside the model — MetricCage</title>
+<meta name="description" content="How MetricCage works: four model streams blended and calibrated, 102 engineered features in eleven families, the features that fail, and the rule that keeps it honest.">
 <meta name="theme-color" content="#ECF0F3">
-<meta property="og:title" content="Model evidence — MetricCage">
-<meta property="og:description" content="Brier decomposition, baseline ladder, leave-one-out ablation and permutation importance — the working behind the results.">
+<meta property="og:title" content="Inside the model — MetricCage">
+<meta property="og:description" content="There is no single model. There are four, and they disagree with each other on purpose.">
 <meta property="og:type" content="article">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
@@ -19,238 +19,390 @@
 <nav class="nav" aria-label="Primary">
   <a class="nav-mark" href="index.html">MetricCage</a>
   <div class="nav-links">
-    <a href="index.html#results">Results</a>
-    <a href="model.html" aria-current="page">Model evidence</a>
-    <a href="discoveries.html">Findings</a>
-    <a href="case-studies.html">Case studies</a>
-    <a href="index.html#engineering">Engineering</a>
+    <a href="index.html#season">2026 season</a>
+    <a href="model.html" aria-current="page">The model</a>
+    <a href="discoveries.html">Discoveries</a>
+    <a href="case-studies.html">Season &amp; cards</a>
     <a class="pill" href="index.html#contact">Contact</a>
   </div>
 </nav>
 
 <div class="ticker">
-  <span><b>Re-scored on the frozen split</b></span>
-  <span>reproduces recorded test metrics to <b>2.2×10⁻¹⁶</b></span>
-  <span>this <b>is</b> the deployed model, not an approximation of it</span>
+  <span><b>4 streams</b> · weights fitted, not chosen</span>
+  <span>102 features · eleven families</span>
+  <span>training data ends <b>4 May 2025</b></span>
+  <span>every feature computed from strictly earlier fights</span>
 </div>
 
 <main id="main">
 
 <header class="band band-hero">
-  <p class="eyebrow">695 blind-test fights · 4-stream ensemble</p>
-  <h1>Model evidence</h1>
-  <p class="sub">Every chart on this page is computed from the shipped four-stream bundle, re-scored on the frozen temporal split. Each one names the file it came from, so any figure here can be traced back to the script that produced it.</p>
+  <p class="eyebrow">Architecture · features · evidence</p>
+  <h1>Inside the model</h1>
+  <p class="sub">There is no single model. There are four, and they disagree with each other on purpose. Underneath them, every fight is reduced to a row of <b>102 numbers</b> — and each family of numbers is tested against outcomes rather than taken on faith.</p>
 </header>
 
-<!-- ===== 01 DECOMPOSITION ===== -->
-<section class="band" id="identity">
-  <p class="eyebrow">01</p>
-  <h2>Brier decomposition</h2>
-  <p class="sub">Murphy’s decomposition splits the Brier score into the two quantities this project cares about, plus the part no model can beat. Stating them separately turns a claim about calibration into an identity.</p>
-  <p class="note"><b class="num">Brier 0.2286 = reliability 0.0033 − resolution 0.0240 + uncertainty 0.2496</b> · Brier skill over the base rate <b class="num">+0.084</b></p>
-  <div class="split-even mt">
-    <div class="chart-card">
-      <p class="ct">The decomposition, to scale</p>
-      <p class="cs">Reliability at 0.0033 is the calibration term, and near zero is where you want it. Uncertainty at 0.2496 is the irreducible difficulty of the sport itself.</p>
-      <svg viewBox="0 0 360 120" role="img" aria-label="Murphy decomposition bars: reliability 0.0033, resolution 0.0240, uncertainty 0.2496">
-        <text x="8" y="24" font-size="11" fill="var(--ink-a62)">reliability</text>
-        <rect x="110" y="14" width="4" height="12" rx="2" fill="var(--ink)"/>
-        <text x="122" y="24" font-size="11" font-weight="700" fill="var(--ink)">0.0033</text>
-        <text x="8" y="58" font-size="11" fill="var(--ink-a62)">resolution</text>
-        <rect x="110" y="48" width="23" height="12" rx="2" fill="var(--slate)"/>
-        <text x="141" y="58" font-size="11" font-weight="700" fill="var(--ink)">0.0240</text>
-        <text x="8" y="92" font-size="11" fill="var(--ink-a62)">uncertainty</text>
-        <rect x="110" y="82" width="240" height="12" rx="2" fill="var(--slate-a35)" stroke="var(--slate)" stroke-width="1"/>
-        <text x="118" y="92" font-size="10.5" font-weight="700" fill="var(--ink)">0.2496 — the part nobody can beat</text>
-      </svg>
-      <p class="src">analysis/model_eval.json · murphy_quantile</p>
-    </div>
-    <div class="chart-card">
-      <p class="ct">Forecast distribution</p>
-      <p class="cs">The isotonic calibrator maps 695 blended probabilities onto <b>24 distinct values</b>. The largest, 0.5621, covers 207 fights.</p>
-      <svg viewBox="0 0 360 120" role="img" aria-label="Sharpness histogram with a dominant spike near 0.56 covering 207 fights">
-        <line x1="20" y1="104" x2="344" y2="104" stroke="var(--ink)" stroke-width="2"/>
-        <rect x="48"  y="96" width="9" height="8"  fill="var(--slate-a60)"/>
-        <rect x="76"  y="88" width="9" height="16" fill="var(--slate-a60)"/>
-        <rect x="104" y="76" width="9" height="28" fill="var(--slate-a60)"/>
-        <rect x="132" y="82" width="9" height="22" fill="var(--slate-a60)"/>
-        <rect x="160" y="66" width="9" height="38" fill="var(--slate-a60)"/>
-        <rect x="188" y="18" width="9" height="86" fill="var(--ink)"/>
-        <rect x="216" y="58" width="9" height="46" fill="var(--slate-a60)"/>
-        <rect x="244" y="72" width="9" height="32" fill="var(--slate-a60)"/>
-        <rect x="272" y="84" width="9" height="20" fill="var(--slate-a60)"/>
-        <rect x="300" y="94" width="9" height="10" fill="var(--slate-a60)"/>
-        <text x="204" y="14" font-size="10" font-weight="700" fill="var(--ink)">0.5621 → 207 fights</text>
-      </svg>
-      <p class="src">28% of forecasts sit outside the 30–70 band</p>
-    </div>
+<!-- ================= STREAMS ================= -->
+<section class="band" id="streams">
+  <p class="eyebrow">The four streams</p>
+  <h2>Four ways of reading the same fight</h2>
+  <div class="wtable mt">
+    <div class="row head"><span>Stream</span><span>What it is</span><span>What it contributes</span><span>Weight</span></div>
+    <div class="row"><span class="m">Gradient boosting</span><span class="t">XGBoost over 67 pruned features, depth 3, 800 trees</span><span class="t">Catches interactions the linear model cannot see</span><span class="v num">0.353</span></div>
+    <div class="row"><span class="m">Logistic regression</span><span class="t">A linear model over all 102 features</span><span class="t">Stable, hard to overfit, sane on thin data</span><span class="v num">0.292</span></div>
+    <div class="row"><span class="m">Career LSTM</span><span class="t">A sequence network reading each career in order</span><span class="t">Trajectory: improving, plateauing or sliding</span><span class="v num">0.231</span></div>
+    <div class="row"><span class="m">Elo rating</span><span class="t">A custom MMA Elo with method and inactivity adjustments</span><span class="t">Strength of schedule, independent of any statistic</span><span class="v num">0.124</span></div>
   </div>
-  <p class="note">Isotonic is the calibrator that earns its place: test log-loss <b class="num">0.6463</b>, against 0.6498 for Platt scaling and 0.6512 uncalibrated.</p>
-</section>
-
-<!-- ===== 02 BASELINES ===== -->
-<section class="band" id="worth">
-  <p class="eyebrow">02</p>
-  <h2>Baselines and ablation</h2>
-  <p class="sub">The first question to ask about an ensemble is whether it outperforms its own best component. The second is what each component contributes. These two charts answer both.</p>
-  <div class="split-even mt">
-    <div class="chart-card">
-      <p class="ct">Baseline ladder — test log-loss, lower is better</p>
-      <p class="cs">Every stream isotonic-calibrated on 2023. The shipped ensemble comes in ahead of each of its own components.</p>
-      <svg viewBox="0 0 360 196" role="img" aria-label="Baseline ladder of log-loss: always 0.50 scores 0.6931, train base rate 0.6924, Elo 0.6899, logistic regression 0.6600, XGBoost 0.6556, LSTM 0.6531, shipped ensemble 0.6463">
-        <text x="8" y="22" font-size="10.5" fill="var(--ink-a62)">Always 0.50</text>
-        <rect x="104" y="13" width="232" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="22" font-size="10.5" font-weight="700">0.6931</text>
-        <text x="8" y="48" font-size="10.5" fill="var(--ink-a62)">Train base rate</text>
-        <rect x="104" y="39" width="231" height="10" rx="2" fill="var(--slate-a35)"/><text x="240" y="48" font-size="10.5" font-weight="700">0.6924</text>
-        <text x="8" y="74" font-size="10.5" fill="var(--ink-a62)">Elo alone</text>
-        <rect x="104" y="65" width="228" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="74" font-size="10.5" font-weight="700">0.6899</text>
-        <text x="8" y="100" font-size="10.5" fill="var(--ink-a62)">Logreg alone</text>
-        <rect x="104" y="91" width="192" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="100" font-size="10.5" font-weight="700">0.6600</text>
-        <text x="8" y="126" font-size="10.5" fill="var(--ink-a62)">XGBoost alone</text>
-        <rect x="104" y="117" width="187" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="126" font-size="10.5" font-weight="700">0.6556</text>
-        <text x="8" y="152" font-size="10.5" fill="var(--ink-a62)">LSTM alone</text>
-        <rect x="104" y="143" width="184" height="10" rx="2" fill="var(--slate-a60)"/><text x="240" y="152" font-size="10.5" font-weight="700">0.6531</text>
-        <text x="8" y="178" font-size="10.5" font-weight="700" fill="var(--ink)">Shipped ensemble</text>
-        <rect x="104" y="169" width="176" height="10" rx="2" fill="var(--ink)"/><text x="240" y="178" font-size="10.5" font-weight="700">0.6463</text>
-      </svg>
-      <p class="src">analysis/model_eval.json · ladder</p>
-    </div>
-    <div class="chart-card" id="ablation">
-      <p class="ct">Leave-one-out ablation — Δ log-loss when a stream is dropped</p>
-      <p class="cs">Weights and calibrator refit on validation each time. Larger bars mark the streams the blend depends on most.</p>
-      <svg viewBox="0 0 360 168" role="img" aria-label="Ablation deltas: dropping XGBoost costs 0.0072, logistic 0.0050, LSTM 0.0031, Elo effectively neutral">
-        <line x1="120" y1="10" x2="120" y2="150" stroke="var(--ink)" stroke-width="2"/>
-        <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">− XGBoost</text>
-        <rect x="122" y="25" width="150" height="11" rx="2" fill="var(--ink)"/><text x="280" y="34" font-size="10.5" font-weight="700">+0.0072</text>
-        <text x="8" y="66" font-size="10.5" fill="var(--ink-a62)">− Logistic</text>
-        <rect x="122" y="57" width="104" height="11" rx="2" fill="var(--ink)"/><text x="234" y="66" font-size="10.5" font-weight="700">+0.0050</text>
-        <text x="8" y="98" font-size="10.5" fill="var(--ink-a62)">− LSTM</text>
-        <rect x="122" y="89" width="65" height="11" rx="2" fill="var(--ink)"/><text x="195" y="98" font-size="10.5" font-weight="700">+0.0031</text>
-        <text x="8" y="130" font-size="10.5" fill="var(--ink-a62)">− Elo</text>
-        <rect x="112" y="121" width="8" height="11" rx="2" fill="var(--slate)"/><text x="130" y="130" font-size="10.5" font-weight="700">−0.00035 · signal already carried elsewhere</text>
-      </svg>
-      <p class="src">analysis/model_eval.json · ablation</p>
-    </div>
-  </div>
-  <p class="note">XGBoost carries the most, at <b class="num">+0.0072</b> log-loss when removed, followed by logistic regression and the LSTM. Elo sits near neutral because its signal already reaches the blend through the other three streams as features.</p>
-</section>
-
-<!-- ===== 03 DRIVERS ===== -->
-<section class="band" id="drivers">
-  <p class="eyebrow">03</p>
-  <h2>Feature importance</h2>
-  <p class="sub">Permutation on held-out data is the measure used here. Shuffle one feature on fights the model has never seen, and record how much worse the forecast gets — a test that no feature passes on the strength of how it looked during training.</p>
-  <div class="split-even mt">
-    <div class="chart-card">
-      <p class="ct">Permutation importance — Δ log-loss when a feature is shuffled</p>
-      <p class="cs">Measured on the 695-fight blind test set. Higher is more important.</p>
-      <svg viewBox="0 0 360 120" role="img" aria-label="Permutation importance: age difference 0.049, pace mismatch 0.038, then both fighters' UFC fight counts">
-        <text x="8" y="30" font-size="10.5" fill="var(--ink-a62)">age difference</text>
-        <rect x="118" y="20" width="212" height="13" rx="2" fill="var(--ink)"/><text x="236" y="30" font-size="11" font-weight="700" fill="var(--white)">+0.049</text>
-        <text x="8" y="66" font-size="10.5" fill="var(--ink-a62)">pace mismatch</text>
-        <rect x="118" y="56" width="164" height="13" rx="2" fill="var(--slate-a60)"/><text x="190" y="66" font-size="11" font-weight="700">+0.038</text>
-        <text x="8" y="100" font-size="10.5" fill="var(--ink-a62)">UFC fight counts</text>
-        <text x="118" y="100" font-size="10.5" font-weight="700">third and fourth · both fighters</text>
-      </svg>
-      <p class="src">analysis/model_eval2.json · permutation importance</p>
-    </div>
-    <div class="card">
-      <h3>Reading the ranking</h3>
-      <div class="prose">
-        <p>Age difference leads at <b class="num">+0.049</b>, pace mismatch follows at <b class="num">+0.038</b>, and the two fighters’ UFC fight counts take third and fourth. Freshness, tempo and depth of record — in that order.</p>
-        <p>Permutation is the right test here because it is computed on data the model has never seen. A tree model’s built-in gain is measured on the training data and rewards features that can be split many ways, which makes it a description of how the trees were built rather than of what predicts a fight.</p>
-      </div>
-      <p class="note">Both experience counts reaching the top four is the reason performance scales with fighter history, measured directly in section 04.</p>
+  <p class="note">Ensemble weights were fitted on a 2023 validation slice by minimising log loss, not chosen by hand. The blend passes through an isotonic calibrator that maps raw output onto observed frequencies, then a temperature adjustment that pulls extreme calls back toward the middle — both exist because raw ensembles are systematically overconfident.</p>
+  <div class="callout">
+    <p class="lead">The Elo underneath is not chess Elo.</p>
+    <div class="prose prose-tight">
+      <p>It differs in three ways: the K-factor scales down as a fighter accumulates bouts, so a debutant’s rating moves faster than a veteran’s; finishes update ratings more than decisions, with knockouts at 1.15 times the base and submissions at 1.10; and a fighter idle for more than a year is regressed toward the mean, capped at a quarter of the way back. Elo difference and Elo-implied probability sit fifth and sixth in the boosted model’s importance ranking.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04 EXPERIENCE ===== -->
-<section class="band" id="experience">
-  <p class="eyebrow">04</p>
-  <h2>Performance by fighter experience</h2>
-  <p class="sub">The model reads a fighter through their UFC record, so the amount of record available is worth measuring directly rather than describing. Split the same blind test set by how much history each matchup carries and the effect is clear.</p>
-  <div class="split-even mt">
-    <div class="chart-card">
-      <p class="ct">AUC by fighter experience</p>
-      <p class="cs">Same model, same test window — split by how much UFC history is available for the matchup.</p>
-      <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 when both fighters have five or more UFC bouts, against 0.603 when either has fewer than three">
-        <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">both ≥ 5 UFC bouts</text>
-        <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)">0.718</text>
-        <text x="8" y="74" font-size="10.5" fill="var(--ink-a62)">either &lt; 3 UFC bouts</text>
-        <rect x="130" y="64" width="169" height="13" rx="2" fill="var(--slate-a60)"/><text x="270" y="74" font-size="11" font-weight="700">0.603</text>
-        <line x1="130" y1="88" x2="130" y2="102" stroke="var(--slate)" stroke-width="2" stroke-dasharray="3 3"/>
-        <text x="8" y="122" font-size="10.5" fill="var(--ink-a62)">gap 0.114 · 95% CI 0.033 – 0.198 · n = 297 thin-history fights</text>
-      </svg>
-      <p class="src">analysis/model_eval2.json · experience_auc</p>
-    </div>
-    <div class="card">
-      <h3>What this establishes</h3>
-      <div class="prose">
-        <p>On matchups where both fighters have five or more UFC bouts, the model reaches <b class="num">AUC 0.718</b> — comfortably its strongest regime, and the one that covers most of the card on a typical event.</p>
-        <p>The measurement also sets the priority for what comes next. Extending fighter history with pre-UFC records is the leading roadmap item precisely because this chart puts a number on what it is worth, rather than leaving it as an assumption.</p>
-      </div>
-      <p class="note">Tapology and Sherdog are already in the collection step. The gap of <b class="num">0.114</b> is the size of the opportunity.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 05 STABILITY ===== -->
-<section class="band" id="stability">
-  <p class="eyebrow">05</p>
-  <h2>Stability by year</h2>
-  <p class="sub">Performance holds steady across two decades of fights, and the chart marks which years the model was fitted on so the out-of-sample years can be read on their own.</p>
-  <div class="chart-card mt">
-    <p class="ct">Brier by year — axis anchored so flat looks flat</p>
-    <p class="cs">Shaded spans mark the fitted years; the unshaded years on the right are out-of-sample. Dashed reference is the 0.250 coin flip.</p>
-    <svg viewBox="0 0 560 150" role="img" aria-label="Brier score by year with train, validation and test regions shaded; the line stays flat near 0.22 to 0.23 throughout">
-      <rect x="40" y="12" width="330" height="110" fill="var(--slate-a15)"/>
-      <rect x="370" y="12" width="60" height="110" fill="var(--slate-a35)"/>
-      <line x1="40" y1="30" x2="530" y2="30" stroke="var(--slate)" stroke-width="2" stroke-dasharray="5 5"/>
-      <polyline points="60,68 120,60 180,74 240,66 300,70 340,58 400,54 460,66 520,70" fill="none" stroke="var(--ink)" stroke-width="2"/>
-      <circle cx="400" cy="54" r="4" fill="var(--ink)"/>
-      <circle cx="460" cy="66" r="4" fill="var(--ink)"/>
-      <circle cx="520" cy="70" r="4" fill="var(--ink)"/>
-      <text x="46" y="136" font-size="10.5" fill="var(--ink-a62)">train 2005 – 2022 · 5,563 fights</text>
-      <text x="356" y="136" font-size="10.5" fill="var(--ink-a62)">val 2023 · 504</text>
-      <text x="446" y="136" font-size="10.5" fill="var(--ink-a62)">test 2024–25 · 695</text>
-      <text x="440" y="24" font-size="10.5" fill="var(--ink-a62)">coin-flip 0.250</text>
-    </svg>
-    <p class="src">validation 0.222 · test 0.229 · analysis/model_eval.json · brier_by_year</p>
-  </div>
-  <p class="note">Validation lands at <b class="num">0.222</b> and the blind test at <b class="num">0.229</b>. A gap that small between tuned and untouched years is what a model that has not overfitted looks like.</p>
-</section>
-
-<!-- ===== 06 REPRODUCTION ===== -->
-<section class="band" id="reproduction">
-  <p class="eyebrow">06</p>
-  <h2>Reproduction</h2>
-  <div class="split mt">
+<!-- ================= FEATURES INTRO ================= -->
+<section class="band" id="features">
+  <div class="split">
     <div class="sticky-side">
+      <p class="eyebrow">The 102 features</p>
+      <h2>Eleven families, each tested against outcomes</h2>
+    </div>
+    <div>
       <div class="prose mt-0">
-        <p>Everything above comes from re-scoring the shipped four-stream bundle on the frozen temporal split, so the charts describe the deployed model rather than a rebuild of it.</p>
+        <p>Most features are differentials, computed as fighter A minus fighter B, so a positive value favours A. Rate statistics are decayed with a 365-day half-life, meaning a bout from a year ago counts half as much as a recent one and a bout from three years ago counts about an eighth.</p>
+        <p>What follows describes what each family measures and whether it actually works. That last part matters, because a feature that sounds clever and carries no signal is worse than no feature at all.</p>
       </div>
-    </div>
-    <div class="stack">
-      <div class="card">
-        <h3>The split</h3>
-        <div class="prose">
-          <p>Train 2005–2022, validate 2023, test 2024-01-01 to 2025-05-04 — giving 5,563 / 504 / 695 fights. The boundaries are fixed dates and do not move between runs.</p>
-        </div>
-      </div>
-      <div class="card">
-        <h3>The check</h3>
-        <div class="prose">
-          <p>The re-score reproduces the bundle’s recorded test metrics to <b class="num">2.2×10⁻¹⁶</b> — machine precision. Nothing on this page is an approximation of the deployed model.</p>
-        </div>
-      </div>
-      <div class="card">
-        <h3>The scripts</h3>
-        <div class="prose">
-          <p>analysis/model_eval.py, analysis/model_eval2.py and analysis/score_streams.py emit the JSON these charts read. Re-running them against a newer data snapshot regenerates the figures.</p>
+      <div class="callout">
+        <p class="lead">A note on the evidence below.</p>
+        <div class="prose prose-tight">
+          <p>Each response curve splits every UFC bout from 2015 onward — 5,522 fights — into five equal groups by the feature in question and reports the observed outcome rate in each. This is descriptive rather than causal: features correlate with each other, so these curves show what a feature carries, not what it independently contributes.</p>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= FAMILY EVIDENCE ================= -->
+<section class="band" id="evidence">
+  <p class="eyebrow">Response curves</p>
+  <h2>Which families carry signal</h2>
+  <div class="split-even mt-lg">
+    <div class="chart-card">
+      <p class="ct">Win rate, bottom group → top group</p>
+      <p class="cs">Each row spans a family’s response from its weakest to its strongest quintile. Hover for the reading.</p>
+      <div id="chart-families"></div>
+      <p class="src">5,522 bouts since 2015 · five equal groups per feature</p>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p><b>Trajectory is the strongest curve in the entire feature set</b>: 40.3 per cent win rate in the bottom group rising to 60.7 in the top, a twenty-point spread. It exists because a fighter’s record describes where they have been rather than where they are going — an ascending-trajectory score weights recent results with a 200-day half-life and adjusts for opponent quality.</p>
+        <p>Net striking differential is the third most important feature in the whole model, and striking defence behaves cleanly: fighters in the top group by defence differential win 59.7 per cent of the time against 43.4 in the bottom. Control time is weaker than most people expect, moving win rate only from 46.3 to 53.4 per cent across its range.</p>
+        <p>Reach is real but modest: giving away more than three inches drops win rate to 45.3 per cent, holding more than three inches raises it to 53.8. A six-point swing at the extremes of a range most fights never reach — roughly the right size for something the sport treats as decisive.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">The rust flag earns its rarity.</p>
+        <div class="prose prose-tight">
+          <p>A specific flag fires when the favourite is the rusty one — on only 77 fights, but when it does, the favourite’s win rate falls from 49.5 to 39.0 per cent. That is what a flag should do: fire rarely and mean something when it fires.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KO & CHIN ================= -->
+<section class="band" id="ko-chin">
+  <p class="eyebrow">Knockout threat against chin durability</p>
+  <h2>Power as a property of the pairing</h2>
+  <p class="sub">Rather than treating power as a property of a fighter, this family treats it as a property of a <b>pairing</b>. Knockout danger runs against the specific opponent’s chin, which combines knockdowns absorbed, strikes absorbed per minute, a knockout-fragility term, and an accumulated-trauma penalty that grows with career knockout losses.</p>
+  <div class="split-even mt-lg">
+    <div class="chart-card">
+      <p class="ct">The knockout family against its baselines</p>
+      <p class="cs">Dashed markers are the base rates. Hover a bar for the comparison.</p>
+      <div id="chart-ko"></div>
+      <p class="src">Baselines: A wins 49.4% · 31.4% of fights end by KO</p>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p>The chin-vulnerable flag is <b>the strongest single binary signal in the feature set</b>. When it fires, the knockout rate is thirteen points above the base rate. It fires rarely, on about five per cent of fights, which is what a flag should do.</p>
+        <p>Knockout danger itself is built as half a knockout-per-round rate, three-tenths a knockdown bonus, and two-tenths career finish rate — and the differential moves fighter A’s win rate from 40.9 per cent in the bottom group to 57.8 in the top.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUBMISSION CHAIN ================= -->
+<section class="band" id="submission-chain">
+  <p class="eyebrow">Submission chains</p>
+  <h2>Reasoning about position without positional data</h2>
+  <p class="sub">The most elaborate piece of feature engineering in the model — and its 2026 performance is <a href="discoveries.html#submissions">the most instructive thing in the season report</a>.</p>
+  <div class="split-even mt-lg">
+    <div>
+      <div class="prose mt-0">
+        <p>The design does not use submission attempts as a rate. It reasons about position. Each fighter’s archetype vector is converted into an estimated distribution over eight grappling positions, and each position carries a base submission probability derived from historical rates. A fighter with a high grappling-first score is estimated to spend up to 40 per cent of ground time in back control and very little standing; a pure striker sits at the opposite end.</p>
+        <p>Three adjustments follow. A chain-weight factor of up to 1.4 rewards fighters who string attempts together rather than hunting a single hold. A round-fatigue multiplier scales the danger upward from 1.00 in round one to 1.25 in round five, because tired fighters get caught. And the whole thing is gated by whether the fight reaches the ground at all, modulated by the opponent’s takedown defence.</p>
+        <p>Across 2015 to 2025 the feature did exactly what it was built to do: bottom quartile of chain danger, 11.6 per cent of fights ended by submission; top quartile, 22.6. Close to a doubling, with the model’s own submission probability tracking the feature at a correlation of 0.81. Then the 2026 season arrived and the relationship evaporated — the collapse is charted in full on <a href="discoveries.html#submissions">the discoveries page</a>.</p>
+      </div>
+    </div>
+    <div class="chart-card">
+      <p class="ct">Base submission probability by position</p>
+      <p class="cs">The entry point of the chain: where a fighter is estimated to spend ground time sets what they can threaten from it.</p>
+      <div id="chart-positions"></div>
+      <p class="src">Derived from historical submission rates by position</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STANCE ================= -->
+<section class="band" id="stance">
+  <p class="eyebrow">Stance geometry</p>
+  <h2>The southpaw edge, amplified by style</h2>
+  <p class="sub">Open stance — orthodox against southpaw — occurs in 27.6 per cent of bouts since 2015, and the southpaw wins 52.6 per cent of those. A real but small edge. The interesting part is that <b>the edge is not uniform</b>, and the model encodes why.</p>
+  <div class="split-even mt-lg">
+    <div class="chart-card">
+      <p class="ct">Stance multiplier by archetype</p>
+      <p class="cs">How much each style depends on angles and geometry. Hover for the value.</p>
+      <div id="chart-stance"></div>
+      <p class="src">Adjusted for how rare southpaws are in each division</p>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p>A southpaw kickboxer gets close to the full benefit of the open-stance geometry. A southpaw wrestler gets very little, because the fight he wants does not happen at kicking range.</p>
+        <p>The data supports the design. Splitting open-stance fights by amplified score, the southpaw wins 49.0 per cent in the weakest quartile and 55.1 per cent in the third. In other words, the naive version of this feature — a simple binary — would be averaging a genuine six-point edge together with nothing at all.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">The amplified score converts into probability directly.</p>
+        <div class="prose prose-tight">
+          <p>An estimated win-probability uplift of 6.5 per cent per unit of amplified score, further adjusted for how rare southpaws are in that division, since the advantage comes partly from unfamiliarity. Open-stance fights are also slightly more likely to end early: 51.5 per cent against 49.5.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEARNED CLUSTERS ================= -->
+<section class="band" id="clusters">
+  <div class="split">
+    <div class="sticky-side">
+      <p class="eyebrow">Learned style clusters</p>
+      <h2>The clusters nobody designed</h2>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p>The family the model leans on hardest was not designed by hand at all. A Gaussian mixture model with seven components is fitted to fighter statistic vectors from the training period only, with the number of components chosen by information criterion and sparse fighters shrunk toward their division prior. Each fighter gets seven soft membership probabilities that sum to one.</p>
+        <p>These clusters are the two highest-gain features in the boosted model by a wide margin. Cluster 2 membership for both fighters carries more than twice the importance of net striking, which is the best of the hand-built features.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">The model has found something none of the eight hand-defined archetypes captures, and nobody can say precisely what it is.</p>
+        <div class="prose prose-tight">
+          <p>That is worth stating plainly rather than dressing up. A hand-built feature can be argued about; a learned cluster can only be measured.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAILURES ================= -->
+<section class="band" id="failures">
+  <p class="eyebrow">Negative results</p>
+  <h2>Two features that do not earn their place</h2>
+  <p class="sub">Not everything works, and a report that only lists the wins is not worth much.</p>
+  <div class="grid-2 mt">
+    <div class="card">
+      <h3>Pace mismatch is close to inert</h3>
+      <div class="prose">
+        <p>Across its full range the win rate moves between 47.4 and 50.7 per cent, and the finish rate barely responds either. The idea — that a tempo gap should let the faster fighter dictate — does not survive contact with the data. Archetype distance and similarity are similarly flat as win predictors, though distance shows a mild U-shape against finishing.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Prime mismatch should be checked</h3>
+      <div class="prose">
+        <p>It ranks seventh by importance, yet it is a binary that fires on only 8.1 per cent of fights. High gain on a rare flag is a pattern that usually means the boosted model has found a narrow pocket of the data to memorise. It may be genuine. It should be checked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HONESTY RULE ================= -->
+<section class="band" id="leakage">
+  <div class="split">
+    <div class="sticky-side">
+      <p class="eyebrow">Discipline</p>
+      <h2>The rule that keeps it honest</h2>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p>Every feature for a fight on a given date is computed using only data from strictly before that date. This sounds obvious and is very easy to get wrong. A career average that quietly includes the fight being predicted will produce beautiful accuracy and no predictive power whatsoever.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">The codebase enforces this with regression tests.</p>
+        <div class="prose prose-tight">
+          <p>They check that a fight’s feature row is bit-identical whether or not later fights are present in the input. If tomorrow’s results can change today’s features, the test fails.</p>
+        </div>
+      </div>
+      <p class="note">One further feature exists in the codebase but is switched off in the deployed model: <span class="code">implied_prob_a</span>, the vig-removed closing-line probability. Every number on this site comes from the no-odds model. Adding the market is the single largest available gain in discrimination — and also the point at which the model stops being independent of the betting line.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX ================= -->
+<section class="band" id="appendix">
+  <p class="eyebrow">Appendix</p>
+  <h2>The complete feature list</h2>
+  <p class="sub">All 102 features in the deployed model, in the order the bundle stores them. Suffix <span class="code">_diff</span> means fighter A minus fighter B, so a positive value favours A. Suffix <span class="code">_a</span> or <span class="code">_b</span> means the value belongs to that fighter alone.</p>
+  <div class="mt-lg">
+  <div class="featblock">
+    <h3>Elo and strength</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">elo_diff</span><span class="t">MMA Elo rating, A minus B, evaluated before the fight</span></div>
+      <div class="row"><span class="m code">elo_prob_a</span><span class="t">Elo-implied win probability for A: logistic of elo_diff / 400</span></div>
+      <div class="row"><span class="m code">a_elo_pre</span><span class="t">A’s raw pre-fight Elo rating</span></div>
+      <div class="row"><span class="m code">b_elo_pre</span><span class="t">B’s raw pre-fight Elo rating</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Striking</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">slpm_diff</span><span class="t">Significant strikes landed per minute</span></div>
+      <div class="row"><span class="m code">sapm_diff</span><span class="t">Significant strikes absorbed per minute (lower is better)</span></div>
+      <div class="row"><span class="m code">strike_net_diff</span><span class="t">Net striking: landed minus absorbed</span></div>
+      <div class="row"><span class="m code">strike_acc_diff</span><span class="t">Significant strike accuracy, landed over attempted</span></div>
+      <div class="row"><span class="m code">strike_def_diff</span><span class="t">Striking defence: one minus opponent accuracy</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Grappling</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">td_per15_diff</span><span class="t">Takedowns landed per fifteen minutes</span></div>
+      <div class="row"><span class="m code">td_def_per15_diff</span><span class="t">Takedowns conceded per fifteen minutes</span></div>
+      <div class="row"><span class="m code">td_acc_diff</span><span class="t">Takedown accuracy rate</span></div>
+      <div class="row"><span class="m code">td_def_acc_diff</span><span class="t">Takedown defence rate</span></div>
+      <div class="row"><span class="m code">sub_att_per15_diff</span><span class="t">Submission attempts per fifteen minutes</span></div>
+      <div class="row"><span class="m code">control_pct_diff</span><span class="t">Share of fight time spent in a control position</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Knockdowns</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">kd_per15_diff</span><span class="t">Knockdowns landed per fifteen minutes</span></div>
+      <div class="row"><span class="m code">kd_absorbed_per15_diff</span><span class="t">Knockdowns absorbed per fifteen minutes (chin proxy)</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Physical, form and experience</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">age_diff</span><span class="t">Age in years at the fight date</span></div>
+      <div class="row"><span class="m code">reach_diff</span><span class="t">Reach in inches</span></div>
+      <div class="row"><span class="m code">stance_mismatch</span><span class="t">One if the two stances differ, else zero</span></div>
+      <div class="row"><span class="m code">win_pct_diff</span><span class="t">Recent win percentage</span></div>
+      <div class="row"><span class="m code">finish_rate_diff</span><span class="t">Career finishes as a share of wins</span></div>
+      <div class="row"><span class="m code">rounds_exp_diff</span><span class="t">Total career rounds fought (championship-round experience)</span></div>
+      <div class="row"><span class="m code">streak_diff</span><span class="t">Current win streak, capped at five</span></div>
+      <div class="row"><span class="m code">days_inactive_diff</span><span class="t">Days since the last bout</span></div>
+      <div class="row"><span class="m code">n_fights_a</span><span class="t">A’s UFC fight count (data-density context)</span></div>
+      <div class="row"><span class="m code">n_fights_b</span><span class="t">B’s UFC fight count</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Style archetypes</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">arch_a_power_puncher / arch_b_power_puncher</span><span class="t">Explosive knockout threat, lower volume</span></div>
+      <div class="row"><span class="m code">arch_a_muay_thai / arch_b_muay_thai</span><span class="t">High volume, high finish rate, moderate takedowns</span></div>
+      <div class="row"><span class="m code">arch_a_dutch_kickboxer / arch_b_dutch_kickboxer</span><span class="t">Very high strikes landed and absorbed; wins by accumulation</span></div>
+      <div class="row"><span class="m code">arch_a_counter_striker / arch_b_counter_striker</span><span class="t">Reactive, timing-based, efficient</span></div>
+      <div class="row"><span class="m code">arch_a_wrestle_striker / arch_b_wrestle_striker</span><span class="t">High takedowns, moderate volume, low submission threat</span></div>
+      <div class="row"><span class="m code">arch_a_grappling_first / arch_b_grappling_first</span><span class="t">Takedown-oriented with a submission chain</span></div>
+      <div class="row"><span class="m code">arch_a_pressure_striker / arch_b_pressure_striker</span><span class="t">Forward pressure, high output</span></div>
+      <div class="row"><span class="m code">arch_a_decision_fighter / arch_b_decision_fighter</span><span class="t">Points-based, distance management</span></div>
+      <div class="row"><span class="m code">arch_distance</span><span class="t">Distance between the two archetype vectors</span></div>
+      <div class="row"><span class="m code">arch_similarity</span><span class="t">Overlap between the two archetype vectors</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Striker against grappler</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">grappler_path_a / grappler_path_b</span><span class="t">How much each fighter wins through grappling, discounted by opponent takedown defence</span></div>
+      <div class="row"><span class="m code">striker_path_a / striker_path_b</span><span class="t">How much each fighter wins standing, given their ability to keep it there</span></div>
+      <div class="row"><span class="m code">sg_mismatch_net</span><span class="t">Net striker-versus-grappler mismatch across the pairing</span></div>
+      <div class="row"><span class="m code">td_dominance_diff</span><span class="t">Takedown-dominance differential</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Knockout threat and chin</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">ko_danger_a / ko_danger_b</span><span class="t">Knockout threat: 0.50 knockout-per-round rate, 0.30 knockdown bonus, 0.20 finish rate</span></div>
+      <div class="row"><span class="m code">chin_durability_a / chin_durability_b</span><span class="t">Resistance to being finished, with an accumulated-trauma penalty</span></div>
+      <div class="row"><span class="m code">ko_threat_net</span><span class="t">Net knockout threat across the pairing</span></div>
+      <div class="row"><span class="m code">ko_danger_differential</span><span class="t">Knockout danger, A minus B</span></div>
+      <div class="row"><span class="m code">b_chin_vulnerable</span><span class="t">Flag: B’s chin reads as a live vulnerability</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Submission chain</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">sub_danger_a / sub_danger_b</span><span class="t">Position-weighted submission threat, gated by opponent takedown defence</span></div>
+      <div class="row"><span class="m code">sub_danger_diff</span><span class="t">Submission threat, A minus B</span></div>
+      <div class="row"><span class="m code">sub_danger_combined</span><span class="t">Combined ground-finishing threat; also a soft prior in the method head</span></div>
+      <div class="row"><span class="m code">sub_att_rate_diff</span><span class="t">Submission-attempt-rate differential</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Pace, pressure and counters</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">pace_mismatch_diff</span><span class="t">Tempo gap between the two fighters</span></div>
+      <div class="row"><span class="m code">pressure_index_a / pressure_index_b</span><span class="t">Forward-pressure index, pressure archetype weighted 1.4</span></div>
+      <div class="row"><span class="m code">counter_efficiency_diff</span><span class="t">Counter-striking efficiency: finish rate relative to volume</span></div>
+      <div class="row"><span class="m code">counter_threat_a_vs_b</span><span class="t">A’s counter threat given B’s pressure</span></div>
+      <div class="row"><span class="m code">counter_threat_b_vs_a</span><span class="t">B’s counter threat given A’s pressure</span></div>
+      <div class="row"><span class="m code">gas_out_risk_diff</span><span class="t">Cardio fade risk: strikes absorbed over strikes landed</span></div>
+      <div class="row"><span class="m code">b_counter_upset_setup</span><span class="t">Flag: B is set up as a counter-based upset threat</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Stance geometry</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">stance_advantage_a</span><span class="t">Plus one if A is the southpaw in an open-stance fight, minus one if B is</span></div>
+      <div class="row"><span class="m code">stance_score_amplified</span><span class="t">Stance advantage weighted by archetype multipliers and division southpaw rarity</span></div>
+      <div class="row"><span class="m code">stance_win_prob_uplift</span><span class="t">Estimated win-probability uplift: 0.065 per unit of amplified score</span></div>
+      <div class="row"><span class="m code">open_stance</span><span class="t">One if orthodox meets southpaw, else zero</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Trajectory, age and rust</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">trajectory_diff</span><span class="t">Ascending-trajectory score, 200-day half-life, opponent-quality adjusted</span></div>
+      <div class="row"><span class="m code">elo_form_divergence_a / elo_form_divergence_b</span><span class="t">Gap between recent form and standing Elo rating</span></div>
+      <div class="row"><span class="m code">age_curve_a / age_curve_b</span><span class="t">Position on the division-specific ageing curve</span></div>
+      <div class="row"><span class="m code">age_curve_diff</span><span class="t">Age-curve position, A minus B</span></div>
+      <div class="row"><span class="m code">prime_mismatch</span><span class="t">Flag: the two fighters sit at different points of their primes</span></div>
+      <div class="row"><span class="m code">rust_a / rust_b</span><span class="t">Layoff penalty per fighter</span></div>
+      <div class="row"><span class="m code">rust_diff</span><span class="t">Layoff penalty, A minus B</span></div>
+      <div class="row"><span class="m code">favourite_rusty</span><span class="t">Flag: the favourite is the one coming off the long layoff</span></div>
+      <div class="row"><span class="m code">fr1_danger_diff</span><span class="t">First-round danger differential</span></div>
+      <div class="row"><span class="m code">a_upset_risk_score</span><span class="t">Composite upset-risk score for A</span></div>
+    </div>
+  </div>
+  <div class="featblock">
+    <h3>Learned style clusters</h3>
+    <div class="wtable wtable-feat mt">
+      <div class="row head"><span>Feature</span><span>What it measures</span></div>
+      <div class="row"><span class="m code">cluster_a_0 … cluster_a_6</span><span class="t">A’s soft membership across seven Gaussian-mixture clusters, summing to one</span></div>
+      <div class="row"><span class="m code">cluster_b_0 … cluster_b_6</span><span class="t">B’s soft membership across the same seven clusters</span></div>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -259,17 +411,19 @@
 <footer>
   <div class="band-tight footnav">
     <a class="pill-o" href="index.html">Back to the overview</a>
-    <a class="pill-o" href="discoveries.html">Findings</a>
-    <a class="pill-o" href="case-studies.html">Case studies</a>
-    <a class="pill" href="index.html#results">Results</a>
+    <a class="pill-o" href="discoveries.html">Discoveries</a>
+    <a class="pill-o" href="case-studies.html">Season &amp; cards</a>
+    <a class="pill" href="index.html#season">2026 season</a>
   </div>
   <div class="colophon">
-    <span>MetricCage · 2026</span>
-    <span>Re-scored on the frozen split · Aug 2026</span>
+    <span>MetricCage · 2026 season report</span>
+    <span>Every family tested against outcomes, failures included</span>
     <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
 
 </div>
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="assets/charts.js"></script>
 </body>
 </html>

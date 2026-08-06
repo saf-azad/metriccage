@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case studies — MetricCage</title>
-<meta name="description" content="MetricCage run against real 2026 UFC cards as they happened, with each forecast recorded before the event and scored against the result.">
+<title>Season &amp; cards — MetricCage</title>
+<meta name="description" content="The full 2026 record: every high-conviction call across 14 cards, the eleven times the ensemble overruled its own Elo and won, and the model's numbers for the next card.">
 <meta name="theme-color" content="#ECF0F3">
-<meta property="og:title" content="Case studies — MetricCage">
-<meta property="og:description" content="Real cards, forecast in advance and scored against what actually happened.">
+<meta property="og:title" content="Season &amp; cards — MetricCage">
+<meta property="og:description" content="42 of 55 high-conviction calls, card by card — plus the next card, priced before it happens.">
 <meta property="og:type" content="article">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
@@ -19,125 +19,406 @@
 <nav class="nav" aria-label="Primary">
   <a class="nav-mark" href="index.html">MetricCage</a>
   <div class="nav-links">
-    <a href="index.html#results">Results</a>
-    <a href="model.html">Model evidence</a>
-    <a href="discoveries.html">Findings</a>
-    <a href="case-studies.html" aria-current="page">Case studies</a>
-    <a href="index.html#engineering">Engineering</a>
+    <a href="index.html#season">2026 season</a>
+    <a href="model.html">The model</a>
+    <a href="discoveries.html">Discoveries</a>
+    <a href="case-studies.html" aria-current="page">Season &amp; cards</a>
     <a class="pill" href="index.html#contact">Contact</a>
   </div>
 </nav>
 
 <div class="ticker">
-  <span><b>Forecast before the card</b></span>
-  <span>predictions recorded and time-stamped in advance</span>
-  <span>card records reported as <b>raw counts</b></span>
+  <span><b>42 of 55</b> high-conviction calls correct</span>
+  <span>walk-forward: nothing from a later card visible when an earlier one was scored</span>
+  <span>method estimates shown for completeness, <b>not as a claim</b></span>
 </div>
 
 <main id="main">
 
 <header class="band band-hero">
-  <p class="eyebrow">Backtests · 2026 cards</p>
-  <h1>Case studies</h1>
-  <p class="sub">A backtest on historical data is a laboratory result. Each card below was forecast before it took place and scored against what actually happened.</p>
+  <p class="eyebrow">The 2026 season · 14 events · 175 fights</p>
+  <h1>Season &amp; cards</h1>
+  <p class="sub">Every call the model committed to at 65 per cent or better, card by card, exactly as it was made. A model that hedges everything to 52 per cent can never be interestingly wrong — <b>the calls worth judging are the ones where it committed.</b></p>
+  <div class="case-hero-stats mt-lg">
+    <div class="kv"><span class="v num">55</span><span class="l">high-conviction calls</span></div>
+    <div class="kv"><span class="v num">42</span><span class="l">correct — 76.4%</span></div>
+    <div class="kv"><span class="v num">12 / 14</span><span class="l">cards at 65% or better</span></div>
+    <div class="kv"><span class="v num">4</span><span class="l">cards where every call landed</span></div>
+    <div class="kv"><span class="v num">11</span><span class="l">Elo overruled, and right</span></div>
+  </div>
 </header>
 
-<!-- ===== MACAU ===== -->
-<section class="band" id="macau">
+<!-- ================= THE CALLS THAT LANDED ================= -->
+<section class="band" id="overrules">
+  <p class="eyebrow">The calls that landed</p>
+  <h2>Eleven times it overruled its own rating system</h2>
+  <p class="sub">The hardest thing a fight model can do is disagree with the consensus and be right. MetricCage carries its own consensus in the form of an Elo rating — one of its four streams — and the cleanest test of whether the other three earn their place is how often the blend overrules Elo and wins. <b>In 2026 that happened eleven times at 60 per cent conviction or better.</b></p>
+  <div class="callout">
+    <p class="lead">Elo is a strength-of-schedule measure and nothing more.</p>
+    <div class="prose prose-tight">
+      <p>It cannot see that a fighter is thirty-eight, or coming off a long layoff, or stylistically wrong for the man in front of him. The other three streams can, and these eleven are where they paid for themselves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VALLEJOS ================= -->
+<section class="band" id="vallejos">
   <div class="section-head">
     <div>
-      <p class="eyebrow">UFC Fight Night — Macau · 2026 · featured</p>
-      <h2>Macau</h2>
+      <p class="eyebrow">UFC Fight Night main event · 14 March 2026</p>
+      <h2>Vallejos v Emmett</h2>
     </div>
-    <span class="tag t-hit">verified</span>
+    <span class="tag t-hit">called · fighter and shape</span>
   </div>
-
-  <div class="case-hero-stats mt">
-    <div class="kv"><span class="v num">13</span><span class="l">bouts on the card</span></div>
-    <div class="kv"><span class="v num">8</span><span class="l">scoreable by the model</span></div>
-    <div class="kv"><span class="v num">5</span><span class="l">scored picks correct</span></div>
-    <div class="kv"><span class="v num">5.33</span><span class="l">expected from its own probabilities</span></div>
-    <div class="kv"><span class="v num">4 – 7</span><span class="l">central 80% range predicted</span></div>
-  </div>
-
   <div class="split-even mt-lg">
     <div>
       <div class="prose mt-0">
-        <p>Of the thirteen bouts on the card, eight were scoreable. Four were UFC debutants, whom the model does not attempt to rate because they carry no record in the feature matrix, and one ended as a no-contest.</p>
-        <p>On the eight it scored, the model took <b>five</b> — against an expected <b>5.33</b> from its own probabilities. That result sits in the middle of the central 80% range it had predicted for itself, which is exactly what a calibrated forecast is supposed to do: the number it gave in advance described the outcome it went on to produce.</p>
-        <p>The card is also a clean demonstration of the model declining to guess. Rating the four debutants would have been easy and would have padded the count; leaving them unscored keeps the record honest and keeps the expected-versus-actual comparison meaningful.</p>
-      </div>
-      <div class="callout">
-        <p class="lead">Calibration is a claim about the long run, and it holds up card by card too.</p>
-        <div class="prose prose-tight">
-          <p>Five against 5.33 expected is not a lucky result or an unlucky one. It is the forecast landing where the forecast said it would.</p>
-        </div>
+        <p>Josh Emmett, long-established; Kevin Vallejos, sixteen years younger and thirty-eight career rounds lighter.</p>
+        <p>Elo made Emmett the marginal favourite at 52 per cent. The ensemble put Vallejos at 69.6, and the drivers it reported were the age gap, a shorter layoff, and a positive net striking differential. Then the method head split that 69.6 with knockout on top at 26.8 per cent, ahead of the decision branch — unusual in a five-round fight, where the decision branch is normally the safe bet.</p>
+        <p><b>Vallejos knocked Emmett out with punches at 3:33 of round one.</b></p>
       </div>
     </div>
     <div class="chart-card">
-      <p class="ct">Where the model is strongest</p>
-      <p class="cs">Across the whole 695-fight blind test — not one card — split by how much UFC history the matchup carries.</p>
-      <svg viewBox="0 0 360 130" role="img" aria-label="AUC 0.718 for matchups where both fighters have five or more UFC bouts, against 0.603 for near-debutants">
-        <text x="8" y="34" font-size="10.5" fill="var(--ink-a62)">both ≥ 5 UFC bouts</text>
-        <rect x="130" y="24" width="201" height="13" rx="2" fill="var(--ink)"/><text x="238" y="34" font-size="11" font-weight="700" fill="var(--white)">0.718</text>
-        <text x="8" y="74" font-size="10.5" fill="var(--ink-a62)">either &lt; 3 UFC bouts</text>
-        <rect x="130" y="64" width="169" height="13" rx="2" fill="var(--slate-a60)"/><text x="270" y="74" font-size="11" font-weight="700">0.603</text>
-        <text x="8" y="104" font-size="10.5" fill="var(--ink-a62)">gap 0.114 · 95% CI 0.033 – 0.198</text>
-      </svg>
-      <p class="src">next on the roadmap: pre-UFC records from Tapology and Sherdog</p>
+      <p class="ct">Vallejos v Emmett as the model priced it</p>
+      <p class="cs">Hover a branch. The knockout branch outranked the decision branch — the single heaviest of the six.</p>
+      <div id="chart-tree"></div>
+      <p class="src">2026 season report · figure 7</p>
     </div>
   </div>
 </section>
 
-<!-- ===== SCHEDULED ===== -->
-<section class="band" id="scheduled">
-  <p class="eyebrow">The schedule</p>
-  <h2>Cards awaiting write-up</h2>
-  <p class="sub">Forecasts for each were recorded and time-stamped before the card took place. What follows is the scored breakdown, written up in order.</p>
-  <div class="grid-4 mt">
-    <div class="queued">
-      <span class="queued-mark">Write-up scheduled</span>
-      <h3>UFC 328</h3>
-      <p class="note">Forecasts recorded pre-card. Scored breakdown to follow.</p>
+<!-- ================= ULBERG ================= -->
+<section class="band" id="ulberg">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC 327 main event · 11 April 2026</p>
+      <h2>Prochazka v Ulberg</h2>
     </div>
-    <div class="queued">
-      <span class="queued-mark">Write-up scheduled</span>
-      <h3>UFC 329</h3>
-      <p class="note">Forecasts recorded pre-card. Scored breakdown to follow.</p>
-    </div>
-    <div class="queued">
-      <span class="queued-mark">Write-up scheduled</span>
-      <h3>UFC Fight Night — Baku</h3>
-      <p class="note">Forecasts recorded pre-card. Scored breakdown to follow.</p>
-    </div>
-    <div class="queued">
-      <span class="queued-mark">Write-up scheduled</span>
-      <h3>Kape v Horiguchi</h3>
-      <p class="note">Forecasts recorded pre-card. Scored breakdown to follow.</p>
-    </div>
+    <span class="tag t-hit">called · fighter and shape</span>
   </div>
-</section>
-
-<!-- ===== METHOD ===== -->
-<section class="band" id="method">
   <div class="split">
     <div class="sticky-side">
-      <p class="eyebrow">Method</p>
-      <h2>How these are scored</h2>
+      <div class="bigstat mt">
+        <span class="v num">53.7%</span>
+        <span class="l">Ulberg by knockout — the model’s highest single method probability of the season</span>
+      </div>
     </div>
     <div>
-      <div class="prose">
-        <p>A card is only evidence if the forecast existed before the fights did. Each set of predictions is generated and stored ahead of the event, using the feature matrix as it stood at that moment — no post-hoc feature updates, no re-running with hindsight, and no dropping a bout after the fact.</p>
-        <p>Bouts the model cannot rate are marked unscoreable rather than filled in. A UFC debutant carries no history in the feature matrix, so any number attached to them would be the betting market’s opinion rather than the model’s.</p>
+      <div class="prose mt-0">
+        <p>The strongest method call the model produced all year: Ulberg at 67.4 per cent to win, and 53.7 per cent to do it by knockout. No other fight in 2026 drew that much method conviction.</p>
+        <p><b>Ulberg knocked Prochazka out with a punch at 3:45 of the first round.</b> Two five-round main events, four weeks apart, where the model had both the fighter and the shape.</p>
       </div>
-      <p class="note">A pick counts as correct when the fighter given the higher win probability wins. No-contests and overturned results are excluded from the denominator rather than counted either way.</p>
       <div class="callout">
-        <p class="lead">Card records are raw counts, never percentages.</p>
+        <p class="lead">One caveat, applied honestly.</p>
         <div class="prose prose-tight">
-          <p>Five out of eight is five out of eight. A card of this size cannot support a percentage to two significant figures, and the interval around one would be wide enough to contain almost any reading you cared to take from it.</p>
+          <p>The <a href="discoveries.html#method-head">method head has no measurable edge across the season as a whole</a>. These two calls were right, and right in the way the model intended, but they sit inside a distribution that does not beat a simple rule. Two good calls are two good calls.</p>
         </div>
       </div>
-      <p class="note">The aggregate metrics on <a href="index.html#results">the results page</a> — computed across 695 fights — are the numbers that carry statistical weight. These cards show the model working in the open, on events as they happen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CARD BY CARD ================= -->
+<section class="band" id="cards">
+  <p class="eyebrow">The record</p>
+  <h2>Card by card</h2>
+  <p class="sub">Who the model backed, how confident it was, its method estimate, and what happened. Method estimates are included for completeness rather than as a claim — <a href="discoveries.html#method-head">the discoveries page</a> is unambiguous about that.</p>
+</section>
+
+<section class="band" id="ufc-324">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC 324 · 2026-01-24</p>
+      <h2>Gaethje vs. Pimblett</h2>
+    </div>
+    <span class="tag t-hit">2 of 3 · 67%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Gaethje vs. Pimblett: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Paddy Pimblett v Justin Gaethje</span><span class="t">Paddy Pimblett</span><span class="v num">73.4%</span><span class="t">KO/TKO 40%</span><span class="t res">Gaethje by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Andrey Pulyaev v Ateba Gautier</span><span class="t">Ateba Gautier</span><span class="v num">67.3%</span><span class="t">KO/TKO 39%</span><span class="t res">Gautier by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Derrick Lewis v Waldo Cortes Acosta</span><span class="t">Waldo Cortes Acosta</span><span class="v num">67.3%</span><span class="t">KO/TKO 54%</span><span class="t res">Acosta by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="ufc-325">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC 325 · 2026-01-31</p>
+      <h2>Volkanovski vs. Lopes 2</h2>
+    </div>
+    <span class="tag t-hit">3 of 3 · 100%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Volkanovski vs. Lopes 2: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Quillan Salkilld v Jamie Mullarkey</span><span class="t">Quillan Salkilld</span><span class="v num">73.4%</span><span class="t">Decision 50%</span><span class="t res">Salkilld by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Benoit Saint Denis v Dan Hooker</span><span class="t">Benoit Saint Denis</span><span class="v num">69.6%</span><span class="t">KO/TKO 36%</span><span class="t res">Saint Denis by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Junior Tafa v Billy Elekana</span><span class="t">Billy Elekana</span><span class="v num">67.3%</span><span class="t">Decision 57%</span><span class="t res">Elekana by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-bautista">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-02-07</p>
+      <h2>Bautista vs. Oliveira</h2>
+    </div>
+    <span class="tag t-hit">3 of 4 · 75%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Bautista vs. Oliveira: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Jailton Almeida v Rizvan Kuniev</span><span class="t">Jailton Almeida</span><span class="v num">79.9%</span><span class="t">Submission 36%</span><span class="t res">Kuniev by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Farid Basharat v Jean Matsumoto</span><span class="t">Farid Basharat</span><span class="v num">69.6%</span><span class="t">Decision 51%</span><span class="t res">Basharat by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Priscila Cachoeira v Klaudia Sygula</span><span class="t">Klaudia Sygula</span><span class="v num">67.3%</span><span class="t">KO/TKO 54%</span><span class="t res">Sygula by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Marc-Andre Barriault v Michal Oleksiejczuk</span><span class="t">Michal Oleksiejczuk</span><span class="v num">67.3%</span><span class="t">KO/TKO 52%</span><span class="t res">Oleksiejczuk by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-strickland">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-02-21</p>
+      <h2>Strickland vs. Hernandez</h2>
+    </div>
+    <span class="tag t-hit">4 of 5 · 80%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Strickland vs. Hernandez: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Alden Coria v Luis Gurule</span><span class="t">Alden Coria</span><span class="v num">73.4%</span><span class="t">KO/TKO 38%</span><span class="t res">Coria by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Carli Judice v Juliana Miller</span><span class="t">Carli Judice</span><span class="v num">69.6%</span><span class="t">KO/TKO 38%</span><span class="t res">Judice by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Anthony Hernandez v Sean Strickland</span><span class="t">Anthony Hernandez</span><span class="v num">69.6%</span><span class="t">Decision 50%</span><span class="t res">Strickland by KO/TKO <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Melquizael Costa v Dan Ige</span><span class="t">Melquizael Costa</span><span class="v num">69.6%</span><span class="t">Decision 55%</span><span class="t res">Costa by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Joselyne Edwards v Nora Cornolle</span><span class="t">Joselyne Edwards</span><span class="v num">69.6%</span><span class="t">Decision 53%</span><span class="t res">Edwards by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-moreno">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-02-28</p>
+      <h2>Moreno vs. Kavanagh</h2>
+    </div>
+    <span class="tag t-hit">4 of 4 · 100%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Moreno vs. Kavanagh: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Cristian Quinonez v Kris Moutinho</span><span class="t">Cristian Quinonez</span><span class="v num">69.6%</span><span class="t">KO/TKO 39%</span><span class="t res">Quinonez by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Santiago Luna v Angel Pacheco</span><span class="t">Santiago Luna</span><span class="v num">69.6%</span><span class="t">Decision 44%</span><span class="t res">Luna by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Ryan Gandra v Jose Daniel Medina</span><span class="t">Ryan Gandra</span><span class="v num">69.6%</span><span class="t">Decision 44%</span><span class="t res">Gandra by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Francis Marshall v Erik Silva</span><span class="t">Francis Marshall</span><span class="v num">69.6%</span><span class="t">KO/TKO 39%</span><span class="t res">Marshall by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="ufc-326">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC 326 · 2026-03-07</p>
+      <h2>Holloway vs. Oliveira 2</h2>
+    </div>
+    <span class="tag t-hit">3 of 4 · 75%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Holloway vs. Oliveira 2: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Donte Johnson v Cody Brundage</span><span class="t">Donte Johnson</span><span class="v num">73.4%</span><span class="t">Decision 47%</span><span class="t res">Johnson by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Raul Rosas Jr. v Rob Font</span><span class="t">Raul Rosas Jr.</span><span class="v num">69.6%</span><span class="t">Decision 53%</span><span class="t res">Rosas Jr. by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Charles Oliveira v Max Holloway</span><span class="t">Max Holloway</span><span class="v num">67.3%</span><span class="t">KO/TKO 38%</span><span class="t res">Oliveira by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Cody Durden v Nyamjargal Tumendemberel</span><span class="t">Nyamjargal Tumendemberel</span><span class="v num">67.3%</span><span class="t">KO/TKO 35%</span><span class="t res">Tumendemberel by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-emmett">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-03-14</p>
+      <h2>Emmett vs. Vallejos</h2>
+    </div>
+    <span class="tag t-hit">3 of 4 · 75%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Emmett vs. Vallejos: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Gillian Robertson v Amanda Lemos</span><span class="t">Gillian Robertson</span><span class="v num">69.6%</span><span class="t">Decision 49%</span><span class="t res">Robertson by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Kevin Vallejos v Josh Emmett</span><span class="t">Kevin Vallejos</span><span class="v num">69.6%</span><span class="t">KO/TKO 38%</span><span class="t res">Vallejos by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Ion Cutelaba v Oumar Sy</span><span class="t">Oumar Sy</span><span class="v num">67.3%</span><span class="t">Decision 48%</span><span class="t res">Cutelaba by Submission <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Chris Curtis v Myktybek Orolbai</span><span class="t">Myktybek Orolbai</span><span class="v num">67.3%</span><span class="t">KO/TKO 35%</span><span class="t res">Orolbai by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-evloev">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-03-21</p>
+      <h2>Evloev vs. Murphy</h2>
+    </div>
+    <span class="tag t-hit">5 of 6 · 83%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Evloev vs. Murphy: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Mantas Kondratavicius v Antonio Trocoli</span><span class="t">Mantas Kondratavicius</span><span class="v num">73.4%</span><span class="t">KO/TKO 40%</span><span class="t res">Kondratavicius by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Christian Leroy Duncan v Roman Dolidze</span><span class="t">Christian Leroy Duncan</span><span class="v num">69.6%</span><span class="t">Decision 44%</span><span class="t res">Duncan by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Sam Patterson v Michael Page</span><span class="t">Sam Patterson</span><span class="v num">69.6%</span><span class="t">KO/TKO 38%</span><span class="t res">Page by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Brando Pericic v Louie Sutherland</span><span class="t">Brando Pericic</span><span class="v num">69.6%</span><span class="t">Decision 44%</span><span class="t res">Pericic by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Losene Keita v Nathaniel Wood</span><span class="t">Nathaniel Wood</span><span class="v num">67.3%</span><span class="t">Decision 44%</span><span class="t res">Wood by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Felipe Franco v Mario Pinto</span><span class="t">Mario Pinto</span><span class="v num">67.3%</span><span class="t">KO/TKO 37%</span><span class="t res">Pinto by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-adesanya">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-03-28</p>
+      <h2>Adesanya vs. Pyfer</h2>
+    </div>
+    <span class="tag t-neutral">4 of 8 · 50%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Adesanya vs. Pyfer: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Michael Chiesa v Niko Price</span><span class="t">Michael Chiesa</span><span class="v num">73.4%</span><span class="t">Decision 58%</span><span class="t res">Chiesa by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Chase Hooper v Lance Gibson Jr.</span><span class="t">Chase Hooper</span><span class="v num">73.4%</span><span class="t">Decision 37%</span><span class="t res">Gibson Jr. by KO/TKO <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Ignacio Bahamondes v Tofiq Musayev</span><span class="t">Ignacio Bahamondes</span><span class="v num">73.4%</span><span class="t">KO/TKO 39%</span><span class="t res">Musayev by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Casey O’Neill v Gabriella Fernandes</span><span class="t">Casey O’Neill</span><span class="v num">69.6%</span><span class="t">Decision 60%</span><span class="t res">O’Neill by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Tyrell Fortune v Marcin Tybura</span><span class="t">Marcin Tybura</span><span class="v num">67.3%</span><span class="t">Decision 43%</span><span class="t res">Fortune by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Bruna Brasil v Alexia Thainara</span><span class="t">Alexia Thainara</span><span class="v num">67.3%</span><span class="t">Decision 54%</span><span class="t res">Thainara by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Alexa Grasso v Maycee Barber</span><span class="t">Maycee Barber</span><span class="v num">67.3%</span><span class="t">Decision 58%</span><span class="t res">Grasso by KO/TKO <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Bruno Lopes v Navajo Stirling</span><span class="t">Navajo Stirling</span><span class="v num">67.3%</span><span class="t">Decision 42%</span><span class="t res">Stirling by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-moicano">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-04-04</p>
+      <h2>Moicano vs. Duncan</h2>
+    </div>
+    <span class="tag t-hit">2 of 3 · 67%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Moicano vs. Duncan: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Alice Pereira v Hailey Cowan</span><span class="t">Alice Pereira</span><span class="v num">69.6%</span><span class="t">Decision 55%</span><span class="t res">Pereira by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Azamat Bekoev v Tresean Gore</span><span class="t">Azamat Bekoev</span><span class="v num">69.6%</span><span class="t">KO/TKO 38%</span><span class="t res">Gore by Submission <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+    <div class="row" role="row"><span class="m">Brendson Ribeiro v Abdul Rakhman Yakhyaev</span><span class="t">Abdul Rakhman Yakhyaev</span><span class="v num">67.3%</span><span class="t">KO/TKO 47%</span><span class="t res">Yakhyaev by Submission <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="ufc-327">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC 327 · 2026-04-11</p>
+      <h2>Prochazka vs. Ulberg</h2>
+    </div>
+    <span class="tag t-hit">2 of 2 · 100%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Prochazka vs. Ulberg: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Aaron Pico v Patricio Pitbull</span><span class="t">Aaron Pico</span><span class="v num">69.6%</span><span class="t">KO/TKO 37%</span><span class="t res">Pico by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Jiri Prochazka v Carlos Ulberg</span><span class="t">Carlos Ulberg</span><span class="v num">67.3%</span><span class="t">KO/TKO 54%</span><span class="t res">Ulberg by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-burns">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-04-18</p>
+      <h2>Burns vs. Malott</h2>
+    </div>
+    <span class="tag t-hit">1 of 1 · 100%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Burns vs. Malott: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Mike Malott v Gilbert Burns</span><span class="t">Mike Malott</span><span class="v num">69.6%</span><span class="t">Decision 42%</span><span class="t res">Malott by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-sterling">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-04-25</p>
+      <h2>Sterling vs. Zalal</h2>
+    </div>
+    <span class="tag t-neutral">1 of 2 · 50%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Sterling vs. Zalal: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Michelle Montague v Mayra Bueno Silva</span><span class="t">Michelle Montague</span><span class="v num">69.6%</span><span class="t">Decision 59%</span><span class="t res">Montague by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Cody Durden v Jafel Filho</span><span class="t">Jafel Filho</span><span class="v num">67.3%</span><span class="t">Submission 40%</span><span class="t res">Durden by Decision <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+  </div>
+</section>
+
+<section class="band" id="fn-dellamaddalena">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">UFC Fight Night · 2026-05-02</p>
+      <h2>Della Maddalena vs. Prates</h2>
+    </div>
+    <span class="tag t-hit">5 of 6 · 83%</span>
+  </div>
+  <div class="wtable wtable-fights mt" role="table" aria-label="Della Maddalena vs. Prates: high-conviction calls">
+    <div class="row head" role="row"><span>Bout</span><span>Model backed</span><span>Conf.</span><span>Method estimate</span><span>What happened</span></div>
+    <div class="row" role="row"><span class="m">Gerald Meerschaert v Jacob Malkoun</span><span class="t">Jacob Malkoun</span><span class="v num">74.4%</span><span class="t">KO/TKO 35%</span><span class="t res">Malkoun by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Colby Thicknesse v Vince Morales</span><span class="t">Colby Thicknesse</span><span class="v num">73.4%</span><span class="t">Decision 53%</span><span class="t res">Thicknesse by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Cam Rowston v Robert Bryczek</span><span class="t">Cam Rowston</span><span class="v num">69.6%</span><span class="t">Decision 44%</span><span class="t res">Rowston by Decision <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Quillan Salkilld v Beneil Dariush</span><span class="t">Quillan Salkilld</span><span class="v num">69.6%</span><span class="t">Submission 40%</span><span class="t res">Salkilld by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Marwan Rahiki v Ollie Schmid</span><span class="t">Marwan Rahiki</span><span class="v num">69.1%</span><span class="t">Decision 44%</span><span class="t res">Rahiki by KO/TKO <span class="mark mark-hit" aria-label="correct">✓</span></span></div>
+    <div class="row" role="row"><span class="m">Kody Steele v Dom Mar Fan</span><span class="t">Dom Mar Fan</span><span class="v num">67.3%</span><span class="t">Decision 58%</span><span class="t res">Steele by Submission <span class="mark mark-miss" aria-label="missed">×</span></span></div>
+  </div>
+</section>
+
+
+<!-- ================= NEXT CARD ================= -->
+<section class="band" id="next-card">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">The next card · Saturday 8 August 2026</p>
+      <h2>UFC Fight Night: Gamrot vs. Salkilld</h2>
+    </div>
+    <span class="tag t-near">forecast · priced before the card</span>
+  </div>
+  <div class="prose">
+    <p>Two things to note before the numbers. The fighter database ends on 2 May 2026, so anything from the last three months is invisible. And four of the twelve bouts pair a fighter with no UFC record at all, where the model declines to predict rather than guessing.</p>
+  </div>
+
+  <h3 class="mt-lg">Main card</h3>
+  <div class="wtable wtable-next mt" role="table" aria-label="Main card predictions">
+    <div class="row head"><span>Bout</span><span>Division</span><span>Model backs</span><span>Most likely outcome</span><span>Second</span></div>
+    <div class="row"><span class="m">Mateusz Gamrot v Quillan Salkilld</span><span class="t">Lightweight</span><span class="v num">Quillan Salkilld 67.3%</span><span class="t">Salkilld by submission — 31.1%</span><span class="t">Salkilld by KO/TKO — 18.6%</span></div>
+    <div class="row"><span class="m">Diego Ferreira v Billy Quarantillo</span><span class="t">Lightweight</span><span class="v num">Diego Ferreira 54.8%</span><span class="t">Ferreira by decision — 31.4%</span><span class="t">Quarantillo by decision — 25.9%</span></div>
+    <div class="row"><span class="m">Darren Elkins v Yadier del Valle</span><span class="t">Featherweight</span><span class="v num">Yadier del Valle 61.3%</span><span class="t">del Valle by KO/TKO — 21.9%</span><span class="t">del Valle by decision — 20.8%</span></div>
+    <div class="row"><span class="m">Amanda Lemos v Alexia Thainara</span><span class="t">Women’s Strawweight</span><span class="v num">Alexia Thainara 61.3%</span><span class="t">Thainara by submission — 21.7%</span><span class="t">Thainara by decision — 20.8%</span></div>
+    <div class="row"><span class="m">Billy Ray Goff v Ty Miller</span><span class="t">Welterweight</span><span class="v num">Ty Miller 67.3%</span><span class="t">Miller by decision — 36.7%</span><span class="t">Miller by KO/TKO — 21.2%</span></div>
+  </div>
+
+  <h3 class="mt-lg">Preliminary card</h3>
+  <div class="wtable wtable-next mt" role="table" aria-label="Preliminary card predictions">
+    <div class="row head"><span>Bout</span><span>Division</span><span>Model backs</span><span>Most likely outcome</span><span>Second</span></div>
+    <div class="row"><span class="m">Steven Asplund v Guilherme Pat</span><span class="t">Heavyweight</span><span class="v num">Steven Asplund 55.5%</span><span class="t">Asplund by decision — 31.6%</span><span class="t">Pat by decision — 25.3%</span></div>
+    <div class="row"><span class="m">Diyar Nurgozhay v Bruno Lopes</span><span class="t">Light Heavyweight</span><span class="v num">Diyar Nurgozhay 69.6%</span><span class="t">Nurgozhay by decision — 37.5%</span><span class="t">Nurgozhay by KO/TKO — 17%</span></div>
+    <div class="row"><span class="m">Louie Sutherland v Jose Montanha da Silva</span><span class="t">Heavyweight</span><span class="t nopick" style="grid-column:3/-1">No prediction — opponent has no UFC record</span></div>
+    <div class="row"><span class="m">Manoel Sousa v Richie Miranda</span><span class="t">Lightweight</span><span class="t nopick" style="grid-column:3/-1">No prediction — opponent has no UFC record</span></div>
+    <div class="row"><span class="m">Miles Johns v Jessie Rosas</span><span class="t">Bantamweight</span><span class="t nopick" style="grid-column:3/-1">No prediction — opponent has no UFC record</span></div>
+    <div class="row"><span class="m">Juliana Miller v Ravena Oliveira</span><span class="t">Women’s Flyweight</span><span class="v num">Juliana Miller 69.6%</span><span class="t">Miller by decision — 38.4%</span><span class="t">Miller by KO/TKO — 16.8%</span></div>
+    <div class="row"><span class="m">Gigi Canuto v Carol Foro</span><span class="t">Women’s Strawweight</span><span class="t nopick" style="grid-column:3/-1">No prediction — opponent has no UFC record</span></div>
+  </div>
+</section>
+
+<!-- ================= READING THE CARD ================= -->
+<section class="band" id="reading">
+  <div class="split">
+    <div class="sticky-side">
+      <p class="eyebrow">Reading the card</p>
+      <h2>Three calls worth anything</h2>
+    </div>
+    <div>
+      <div class="prose mt-0">
+        <p>Only three bouts clear the 65 per cent bar, and on the season’s evidence they are the only ones worth anything: Salkilld at 67.3 per cent over Gamrot in the main event, and Nurgozhay and Juliana Miller both at 69.6. Everything else on the card is inside the range where the model is close to a coin.</p>
+        <p>The main event is the boldest of the three. Backing Quillan Salkilld over Mateusz Gamrot is a strong statement about a fighter with four UFC bouts against an established contender — and the model has already gone out on this limb twice in 2026 and was right both times: Salkilld submitted Jamie Mullarkey in January and knocked out Beneil Dariush in May.</p>
+        <p>The method columns should be read as decoration rather than information. The two submission-first estimates on this card, Salkilld and Thainara, are exactly the kind of call the head got wrong all season. If you want a method prior, the base rate is the better one: expect a little over half of these to reach the judges.</p>
+      </div>
+      <div class="callout">
+        <p class="lead">The model also flags unusual uncertainty here.</p>
+        <div class="prose prose-tight">
+          <p>Every fight it could price triggered a stream-disagreement warning, with the four models spreading between eleven and thirty-three percentage points — which reflects a card built largely from fighters with short UFC histories.</p>
+        </div>
+      </div>
+      <p class="note">Calibrated probability estimates from a model with documented limits, running on data that stops three months before the card. Not betting advice. About a third of the calls will miss; the value is in the number attached to each one.</p>
     </div>
   </div>
 </section>
@@ -147,17 +428,19 @@
 <footer>
   <div class="band-tight footnav">
     <a class="pill-o" href="index.html">Back to the overview</a>
-    <a class="pill-o" href="model.html">Model evidence</a>
-    <a class="pill-o" href="discoveries.html">Findings</a>
-    <a class="pill" href="index.html#results">Results</a>
+    <a class="pill-o" href="model.html">Inside the model</a>
+    <a class="pill-o" href="discoveries.html">Discoveries</a>
+    <a class="pill" href="index.html#season">2026 season</a>
   </div>
   <div class="colophon">
-    <span>MetricCage · 2026</span>
-    <span>Cards forecast before they happened · scored after</span>
+    <span>MetricCage · 2026 season report</span>
+    <span>Every call shown, misses included</span>
     <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
 
 </div>
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="assets/charts.js"></script>
 </body>
 </html>
