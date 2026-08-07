@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Discoveries — MetricCage</title>
+<title>Discoveries | MetricCage</title>
 <meta name="description" content="What a fully blind 2026 season taught: a method head that stopped working, distance fights as the most predictable thing in the sport, submissions that came out of nowhere, and a changing art measured across sixteen years.">
 <meta name="theme-color" content="#ECF0F3">
-<meta property="og:title" content="Discoveries — MetricCage">
-<meta property="og:description" content="A full blind season tells you things a good season does not — including how the art of MMA itself is changing.">
+<meta property="og:title" content="Discoveries | MetricCage">
+<meta property="og:description" content="A full blind season tells you things a good season does not, including how the art of MMA itself is changing.">
 <meta property="og:type" content="article">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/wireframe.css">
@@ -38,7 +38,7 @@
 <header class="band band-hero">
   <p class="eyebrow">What a blind season taught</p>
   <h1>Discoveries</h1>
-  <p class="sub">A full blind season tells you things a good season does not. Three findings, in order of how much they change the picture — followed by what the same pipeline measures about <b>the changing art of MMA itself</b>.</p>
+  <p class="sub">A full blind season tells you things a good season does not. Three findings, in order of how much they change the picture, followed by what the same pipeline measures about <b>the changing art of MMA itself</b>.</p>
 </header>
 
 <!-- ================= FINDING 1: METHOD HEAD ================= -->
@@ -55,7 +55,7 @@
     <div>
       <div class="prose mt-0">
         <p>Stage one of the method classifier asks whether a fight reaches the judges. Across the 175 fights of 2026 its AUC was 0.416, with a bootstrap interval running from 0.330 to 0.501. An AUC of 0.5 means no information. Below 0.5 means the ranking is <b>inverted</b>: the fights the model flagged hardest as decisions were disproportionately the ones that got finished. Ninety-seven per cent of bootstrap samples came in below chance, so this is not a rounding artefact.</p>
-        <p>Two qualifications are due. Stage two, which asks whether a finish is a knockout or a submission, scored 0.580 across the 79 finished fights — modestly above chance. The problem is concentrated in stage one. And the model’s average distance estimate was 45.1 per cent against an actual 54.9, so part of the failure is a level error: it was trained across the whole history of the sport and still carries a finishing rate from an era that has passed. But a level error would show up as poor calibration with intact ranking. An AUC of 0.416 is a ranking failure, which is worse.</p>
+        <p>Two qualifications are due. Stage two, which asks whether a finish is a knockout or a submission, scored 0.580 across the 79 finished fights, modestly above chance. The problem is concentrated in stage one. And the model’s average distance estimate was 45.1 per cent against an actual 54.9, so part of the failure is a level error: it was trained across the whole history of the sport and still carries a finishing rate from an era that has passed. But a level error would show up as poor calibration with intact ranking. An AUC of 0.416 is a ranking failure, which is worse.</p>
       </div>
     </div>
     <div class="chart-card">
@@ -96,7 +96,7 @@
     <div class="sticky-side">
       <div class="bigstat mt">
         <span class="v num">96 / 175</span>
-        <span class="l">fights that reached the judges in 2026 — where the winner head does its best work</span>
+        <span class="l">fights that reached the judges in 2026, where the winner head does its best work</span>
       </div>
     </div>
     <div>
@@ -128,7 +128,7 @@
     </div>
     <div>
       <div class="prose mt-0">
-        <p>The fights it flagged hardest produced the fewest submissions. Across the season, bouts that actually ended in a submission sat at the 49.6th percentile of chain danger — the median. The feature had no idea. None of the twenty-two was the model’s first-ranked outcome and only one made its top two.</p>
+        <p>The fights it flagged hardest produced the fewest submissions. Across the season, bouts that actually ended in a submission sat at the 49.6th percentile of chain danger, the median. The feature had no idea. None of the twenty-two was the model’s first-ranked outcome and only one made its top two.</p>
         <p>This connects directly to the method-head failure above, and it is probably the same problem seen from a different angle. Submissions in 2026 ran at 12.6 per cent of all fights, the lowest in sixteen years of data and well below the 18.6 per cent average of the preceding years. They got rarer, and the ones that landed came from fighters the style data did not mark.</p>
       </div>
       <div class="callout">
@@ -155,13 +155,13 @@
     </div>
     <div>
       <div class="prose mt-0">
-        <p>Two readings are worth pausing on. The Muay Thai striker, who wins by accumulated volume and body work rather than single shots, shortens fights more reliably than the power puncher does — <b>volume beats power as a finishing mechanism</b>. And the pressure striker slightly lengthens fights despite the reputation: forward pressure produces damage, but it also produces clinches, fence time and rounds that get scored rather than stopped.</p>
+        <p>Two readings are worth pausing on. The Muay Thai striker, who wins by accumulated volume and body work rather than single shots, shortens fights more reliably than the power puncher does: <b>volume beats power as a finishing mechanism</b>. And the pressure striker slightly lengthens fights despite the reputation: forward pressure produces damage, but it also produces clinches, fence time and rounds that get scored rather than stopped.</p>
         <p>The model encodes these interactions explicitly rather than hoping they emerge. Knockout danger runs against the specific opponent’s chin durability. Submission threat runs against their takedown defence. A counter striker’s value is computed directionally, against the other fighter’s pressure, because a counter puncher with nobody coming forward has nothing to counter. Roughly a fifth of the feature set exists for this.</p>
       </div>
       <div class="callout">
         <p class="lead">The Vallejos call is that reasoning in miniature.</p>
         <div class="prose prose-tight">
-          <p>Emmett’s chin durability had eroded across a long career; Vallejos scores high on power puncher and pressure striker; the age-curve gap was sixteen years. Three separate feature families pointed at the same branch, which is why a knockout outranked a decision in a five-round main event. Given the method head’s season, the fair way to read it is as one good call from a component that did not work reliably across the season — <a href="case-studies.html#vallejos">the full breakdown</a>.</p>
+          <p>Emmett’s chin durability had eroded across a long career; Vallejos scores high on power puncher and pressure striker; the age-curve gap was sixteen years. Three separate feature families pointed at the same branch, which is why a knockout outranked a decision in a five-round main event. Given the method head’s season, the fair way to read it is as one good call from a component that did not work reliably across the season (<a href="case-studies.html#vallejos">the full breakdown</a>).</p>
         </div>
       </div>
     </div>
@@ -219,11 +219,6 @@
     <a class="pill-o" href="index.html">Back to the overview</a>
     <a class="pill-o" href="model.html">Inside the model</a>
     <a class="pill" href="case-studies.html">Season &amp; cards</a>
-  </div>
-  <div class="colophon">
-    <span>MetricCage · 2026 season report</span>
-    <span>Negative results reported first</span>
-    <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
 
