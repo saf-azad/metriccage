@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MetricCage — a probability engine for mixed martial arts</title>
-<meta name="description" content="A probability engine for MMA: calibrated win probabilities from a four-model ensemble, measured on a fully unseen 2026 season — and a research tool for how the art of MMA is changing.">
+<title>MetricCage: a probability engine for mixed martial arts</title>
+<meta name="description" content="A probability engine for MMA: calibrated win probabilities from a four-model ensemble, measured on a fully unseen 2026 season, and a research tool for how the art of MMA is changing.">
 <meta name="author" content="Safwat Al Azad">
 <meta name="theme-color" content="#ECF0F3">
-<meta property="og:title" content="MetricCage — a probability engine for mixed martial arts">
+<meta property="og:title" content="MetricCage: a probability engine for mixed martial arts">
 <meta property="og:description" content="76% on high-conviction calls, AUC 0.691 on an unseen season, and eleven times it overruled its own rating system and was right.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -42,17 +42,18 @@
   <p class="eyebrow">Fight analytics · calibrated ML · 2026 season report</p>
   <p class="byline">Safwat Al Azad</p>
   <h1>MetricCage</h1>
-  <p class="sub">A probability engine for mixed martial arts — and a research tool for <b>how the art of MMA is changing</b>. Give it two names and a date and it returns a calibrated view of the fight: who wins, by how much, and the features driving the call.</p>
+  <p class="sub">A probability engine for mixed martial arts and a research tool for <b>how the art of MMA is changing</b>. Give it two names and a date and it returns a calibrated view of the fight: who wins, by how much, and the features driving the call.</p>
   <div class="actions">
     <a class="pill" href="#season">The 2026 season</a>
     <a class="pill-o" href="model.html">Inside the model</a>
     <a class="pill-o" href="discoveries.html">Discoveries</a>
   </div>
-  <div class="grid-4 mt-lg">
-    <div class="statcard"><span class="v num">76%</span><span class="l">on high-conviction calls · 42 of 55 at 65%+ confidence</span></div>
-    <div class="statcard"><span class="v num">0.691</span><span class="l">winner-head AUC · on a season it had never seen</span></div>
-    <div class="statcard"><span class="v num">11</span><span class="l">times it overruled its own rating system and was right</span></div>
-    <div class="statcard"><span class="v num">102</span><span class="l">engineered features · 7,200+ UFC bouts since 2010</span></div>
+  <div class="wtable wtable-3 wtable-stats mt-lg" role="table" aria-label="Key stats">
+    <div class="row head" role="row"><span>Metric</span><span>Result</span><span>Context</span></div>
+    <div class="row" role="row"><span class="m">High-conviction accuracy</span><span class="v num">76%</span><span class="t">42 of 55 calls at 65%+ confidence</span></div>
+    <div class="row" role="row"><span class="m">Winner-head AUC</span><span class="v num">0.691</span><span class="t">on a season it had never seen</span></div>
+    <div class="row" role="row"><span class="m">Overruled its own rating system</span><span class="v num">11</span><span class="t">times, each one correct</span></div>
+    <div class="row" role="row"><span class="m">Feature set</span><span class="v num">102</span><span class="t">engineered features, 7,200+ UFC bouts since 2010</span></div>
   </div>
 </header>
 
@@ -68,7 +69,7 @@
         <p>MetricCage does not hand you a name. It hands you a number that means what it says.</p>
         <p>That distinction is the whole design. Most fight analysis collapses into a binary pick, which is right or wrong and tells you nothing about how sure anyone was. MMA generates enough noise that binary scoring is close to useless: a perfectly timed counter ends a fight in nine seconds regardless of who prepared better, and under a right-or-wrong scoreboard, being correct about the shape of a fight looks identical to guessing.</p>
         <p>So the model is built and judged on calibration. When it says 69 per cent, the fighter should win about 69 per cent of the time. That is a harder standard than accuracy and a more useful one, because a calibrated number can be acted on and a pick cannot.</p>
-        <p>The same machinery runs in a second direction. To price a fight the model has to measure the sport — what styles exist, which ones finish fights, how long fights last, where submissions come from — across sixteen years of data. Those measurements are findings in their own right, and they show <a href="discoveries.html#era">an art that is visibly changing</a>: fights are lasting longer, submissions are disappearing, and the points fighter is winning the evolutionary argument.</p>
+        <p>The same machinery runs in a second direction. To price a fight the model has to measure the sport (what styles exist, which ones finish fights, how long fights last, where submissions come from) across sixteen years of data. Those measurements are findings in their own right, and they show <a href="discoveries.html#era">an art that is visibly changing</a>: fights are lasting longer, submissions are disappearing, and the points fighter is winning the evolutionary argument.</p>
       </div>
       <div class="callout">
         <p class="lead">The goal is not to be right more often. It is to be right about how often you will be right.</p>
@@ -87,8 +88,8 @@
   <p class="sub">Being specific about this up front matters, because the three outputs are not equally good and this site does not pretend otherwise.</p>
   <div class="wtable wtable-3 mt">
     <div class="row head"><span>Output</span><span>What it is</span><span>How much to trust it</span></div>
-    <div class="row"><span class="m">Win probability</span><span class="t">Calibrated probability for each fighter</span><span class="tag t-hit">strong — AUC 0.691, well calibrated</span></div>
-    <div class="row"><span class="m">Method of victory</span><span class="t">Decision, knockout, or submission</span><span class="tag t-neutral">weak this season — see discoveries</span></div>
+    <div class="row"><span class="m">Win probability</span><span class="t">Calibrated probability for each fighter</span><span class="tag t-hit">strong · AUC 0.691, well calibrated</span></div>
+    <div class="row"><span class="m">Method of victory</span><span class="t">Decision, knockout, or submission</span><span class="tag t-neutral">weak this season · see discoveries</span></div>
     <div class="row"><span class="m">Round of finish</span><span class="t">Round-by-round distribution</span><span class="tag t-neutral">a fixed base rate, not a prediction</span></div>
   </div>
   <div class="callout">
@@ -110,17 +111,17 @@
       <div class="prose mt-0">
         <p>The first question is who wins. That is the ensemble, and it is the part of the system that works.</p>
         <p>The second is how. This runs through a two-stage classifier: stage one asks whether the fight gets finished at all, and only if it does does stage two ask whether the finish is a knockout or a submission. Combining the two gives six outcomes: either fighter, by any of three methods.</p>
-        <p>That six-way tree is the object this site keeps returning to, because it is where a probability model says something a pick cannot. Take Vallejos against Emmett, a five-round main event in March. The model put Vallejos at 69.6 per cent and then split that across methods with the knockout branch on top — unusual, because in championship-distance fights the decision branch is normally the safe bet. Vallejos knocked Emmett out in the first round. The pick was right and so was the shape, and the shape is what a favourite-backing heuristic cannot produce.</p>
+        <p>That six-way tree is the object this site keeps returning to, because it is where a probability model says something a pick cannot. Take Vallejos against Emmett, a five-round main event in March. The model put Vallejos at 69.6 per cent and then split that across methods with the knockout branch on top, unusual because in championship-distance fights the decision branch is normally the safe bet. Vallejos knocked Emmett out in the first round. The pick was right and so was the shape, and the shape is what a favourite-backing heuristic cannot produce.</p>
       </div>
       <div class="callout">
         <p class="lead">A winner is a coin. A shape is a claim about how the fight actually goes.</p>
         <div class="prose prose-tight">
-          <p>An earlier draft ran the tree to a third level and reported how often the model named the round. That was wrong and it has been removed: the round distribution is constant, so any apparent skill at calling the round was the base rate doing the work. The tree stops at two levels — fighter and method.</p>
+          <p>An earlier draft ran the tree to a third level and reported how often the model named the round. That was wrong and it has been removed: the round distribution is constant, so any apparent skill at calling the round was the base rate doing the work. The tree stops at two levels: fighter and method.</p>
         </div>
       </div>
     </div>
     <div class="chart-card">
-      <p class="ct">The two-level tree — Vallejos v Emmett, 14 March 2026</p>
+      <p class="ct">The two-level tree for Vallejos v Emmett, 14 March 2026</p>
       <p class="cs">Hover a branch for the model’s number. Level two shows how Vallejos’s 69.6% splits across methods; the report states only the winner’s split.</p>
       <div id="chart-tree"></div>
       <p class="src">2026 season report · figure 7 · result: Vallejos by KO, round 1</p>
@@ -135,7 +136,7 @@
       <p class="eyebrow">Architecture</p>
       <h2>Four models that disagree on purpose</h2>
       <div class="prose">
-        <p>There is no single model. Each stream produces its own win probability, and the four are blended with weights fitted on a 2023 validation slice by minimising log loss — not chosen by hand.</p>
+        <p>There is no single model. Each stream produces its own win probability, and the four are blended with weights fitted on a 2023 validation slice by minimising log loss, not chosen by hand.</p>
       </div>
       <p class="note">The blend then passes through two corrections: an isotonic calibrator that maps raw output onto observed frequencies, and a temperature adjustment that pulls extreme calls back toward the middle. Raw ensembles are systematically overconfident, and an overconfident probability is worse than no probability at all.</p>
     </div>
@@ -147,10 +148,10 @@
         <div class="s4"></div>
       </div>
       <div class="legend">
-        <div class="lr"><span class="sw k1"></span><span class="name">Gradient boosting — XGBoost over 67 pruned features, catches interactions</span><span class="pct num">35.3%</span></div>
-        <div class="lr"><span class="sw k2"></span><span class="name">Logistic regression — all 102 features, stable and sane on thin data</span><span class="pct num">29.2%</span></div>
-        <div class="lr"><span class="sw k3"></span><span class="name">Career LSTM — reads each career in order: improving, plateauing, sliding</span><span class="pct num">23.1%</span></div>
-        <div class="lr"><span class="sw k4"></span><span class="name">Elo — strength of schedule, independent of any statistic</span><span class="pct num">12.4%</span></div>
+        <div class="lr"><span class="sw k1"></span><span class="name">Gradient boosting: XGBoost over 67 pruned features, catches interactions</span><span class="pct num">35.3%</span></div>
+        <div class="lr"><span class="sw k2"></span><span class="name">Logistic regression: all 102 features, stable and sane on thin data</span><span class="pct num">29.2%</span></div>
+        <div class="lr"><span class="sw k3"></span><span class="name">Career LSTM: reads each career in order, spotting whether a fighter is improving, plateauing, or sliding</span><span class="pct num">23.1%</span></div>
+        <div class="lr"><span class="sw k4"></span><span class="name">Elo: strength of schedule, independent of any statistic</span><span class="pct num">12.4%</span></div>
       </div>
       <div class="callout">
         <p class="lead">The disagreement between streams is itself a signal.</p>
@@ -174,8 +175,8 @@
     <div>
       <div class="wtable wtable-3">
         <div class="row head"><span>Measure</span><span>Result</span><span>Detail</span></div>
-        <div class="row"><span class="m">High-conviction calls correct</span><span class="v num">42 of 55 — 76.4%</span><span class="t num">95% interval 65.1 – 87.6%</span></div>
-        <div class="row"><span class="m">All 175 fights</span><span class="v num">114 of 175 — 65.1%</span><span class="t">every bout, no filtering</span></div>
+        <div class="row"><span class="m">High-conviction calls correct</span><span class="v num">42 of 55 (76.4%)</span><span class="t num">95% interval 65.1 – 87.6%</span></div>
+        <div class="row"><span class="m">All 175 fights</span><span class="v num">114 of 175 (65.1%)</span><span class="t">every bout, no filtering</span></div>
         <div class="row"><span class="m">Winner-head AUC</span><span class="v num">0.691</span><span class="t num">interval 0.614 – 0.764</span></div>
         <div class="row"><span class="m">Cards where high-conviction calls hit 65%+</span><span class="v num">12 of 14</span><span class="t">4 cards were perfect</span></div>
       </div>
@@ -194,12 +195,12 @@
     </div>
     <div>
       <div class="chart-card">
-        <p class="ct">Every 2026 card — high-conviction calls only</p>
+        <p class="ct">Every 2026 card, high-conviction calls only</p>
         <p class="cs">Black is correct, grey is total calls at 65%+ confidence. Hover for the card; click through to its full table.</p>
         <div id="chart-season"></div>
         <p class="src">2026 season report · figure 5 · 42 of 55 across 14 cards</p>
       </div>
-      <p class="note">The calibration curve is the encouraging part: in the lower bands the model is almost exactly right, and in the upper bands it undersells itself — when it said around 69 per cent, the fighter won 78 per cent of the time. Being too modest is a better failure than being too bold.</p>
+      <p class="note">The calibration curve is the encouraging part: in the lower bands the model is almost exactly right, and in the upper bands it undersells itself. When it said around 69 per cent, the fighter won 78 per cent of the time. Being too modest is a better failure than being too bold.</p>
       <div class="actions">
         <a class="pill" href="case-studies.html">Card-by-card record →</a>
       </div>
@@ -222,13 +223,13 @@
     <div>
       <div class="prose mt-0">
         <p><b>Fights are lasting longer.</b> The decision rate has climbed roughly seven points since the early 2010s and average fight time is up more than half a minute. Defensive standards have risen faster than offensive ones.</p>
-        <p><b>Submissions are disappearing.</b> Down to 12.6 per cent of fights in 2026, the lowest in the data — and the ones that land no longer come from the fighters style data marks as grapplers.</p>
+        <p><b>Submissions are disappearing.</b> Down to 12.6 per cent of fights in 2026, the lowest in the data, and the ones that land no longer come from the fighters style data marks as grapplers.</p>
         <p><b>The points fighter is winning the evolutionary argument.</b> Its prevalence has risen almost without interruption for fifteen years, from 0.50 to 0.59, and the rising decision rate is that trend expressed in results.</p>
       </div>
       <div class="callout">
         <p class="lead">The drift has a modelling consequence.</p>
         <div class="prose prose-tight">
-          <p>A method classifier trained across the whole history of the sport is fitting a distribution of finishes that is actively moving. The winner head is insulated, because who wins is a more stable question than how. The method head is not — and <a href="discoveries.html#method-head">its 2026 failure</a> is that drift showing up in the scores.</p>
+          <p>A method classifier trained across the whole history of the sport is fitting a distribution of finishes that is actively moving. The winner head is insulated, because who wins is a more stable question than how. The method head is not, and <a href="discoveries.html#method-head">its 2026 failure</a> is that drift showing up in the scores.</p>
         </div>
       </div>
       <div class="actions">
@@ -272,16 +273,11 @@
 <footer id="contact">
   <div class="panel">
     <h2>Contact</h2>
-    <p class="pl">Safwat Al Azad — second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what production machine learning actually demands — <b>leakage discipline, calibration, reproducible reporting</b> — on a problem messy enough to punish shortcuts, and where the same pipeline doubles as a research instrument for how the art of MMA is changing.</p>
+    <p class="pl">Safwat Al Azad, second-year BSc Data Science &amp; Computer Science, University of Sydney. MetricCage is where I work out what production machine learning actually demands (<b>leakage discipline, calibration, reproducible reporting</b>) on a problem messy enough to punish shortcuts, and where the same pipeline doubles as a research instrument for how the art of MMA is changing.</p>
     <div class="actions">
       <a class="pill" href="https://github.com/saf-azad/metriccage">GitHub</a>
       <a class="pill-o" href="mailto:alazadsafwat@gmail.com">Email</a>
     </div>
-  </div>
-  <div class="colophon">
-    <span>MetricCage · 2026 season report</span>
-    <span>Paper design system · Space Grotesk · D3 self-hosted</span>
-    <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
 

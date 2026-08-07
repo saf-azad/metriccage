@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inside the model — MetricCage</title>
+<title>Inside the model | MetricCage</title>
 <meta name="description" content="How MetricCage works: four model streams blended and calibrated, 102 engineered features in eleven families, the features that fail, and the rule that keeps it honest.">
 <meta name="theme-color" content="#ECF0F3">
-<meta property="og:title" content="Inside the model — MetricCage">
+<meta property="og:title" content="Inside the model | MetricCage">
 <meta property="og:description" content="There is no single model. There are four, and they disagree with each other on purpose.">
 <meta property="og:type" content="article">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -39,7 +39,7 @@
 <header class="band band-hero">
   <p class="eyebrow">Architecture · features · evidence</p>
   <h1>Inside the model</h1>
-  <p class="sub">There is no single model. There are four, and they disagree with each other on purpose. Underneath them, every fight is reduced to a row of <b>102 numbers</b> — and each family of numbers is tested against outcomes rather than taken on faith.</p>
+  <p class="sub">There is no single model. There are four, and they disagree with each other on purpose. Underneath them, every fight is reduced to a row of <b>102 numbers</b>, and each family of numbers is tested against outcomes rather than taken on faith.</p>
 </header>
 
 <!-- ================= STREAMS ================= -->
@@ -53,7 +53,7 @@
     <div class="row"><span class="m">Career LSTM</span><span class="t">A sequence network reading each career in order</span><span class="t">Trajectory: improving, plateauing or sliding</span><span class="v num">0.231</span></div>
     <div class="row"><span class="m">Elo rating</span><span class="t">A custom MMA Elo with method and inactivity adjustments</span><span class="t">Strength of schedule, independent of any statistic</span><span class="v num">0.124</span></div>
   </div>
-  <p class="note">Ensemble weights were fitted on a 2023 validation slice by minimising log loss, not chosen by hand. The blend passes through an isotonic calibrator that maps raw output onto observed frequencies, then a temperature adjustment that pulls extreme calls back toward the middle — both exist because raw ensembles are systematically overconfident.</p>
+  <p class="note">Ensemble weights were fitted on a 2023 validation slice by minimising log loss, not chosen by hand. The blend passes through an isotonic calibrator that maps raw output onto observed frequencies, then a temperature adjustment that pulls extreme calls back toward the middle. Both exist because raw ensembles are systematically overconfident.</p>
   <div class="callout">
     <p class="lead">The Elo underneath is not chess Elo.</p>
     <div class="prose prose-tight">
@@ -77,7 +77,7 @@
       <div class="callout">
         <p class="lead">A note on the evidence below.</p>
         <div class="prose prose-tight">
-          <p>Each response curve splits every UFC bout from 2015 onward — 5,522 fights — into five equal groups by the feature in question and reports the observed outcome rate in each. This is descriptive rather than causal: features correlate with each other, so these curves show what a feature carries, not what it independently contributes.</p>
+          <p>Each response curve splits every UFC bout from 2015 onward (5,522 fights) into five equal groups by the feature in question and reports the observed outcome rate in each. This is descriptive rather than causal: features correlate with each other, so these curves show what a feature carries, not what it independently contributes.</p>
         </div>
       </div>
     </div>
@@ -97,14 +97,14 @@
     </div>
     <div>
       <div class="prose mt-0">
-        <p><b>Trajectory is the strongest curve in the entire feature set</b>: 40.3 per cent win rate in the bottom group rising to 60.7 in the top, a twenty-point spread. It exists because a fighter’s record describes where they have been rather than where they are going — an ascending-trajectory score weights recent results with a 200-day half-life and adjusts for opponent quality.</p>
+        <p><b>Trajectory is the strongest curve in the entire feature set</b>: 40.3 per cent win rate in the bottom group rising to 60.7 in the top, a twenty-point spread. It exists because a fighter’s record describes where they have been rather than where they are going: an ascending-trajectory score weights recent results with a 200-day half-life and adjusts for opponent quality.</p>
         <p>Net striking differential is the third most important feature in the whole model, and striking defence behaves cleanly: fighters in the top group by defence differential win 59.7 per cent of the time against 43.4 in the bottom. Control time is weaker than most people expect, moving win rate only from 46.3 to 53.4 per cent across its range.</p>
-        <p>Reach is real but modest: giving away more than three inches drops win rate to 45.3 per cent, holding more than three inches raises it to 53.8. A six-point swing at the extremes of a range most fights never reach — roughly the right size for something the sport treats as decisive.</p>
+        <p>Reach is real but modest: giving away more than three inches drops win rate to 45.3 per cent, holding more than three inches raises it to 53.8. A six-point swing at the extremes of a range most fights never reach, roughly the right size for something the sport treats as decisive.</p>
       </div>
       <div class="callout">
         <p class="lead">The rust flag earns its rarity.</p>
         <div class="prose prose-tight">
-          <p>A specific flag fires when the favourite is the rusty one — on only 77 fights, but when it does, the favourite’s win rate falls from 49.5 to 39.0 per cent. That is what a flag should do: fire rarely and mean something when it fires.</p>
+          <p>A specific flag fires when the favourite is the rusty one. It happens on only 77 fights, but when it does, the favourite’s win rate falls from 49.5 to 39.0 per cent. That is what a flag should do: fire rarely and mean something when it fires.</p>
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
     <div>
       <div class="prose mt-0">
         <p>The chin-vulnerable flag is <b>the strongest single binary signal in the feature set</b>. When it fires, the knockout rate is thirteen points above the base rate. It fires rarely, on about five per cent of fights, which is what a flag should do.</p>
-        <p>Knockout danger itself is built as half a knockout-per-round rate, three-tenths a knockdown bonus, and two-tenths career finish rate — and the differential moves fighter A’s win rate from 40.9 per cent in the bottom group to 57.8 in the top.</p>
+        <p>Knockout danger itself is built as half a knockout-per-round rate, three-tenths a knockdown bonus, and two-tenths career finish rate. The differential moves fighter A’s win rate from 40.9 per cent in the bottom group to 57.8 in the top.</p>
       </div>
     </div>
   </div>
@@ -136,13 +136,13 @@
 <section class="band" id="submission-chain">
   <p class="eyebrow">Submission chains</p>
   <h2>Reasoning about position without positional data</h2>
-  <p class="sub">The most elaborate piece of feature engineering in the model — and its 2026 performance is <a href="discoveries.html#submissions">the most instructive thing in the season report</a>.</p>
+  <p class="sub">The most elaborate piece of feature engineering in the model, and its 2026 performance is <a href="discoveries.html#submissions">the most instructive thing in the season report</a>.</p>
   <div class="split-even mt-lg">
     <div>
       <div class="prose mt-0">
         <p>The design does not use submission attempts as a rate. It reasons about position. Each fighter’s archetype vector is converted into an estimated distribution over eight grappling positions, and each position carries a base submission probability derived from historical rates. A fighter with a high grappling-first score is estimated to spend up to 40 per cent of ground time in back control and very little standing; a pure striker sits at the opposite end.</p>
         <p>Three adjustments follow. A chain-weight factor of up to 1.4 rewards fighters who string attempts together rather than hunting a single hold. A round-fatigue multiplier scales the danger upward from 1.00 in round one to 1.25 in round five, because tired fighters get caught. And the whole thing is gated by whether the fight reaches the ground at all, modulated by the opponent’s takedown defence.</p>
-        <p>Across 2015 to 2025 the feature did exactly what it was built to do: bottom quartile of chain danger, 11.6 per cent of fights ended by submission; top quartile, 22.6. Close to a doubling, with the model’s own submission probability tracking the feature at a correlation of 0.81. Then the 2026 season arrived and the relationship evaporated — the collapse is charted in full on <a href="discoveries.html#submissions">the discoveries page</a>.</p>
+        <p>Across 2015 to 2025 the feature did exactly what it was built to do: bottom quartile of chain danger, 11.6 per cent of fights ended by submission; top quartile, 22.6. Close to a doubling, with the model’s own submission probability tracking the feature at a correlation of 0.81. Then the 2026 season arrived and the relationship evaporated; the collapse is charted in full on <a href="discoveries.html#submissions">the discoveries page</a>.</p>
       </div>
     </div>
     <div class="chart-card">
@@ -158,7 +158,7 @@
 <section class="band" id="stance">
   <p class="eyebrow">Stance geometry</p>
   <h2>The southpaw edge, amplified by style</h2>
-  <p class="sub">Open stance — orthodox against southpaw — occurs in 27.6 per cent of bouts since 2015, and the southpaw wins 52.6 per cent of those. A real but small edge. The interesting part is that <b>the edge is not uniform</b>, and the model encodes why.</p>
+  <p class="sub">Open stance (orthodox against southpaw) occurs in 27.6 per cent of bouts since 2015, and the southpaw wins 52.6 per cent of those. A real but small edge. The interesting part is that <b>the edge is not uniform</b>, and the model encodes why.</p>
   <div class="split-even mt-lg">
     <div class="chart-card">
       <p class="ct">Stance multiplier by archetype</p>
@@ -169,7 +169,7 @@
     <div>
       <div class="prose mt-0">
         <p>A southpaw kickboxer gets close to the full benefit of the open-stance geometry. A southpaw wrestler gets very little, because the fight he wants does not happen at kicking range.</p>
-        <p>The data supports the design. Splitting open-stance fights by amplified score, the southpaw wins 49.0 per cent in the weakest quartile and 55.1 per cent in the third. In other words, the naive version of this feature — a simple binary — would be averaging a genuine six-point edge together with nothing at all.</p>
+        <p>The data supports the design. Splitting open-stance fights by amplified score, the southpaw wins 49.0 per cent in the weakest quartile and 55.1 per cent in the third. In other words, the naive version of this feature, a simple binary, would be averaging a genuine six-point edge together with nothing at all.</p>
       </div>
       <div class="callout">
         <p class="lead">The amplified score converts into probability directly.</p>
@@ -212,7 +212,7 @@
     <div class="card">
       <h3>Pace mismatch is close to inert</h3>
       <div class="prose">
-        <p>Across its full range the win rate moves between 47.4 and 50.7 per cent, and the finish rate barely responds either. The idea — that a tempo gap should let the faster fighter dictate — does not survive contact with the data. Archetype distance and similarity are similarly flat as win predictors, though distance shows a mild U-shape against finishing.</p>
+        <p>Across its full range the win rate moves between 47.4 and 50.7 per cent, and the finish rate barely responds either. The idea that a tempo gap should let the faster fighter dictate does not survive contact with the data. Archetype distance and similarity are similarly flat as win predictors, though distance shows a mild U-shape against finishing.</p>
       </div>
     </div>
     <div class="card">
@@ -241,7 +241,7 @@
           <p>They check that a fight’s feature row is bit-identical whether or not later fights are present in the input. If tomorrow’s results can change today’s features, the test fails.</p>
         </div>
       </div>
-      <p class="note">One further feature exists in the codebase but is switched off in the deployed model: <span class="code">implied_prob_a</span>, the vig-removed closing-line probability. Every number on this site comes from the no-odds model. Adding the market is the single largest available gain in discrimination — and also the point at which the model stops being independent of the betting line.</p>
+      <p class="note">One further feature exists in the codebase but is switched off in the deployed model: <span class="code">implied_prob_a</span>, the vig-removed closing-line probability. Every number on this site comes from the no-odds model. Adding the market is the single largest available gain in discrimination, and also the point at which the model stops being independent of the betting line.</p>
     </div>
   </div>
 </section>
@@ -414,11 +414,6 @@
     <a class="pill-o" href="discoveries.html">Discoveries</a>
     <a class="pill-o" href="case-studies.html">Season &amp; cards</a>
     <a class="pill" href="index.html#season">2026 season</a>
-  </div>
-  <div class="colophon">
-    <span>MetricCage · 2026 season report</span>
-    <span>Every family tested against outcomes, failures included</span>
-    <span>No trackers, no analytics, no cookies</span>
   </div>
 </footer>
 
