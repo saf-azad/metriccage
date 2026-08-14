@@ -67,7 +67,7 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 .eyebrow{font-size:27px;font-weight:500;letter-spacing:var(--track-wide);
   text-transform:uppercase;color:var(--ink-a50);margin-bottom:24px}
 .h1{font-size:64px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.08}
-.sub{font-size:33px;line-height:1.4;color:var(--ink-a60)}
+.sub{font-size:30px;line-height:1.4;color:var(--ink-a60)}
 .sub b{color:var(--ink)}
 
 /* ---------- shared bits ---------- */
@@ -80,19 +80,29 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 .wtable .tag,.angle .tag,.card .kicker .tag{height:42px;padding:0 20px;font-size:21px}
 .wtable .tag{height:36px;padding:0 16px;font-size:19px}
 #s3 .body{padding-top:34px}
+#s1 .body{padding-top:34px;padding-bottom:36px}
+#s1 .eyebrow{margin-bottom:16px}
 #s3 .eyebrow{margin-bottom:18px}
 .h1-sm{font-size:56px}
 
+/* ---------- photos — graded into the paper/slate/ink tritone ---------- */
+.ph{display:block;object-fit:cover;filter:grayscale(1) contrast(1.08) url(#papertone)}
+.ph-band{width:100%;height:245px;border-bottom:var(--border);object-position:50% 32%;
+  filter:grayscale(1) brightness(1.2) contrast(1.05) url(#papertone)}
+.row-card{display:flex;gap:26px;align-items:center}
+.cardtext{flex:1;min-width:0}
+.ph-card{border:var(--stroke) solid var(--slate);border-radius:24px;flex:none}
+
 /* =============== SLIDE 1 — cover =============== */
 .cover{justify-content:space-between}
-.hero-num{font-size:340px;font-weight:700;line-height:.95;letter-spacing:-0.03em;margin:0 0 0 -8px}
+.hero-num{font-size:290px;font-weight:700;line-height:.95;letter-spacing:-0.03em;margin:0 0 0 -8px}
 .hero-num span{color:var(--slate)}
 .cover .sub{margin-top:14px;max-width:880px}
 .cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:0}
 .cell{background:var(--ink);color:var(--white);border-radius:24px;
-  padding:20px 26px;display:flex;align-items:center;justify-content:space-between;
-  font-size:26px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase}
-.cell i{font-style:normal;font-weight:700;font-size:30px}
+  padding:18px 26px;display:flex;align-items:center;justify-content:space-between;
+  font-size:24px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase}
+.cell i{font-style:normal;font-weight:700;font-size:27px}
 .cover-chips{display:flex;gap:16px;margin-top:20px}
 
 /* =============== SLIDE 2 — main event =============== */
@@ -159,6 +169,15 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="papertone" color-interpolation-filters="sRGB">
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.015 0.612 0.925"/>
+      <feFuncG type="table" tableValues="0.015 0.671 0.941"/>
+      <feFuncB type="table" tableValues="0.015 0.761 0.953"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
 
 <!-- ================= SLIDE 1 : COVER ================= -->
 <div class="slide" id="s1">
@@ -171,6 +190,7 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       <span class="pagechip">1 / 5</span>
     </div>
     <div class="ticker"><span><b>UFC Fight Night</b></span><span>Gamrot v Salkilld</span><span>six fights scored</span><span><b>card report</b></span></div>
+    <img class="ph ph-band" src="photos/poster.jpg" alt="">
     <div class="body cover">
       <div>
         <p class="eyebrow">How the model went</p>
@@ -210,15 +230,21 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       <p class="eyebrow">The main event</p>
       <h2 class="h1">Gamrot v Salkilld</h2>
       <div class="duo">
-        <div class="card">
-          <p class="kicker"><span>The call — before the fight</span></p>
-          <p class="big">Salkilld · 67% <small>· top outcome: submission, rounds 1–2</small></p>
-          <div class="meter"><i style="width:67%"></i></div>
-          <p class="meterlabels"><span>submission led the method tree at <b>46%</b></span><span><b>67%</b></span></p>
+        <div class="card row-card">
+          <div class="cardtext">
+            <p class="kicker"><span>The call — before the fight</span></p>
+            <p class="big">Salkilld · 67% <small>· top outcome: submission, rounds 1–2</small></p>
+            <div class="meter"><i style="width:67%"></i></div>
+            <p class="meterlabels"><span>submission led the tree at <b>46%</b></span><span><b>67%</b></span></p>
+          </div>
+          <img class="ph ph-card" src="photos/faceoff.jpg" alt="" style="width:250px;height:240px;object-position:50% 22%">
         </div>
-        <div class="card">
-          <p class="kicker"><span>The result</span><span class="tag t-hit">Exact hit</span></p>
-          <p class="big">Salkilld by submission <small>· rear-naked choke · round 1, 4:25</small></p>
+        <div class="card row-card">
+          <div class="cardtext">
+            <p class="kicker"><span>The result</span><span class="tag t-hit">Exact hit</span></p>
+            <p class="big">Salkilld by submission <small>· rear-naked choke · round 1, 4:25</small></p>
+          </div>
+          <img class="ph ph-card" src="photos/rnc.jpg" alt="" style="width:250px;height:200px;object-position:50% 10%">
         </div>
       </div>
       <div class="callout">
@@ -300,10 +326,13 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
           <p class="line">del Valle · Miller · Thainara</p>
           <p class="det">The three anchors all came home.</p>
         </div>
-        <div class="angle">
-          <p class="kicker"><span>Props</span><span class="tag t-hit">2 / 2</span></p>
-          <p class="line">Ferreira–Quarantillo goes the distance · 57% ✓</p>
-          <p class="line">Gamrot–Salkilld doesn't · 74% ✓</p>
+        <div class="angle row-card">
+          <div class="cardtext">
+            <p class="kicker"><span>Props</span><span class="tag t-hit">2 / 2</span></p>
+            <p class="line">Ferreira–Quarantillo to decision · 57% ✓</p>
+            <p class="line">Gamrot–Salkilld doesn't · 74% ✓</p>
+          </div>
+          <img class="ph ph-card" src="photos/ferreira.jpg" alt="" style="width:150px;height:170px;object-position:50% 8%">
         </div>
         <div class="angle">
           <p class="kicker"><span>Weight-cut overlay</span><span class="tag t-win">Right way</span></p>
