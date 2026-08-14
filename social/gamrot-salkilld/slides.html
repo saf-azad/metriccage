@@ -17,20 +17,15 @@
   --ink:#000000;
   --white:#FFFFFF;
   --slate:#9CABC2;
-  --fill:#D0D8E2;
   --ink-a50:rgba(0,0,0,.5);
   --ink-a60:rgba(0,0,0,.6);
-  --slate-a15:rgba(156,171,194,.15);
   --slate-a35:rgba(156,171,194,.35);
-  --slate-a60:rgba(156,171,194,.6);
   --white-a60:rgba(255,255,255,.6);
   --white-a35:rgba(255,255,255,.35);
   --stroke:4px;
   --border:var(--stroke) solid var(--ink);
   --border-soft:var(--stroke) solid var(--slate-a35);
-  --r-md:20px;
   --r-lg:40px;
-  --r-xl:56px;
   --r-pill:999px;
   --track-tight:-0.01em;
   --track-wide:0.05em;
@@ -45,139 +40,97 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 
 /* ---------- chrome ---------- */
 .topbar{display:flex;align-items:center;justify-content:space-between;
-  padding:26px 52px;border-bottom:var(--border)}
+  padding:28px 52px;border-bottom:var(--border)}
 .markrow{display:flex;align-items:center;gap:20px}
 .markrow svg{width:60px;height:60px;display:block}
 .wordmark{font-size:36px;font-weight:700;letter-spacing:var(--track-tight)}
-.pagechip{display:inline-flex;align-items:center;height:52px;padding:0 26px;
-  border:var(--border);border-radius:var(--r-pill);
-  font-size:24px;font-weight:500;letter-spacing:var(--track-wide);color:var(--ink)}
-.ticker{display:flex;gap:44px;padding:20px 52px;border-bottom:var(--border);
-  font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50);white-space:nowrap;overflow:hidden}
-.ticker b{color:var(--ink);font-weight:700}
-.body{flex:1;padding:44px 60px;display:flex;flex-direction:column;min-height:0}
-.footer{display:flex;align-items:center;justify-content:space-between;gap:30px;
-  padding:22px 52px;border-top:var(--border);
-  font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50);white-space:nowrap}
-.footer b{color:var(--ink);font-weight:700}
+.pagechip{font-size:24px;font-weight:500;letter-spacing:var(--track-wide);color:var(--ink-a50)}
+.body{flex:1;padding:52px 64px;display:flex;flex-direction:column;min-height:0}
 
 /* ---------- type ---------- */
-.eyebrow{font-size:27px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50);margin-bottom:24px}
+.eyebrow{font-size:26px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-a50);margin-bottom:22px}
 .h1{font-size:64px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.08}
-.sub{font-size:31px;line-height:1.4;color:var(--ink-a60)}
-.sub b{color:var(--ink)}
+.h1-sm{font-size:56px}
 
 /* ---------- shared bits ---------- */
-.tag{display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:var(--r-pill);
-  font-size:23px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase;white-space:nowrap}
+.tag{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:var(--r-pill);
+  font-size:21px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase;white-space:nowrap}
 .t-hit{background:var(--ink);color:var(--white)}
 .t-win{border:var(--border);color:var(--ink)}
-.t-quiet{background:var(--slate-a15);color:var(--ink-a60)}
-
-.wtable .tag,.angle .tag,.card .kicker .tag{height:42px;padding:0 20px;font-size:21px}
-.wtable .tag{height:36px;padding:0 16px;font-size:19px}
-#s3 .body{padding-top:34px}
-#s1 .body{padding-top:34px;padding-bottom:36px}
-#s1 .eyebrow{margin-bottom:16px}
-#s3 .eyebrow{margin-bottom:18px}
-.h1-sm{font-size:56px}
 
 /* ---------- photos — graded into the paper/slate/ink tritone ---------- */
 .ph{display:block;object-fit:cover;filter:grayscale(1) contrast(1.08) url(#papertone)}
-.ph-band{width:100%;height:245px;border-bottom:var(--border);object-position:50% 32%;
-  filter:grayscale(1) brightness(1.2) contrast(1.05) url(#papertone)}
-.row-card{display:flex;gap:26px;align-items:center}
+.row-card{display:flex;gap:30px;align-items:center}
 .cardtext{flex:1;min-width:0}
 .ph-card{border:var(--stroke) solid var(--slate);border-radius:24px;flex:none}
 
-/* =============== SLIDE 1 — cover =============== */
-.cover{justify-content:space-between}
-.hero-num{font-size:380px;font-weight:700;line-height:.95;letter-spacing:-0.03em;margin:0 0 0 -8px}
-.hero-num span{color:var(--slate)}
-.cover .sub{margin-top:14px;max-width:880px}
-.cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:0}
-.cell{background:var(--ink);color:var(--white);border-radius:24px;
-  padding:18px 26px;display:flex;align-items:center;justify-content:space-between;
-  font-size:24px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase}
-.cell i{font-style:normal;font-weight:700;font-size:27px}
-.cover-chips{display:flex;gap:16px;margin-top:20px}
-
-/* cover as photo background with overlay */
+/* =============== SLIDE 1 — cover: photo background, type overlay =============== */
 #s1 .sheet{position:relative;background:var(--ink)}
 .cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 32%}
 .cover-scrim{position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.40) 38%,rgba(0,0,0,.84) 74%,rgba(0,0,0,.94) 100%)}
-#s1 .topbar,#s1 .ticker,#s1 .body,#s1 .footer{position:relative;z-index:1}
+  background:linear-gradient(180deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.82) 78%,rgba(0,0,0,.92) 100%)}
+#s1 .topbar,#s1 .ticker,#s1 .body{position:relative;z-index:1}
 #s1 .topbar{border-bottom:var(--stroke) solid var(--white-a35)}
 #s1 .wordmark{color:var(--white)}
-#s1 .pagechip{border:var(--stroke) solid var(--white);color:var(--white)}
-#s1 .ticker{border-bottom:var(--stroke) solid var(--white-a35);color:var(--white-a60)}
-#s1 .ticker b{color:var(--white)}
-#s1 .eyebrow{color:var(--slate)}
-#s1 .hero-num{color:var(--white)}
-#s1 .sub{color:var(--white-a60)}
-#s1 .sub b{color:var(--white)}
-#s1 .cell{background:var(--paper);color:var(--ink)}
-#s1 .cell i{color:var(--ink)}
-#s1 .t-hit{background:var(--paper);color:var(--ink)}
-#s1 .t-win{border:var(--stroke) solid var(--white);color:var(--white)}
-#s1 .footer{border-top:var(--stroke) solid var(--white-a35);color:var(--white-a60)}
-#s1 .footer b{color:var(--white)}
+#s1 .pagechip{color:var(--white-a60)}
+.ticker{display:flex;gap:44px;padding:20px 52px;position:relative;z-index:1;
+  border-bottom:var(--stroke) solid var(--white-a35);
+  font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--white-a60);white-space:nowrap;overflow:hidden}
+.ticker b{color:var(--white);font-weight:700}
+.ticker .last{margin-left:auto}
+.cover{justify-content:flex-end;padding-bottom:64px}
+.hero-num{font-size:440px;font-weight:700;line-height:.9;letter-spacing:-0.03em;
+  margin-left:-10px;color:var(--white)}
+.hero-num span{color:var(--slate)}
+.cover-line{margin-top:72px;font-size:42px;font-weight:700;color:var(--white)}
+.cover-sub{margin-top:12px;font-size:29px;color:var(--white-a60)}
 
 /* =============== SLIDE 2 — main event =============== */
-.duo{display:flex;flex-direction:column;gap:20px;margin-top:26px}
-.card{border:var(--border);border-radius:var(--r-lg);padding:26px 36px}
-.card .kicker{font-size:23px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50);margin-bottom:12px;
+.duo{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+.card{border:var(--border);border-radius:var(--r-lg);padding:30px 38px}
+.kicker{font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-a50);margin-bottom:14px;
   display:flex;align-items:center;justify-content:space-between}
-.card .big{font-size:42px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.1}
-.card .big small{font-weight:500;color:var(--ink-a60);font-size:29px}
-.meter{margin-top:18px;height:42px;border:var(--border);border-radius:var(--r-pill);
+.card .big{font-size:42px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.15}
+.card .big small{display:block;font-weight:500;color:var(--ink-a60);font-size:29px;margin-top:8px}
+.meter{margin-top:22px;height:42px;border:var(--border);border-radius:var(--r-pill);
   background:var(--paper);overflow:hidden}
 .meter i{display:block;height:100%;background:var(--ink);border-radius:0 var(--r-pill) var(--r-pill) 0}
-.meterlabels{display:flex;justify-content:space-between;margin-top:10px;
-  font-size:22px;font-weight:500;color:var(--ink-a50)}
-.meterlabels b{color:var(--ink);font-weight:700}
-.callout{border:var(--border);border-radius:var(--r-lg);padding:26px 36px;margin-top:20px}
-.callout .lead{font-size:28px;font-weight:700;line-height:1.35}
-.callout p{font-size:25px;line-height:1.45;color:var(--ink-a60);margin-top:10px}
+.note{margin-top:34px;padding-top:28px;border-top:var(--border-soft)}
+.note .lead{font-size:29px;font-weight:700;line-height:1.35}
+.note p{font-size:26px;line-height:1.5;color:var(--ink-a60);margin-top:10px}
 
 /* =============== SLIDE 3 — scorecard =============== */
-.wtable{border:var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:20px}
+.wtable{border:var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:28px}
 .wtable .row{display:flex;align-items:center;justify-content:space-between;gap:24px;
-  padding:12px 32px;border-bottom:var(--border-soft)}
+  padding:19px 36px;border-bottom:var(--border-soft)}
 .wtable .row:last-child{border-bottom:none}
-.wtable .row.head{background:var(--slate-a15);padding:11px 32px;
-  font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50)}
-.wtable .m{font-size:28px;font-weight:700;letter-spacing:var(--track-tight)}
-.wtable .p{font-size:23px;color:var(--ink-a50);margin-top:2px}
-.wtable .res{font-size:23px;font-weight:500;text-align:right;white-space:nowrap}
-.wtable .rescol{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.foot-note{margin-top:18px;font-size:23px;line-height:1.45;color:var(--ink-a50)}
+.wtable .m{font-size:30px;font-weight:700;letter-spacing:var(--track-tight)}
+.wtable .p{font-size:24px;color:var(--ink-a50);margin-top:4px}
+.wtable .res{font-size:25px;font-weight:500;text-align:right;white-space:nowrap}
+.wtable .rescol{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wtable .tag{height:38px;padding:0 18px;font-size:19px}
+.foot-note{margin-top:24px;font-size:24px;color:var(--ink-a50)}
 .foot-note b{color:var(--ink)}
 
 /* =============== SLIDE 4 — angles =============== */
-.angles{display:flex;flex-direction:column;gap:18px;margin-top:26px}
-.angle{border:var(--border);border-radius:var(--r-lg);padding:22px 34px}
-.angle .kicker{font-size:23px;font-weight:500;letter-spacing:var(--track-wide);
-  text-transform:uppercase;color:var(--ink-a50);margin-bottom:8px;
-  display:flex;align-items:center;justify-content:space-between}
-.angle .line{font-size:29px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.25}
-.angle .det{font-size:24px;color:var(--ink-a60);margin-top:6px;line-height:1.4}
+.angles{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+.angle{border:var(--border);border-radius:var(--r-lg);padding:28px 38px}
+.angle .kicker{margin-bottom:10px}
+.angle .line{font-size:30px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.3}
+.angle .det{font-size:25px;color:var(--ink-a60);margin-top:8px;line-height:1.45}
 
 /* =============== SLIDE 5 — honest panel =============== */
 .panelwrap{flex:1;padding:26px;display:flex;min-height:0}
 .panel{flex:1;background:var(--ink);color:var(--white);border-radius:64px;
-  padding:64px 60px;display:flex;flex-direction:column}
+  padding:68px 64px;display:flex;flex-direction:column}
 .panel .eyebrow{color:var(--slate)}
 .panel .h1{color:var(--white);font-size:58px}
-.panel .prose{font-size:30px;line-height:1.5;color:var(--white-a60);margin-top:28px}
+.panel .prose{font-size:30px;line-height:1.55;color:var(--white-a60);margin-top:30px}
 .panel .prose b{color:var(--white)}
-.bars{margin-top:44px;display:flex;flex-direction:column;gap:30px}
+.bars{margin-top:48px;display:flex;flex-direction:column;gap:34px}
 .barrow .blabel{display:flex;justify-content:space-between;align-items:baseline;
   font-size:24px;font-weight:500;letter-spacing:var(--track-wide);
   text-transform:uppercase;color:var(--white-a60);margin-bottom:14px}
@@ -186,7 +139,7 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 .btrack i{display:block;height:100%;border-radius:0 var(--r-pill) var(--r-pill) 0}
 .b-exp i{background:var(--slate);width:61.7%}
 .b-act i{background:var(--white);width:100%;border-radius:0}
-.panelquote{margin-top:auto;padding-top:36px;border-top:var(--stroke) solid var(--white-a35);
+.panelquote{margin-top:auto;padding-top:38px;border-top:var(--stroke) solid var(--white-a35);
   font-size:31px;font-weight:700;line-height:1.4;color:var(--white)}
 </style>
 </head>
@@ -213,29 +166,12 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       </div>
       <span class="pagechip">1 / 5</span>
     </div>
-    <div class="ticker"><span><b>UFC Fight Night</b></span><span>Gamrot v Salkilld</span><span>six fights scored</span><span><b>card report</b></span></div>
+    <div class="ticker"><span><b>UFC Fight Night</b></span><span>Gamrot v Salkilld</span><span class="last">Card report</span></div>
     <div class="body cover">
-      <div>
-        <p class="eyebrow">How the model went</p>
-        <div class="hero-num">6<span>/6</span></div>
-        <p class="sub"><b>Every winner on the card.</b> The best night the model has ever had — and four of the six exact winner-plus-method calls landed too.</p>
-      </div>
-      <div>
-        <div class="cells">
-          <div class="cell">Salkilld <i>✓</i></div>
-          <div class="cell">Ferreira <i>✓</i></div>
-          <div class="cell">del Valle <i>✓</i></div>
-          <div class="cell">Thainara <i>✓</i></div>
-          <div class="cell">Miller <i>✓</i></div>
-          <div class="cell">Asplund <i>✓</i></div>
-        </div>
-        <div class="cover-chips">
-          <span class="tag t-hit">4 of 6 exact hits</span>
-          <span class="tag t-win">Every angle cashed</span>
-        </div>
-      </div>
+      <div class="hero-num">6<span>/6</span></div>
+      <p class="cover-line">Every winner on the card.</p>
+      <p class="cover-sub">Four of six exact on winner and method.</p>
     </div>
-    <div class="footer"><span><b>MetricCage</b> · a probability engine for MMA</span><span>swipe →</span></div>
   </div>
 </div>
 
@@ -255,27 +191,25 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       <div class="duo">
         <div class="card row-card">
           <div class="cardtext">
-            <p class="kicker"><span>The call — before the fight</span></p>
-            <p class="big">Salkilld · 67% <small>· top outcome: submission, rounds 1–2</small></p>
+            <p class="kicker"><span>The call</span></p>
+            <p class="big">Salkilld · 67% <small>Top outcome: submission, rounds 1–2</small></p>
             <div class="meter"><i style="width:67%"></i></div>
-            <p class="meterlabels"><span>submission led the tree at <b>46%</b></span><span><b>67%</b></span></p>
           </div>
-          <img class="ph ph-card" src="photos/faceoff.jpg" alt="" style="width:250px;height:240px;object-position:50% 22%">
+          <img class="ph ph-card" src="photos/faceoff.jpg" alt="" style="width:250px;height:230px;object-position:50% 22%">
         </div>
         <div class="card row-card">
           <div class="cardtext">
             <p class="kicker"><span>The result</span><span class="tag t-hit">Exact hit</span></p>
-            <p class="big">Salkilld by submission <small>· rear-naked choke · round 1, 4:25</small></p>
+            <p class="big">Salkilld by submission <small>Rear-naked choke, round 1, 4:25</small></p>
           </div>
           <img class="ph ph-card" src="photos/rnc.jpg" alt="" style="width:250px;height:200px;object-position:50% 10%">
         </div>
       </div>
-      <div class="callout">
-        <p class="lead">The method head earned real credit here.</p>
-        <p>Its known blind spot is defaulting to decision. Against a decision-heavy Gamrot it put submission on top anyway — and that is exactly how the fight ended.</p>
+      <div class="note">
+        <p class="lead">The method head earned its credit.</p>
+        <p>Its habit is defaulting to decision. Against a decision-heavy Gamrot it put submission on top at 46%, and that is how the fight ended.</p>
       </div>
     </div>
-    <div class="footer"><span><b>MetricCage</b> · card report</span><span>swipe →</span></div>
   </div>
 </div>
 
@@ -293,14 +227,13 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       <p class="eyebrow">The full card</p>
       <h2 class="h1 h1-sm">Six fights. Six winners.</h2>
       <div class="wtable">
-        <div class="row head"><span>Fight · the pick</span><span>Result</span></div>
         <div class="row">
           <div><p class="m">Gamrot v Salkilld</p><p class="p">Salkilld 67% · sub, rd 1–2</p></div>
           <div class="rescol"><p class="res">Sub (RNC) R1 4:25</p><span class="tag t-hit">Exact</span></div>
         </div>
         <div class="row">
           <div><p class="m">Ferreira v Quarantillo</p><p class="p">Ferreira 55% · by decision</p></div>
-          <div class="rescol"><p class="res">UD 30-27 ×3</p><span class="tag t-hit">Exact</span></div>
+          <div class="rescol"><p class="res">UD 30-27</p><span class="tag t-hit">Exact</span></div>
         </div>
         <div class="row">
           <div><p class="m">Elkins v del Valle</p><p class="p">del Valle 61% · KO, rd 1–2</p></div>
@@ -308,20 +241,19 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
         </div>
         <div class="row">
           <div><p class="m">Lemos v Thainara</p><p class="p">Thainara 61% · by sub</p></div>
-          <div class="rescol"><p class="res">UD</p><span class="tag t-win">Winner ✓</span></div>
+          <div class="rescol"><p class="res">UD</p><span class="tag t-win">Winner</span></div>
         </div>
         <div class="row">
           <div><p class="m">Goff v Miller</p><p class="p">Miller 67% · by decision</p></div>
-          <div class="rescol"><p class="res">TKO R3</p><span class="tag t-win">Winner ✓</span></div>
+          <div class="rescol"><p class="res">TKO R3</p><span class="tag t-win">Winner</span></div>
         </div>
         <div class="row">
           <div><p class="m">Asplund v Pat</p><p class="p">Asplund 55% · by decision</p></div>
-          <div class="rescol"><p class="res">UD 29-28 ×3</p><span class="tag t-hit">Exact</span></div>
+          <div class="rescol"><p class="res">UD 29-28</p><span class="tag t-hit">Exact</span></div>
         </div>
       </div>
-      <p class="foot-note"><b>Exact</b> = winner and method both sat on top of the six-way outcome tree. Four of six, with the other two picks landing on the model's second-choice method.</p>
+      <p class="foot-note"><b>Exact</b> = winner and method both called. Four of six.</p>
     </div>
-    <div class="footer"><span><b>MetricCage</b> · card report</span><span>swipe →</span></div>
   </div>
 </div>
 
@@ -340,31 +272,29 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
       <h2 class="h1">Every angle cashed.</h2>
       <div class="angles">
         <div class="angle">
-          <p class="kicker"><span>Value single — the lone edge flag</span><span class="tag t-hit">Cashed</span></p>
+          <p class="kicker"><span>Value single</span><span class="tag t-hit">Cashed</span></p>
           <p class="line">Salkilld −145</p>
-          <p class="det">Model 67% against a market near 57% — won by first-round submission.</p>
+          <p class="det">Model 67% against a market near 57%. Won by first-round submission.</p>
         </div>
         <div class="angle">
           <p class="kicker"><span>Parlay anchors</span><span class="tag t-hit">3 / 3</span></p>
           <p class="line">del Valle · Miller · Thainara</p>
-          <p class="det">The three anchors all came home.</p>
         </div>
         <div class="angle row-card">
           <div class="cardtext">
             <p class="kicker"><span>Props</span><span class="tag t-hit">2 / 2</span></p>
-            <p class="line">Ferreira–Quarantillo to decision · 57% ✓</p>
-            <p class="line">Gamrot–Salkilld doesn't · 74% ✓</p>
+            <p class="line">Ferreira–Quarantillo to decision · 57%</p>
+            <p class="line">Gamrot–Salkilld inside the distance · 74%</p>
           </div>
           <img class="ph ph-card" src="photos/ferreira.jpg" alt="" style="width:150px;height:170px;object-position:50% 8%">
         </div>
         <div class="angle">
-          <p class="kicker"><span>Weight-cut overlay</span><span class="tag t-win">Right way</span></p>
-          <p class="line">Lemos: three attempts to make 115.5, age 39</p>
-          <p class="det">The overlay pointed away from Lemos. Thainara won.</p>
+          <p class="kicker"><span>Weight-cut overlay</span></p>
+          <p class="line">Lemos: three attempts at 115.5, age 39</p>
+          <p class="det">Pointed away from Lemos. Thainara won.</p>
         </div>
       </div>
     </div>
-    <div class="footer"><span><b>MetricCage</b> · card report</span><span>swipe →</span></div>
   </div>
 </div>
 
@@ -380,9 +310,9 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
     </div>
     <div class="panelwrap">
       <div class="panel">
-        <p class="eyebrow">Now the honest bit</p>
+        <p class="eyebrow">The honest bit</p>
         <h2 class="h1">One sweep is not a new baseline.</h2>
-        <p class="prose">Every pick on this card was tagged <b>low-confidence</b>. The stated probabilities implied about <b>3.7 expected wins</b> from six fights. Six happened — a great night, and partly run-good. It does not mean the 55–67% numbers should have been higher.</p>
+        <p class="prose">Every pick on this card was tagged <b>low-confidence</b>. The stated probabilities implied about <b>3.7 expected wins</b> from six fights. Six happened. A great night, and partly run-good.</p>
         <div class="bars">
           <div class="barrow b-exp">
             <p class="blabel"><span>What the probabilities implied</span><b>3.7</b></p>
@@ -396,7 +326,6 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
         <p class="panelquote">The goal is not to be right more often. It is to be right about how often you will be right.</p>
       </div>
     </div>
-    <div class="footer"><span><b>MetricCage</b> · a probability engine for MMA</span><span>full report on the site</span></div>
   </div>
 </div>
 
