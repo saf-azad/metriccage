@@ -67,7 +67,7 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 .eyebrow{font-size:27px;font-weight:500;letter-spacing:var(--track-wide);
   text-transform:uppercase;color:var(--ink-a50);margin-bottom:24px}
 .h1{font-size:64px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.08}
-.sub{font-size:30px;line-height:1.4;color:var(--ink-a60)}
+.sub{font-size:31px;line-height:1.4;color:var(--ink-a60)}
 .sub b{color:var(--ink)}
 
 /* ---------- shared bits ---------- */
@@ -95,7 +95,7 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 
 /* =============== SLIDE 1 — cover =============== */
 .cover{justify-content:space-between}
-.hero-num{font-size:290px;font-weight:700;line-height:.95;letter-spacing:-0.03em;margin:0 0 0 -8px}
+.hero-num{font-size:380px;font-weight:700;line-height:.95;letter-spacing:-0.03em;margin:0 0 0 -8px}
 .hero-num span{color:var(--slate)}
 .cover .sub{margin-top:14px;max-width:880px}
 .cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:0}
@@ -104,6 +104,29 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
   font-size:24px;font-weight:500;letter-spacing:var(--track-wide);text-transform:uppercase}
 .cell i{font-style:normal;font-weight:700;font-size:27px}
 .cover-chips{display:flex;gap:16px;margin-top:20px}
+
+/* cover as photo background with overlay */
+#s1 .sheet{position:relative;background:var(--ink)}
+.cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 32%;
+  filter:grayscale(1) brightness(1.05) contrast(1.05) url(#papertone)}
+.cover-scrim{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.40) 38%,rgba(0,0,0,.84) 74%,rgba(0,0,0,.94) 100%)}
+#s1 .topbar,#s1 .ticker,#s1 .body,#s1 .footer{position:relative;z-index:1}
+#s1 .topbar{border-bottom:var(--stroke) solid var(--white-a35)}
+#s1 .wordmark{color:var(--white)}
+#s1 .pagechip{border:var(--stroke) solid var(--white);color:var(--white)}
+#s1 .ticker{border-bottom:var(--stroke) solid var(--white-a35);color:var(--white-a60)}
+#s1 .ticker b{color:var(--white)}
+#s1 .eyebrow{color:var(--slate)}
+#s1 .hero-num{color:var(--white)}
+#s1 .sub{color:var(--white-a60)}
+#s1 .sub b{color:var(--white)}
+#s1 .cell{background:var(--paper);color:var(--ink)}
+#s1 .cell i{color:var(--ink)}
+#s1 .t-hit{background:var(--paper);color:var(--ink)}
+#s1 .t-win{border:var(--stroke) solid var(--white);color:var(--white)}
+#s1 .footer{border-top:var(--stroke) solid var(--white-a35);color:var(--white-a60)}
+#s1 .footer b{color:var(--white)}
 
 /* =============== SLIDE 2 — main event =============== */
 .duo{display:flex;flex-direction:column;gap:20px;margin-top:26px}
@@ -182,15 +205,16 @@ body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans
 <!-- ================= SLIDE 1 : COVER ================= -->
 <div class="slide" id="s1">
   <div class="sheet">
+    <img class="cover-bg" src="photos/poster.jpg" alt="">
+    <div class="cover-scrim"></div>
     <div class="topbar">
       <div class="markrow">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="#ECF0F3" stroke="#000" stroke-width="2"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="#FFFFFF" stroke-width="2"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#FFFFFF"/></svg>
         <span class="wordmark">MetricCage</span>
       </div>
       <span class="pagechip">1 / 5</span>
     </div>
     <div class="ticker"><span><b>UFC Fight Night</b></span><span>Gamrot v Salkilld</span><span>six fights scored</span><span><b>card report</b></span></div>
-    <img class="ph ph-band" src="photos/poster.jpg" alt="">
     <div class="body cover">
       <div>
         <p class="eyebrow">How the model went</p>
