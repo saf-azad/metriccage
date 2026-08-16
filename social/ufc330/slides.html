@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>MetricCage — UFC 330 predictive carousel</title>
+<style>
+/* MetricCage "Paper" system, scaled ×2 for a 1080×1350 Instagram canvas.
+   Red is reserved: it marks live underdog finish threats and nothing else. */
+@font-face{
+  font-family:"Space Grotesk";
+  font-style:normal;
+  font-weight:300 700;
+  src:url(../../assets/fonts/SpaceGrotesk-Variable.woff2) format("woff2");
+}
+:root{
+  --paper:#ECF0F3;
+  --ink:#000000;
+  --white:#FFFFFF;
+  --slate:#9CABC2;
+  --red:#B33A2E;
+  --ink-a50:rgba(0,0,0,.5);
+  --ink-a60:rgba(0,0,0,.6);
+  --slate-a35:rgba(156,171,194,.35);
+  --stroke:4px;
+  --border:var(--stroke) solid var(--ink);
+  --border-soft:var(--stroke) solid var(--slate-a35);
+  --r-lg:40px;
+  --r-pill:999px;
+  --track-tight:-0.01em;
+  --track-wide:0.05em;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#c9ced4;font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;color:var(--ink);
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+
+.slide{width:1080px;height:1350px;background:var(--paper);padding:40px;margin:0 auto}
+.sheet{height:100%;border:var(--border);border-radius:48px;background:var(--paper);
+  display:flex;flex-direction:column;overflow:hidden}
+
+/* ---------- chrome ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;
+  padding:28px 52px;border-bottom:var(--border)}
+.markrow{display:flex;align-items:center;gap:20px}
+.markrow svg{width:60px;height:60px;display:block}
+.wordmark{font-size:36px;font-weight:700;letter-spacing:var(--track-tight)}
+.pagechip{font-size:24px;font-weight:500;letter-spacing:var(--track-wide);color:var(--ink-a50)}
+.ticker{display:flex;gap:44px;padding:20px 52px;border-bottom:var(--border);
+  font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-a50);white-space:nowrap;overflow:hidden}
+.ticker b{color:var(--ink);font-weight:700}
+.ticker .last{margin-left:auto}
+.body{flex:1;padding:48px 64px;display:flex;flex-direction:column;min-height:0}
+
+/* ---------- type ---------- */
+.eyebrow{font-size:26px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-a50);margin-bottom:18px}
+.h1{font-size:64px;font-weight:700;letter-spacing:var(--track-tight);line-height:1.08}
+.h1-sm{font-size:56px}
+
+/* ---------- probability split ---------- */
+.split{margin-top:28px}
+.split-labels{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:27px;font-weight:500;color:var(--ink-a60);margin-bottom:12px}
+.split-labels b{color:var(--ink);font-weight:700}
+.split-bar{height:46px;border:var(--border);border-radius:var(--r-pill);
+  background:var(--paper);overflow:hidden}
+.split-bar i{display:block;height:100%;background:var(--ink);
+  border-radius:0 var(--r-pill) var(--r-pill) 0}
+.split-meta{margin-top:14px;font-size:24px;font-weight:500;color:var(--ink-a50)}
+.split-meta b{color:var(--ink)}
+
+/* ---------- paths to victory ---------- */
+.paths{display:flex;gap:24px;margin-top:32px}
+.pcol{flex:1;border:var(--border);border-radius:var(--r-lg);padding:28px 32px}
+.pcol h3{font-size:22px;font-weight:500;letter-spacing:var(--track-wide);
+  text-transform:uppercase;color:var(--ink-a50);margin-bottom:20px}
+.pitem{margin-bottom:22px}
+.pitem:last-child{margin-bottom:0}
+.prow{display:flex;justify-content:space-between;align-items:baseline}
+.pname{font-size:28px;font-weight:700;letter-spacing:var(--track-tight)}
+.ppct{font-size:28px;font-weight:700}
+.pbar{margin-top:8px;height:14px;border-radius:var(--r-pill);background:var(--slate-a35);overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--ink);border-radius:var(--r-pill)}
+.pdet{margin-top:8px;font-size:22px;line-height:1.35;color:var(--ink-a50)}
+.pitem.flag .pbar i{background:var(--red)}
+.pitem.flag .ppct{color:var(--red)}
+.pflag{margin-top:8px;font-size:22px;line-height:1.35;font-weight:500;color:var(--red)}
+
+/* ---------- verdict ---------- */
+.note{margin-top:auto;padding-top:26px;border-top:var(--border-soft)}
+.note .lead{font-size:29px;font-weight:700;line-height:1.35}
+.note p{font-size:25px;line-height:1.5;color:var(--ink-a60);margin-top:10px}
+</style>
+</head>
+<body>
+
+<!-- ================= SLIDE 1 : MAKHACHEV v MACHADO GARRY ================= -->
+<div class="slide" id="s1">
+  <div class="sheet">
+    <div class="topbar">
+      <div class="markrow">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="9.8,1 22.2,1 31,9.8 31,22.2 22.2,31 9.8,31 1,22.2 1,9.8" fill="#ECF0F3" stroke="#000" stroke-width="2" stroke-linejoin="round"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <span class="wordmark">MetricCage</span>
+      </div>
+      <span class="pagechip">1 / 5</span>
+    </div>
+    <div class="ticker"><span><b>UFC 330</b></span><span>Philadelphia · Aug 15</span><span class="last">Predictive report</span></div>
+    <div class="body">
+      <p class="eyebrow">Main event · Welterweight title · five rounds</p>
+      <h2 class="h1 h1-sm">Makhachev v Machado Garry</h2>
+      <div class="split">
+        <div class="split-labels"><span><b>Makhachev</b> 69.6%</span><span>30.4% <b>Garry</b></span></div>
+        <div class="split-bar"><i style="width:69.6%"></i></div>
+        <p class="split-meta">Market 74% · 3 of 4 streams · <b>Conviction #2 of 5</b></p>
+      </div>
+      <div class="paths">
+        <div class="pcol">
+          <h3>Makhachev wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">36%</span></div>
+            <div class="pbar"><i style="width:90%"></i></div>
+            <p class="pdet">Chain wrestle. The Della Maddalena blueprint.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">19%</span></div>
+            <div class="pbar"><i style="width:47.5%"></i></div>
+            <p class="pdet">Arm-triangle or RNC off a late scramble.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">14%</span></div>
+            <div class="pbar"><i style="width:35%"></i></div>
+            <p class="pdet">The left hand as Garry over-extends.</p>
+          </div>
+        </div>
+        <div class="pcol">
+          <h3>Garry wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">16%</span></div>
+            <div class="pbar"><i style="width:40%"></i></div>
+            <p class="pdet">Stuff first entries, out-land three to one.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">7%</span></div>
+            <div class="pbar"><i style="width:17.5%"></i></div>
+            <p class="pdet">An intercepting knee on a lunging entry.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">4%</span></div>
+            <div class="pbar"><i style="width:10%"></i></div>
+            <p class="pdet">A d'arce off a sprawl. The only shape.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p class="lead">The pick: Makhachev by decision.</p>
+        <p>The model sits under the market, so no value on the favourite. Danger window: every Garry rear-leg kick is a level-change invitation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SLIDE 2 : DERN v ROBERTSON ================= -->
+<div class="slide" id="s2">
+  <div class="sheet">
+    <div class="topbar">
+      <div class="markrow">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="9.8,1 22.2,1 31,9.8 31,22.2 22.2,31 9.8,31 1,22.2 1,9.8" fill="#ECF0F3" stroke="#000" stroke-width="2" stroke-linejoin="round"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <span class="wordmark">MetricCage</span>
+      </div>
+      <span class="pagechip">2 / 5</span>
+    </div>
+    <div class="body">
+      <p class="eyebrow">Co-main · Strawweight title · five rounds</p>
+      <h2 class="h1">Dern v Robertson</h2>
+      <div class="split">
+        <div class="split-labels"><span><b>Robertson</b> 60.3%</span><span>39.7% <b>Dern</b></span></div>
+        <div class="split-bar"><i style="width:60.3%"></i></div>
+        <p class="split-meta">Market 34% · 4 of 4 streams · <b>Conviction #1 of 5</b></p>
+      </div>
+      <div class="paths">
+        <div class="pcol">
+          <h3>Robertson wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">33%</span></div>
+            <div class="pbar"><i style="width:82.5%"></i></div>
+            <p class="pdet">Takedowns at 81% into a 65% defence.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">16%</span></div>
+            <div class="pbar"><i style="width:40%"></i></div>
+            <p class="pdet">Five UFC rear-naked chokes. The signature.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">TKO</span><span class="ppct">13%</span></div>
+            <div class="pbar"><i style="width:32.5%"></i></div>
+            <p class="pdet">Ground strikes on a fading champion.</p>
+          </div>
+        </div>
+        <div class="pcol">
+          <h3>Dern wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">21%</span></div>
+            <div class="pbar"><i style="width:52.5%"></i></div>
+            <p class="pdet">Her worst skill carrying five rounds.</p>
+          </div>
+          <div class="pitem flag">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">12%</span></div>
+            <div class="pbar"><i style="width:30%"></i></div>
+            <p class="pflag">● Live sub threat. One pass a beat too aggressive, one armbar from guard.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">5%</span></div>
+            <div class="pbar"><i style="width:12.5%"></i></div>
+            <p class="pdet">The thinnest path on the slide.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p class="lead">The pick: Robertson. The card's one value flag.</p>
+        <p>+180 against a 60% model read, a 27-point edge, all four streams agree. Every mat entry is Dern's best moment and her round lost if it fails.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SLIDE 3 : TURNER v FERNANDES ================= -->
+<div class="slide" id="s3">
+  <div class="sheet">
+    <div class="topbar">
+      <div class="markrow">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="9.8,1 22.2,1 31,9.8 31,22.2 22.2,31 9.8,31 1,22.2 1,9.8" fill="#ECF0F3" stroke="#000" stroke-width="2" stroke-linejoin="round"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <span class="wordmark">MetricCage</span>
+      </div>
+      <span class="pagechip">3 / 5</span>
+    </div>
+    <div class="body">
+      <p class="eyebrow">Lightweight · three rounds</p>
+      <h2 class="h1">Turner v Fernandes</h2>
+      <div class="split">
+        <div class="split-labels"><span><b>Turner</b> 53.7%</span><span>46.3% <b>Fernandes</b></span></div>
+        <div class="split-bar"><i style="width:53.7%"></i></div>
+        <p class="split-meta">Market 58% · streams split · <b>Conviction #5 of 5</b></p>
+      </div>
+      <div class="paths">
+        <div class="pcol">
+          <h3>Turner wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">27%</span></div>
+            <div class="pbar"><i style="width:67.5%"></i></div>
+            <p class="pdet">The Barboza pattern. Left hand or knee.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">19%</span></div>
+            <div class="pbar"><i style="width:47.5%"></i></div>
+            <p class="pdet">Range volume behind 77 inches.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">8%</span></div>
+            <div class="pbar"><i style="width:20%"></i></div>
+            <p class="pdet">Guillotine off a desperate shot.</p>
+          </div>
+        </div>
+        <div class="pcol">
+          <h3>Fernandes wins by</h3>
+          <div class="pitem flag">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">22%</span></div>
+            <div class="pbar"><i style="width:55%"></i></div>
+            <p class="pflag">● Live KO threat. One counter right hand in the first ten minutes.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">16%</span></div>
+            <div class="pbar"><i style="width:40%"></i></div>
+            <p class="pdet">Counters plus takedowns into a 48% defence.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">7%</span></div>
+            <div class="pbar"><i style="width:17.5%"></i></div>
+            <p class="pdet">A back-take in a scramble.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p class="lead">The pick: Turner, barely. Pass the sides.</p>
+        <p>A coinflip the market prices almost correctly. The real read is shape: 64% inside the distance, most of it in rounds 1 and 2.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SLIDE 4 : ABDUL-MALIK v STOLTZFUS ================= -->
+<div class="slide" id="s4">
+  <div class="sheet">
+    <div class="topbar">
+      <div class="markrow">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="9.8,1 22.2,1 31,9.8 31,22.2 22.2,31 9.8,31 1,22.2 1,9.8" fill="#ECF0F3" stroke="#000" stroke-width="2" stroke-linejoin="round"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <span class="wordmark">MetricCage</span>
+      </div>
+      <span class="pagechip">4 / 5</span>
+    </div>
+    <div class="body">
+      <p class="eyebrow">Middleweight · three rounds</p>
+      <h2 class="h1 h1-sm">Abdul-Malik v Stoltzfus</h2>
+      <div class="split">
+        <div class="split-labels"><span><b>Abdul-Malik</b> 55.1%</span><span>44.9% <b>Stoltzfus</b></span></div>
+        <div class="split-bar"><i style="width:55.1%"></i></div>
+        <p class="split-meta">Market 83% · 3 of 4 streams · <b>Conviction #4 of 5</b></p>
+      </div>
+      <div class="paths">
+        <div class="pcol">
+          <h3>Abdul-Malik wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">20%</span></div>
+            <div class="pbar"><i style="width:50%"></i></div>
+            <p class="pdet">Front headlock on a hurt opponent early.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">18%</span></div>
+            <div class="pbar"><i style="width:45%"></i></div>
+            <p class="pdet">The round-one blitz.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">17%</span></div>
+            <div class="pbar"><i style="width:42.5%"></i></div>
+            <p class="pdet">Bank two rounds, survive his own fade.</p>
+          </div>
+        </div>
+        <div class="pcol">
+          <h3>Stoltzfus wins by</h3>
+          <div class="pitem flag">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">16%</span></div>
+            <div class="pbar"><i style="width:40%"></i></div>
+            <p class="pflag">● Live sub threat. A scramble back-take on an exhausted favourite, rounds 2 and 3.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">15%</span></div>
+            <div class="pbar"><i style="width:37.5%"></i></div>
+            <p class="pdet">The Gastelum grind, inflicted this time.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">13%</span></div>
+            <div class="pbar"><i style="width:32.5%"></i></div>
+            <p class="pdet">The Belgaroui script: a faded favourite, late.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p class="lead">The pick: Abdul-Malik. The price is the fade.</p>
+        <p>The market says 83%, the ledger says 55. He absorbs two strikes for every one he lands, and his own round 3 is the danger window.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SLIDE 5 : RIBOVICS v BARBOZA ================= -->
+<div class="slide" id="s5">
+  <div class="sheet">
+    <div class="topbar">
+      <div class="markrow">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="9.8,1 22.2,1 31,9.8 31,22.2 22.2,31 9.8,31 1,22.2 1,9.8" fill="#ECF0F3" stroke="#000" stroke-width="2" stroke-linejoin="round"/><rect x="7" y="18" width="4" height="7" rx="1.5" fill="#9CABC2"/><rect x="14" y="13" width="4" height="12" rx="1.5" fill="#9CABC2"/><rect x="21" y="7" width="4" height="18" rx="1.5" fill="#000"/></svg>
+        <span class="wordmark">MetricCage</span>
+      </div>
+      <span class="pagechip">5 / 5</span>
+    </div>
+    <div class="body">
+      <p class="eyebrow">Lightweight · three rounds</p>
+      <h2 class="h1">Ribovics v Barboza</h2>
+      <div class="split">
+        <div class="split-labels"><span><b>Ribovics</b> 69.2%</span><span>30.8% <b>Barboza</b></span></div>
+        <div class="split-bar"><i style="width:69.2%"></i></div>
+        <p class="split-meta">Market 79% · 3 of 4 streams · <b>Conviction #3 of 5</b></p>
+      </div>
+      <div class="paths">
+        <div class="pcol">
+          <h3>Ribovics wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">40%</span></div>
+            <div class="pbar"><i style="width:100%"></i></div>
+            <p class="pdet">Out-land two to one for fifteen minutes. The most likely outcome on the card.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">TKO</span><span class="ppct">18%</span></div>
+            <div class="pbar"><i style="width:45%"></i></div>
+            <p class="pdet">Accumulation on the fence, rounds 2 and 3.</p>
+          </div>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Submission</span><span class="ppct">12%</span></div>
+            <div class="pbar"><i style="width:30%"></i></div>
+            <p class="pdet">A method-head artifact. Read it as decision.</p>
+          </div>
+        </div>
+        <div class="pcol">
+          <h3>Barboza wins by</h3>
+          <div class="pitem">
+            <div class="prow"><span class="pname">Decision</span><span class="ppct">17%</span></div>
+            <div class="pbar"><i style="width:42.5%"></i></div>
+            <p class="pdet">Stick and move for fifteen minutes, at 40.</p>
+          </div>
+          <div class="pitem flag">
+            <div class="prow"><span class="pname">KO</span><span class="ppct">10%</span></div>
+            <div class="pbar"><i style="width:25%"></i></div>
+            <p class="pflag">● Live KO threat. Everything he lands is concussive. Rounds 1 and 2, while the legs are fresh.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p class="lead">The pick: Ribovics, comfortably. No value at −470.</p>
+        <p>Seven strikes a minute into forty-year-old legs. The Barboza window closes when round 1 does. All five picks on this card are labelled low-confidence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
