@@ -1,0 +1,90 @@
+{
+ "next round: stopped (raw chi-square)": {
+  "p": 5.656288673033834e-12,
+  "holm": 1.1312577346067668e-10
+ },
+ "next round: knocked down again (raw)": {
+  "p": 5.0193152710824795e-23,
+  "holm": 1.1042493596381456e-21
+ },
+ "next round: stopped (adjusted)": {
+  "p": 0.01719283816992454,
+  "holm": 0.18912121986916997
+ },
+ "next round: knocked down again (adjusted)": {
+  "p": 4.365310404776532e-09,
+  "holm": 8.294089769075411e-08
+ },
+ "survivors: age trend in stoppage": {
+  "p": 0.00038310814702871527,
+  "holm": 0.006129730352459444
+ },
+ "survivors: knockdown-history trend": {
+  "p": 0.012823375911411103,
+  "holm": 0.15388051093693322
+ },
+ "behaviour: takedown attempts": {
+  "p": 0.2753708983769865,
+  "holm": 1.0
+ },
+ "behaviour: strikes thrown": {
+  "p": 0.02590491565366342,
+  "holm": 0.2590491565366342
+ },
+ "behaviour: distance share": {
+  "p": 0.6633708381259174,
+  "holm": 1.0
+ },
+ "wrestling habit x knockdown": {
+  "p": 0.77432292419003,
+  "holm": 1.0
+ },
+ "grappling round: head strikes (exploratory)": {
+  "p": 8.639957046497266e-20,
+  "holm": 1.8143909797644258e-18
+ },
+ "break: quick v long (Fisher)": {
+  "p": 0.6704905176308815,
+  "holm": 1.0
+ },
+ "break: long break (adjusted)": {
+  "p": 0.4701870209051552,
+  "holm": 1.0
+ },
+ "break after KO with knockdown: quick v long": {
+  "p": 0.690714529640791,
+  "holm": 1.0
+ },
+ "career: volume v winning, age removed": {
+  "p": 0.921045246711895,
+  "holm": 1.0
+ },
+ "matched dose: later KO loss": {
+  "p": 0.7253028945910571,
+  "holm": 1.0
+ },
+ "matched early knockdown: later KO loss": {
+  "p": 0.010942164011377185,
+  "holm": 0.1422481321479034
+ },
+ "matched early knockdown: later knockdowns": {
+  "p": 0.0025192916284878493,
+  "holm": 0.03527008279882989
+ },
+ "career: prior knockdowns -> knockdown": {
+  "p": 5.223409487613753e-07,
+  "holm": 9.402137077704755e-06
+ },
+ "career: prior KO losses -> KO loss": {
+  "p": 7.900212604040947e-06,
+  "holm": 0.0001343036142686961
+ },
+ "first loss: KO v submission (all)": {
+  "p": 0.0005440748027628379,
+  "holm": 0.00816112204144257
+ },
+ "first loss: KO v submission (after a win)": {
+  "p": 0.9526114232362949,
+  "holm": 1.0
+ }
+}

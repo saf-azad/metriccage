@@ -1,0 +1,51 @@
+# Reproducibility note (2026-07-03): the shipped model artifacts in
+# data/processed/ (final_model_bundle.pkl, cluster_model.pkl) were PICKLED under
+# scikit-learn 1.7.2. Loading them under a different minor version raises an
+# InconsistentVersionWarning ("results might be invalid"). Predictions were
+# re-verified sane under 1.8.0 (Makhachev–Oliveira = 0.73, matches the model
+# card), but to reproduce EXACTLY, install the known-good set the artifacts were
+# built with:
+#   numpy 2.x · pandas 2.x–3.0 · scipy 1.17 · scikit-learn 1.7.2 · xgboost 2.1.x
+# When you next retrain (scripts/train_all.py), the bundle is re-pickled under
+# whatever versions are installed and the warning clears. To hard-freeze the
+# environment, pin these `>=` bounds to `==` after your next full retrain.
+
+# Core scientific stack
+numpy>=1.26
+pandas>=2.2
+scipy>=1.13
+pyarrow>=15.0
+
+# Classical ML
+scikit-learn>=1.5
+xgboost>=2.1
+optuna>=3.6
+shap>=0.46
+
+# Deep learning (Model C — career sequence)
+torch>=2.3
+torchmetrics>=1.4
+
+# Scraping
+requests>=2.32
+beautifulsoup4>=4.12
+lxml>=5.2
+tenacity>=8.2
+
+# Notebooks + viz
+jupyterlab>=4.2
+matplotlib>=3.9
+seaborn>=0.13
+plotly>=5.22
+
+# Calibration / stats
+statsmodels>=0.14
+
+# Tests + tooling
+pytest>=8.2
+pytest-cov>=5.0
+ruff>=0.5
+mypy>=1.10
+
+# Tracking (optional but recommended)
+mlflow>=2.14

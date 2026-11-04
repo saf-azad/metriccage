@@ -1,0 +1,39 @@
+/* Paper — spacing. Every coordinate in the source set is a multiple of 5.
+   Content lives in a 285px column inset 45px from each edge of a 375px screen;
+   horizontal rails break that column and bleed to x=40. */
+:root{
+  --space-1:5px;
+  --space-2:10px;
+  --space-3:15px;
+  --space-4:20px;
+  --space-5:25px;
+  --space-6:30px;
+  --space-8:40px;
+  --space-9:45px;
+  --space-12:60px;
+  --space-14:70px;
+
+  --screen-w:375px;
+  --screen-h:812px;
+  --screen-gutter:45px;         /* content inset */
+  --screen-rail-gutter:40px;    /* rails start 5px further out and bleed off-screen */
+  --content-w:285px;
+
+  --header-top:80px;            /* first title bar sits at y=80 */
+  --tabbar-y:740px;             /* tab-bar icon centreline */
+
+  /* Vertical rhythm actually used by the source screens */
+  --row-pitch-list:70px;        /* avatar + two bars + trailing icon */
+  --row-pitch-settings:60px;    /* two bars + switch */
+  --row-pitch-compact:45px;
+  --tab-pitch:66px;             /* five icons across 375px */
+
+  /* Standard control heights */
+  --h-input:48px;
+  --h-button:60px;
+  --h-tile:73px;
+  --h-avatar:43px;
+  --h-tab-icon:28px;
+  --h-switch:23px;
+  --h-bar-track:24px;
+}

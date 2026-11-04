@@ -1,0 +1,29 @@
+/* Paper — geometry. One stroke weight (2px) and a radius ladder read off the source.
+   Nothing in this system has a shadow. Depth is expressed by stroke and by fill. */
+:root{
+  --stroke:2px;
+  --stroke-w:2px;
+  --stroke-hair:1px;            /* only for 1px alignment marks */
+  --stroke-ring:10px;           /* thin progress ring */
+  --stroke-ring-thick:30px;     /* hero progress ring */
+  --border:var(--stroke) solid var(--line);
+  --border-media:var(--stroke) solid var(--line-media);
+  --border-soft:var(--stroke) solid var(--line-soft);
+
+  --radius-xs:2.5px;            /* sheet handle */
+  --radius-sm:5px;
+  --radius-md:9px;              /* input, key, number cell, small card */
+  --radius-lg:19px;             /* the workhorse: tiles, media squares, chips */
+  --radius-xl:29px;             /* list card, product row */
+  --radius-2xl:40px;            /* hero media block */
+  --radius-3xl:49px;            /* device shell, bottom sheet */
+  --radius-pill:999px;          /* buttons, switches, search, segmented bars */
+  --radius-switch:11.5px;
+  --radius-full:50%;
+
+  --shadow-none:none;           /* the whole shadow system: there isn't one */
+
+  /* Gradients — used twice in the whole set, both on tracks/rings */
+  --gradient-track:linear-gradient(90deg,var(--slate) 0%,var(--paper) 100%);
+  --gradient-ring:conic-gradient(from 180deg,var(--steel) 0%,var(--fill-soft) 55%,var(--fill-mid) 100%);
+}

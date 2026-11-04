@@ -1,0 +1,259 @@
+{
+  "test_metrics": {
+    "n": 695,
+    "accuracy": 0.5956834532374101,
+    "brier": 0.22856526726130202,
+    "logloss": 0.6462921452013143,
+    "auc": 0.669507905695751
+  },
+  "ensemble": {
+    "val_logloss_pre_cal": 0.6570060236002921,
+    "val_logloss_post_cal": 0.6319637330865976,
+    "val_brier_post_cal": 0.22213329725723133
+  },
+  "weights": {
+    "logreg": 0.2919947587012554,
+    "xgb": 0.35272062699612355,
+    "elo": 0.12379318704030096,
+    "lstm": 0.23149142726232014
+  },
+  "n_features": 102,
+  "feats": [
+    "elo_diff",
+    "elo_prob_a",
+    "slpm_diff",
+    "sapm_diff",
+    "strike_net_diff",
+    "td_per15_diff",
+    "td_def_per15_diff",
+    "sub_att_per15_diff",
+    "kd_per15_diff",
+    "kd_absorbed_per15_diff",
+    "age_diff",
+    "stance_mismatch",
+    "win_pct_diff",
+    "finish_rate_diff",
+    "rounds_exp_diff",
+    "streak_diff",
+    "days_inactive_diff",
+    "n_fights_a",
+    "n_fights_b",
+    "reach_diff",
+    "strike_acc_diff",
+    "strike_def_diff",
+    "control_pct_diff",
+    "td_acc_diff",
+    "td_def_acc_diff",
+    "a_elo_pre",
+    "b_elo_pre",
+    "arch_a_power_puncher",
+    "arch_b_power_puncher",
+    "arch_a_muay_thai",
+    "arch_b_muay_thai",
+    "arch_a_dutch_kickboxer",
+    "arch_b_dutch_kickboxer",
+    "arch_a_counter_striker",
+    "arch_b_counter_striker",
+    "arch_a_wrestle_striker",
+    "arch_b_wrestle_striker",
+    "arch_a_grappling_first",
+    "arch_b_grappling_first",
+    "arch_a_pressure_striker",
+    "arch_b_pressure_striker",
+    "arch_a_decision_fighter",
+    "arch_b_decision_fighter",
+    "arch_distance",
+    "arch_similarity",
+    "grappler_path_a",
+    "grappler_path_b",
+    "striker_path_a",
+    "striker_path_b",
+    "sg_mismatch_net",
+    "td_dominance_diff",
+    "ko_danger_a",
+    "ko_danger_b",
+    "chin_durability_a",
+    "chin_durability_b",
+    "ko_threat_net",
+    "ko_danger_differential",
+    "b_chin_vulnerable",
+    "sub_danger_a",
+    "sub_danger_b",
+    "sub_danger_diff",
+    "sub_danger_combined",
+    "sub_att_rate_diff",
+    "pace_mismatch_diff",
+    "counter_efficiency_diff",
+    "pressure_index_a",
+    "pressure_index_b",
+    "counter_threat_b_vs_a",
+    "counter_threat_a_vs_b",
+    "gas_out_risk_diff",
+    "b_counter_upset_setup",
+    "stance_advantage_a",
+    "stance_score_amplified",
+    "stance_win_prob_uplift",
+    "open_stance",
+    "trajectory_diff",
+    "elo_form_divergence_a",
+    "elo_form_divergence_b",
+    "age_curve_a",
+    "age_curve_b",
+    "age_curve_diff",
+    "prime_mismatch",
+    "rust_a",
+    "rust_b",
+    "rust_diff",
+    "favourite_rusty",
+    "fr1_danger_diff",
+    "a_upset_risk_score",
+    "cluster_a_0",
+    "cluster_a_1",
+    "cluster_a_2",
+    "cluster_a_3",
+    "cluster_a_4",
+    "cluster_a_5",
+    "cluster_a_6",
+    "cluster_b_0",
+    "cluster_b_1",
+    "cluster_b_2",
+    "cluster_b_3",
+    "cluster_b_4",
+    "cluster_b_5",
+    "cluster_b_6"
+  ],
+  "feature_importance": [
+    [
+      "cluster_b_2",
+      38.091400146484375
+    ],
+    [
+      "cluster_a_2",
+      37.16977310180664
+    ],
+    [
+      "strike_net_diff",
+      17.735652923583984
+    ],
+    [
+      "age_diff",
+      15.214536666870117
+    ],
+    [
+      "elo_prob_a",
+      15.100330352783203
+    ],
+    [
+      "elo_diff",
+      14.855766296386719
+    ],
+    [
+      "prime_mismatch",
+      13.111013412475586
+    ],
+    [
+      "cluster_b_3",
+      12.784258842468262
+    ],
+    [
+      "strike_def_diff",
+      10.440109252929688
+    ],
+    [
+      "td_per15_diff",
+      9.995867729187012
+    ],
+    [
+      "arch_b_grappling_first",
+      9.143178939819336
+    ],
+    [
+      "arch_a_grappling_first",
+      9.006528854370117
+    ],
+    [
+      "cluster_a_6",
+      8.882027626037598
+    ],
+    [
+      "rust_diff",
+      8.860630989074707
+    ],
+    [
+      "cluster_a_0",
+      8.706708908081055
+    ],
+    [
+      "sub_danger_b",
+      8.542186737060547
+    ],
+    [
+      "cluster_a_5",
+      8.534067153930664
+    ],
+    [
+      "arch_a_decision_fighter",
+      8.348023414611816
+    ],
+    [
+      "arch_a_muay_thai",
+      8.24548625946045
+    ],
+    [
+      "cluster_a_3",
+      8.167097091674805
+    ],
+    [
+      "pressure_index_b",
+      8.16239070892334
+    ],
+    [
+      "pressure_index_a",
+      8.001344680786133
+    ],
+    [
+      "strike_acc_diff",
+      7.974329471588135
+    ],
+    [
+      "days_inactive_diff",
+      7.95774507522583
+    ],
+    [
+      "arch_a_power_puncher",
+      7.9498114585876465
+    ],
+    [
+      "td_def_acc_diff",
+      7.929096221923828
+    ],
+    [
+      "arch_b_power_puncher",
+      7.913674831390381
+    ],
+    [
+      "reach_diff",
+      7.880786895751953
+    ],
+    [
+      "ko_danger_differential",
+      7.847289085388184
+    ],
+    [
+      "counter_threat_b_vs_a",
+      7.826046943664551
+    ]
+  ],
+  "xgb_optuna_params": {
+    "max_depth": 3,
+    "learning_rate": 0.027418915222108636,
+    "n_estimators": 800,
+    "min_child_weight": 9,
+    "reg_alpha": 1.215416945178543,
+    "reg_lambda": 1.5295791109721033,
+    "subsample": 0.9031357748561099,
+    "colsample_bytree": 0.7696396827461547,
+    "gamma": 0.23186200351845387
+  },
+  "xgb_optuna_best_val_auc": 0.6694005910333602
+}

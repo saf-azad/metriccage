@@ -1,0 +1,19 @@
+/* Paper — motion. The source is a static set, so motion is defined conservatively:
+   short, linear-ish, no bounce, no scale-up. State is shown by swapping fill, not by
+   moving anything. Slide-over sheets are the one exception. */
+:root{
+  --dur-instant:80ms; /* @kind other */
+  --dur-fast:140ms; /* @kind other */
+  --dur-base:200ms; /* @kind other */
+  --dur-sheet:280ms; /* @kind other */
+  --ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --ease-sheet:cubic-bezier(.32,.72,0,1); /* @kind other */
+  --transition-state:background-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard);
+
+  /* Interaction */
+  --press-scale:.98; /* @kind other */
+  --hover-fill:var(--slate-a15);   /* outline things gain a faint slate wash */
+  --press-fill:var(--slate-a35);   /* and a stronger one on press */
+  --press-invert-fill:var(--steel);/* solid ink things go one step lighter */
+}

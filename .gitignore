@@ -1,0 +1,45 @@
+# Data
+data/raw/
+data/interim/
+data/external/
+*.parquet
+*.csv
+# Scraped/report HTML outputs only — viz/showcase/*.html are tracked source files
+data/**/*.html
+reports/**/*.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Notebooks
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# ML artefacts
+mlruns/
+*.pkl
+*.pt
+*.onnx
+checkpoints/
+
+# Smoke-test scratch outputs (scripts/train_all.py --smoke default out-dir)
+.smoke/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# OS
+Thumbs.db
+node_modules/
+
+# Keep the article's published result tables
+!articles/**/data_out/*.csv
+!articles/**/data_out/*.json
