@@ -11,6 +11,8 @@ readme = "README.md"
 
 [tool.ruff]
 line-length = 100
+# The article analysis scripts are kept exactly as run for reproducibility.
+exclude = ["articles"]
 target-version = "py311"
 
 [tool.ruff.lint]

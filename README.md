@@ -97,7 +97,7 @@ src/
   eval/        walk-forward backtest, calibration, metrics
   api/         predict_fight(): the one public entry point
 scripts/       train_all, predict, backtest, build_features, scrape_all  (see scripts/README.md)
-tests/         90 pytest tests: API contract, temporal leakage, each layer, CLI, smoke
+tests/         100+ pytest tests: API contract, temporal leakage, each layer, CLI, smoke
 docs/          MODEL_STATUS (honest scoreboard), architecture, feature dictionary, model cards
 reports/       the 2026 season report
 articles/      After the Knockdown: analysis scripts, results, figures

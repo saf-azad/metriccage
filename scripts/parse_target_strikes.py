@@ -166,7 +166,9 @@ def main() -> None:
 
     fights = pd.read_parquet(FIGHTS)
     fights["event_date"] = pd.to_datetime(fights["event_date"])
-    side_lookup = dict(zip(fights["fight_id"], zip(fights["fighter_a_id"], fights["fighter_b_id"])))
+    side_lookup = dict(
+        zip(fights["fight_id"], zip(fights["fighter_a_id"], fights["fighter_b_id"], strict=True), strict=True)
+    )
 
     rows = []
     n_ok = n_miss = n_bad = 0

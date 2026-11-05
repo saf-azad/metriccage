@@ -400,9 +400,10 @@ def test_align_detail_to_sides_swaps_when_page_order_is_reversed():
 
 def test_enriched_parquet_sides_are_consistent():
     """head+body+leg must equal ss_landed on the same side; attempted >= landed."""
-    import pytest
-    import pandas as pd
     from pathlib import Path
+
+    import pandas as pd
+    import pytest
 
     path = Path(__file__).resolve().parents[1] / "data" / "interim" / "fights_enriched.parquet"
     if not path.exists():
