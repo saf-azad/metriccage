@@ -86,7 +86,17 @@
       "decision": 0.3596035622398752
     },
     "n_similar_fights": 0,
-    "segment": "main"
+    "segment": "main",
+    "weigh_in": {
+      "Ciryl Gane": {
+        "weight_lb": 242.6,
+        "missed_by_lb": 0.0
+      },
+      "Josh Hokit": {
+        "weight_lb": 231.4,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Kayla Harrison",
@@ -176,7 +186,17 @@
       "decision": 0.48276504246164054
     },
     "n_similar_fights": 0,
-    "segment": "main"
+    "segment": "main",
+    "weigh_in": {
+      "Kayla Harrison": {
+        "weight_lb": 135.0,
+        "missed_by_lb": 0.0
+      },
+      "Amanda Nunes": {
+        "weight_lb": 135.0,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Caio Borralho",
@@ -262,7 +282,17 @@
       "decision": 0.5692307949066162
     },
     "n_similar_fights": 0,
-    "segment": "main"
+    "segment": "main",
+    "weigh_in": {
+      "Caio Borralho": {
+        "weight_lb": 185.4,
+        "missed_by_lb": 0.0
+      },
+      "Yousri Belgaroui": {
+        "weight_lb": 186.0,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Kevin Holland",
@@ -351,7 +381,17 @@
       "decision": 0.5692307651042938
     },
     "n_similar_fights": 0,
-    "segment": "main"
+    "segment": "main",
+    "weigh_in": {
+      "Kevin Holland": {
+        "weight_lb": 170.4,
+        "missed_by_lb": 0.0
+      },
+      "Uros Medic": {
+        "weight_lb": 171.0,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Luis Gurule",
@@ -443,7 +483,17 @@
       "decision": 0.4202482990268664
     },
     "n_similar_fights": 0,
-    "segment": "main"
+    "segment": "main",
+    "weigh_in": {
+      "Luis Gurule": {
+        "weight_lb": 125.2,
+        "missed_by_lb": 0.0
+      },
+      "Bilal Hasan": {
+        "weight_lb": 125.4,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Stephen Thompson",
@@ -534,7 +584,17 @@
       "decision": 0.3673096334895742
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Stephen Thompson": {
+        "weight_lb": 170.6,
+        "missed_by_lb": 0.0
+      },
+      "Charles Radtke": {
+        "weight_lb": 170.8,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Drew Dober",
@@ -626,7 +686,17 @@
       "decision": 0.3520245740011808
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Drew Dober": {
+        "weight_lb": 155.4,
+        "missed_by_lb": 0.0
+      },
+      "Chris Duncan": {
+        "weight_lb": 155.4,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Jim Miller",
@@ -720,7 +790,17 @@
       "decision": 0.3581043117413673
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Jim Miller": {
+        "weight_lb": 155.6,
+        "missed_by_lb": 0.0
+      },
+      "Terrance McKinney": {
+        "weight_lb": 160.2,
+        "missed_by_lb": 4.2
+      }
+    }
   },
   {
     "fighter_a": "Cesar Almeida",
@@ -812,7 +892,17 @@
       "decision": 0.3690652964474641
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Cesar Almeida": {
+        "weight_lb": 189.6,
+        "missed_by_lb": 0.0
+      },
+      "Donte Johnson": {
+        "weight_lb": 189.0,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Jared Gordon",
@@ -904,7 +994,17 @@
       "decision": 0.36025963045989634
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Jared Gordon": {
+        "weight_lb": 155.6,
+        "missed_by_lb": 0.0
+      },
+      "Melquizael Costa": {
+        "weight_lb": 155.4,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Macy Chiasson",
@@ -993,7 +1093,17 @@
       "decision": 0.34080262235709474
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Macy Chiasson": {
+        "weight_lb": 134.8,
+        "missed_by_lb": 0.0
+      },
+      "Bia Mesquita": {
+        "weight_lb": 135.8,
+        "missed_by_lb": 0.0
+      }
+    }
   },
   {
     "fighter_a": "Alatengheili",
@@ -1085,12 +1195,115 @@
       "decision": 0.3430087026206741
     },
     "n_similar_fights": 0,
-    "segment": "prelim"
+    "segment": "prelim",
+    "weigh_in": {
+      "Alatengheili": {
+        "weight_lb": 135.6,
+        "missed_by_lb": 0.0
+      },
+      "Juan Diaz": {
+        "weight_lb": 136.4,
+        "missed_by_lb": 0.4
+      }
+    }
   },
   {
     "fighter_a": "Evan Elder",
     "fighter_b": "Samuel Sanches",
+    "fighter_a_id": "d9a56ecb6e94f02e",
+    "fighter_b_id": "14dd44d6bd6f7142",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Lightweight",
+    "winner_prob": {
+      "a": 0.5481797427229117,
+      "b": 0.4518202572770883
+    },
+    "method_prob": {
+      "Decision": 0.4492923509172914,
+      "KO/TKO": 0.34622889206924434,
+      "Submission": 0.2044787570134643
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Evan Elder",
+        "method": "Decision",
+        "prob": 0.24629296533321296,
+        "label": "Elder by Decision"
+      },
+      {
+        "fighter": "Samuel Sanches",
+        "method": "Decision",
+        "prob": 0.20299938558407846,
+        "label": "Sanches by Decision"
+      },
+      {
+        "fighter": "Evan Elder",
+        "method": "KO/TKO",
+        "prob": 0.18979566497775713,
+        "label": "Elder by KO/TKO"
+      },
+      {
+        "fighter": "Samuel Sanches",
+        "method": "KO/TKO",
+        "prob": 0.15643322709148721,
+        "label": "Sanches by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "medium",
+    "confidence_spread": 0.059476239987646395,
+    "ensemble_streams": {
+      "logreg": 0.5003516837870728,
+      "xgb": 0.5277037024497986,
+      "elo": 0.5198894163336313,
+      "lstm": 0.5598279237747192
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff -9432.00)",
+      "Elo rating (14 Elo points)",
+      "Age (diff +5.80)",
+      "Championship-round experience (diff +14.00)",
+      "Pace Mismatch Diff (diff +11.81)"
+    ],
+    "key_advantages_a": [
+      "Elo rating (14 Elo points)",
+      "Age (diff +5.80)",
+      "Championship-round experience (diff +14.00)",
+      "Pace Mismatch Diff (diff +11.81)",
+      "Striking output (sig. strikes / min) (diff +6.83)"
+    ],
+    "key_advantages_b": [
+      "Layoff (days since last fight) (diff -9432.00)"
+    ],
+    "warnings": [
+      "Favourite has a recent KO loss (last 5 fights) \u2014 chin caveat."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.22028305963308342,
+      "round_2": 0.16521229472481255,
+      "round_3": 0.08260614736240628,
+      "round_4": 0.055070764908270856,
+      "round_5": 0.027535382454135428,
+      "decision": 0.4492923509172914
+    },
+    "n_similar_fights": 0,
     "segment": "prelim",
-    "error": "Fighter 'Samuel Sanches' not found"
+    "weigh_in": {
+      "Evan Elder": {
+        "weight_lb": 156.0,
+        "missed_by_lb": 0.0
+      },
+      "Samuel Sanches": {
+        "weight_lb": 153.6,
+        "missed_by_lb": 0.0
+      }
+    }
   }
 ]

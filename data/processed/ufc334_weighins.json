@@ -1,0 +1,21 @@
+{
+  "event": "UFC 334: Gane vs. Hokit",
+  "weigh_in_date": "2026-11-13",
+  "source": "https://www.sherdog.com/news/news/UFC-334-weighin-results-2-title-fights-set-2-fighters-heavy-203617",
+  "weights_lb": {
+    "Ciryl Gane": 242.6, "Josh Hokit": 231.4,
+    "Kayla Harrison": 135.0, "Amanda Nunes": 135.0,
+    "Caio Borralho": 185.4, "Yousri Belgaroui": 186.0,
+    "Uros Medic": 171.0, "Kevin Holland": 170.4,
+    "Bilal Hasan": 125.4, "Luis Gurule": 125.2,
+    "Stephen Thompson": 170.6, "Charles Radtke": 170.8,
+    "Drew Dober": 155.4, "Chris Duncan": 155.4,
+    "Jim Miller": 155.6, "Terrance McKinney": 160.2,
+    "Donte Johnson": 189.0, "Cesar Almeida": 189.6,
+    "Jared Gordon": 155.6, "Melquizael Costa": 155.4,
+    "Macy Chiasson": 134.8, "Bia Mesquita": 135.8,
+    "Juan Diaz": 136.4, "Alatengheili": 135.6,
+    "Evan Elder": 156.0, "Samuel Sanches": 153.6
+  },
+  "missed_weight": {"Terrance McKinney": 4.2, "Juan Diaz": 0.4}
+}

@@ -2,8 +2,11 @@
 
     PYTHONPATH=. .venv/bin/python scripts/events/ufc334_gane_hokit.py [--bundle PATH] [--out PATH]
 
-Uses fighter state strictly before the event date. Writes a JSON payload and
-prints a summary table.
+Uses fighter state strictly before the event date (Elo and history are replayed
+from pre-event fights only, so bouts already finished on the night cannot leak).
+Attaches official weigh-in weights from data/processed/ufc334_weighins.json —
+the model has no weigh-in input, so these are context, not a model feature.
+Writes a JSON payload and prints a summary table.
 """
 from __future__ import annotations
 
@@ -48,9 +51,19 @@ def main() -> None:
         loading._BUNDLE_PATH = Path(args.bundle)
     from src.api.predict_fight import predict_fight
 
+    import pandas as pd
+
+    from scripts.backtest_2026_events import _replay_elo_and_history
+
+    state = loading._load_state()
+    pre = state.fights[pd.to_datetime(state.fights["event_date"]).dt.date < EVENT_DATE]
+    state.elo, state.history = _replay_elo_and_history(pre.sort_values("event_date"))
+    wi = json.loads((ROOT / "data" / "processed" / "ufc334_weighins.json").read_text())
+    wts, missed = wi["weights_lb"], wi["missed_weight"]
+
     out = []
     print(f"{EVENT} — {EVENT_DATE}\n")
-    print(f"{'Bout':<42}{'Pick':<20}{'P(win)':>7}  {'Conf':<7}{'Method (Dec/KO/Sub)'}")
+    print(f"{'Bout':<42}{'Pick':<20}{'P(win)':>7}  {'Conf':<7}{'Dec/KO/Sub':<10} Weigh-in (lb)")
     for a, b, wc, seg in CARD:
         try:
             p = predict_fight(a, b, EVENT_DATE, event_name=EVENT, weight_class=wc)
@@ -63,8 +76,10 @@ def main() -> None:
         pick, pw = (a, pa) if pa >= 0.5 else (b, 1 - pa)
         mp = p.method_prob or {}
         ms = "/".join(f"{100 * float(mp.get(k, 0)):.0f}" for k in ("Decision", "KO/TKO", "Submission"))
-        print(f"{a + ' vs ' + b:<42}{pick:<20}{pw * 100:>6.1f}%  {p.confidence or '':<7}{ms}")
+        print(f"{a + ' vs ' + b:<42}{pick:<20}{pw * 100:>6.1f}%  {p.confidence or '':<7}{ms:<10} {wts.get(a)} v {wts.get(b)}"
+              + "".join(f"  [{n} missed by {missed[n]}]" for n in (a, b) if n in missed))
         d["segment"] = seg
+        d["weigh_in"] = {n: {"weight_lb": wts.get(n), "missed_by_lb": missed.get(n, 0.0)} for n in (a, b)}
         out.append(d)
     Path(args.out).write_text(json.dumps(out, indent=2, default=str))
     print(f"\nWrote {args.out}")
