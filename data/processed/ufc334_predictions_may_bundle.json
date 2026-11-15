@@ -1,0 +1,1096 @@
+[
+  {
+    "fighter_a": "Ciryl Gane",
+    "fighter_b": "Josh Hokit",
+    "fighter_a_id": "787bb1f087ccff8a",
+    "fighter_b_id": "955da1675ad58a50",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Heavyweight",
+    "winner_prob": {
+      "a": 0.5550988051883586,
+      "b": 0.44490119481164137
+    },
+    "method_prob": {
+      "Decision": 0.3596035622398752,
+      "KO/TKO": 0.3779477525196838,
+      "Submission": 0.2624486852404409
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Ciryl Gane",
+        "method": "KO/TKO",
+        "prob": 0.20979834584730195,
+        "label": "Gane by KO/TKO"
+      },
+      {
+        "fighter": "Ciryl Gane",
+        "method": "Decision",
+        "prob": 0.19961550774083228,
+        "label": "Gane by Decision"
+      },
+      {
+        "fighter": "Josh Hokit",
+        "method": "KO/TKO",
+        "prob": 0.16814940667238187,
+        "label": "Hokit by KO/TKO"
+      },
+      {
+        "fighter": "Josh Hokit",
+        "method": "Decision",
+        "prob": 0.15998805449904294,
+        "label": "Hokit by Decision"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "medium",
+    "confidence_spread": 0.075111668121012,
+    "ensemble_streams": {
+      "logreg": 0.6285815048328955,
+      "xgb": 0.5534698367118835,
+      "elo": 0.5997935141211446,
+      "lstm": 0.5950908660888672
+    },
+    "top_drivers": [
+      "Elo rating (70 Elo points)",
+      "Championship-round experience (diff +31.00)",
+      "Age (diff +7.59)",
+      "Reach (diff +8.00)",
+      "Pace Mismatch Diff (diff -8.08)"
+    ],
+    "key_advantages_a": [
+      "Elo rating (70 Elo points)",
+      "Championship-round experience (diff +31.00)",
+      "Age (diff +7.59)",
+      "Reach (diff +8.00)",
+      "Cluster B 0 (+1.00)"
+    ],
+    "key_advantages_b": [
+      "Pace Mismatch Diff (diff -8.08)",
+      "Striking absorbed (diff -3.93)",
+      "Striking output (sig. strikes / min) (diff -4.15)"
+    ],
+    "warnings": [],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.25615857510404993,
+      "round_2": 0.19211893132803742,
+      "round_3": 0.09605946566401871,
+      "round_4": 0.06403964377601248,
+      "round_5": 0.03201982188800624,
+      "decision": 0.3596035622398752
+    },
+    "n_similar_fights": 0,
+    "segment": "main"
+  },
+  {
+    "fighter_a": "Kayla Harrison",
+    "fighter_b": "Amanda Nunes",
+    "fighter_a_id": "1af1170ed937cba7",
+    "fighter_b_id": "80fa8218c99f9c58",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Women's Bantamweight",
+    "winner_prob": {
+      "a": 0.38669003840779625,
+      "b": 0.6133099615922037
+    },
+    "method_prob": {
+      "Decision": 0.48276504246164054,
+      "KO/TKO": 0.21151014903946805,
+      "Submission": 0.3057248084988914
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Amanda Nunes",
+        "method": "Decision",
+        "prob": 0.2960846096502074,
+        "label": "Nunes by Decision"
+      },
+      {
+        "fighter": "Amanda Nunes",
+        "method": "Submission",
+        "prob": 0.18750407055823892,
+        "label": "Nunes by Submission"
+      },
+      {
+        "fighter": "Kayla Harrison",
+        "method": "Decision",
+        "prob": 0.18668043281143318,
+        "label": "Harrison by Decision"
+      },
+      {
+        "fighter": "Amanda Nunes",
+        "method": "KO/TKO",
+        "prob": 0.12972128138375744,
+        "label": "Nunes by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.10836653031348759,
+    "ensemble_streams": {
+      "logreg": 0.391845374563041,
+      "xgb": 0.4457433521747589,
+      "elo": 0.3373768218612713,
+      "lstm": 0.3513317108154297
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff -728.00)",
+      "Elo rating (-117 Elo points)",
+      "Championship-round experience (diff -40.00)",
+      "Age (diff -2.09)",
+      "Reach (diff -3.00)"
+    ],
+    "key_advantages_a": [
+      "Arch Similarity (+2.67)"
+    ],
+    "key_advantages_b": [
+      "Layoff (days since last fight) (diff -728.00)",
+      "Elo rating (-117 Elo points)",
+      "Championship-round experience (diff -40.00)",
+      "Age (diff -2.09)",
+      "Reach (diff -3.00)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 11 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.20689398301534379,
+      "round_2": 0.15517048726150784,
+      "round_3": 0.07758524363075392,
+      "round_4": 0.051723495753835946,
+      "round_5": 0.025861747876917973,
+      "decision": 0.48276504246164054
+    },
+    "n_similar_fights": 0,
+    "segment": "main"
+  },
+  {
+    "fighter_a": "Caio Borralho",
+    "fighter_b": "Yousri Belgaroui",
+    "fighter_a_id": "4126a78111c0855a",
+    "fighter_b_id": "7674b836ce0698a0",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Middleweight",
+    "winner_prob": {
+      "a": 0.5550988051883586,
+      "b": 0.44490119481164137
+    },
+    "method_prob": {
+      "Decision": 0.5692307949066162,
+      "KO/TKO": 0.32820510191795194,
+      "Submission": 0.10256410317543185
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Caio Borralho",
+        "method": "Decision",
+        "prob": 0.3159793341290823,
+        "label": "Borralho by Decision"
+      },
+      {
+        "fighter": "Yousri Belgaroui",
+        "method": "Decision",
+        "prob": 0.2532514607775339,
+        "label": "Belgaroui by Decision"
+      },
+      {
+        "fighter": "Caio Borralho",
+        "method": "KO/TKO",
+        "prob": 0.1821862599313786,
+        "label": "Borralho by KO/TKO"
+      },
+      {
+        "fighter": "Yousri Belgaroui",
+        "method": "KO/TKO",
+        "prob": 0.14601884198657333,
+        "label": "Belgaroui by KO/TKO"
+      }
+    ],
+    "round_estimate": null,
+    "confidence": "medium",
+    "confidence_spread": 0.08688126989137546,
+    "ensemble_streams": {
+      "logreg": 0.4851990775160798,
+      "xgb": 0.5439337491989136,
+      "elo": 0.5720803474074553,
+      "lstm": 0.5509787797927856
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff +189.00)",
+      "Elo rating (50 Elo points)",
+      "Championship-round experience (diff +22.00)",
+      "Net striking (output minus absorbed) (diff -5.92)",
+      "Td Def Acc Diff (diff +7.82)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +189.00)",
+      "Elo rating (50 Elo points)",
+      "Championship-round experience (diff +22.00)",
+      "Td Def Acc Diff (diff +7.82)",
+      "Cluster B 0 (+1.00)"
+    ],
+    "key_advantages_b": [
+      "Net striking (output minus absorbed) (diff -5.92)",
+      "Striking output (sig. strikes / min) (diff -4.71)",
+      "Reach (diff -4.00)"
+    ],
+    "warnings": [],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.17230768203735353,
+      "round_2": 0.12923076152801513,
+      "round_3": 0.06461538076400757,
+      "round_4": 0.04307692050933838,
+      "round_5": 0.02153846025466919,
+      "decision": 0.5692307949066162
+    },
+    "n_similar_fights": 0,
+    "segment": "main"
+  },
+  {
+    "fighter_a": "Kevin Holland",
+    "fighter_b": "Uros Medic",
+    "fighter_a_id": "3a46b268013afede",
+    "fighter_b_id": "681399317dbf4701",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Welterweight",
+    "winner_prob": {
+      "a": 0.5478635040099762,
+      "b": 0.4521364959900238
+    },
+    "method_prob": {
+      "Decision": 0.5692307651042938,
+      "KO/TKO": 0.3282051310434446,
+      "Submission": 0.10256410385226156
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Kevin Holland",
+        "method": "Decision",
+        "prob": 0.3118607615603181,
+        "label": "Holland by Decision"
+      },
+      {
+        "fighter": "Uros Medic",
+        "method": "Decision",
+        "prob": 0.2573700035439757,
+        "label": "Medic by Decision"
+      },
+      {
+        "fighter": "Kevin Holland",
+        "method": "KO/TKO",
+        "prob": 0.17981161312751498,
+        "label": "Holland by KO/TKO"
+      },
+      {
+        "fighter": "Uros Medic",
+        "method": "KO/TKO",
+        "prob": 0.14839351791592964,
+        "label": "Medic by KO/TKO"
+      }
+    ],
+    "round_estimate": null,
+    "confidence": "low",
+    "confidence_spread": 0.13604131134104835,
+    "ensemble_streams": {
+      "logreg": 0.5597911754424583,
+      "xgb": 0.509261965751648,
+      "elo": 0.47089620569061197,
+      "lstm": 0.4237498641014099
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff +112.00)",
+      "Elo rating (-20 Elo points)",
+      "Championship-round experience (diff +54.00)",
+      "Reach (diff +10.00)",
+      "Net striking (output minus absorbed) (diff -2.04)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +112.00)",
+      "Championship-round experience (diff +54.00)",
+      "Reach (diff +10.00)",
+      "Cluster B 0 (+1.00)",
+      "Td Def Acc Diff (diff +2.55)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-20 Elo points)",
+      "Net striking (output minus absorbed) (diff -2.04)",
+      "Chin (knockdowns absorbed) (diff -1.84)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 14 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.1723076939582825,
+      "round_2": 0.12923077046871184,
+      "round_3": 0.06461538523435592,
+      "round_4": 0.04307692348957062,
+      "round_5": 0.02153846174478531,
+      "decision": 0.5692307651042938
+    },
+    "n_similar_fights": 0,
+    "segment": "main"
+  },
+  {
+    "fighter_a": "Luis Gurule",
+    "fighter_b": "Bilal Hasan",
+    "fighter_a_id": "29162be25ebef5f0",
+    "fighter_b_id": "cc0c23b1386ababc",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Flyweight",
+    "winner_prob": {
+      "a": 0.2560920645003565,
+      "b": 0.7439079354996435
+    },
+    "method_prob": {
+      "Decision": 0.4202482990268664,
+      "KO/TKO": 0.4131473532696259,
+      "Submission": 0.16660434770350768
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Bilal Hasan",
+        "method": "Decision",
+        "prob": 0.31262604452631304,
+        "label": "Hasan by Decision"
+      },
+      {
+        "fighter": "Bilal Hasan",
+        "method": "KO/TKO",
+        "prob": 0.3073435946279493,
+        "label": "Hasan by KO/TKO"
+      },
+      {
+        "fighter": "Bilal Hasan",
+        "method": "Submission",
+        "prob": 0.12393829634538117,
+        "label": "Hasan by Submission"
+      },
+      {
+        "fighter": "Luis Gurule",
+        "method": "Decision",
+        "prob": 0.10762225450055336,
+        "label": "Gurule by Decision"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.17714029427183264,
+    "ensemble_streams": {
+      "logreg": 0.22190322721900596,
+      "xgb": 0.2419593334197998,
+      "elo": 0.3990435214908386,
+      "lstm": 0.31899112462997437
+    },
+    "top_drivers": [
+      "Elo rating (-71 Elo points)",
+      "Layoff (days since last fight) (diff +91.00)",
+      "Age (diff +7.66)",
+      "Net striking (output minus absorbed) (diff -3.15)",
+      "Championship-round experience (diff +10.00)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +91.00)",
+      "Age (diff +7.66)",
+      "Championship-round experience (diff +10.00)",
+      "Cluster B 0 (+1.00)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-71 Elo points)",
+      "Net striking (output minus absorbed) (diff -3.15)",
+      "Reach (diff -6.00)",
+      "Elo Form Divergence B (-1.93)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 18 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2319006803892535,
+      "round_2": 0.1739255102919401,
+      "round_3": 0.08696275514597004,
+      "round_4": 0.05797517009731337,
+      "round_5": 0.028987585048656686,
+      "decision": 0.4202482990268664
+    },
+    "n_similar_fights": 0,
+    "segment": "main"
+  },
+  {
+    "fighter_a": "Stephen Thompson",
+    "fighter_b": "Charles Radtke",
+    "fighter_a_id": "4a28cb716c19157a",
+    "fighter_b_id": "feedf3053472fe56",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Welterweight",
+    "winner_prob": {
+      "a": 0.38669003840779625,
+      "b": 0.6133099615922037
+    },
+    "method_prob": {
+      "Decision": 0.3673096334895742,
+      "KO/TKO": 0.39823264230678385,
+      "Submission": 0.234457724203642
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Charles Radtke",
+        "method": "KO/TKO",
+        "prob": 0.2442400465579354,
+        "label": "Radtke by KO/TKO"
+      },
+      {
+        "fighter": "Charles Radtke",
+        "method": "Decision",
+        "prob": 0.22527465720793718,
+        "label": "Radtke by Decision"
+      },
+      {
+        "fighter": "Stephen Thompson",
+        "method": "KO/TKO",
+        "prob": 0.15399259574884844,
+        "label": "Thompson by KO/TKO"
+      },
+      {
+        "fighter": "Charles Radtke",
+        "method": "Submission",
+        "prob": 0.14379525782633118,
+        "label": "Radtke by Submission"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.15945664372381385,
+    "ensemble_streams": {
+      "logreg": 0.4166549384926076,
+      "xgb": 0.36065489053726196,
+      "elo": 0.5201115342610758,
+      "lstm": 0.4346025586128235
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff +273.00)",
+      "Championship-round experience (diff +47.00)",
+      "Elo rating (14 Elo points)",
+      "Age (diff +7.41)",
+      "Takedown rate (diff -2.83)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +273.00)",
+      "Championship-round experience (diff +47.00)",
+      "Elo rating (14 Elo points)",
+      "Age (diff +7.41)",
+      "Reach (diff +3.00)"
+    ],
+    "key_advantages_b": [
+      "Takedown rate (diff -2.83)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 16 pp); favourite uncertain.",
+      "Favourite has a recent KO loss (last 5 fights) \u2014 chin caveat.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2530761466041703,
+      "round_2": 0.18980710995312772,
+      "round_3": 0.09490355497656386,
+      "round_4": 0.06326903665104258,
+      "round_5": 0.03163451832552129,
+      "decision": 0.3673096334895742
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Drew Dober",
+    "fighter_b": "Chris Duncan",
+    "fighter_a_id": "519e4fe37ce9ff75",
+    "fighter_b_id": "fd406a32a6fb3a29",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Lightweight",
+    "winner_prob": {
+      "a": 0.38669003840779625,
+      "b": 0.6133099615922037
+    },
+    "method_prob": {
+      "Decision": 0.3520245740011808,
+      "KO/TKO": 0.4564714693980844,
+      "Submission": 0.19150395660073477
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Chris Duncan",
+        "method": "KO/TKO",
+        "prob": 0.279958499364476,
+        "label": "Duncan by KO/TKO"
+      },
+      {
+        "fighter": "Chris Duncan",
+        "method": "Decision",
+        "prob": 0.21590017796017608,
+        "label": "Duncan by Decision"
+      },
+      {
+        "fighter": "Drew Dober",
+        "method": "KO/TKO",
+        "prob": 0.17651297003360847,
+        "label": "Dober by KO/TKO"
+      },
+      {
+        "fighter": "Drew Dober",
+        "method": "Decision",
+        "prob": 0.13612439604100474,
+        "label": "Dober by Decision"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.12728087124136583,
+    "ensemble_streams": {
+      "logreg": 0.3664833236173804,
+      "xgb": 0.36023104190826416,
+      "elo": 0.48751191314963,
+      "lstm": 0.43278056383132935
+    },
+    "top_drivers": [
+      "Championship-round experience (diff +37.00)",
+      "Layoff (days since last fight) (diff +28.00)",
+      "Elo rating (-9 Elo points)",
+      "Age (diff +4.56)",
+      "Takedown rate (diff -1.81)"
+    ],
+    "key_advantages_a": [
+      "Championship-round experience (diff +37.00)",
+      "Layoff (days since last fight) (diff +28.00)",
+      "Age (diff +4.56)",
+      "Cluster B 0 (+0.71)",
+      "Arch Similarity (+2.64)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-9 Elo points)",
+      "Takedown rate (diff -1.81)",
+      "Elo Form Divergence A (-1.46)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 13 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2591901703995277,
+      "round_2": 0.19439262779964575,
+      "round_3": 0.09719631389982288,
+      "round_4": 0.06479754259988192,
+      "round_5": 0.03239877129994096,
+      "decision": 0.3520245740011808
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Jim Miller",
+    "fighter_b": "Terrance McKinney",
+    "fighter_a_id": "d1941565abf50b16",
+    "fighter_b_id": "809bd1a871491508",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Lightweight",
+    "winner_prob": {
+      "a": 0.38669003840779625,
+      "b": 0.6133099615922037
+    },
+    "method_prob": {
+      "Decision": 0.3581043117413673,
+      "KO/TKO": 0.37637202186549995,
+      "Submission": 0.26552366639313274
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Terrance McKinney",
+        "method": "KO/TKO",
+        "prob": 0.23083271027470983,
+        "label": "McKinney by KO/TKO"
+      },
+      {
+        "fighter": "Terrance McKinney",
+        "method": "Decision",
+        "prob": 0.21962894168010055,
+        "label": "McKinney by Decision"
+      },
+      {
+        "fighter": "Terrance McKinney",
+        "method": "Submission",
+        "prob": 0.16284830963739336,
+        "label": "McKinney by Submission"
+      },
+      {
+        "fighter": "Jim Miller",
+        "method": "KO/TKO",
+        "prob": 0.14553931159079012,
+        "label": "Miller by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.32261912561490547,
+    "ensemble_streams": {
+      "logreg": 0.24599615229469254,
+      "xgb": 0.3852989971637726,
+      "elo": 0.568615277909598,
+      "lstm": 0.44793856143951416
+    },
+    "top_drivers": [
+      "Elo rating (48 Elo points)",
+      "Championship-round experience (diff +71.00)",
+      "Layoff (days since last fight) (diff +63.00)",
+      "Age (diff +11.04)",
+      "Net striking (output minus absorbed) (diff -4.68)"
+    ],
+    "key_advantages_a": [
+      "Elo rating (48 Elo points)",
+      "Championship-round experience (diff +71.00)",
+      "Layoff (days since last fight) (diff +63.00)",
+      "Age (diff +11.04)",
+      "Cluster B 0 (+1.00)"
+    ],
+    "key_advantages_b": [
+      "Net striking (output minus absorbed) (diff -4.68)",
+      "Pace Mismatch Diff (diff -10.27)",
+      "Striking output (sig. strikes / min) (diff -7.58)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 32 pp); favourite uncertain.",
+      "Underdog has live submission threat (sub_avg/15 = 2.0); upset risk on the ground.",
+      "Favourite has a recent KO loss (last 5 fights) \u2014 chin caveat.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2567582753034531,
+      "round_2": 0.19256870647758978,
+      "round_3": 0.09628435323879489,
+      "round_4": 0.06418956882586327,
+      "round_5": 0.032094784412931635,
+      "decision": 0.3581043117413673
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Cesar Almeida",
+    "fighter_b": "Donte Johnson",
+    "fighter_a_id": "64d47ef881a437a4",
+    "fighter_b_id": "ad5cb64af10fc946",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Catch Weight",
+    "winner_prob": {
+      "a": 0.3265494141025489,
+      "b": 0.6734505858974511
+    },
+    "method_prob": {
+      "Decision": 0.3690652964474641,
+      "KO/TKO": 0.40110251836023236,
+      "Submission": 0.22983218519230353
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Donte Johnson",
+        "method": "KO/TKO",
+        "prob": 0.2701227259946416,
+        "label": "Johnson by KO/TKO"
+      },
+      {
+        "fighter": "Donte Johnson",
+        "method": "Decision",
+        "prob": 0.2485472401269612,
+        "label": "Johnson by Decision"
+      },
+      {
+        "fighter": "Donte Johnson",
+        "method": "Submission",
+        "prob": 0.1547806197758483,
+        "label": "Johnson by Submission"
+      },
+      {
+        "fighter": "Cesar Almeida",
+        "method": "KO/TKO",
+        "prob": 0.13097979236559074,
+        "label": "Almeida by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.22784558704661298,
+    "ensemble_streams": {
+      "logreg": 0.19820255118066057,
+      "xgb": 0.31731000542640686,
+      "elo": 0.42604813822727355,
+      "lstm": 0.34463152289390564
+    },
+    "top_drivers": [
+      "Elo rating (-52 Elo points)",
+      "Layoff (days since last fight) (diff +35.00)",
+      "Age (diff +10.83)",
+      "Championship-round experience (diff +7.00)",
+      "Elo Form Divergence A (+1.88)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +35.00)",
+      "Age (diff +10.83)",
+      "Championship-round experience (diff +7.00)",
+      "Elo Form Divergence A (+1.88)",
+      "Takedown defence (diff +2.03)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-52 Elo points)",
+      "Elo Form Divergence B (-1.82)",
+      "Td Def Acc Diff (diff -1.42)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 23 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.25237388142101436,
+      "round_2": 0.18928041106576077,
+      "round_3": 0.09464020553288038,
+      "round_4": 0.06309347035525359,
+      "round_5": 0.031546735177626795,
+      "decision": 0.3690652964474641
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Jared Gordon",
+    "fighter_b": "Melquizael Costa",
+    "fighter_a_id": "7026eca45f65377b",
+    "fighter_b_id": "20bccc9bb4ceb23e",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Lightweight",
+    "winner_prob": {
+      "a": 0.3265494141025489,
+      "b": 0.6734505858974511
+    },
+    "method_prob": {
+      "Decision": 0.36025963045989634,
+      "KO/TKO": 0.40875616567963086,
+      "Submission": 0.23098420386047278
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Melquizael Costa",
+        "method": "KO/TKO",
+        "prob": 0.275277079266143,
+        "label": "Costa by KO/TKO"
+      },
+      {
+        "fighter": "Melquizael Costa",
+        "method": "Decision",
+        "prob": 0.24261705920841642,
+        "label": "Costa by Decision"
+      },
+      {
+        "fighter": "Melquizael Costa",
+        "method": "Submission",
+        "prob": 0.15555644742289168,
+        "label": "Costa by Submission"
+      },
+      {
+        "fighter": "Jared Gordon",
+        "method": "KO/TKO",
+        "prob": 0.13347908641348785,
+        "label": "Gordon by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.17119587601206876,
+    "ensemble_streams": {
+      "logreg": 0.2576671251509904,
+      "xgb": 0.3629578649997711,
+      "elo": 0.42886300116305914,
+      "lstm": 0.34834960103034973
+    },
+    "top_drivers": [
+      "Elo rating (-50 Elo points)",
+      "Age (diff +8.02)",
+      "Championship-round experience (diff +16.00)",
+      "Layoff (days since last fight) (diff +7.00)",
+      "Net striking (output minus absorbed) (diff -1.25)"
+    ],
+    "key_advantages_a": [
+      "Age (diff +8.02)",
+      "Championship-round experience (diff +16.00)",
+      "Layoff (days since last fight) (diff +7.00)",
+      "Pace Mismatch Diff (diff +3.15)",
+      "Striking absorbed (diff +2.20)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-50 Elo points)",
+      "Net striking (output minus absorbed) (diff -1.25)",
+      "Reach (diff -3.00)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 17 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2558961478160415,
+      "round_2": 0.19192211086203106,
+      "round_3": 0.09596105543101553,
+      "round_4": 0.06397403695401037,
+      "round_5": 0.031987018477005184,
+      "decision": 0.36025963045989634
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Macy Chiasson",
+    "fighter_b": "Bia Mesquita",
+    "fighter_a_id": "9cdd2da1a9104a0b",
+    "fighter_b_id": "eff9074bc066f0f2",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Women's Bantamweight",
+    "winner_prob": {
+      "a": 0.46148592627693863,
+      "b": 0.5385140737230614
+    },
+    "method_prob": {
+      "Decision": 0.34080262235709474,
+      "KO/TKO": 0.35818773421036953,
+      "Submission": 0.3010096434325357
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Bia Mesquita",
+        "method": "KO/TKO",
+        "prob": 0.19288913590725926,
+        "label": "Mesquita by KO/TKO"
+      },
+      {
+        "fighter": "Bia Mesquita",
+        "method": "Decision",
+        "prob": 0.18352700850102116,
+        "label": "Mesquita by Decision"
+      },
+      {
+        "fighter": "Macy Chiasson",
+        "method": "KO/TKO",
+        "prob": 0.16529859830311028,
+        "label": "Chiasson by KO/TKO"
+      },
+      {
+        "fighter": "Bia Mesquita",
+        "method": "Submission",
+        "prob": 0.16209792931478095,
+        "label": "Mesquita by Submission"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "medium",
+    "confidence_spread": 0.07080451563554735,
+    "ensemble_streams": {
+      "logreg": 0.42000725749504536,
+      "xgb": 0.45435160398483276,
+      "elo": 0.46239180282312364,
+      "lstm": 0.3915872871875763
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff +112.00)",
+      "Elo rating (-26 Elo points)",
+      "Championship-round experience (diff +30.00)",
+      "Net striking (output minus absorbed) (diff -3.47)",
+      "Reach (diff +5.00)"
+    ],
+    "key_advantages_a": [
+      "Layoff (days since last fight) (diff +112.00)",
+      "Championship-round experience (diff +30.00)",
+      "Reach (diff +5.00)",
+      "Cluster B 0 (+1.00)"
+    ],
+    "key_advantages_b": [
+      "Elo rating (-26 Elo points)",
+      "Net striking (output minus absorbed) (diff -3.47)",
+      "Submission threat (diff -3.50)",
+      "Takedown rate (diff -2.14)"
+    ],
+    "warnings": [],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2636789510571621,
+      "round_2": 0.19775921329287155,
+      "round_3": 0.09887960664643577,
+      "round_4": 0.06591973776429053,
+      "round_5": 0.03295986888214526,
+      "decision": 0.34080262235709474
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Alatengheili",
+    "fighter_b": "Juan Diaz",
+    "fighter_a_id": "1897b7b913736a7c",
+    "fighter_b_id": "683b9b47e2a1da2e",
+    "event_date": "2026-11-14",
+    "event_name": "UFC 334: Gane vs. Hokit",
+    "weight_class": "Bantamweight",
+    "winner_prob": {
+      "a": 0.38669003840779625,
+      "b": 0.6133099615922037
+    },
+    "method_prob": {
+      "Decision": 0.3430087026206741,
+      "KO/TKO": 0.3605063516131129,
+      "Submission": 0.296484945766213
+    },
+    "top_outcomes": [
+      {
+        "fighter": "Juan Diaz",
+        "method": "KO/TKO",
+        "prob": 0.22110213666158376,
+        "label": "Diaz by KO/TKO"
+      },
+      {
+        "fighter": "Juan Diaz",
+        "method": "Decision",
+        "prob": 0.21037065423007728,
+        "label": "Diaz by Decision"
+      },
+      {
+        "fighter": "Juan Diaz",
+        "method": "Submission",
+        "prob": 0.1818371707005427,
+        "label": "Diaz by Submission"
+      },
+      {
+        "fighter": "Alatengheili",
+        "method": "KO/TKO",
+        "prob": 0.13940421495152913,
+        "label": "Alatengheili by KO/TKO"
+      }
+    ],
+    "round_estimate": [
+      1,
+      2
+    ],
+    "confidence": "low",
+    "confidence_spread": 0.2105783283487408,
+    "ensemble_streams": {
+      "logreg": 0.3237792801032535,
+      "xgb": 0.37405794858932495,
+      "elo": 0.5343576084519943,
+      "lstm": 0.42452555894851685
+    },
+    "top_drivers": [
+      "Layoff (days since last fight) (diff -133.00)",
+      "Elo rating (24 Elo points)",
+      "Championship-round experience (diff +23.00)",
+      "Age (diff +6.47)",
+      "Takedown rate (diff -5.97)"
+    ],
+    "key_advantages_a": [
+      "Elo rating (24 Elo points)",
+      "Championship-round experience (diff +23.00)",
+      "Age (diff +6.47)",
+      "Pace Mismatch Diff (diff +4.09)"
+    ],
+    "key_advantages_b": [
+      "Layoff (days since last fight) (diff -133.00)",
+      "Takedown rate (diff -5.97)",
+      "Net striking (output minus absorbed) (diff -2.18)",
+      "Reach (diff -3.50)"
+    ],
+    "warnings": [
+      "High ensemble disagreement (spread 21 pp); favourite uncertain.",
+      "Low-confidence call \u2014 model says coinflip-adjacent."
+    ],
+    "cluster_matchup": "",
+    "cluster_a": "",
+    "cluster_b": "",
+    "finish_round_dist": {
+      "round_1": 0.2627965189517304,
+      "round_2": 0.19709738921379777,
+      "round_3": 0.09854869460689888,
+      "round_4": 0.0656991297379326,
+      "round_5": 0.0328495648689663,
+      "decision": 0.3430087026206741
+    },
+    "n_similar_fights": 0,
+    "segment": "prelim"
+  },
+  {
+    "fighter_a": "Evan Elder",
+    "fighter_b": "Samuel Sanches",
+    "segment": "prelim",
+    "error": "Fighter 'Samuel Sanches' not found"
+  }
+]
